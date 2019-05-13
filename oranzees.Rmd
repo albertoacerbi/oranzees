@@ -1,0 +1,26 @@
+---
+title: "Oranzees model"
+author: "Alberto Acerbi"
+date: "13/05/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+This Rmarkdown file documents the development of the Oranzees model. The code-only version to run the model is in the file *main.R* in the same repository.
+
+### Spatial set-up
+
+We first need to set-up a simulated environment where six populations of oranzees live at relative distances that are approximately similar to the six populations of chimpanzees described in Whiten et al., 1999 
+
+We use the R package [imager](https://dahtah.github.io/imager/imager.html) to process a capture from Figure 1 in Whiten et al., 1999.
+
+```{r}
+library(imager)
+
+environment <- load.image( "material/Whiten_1999_cap.png")
+plot( environment )
+```
