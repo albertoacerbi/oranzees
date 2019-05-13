@@ -2,7 +2,8 @@
 title: "Oranzees model"
 author: "Alberto Acerbi"
 date: "13/05/2019"
-output: html_document
+output: github_document
+
 ---
 
 ```{r setup, include=FALSE}
