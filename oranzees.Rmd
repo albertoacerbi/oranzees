@@ -2,7 +2,7 @@
 title: "Oranzees model"
 author: "Alberto Acerbi"
 date: "13/05/2019"
-output: github_document
+output: html_document
 
 ---
 
