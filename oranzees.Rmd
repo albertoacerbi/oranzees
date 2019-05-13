@@ -18,9 +18,49 @@ We first need to set-up a simulated environment where six populations of oranzee
 
 We use the R package [imager](https://dahtah.github.io/imager/imager.html) to process a capture from Figure 1 in Whiten et al., 1999.
 
-```{r}
+```{r message = FALSE}
 library(imager)
 
-environment <- load.image( "material/Whiten_1999_cap.png")
-plot( environment )
+chimp_env <- load.image("material/Whiten_1999_cap.png")
+plot(chimp_env)
 ```
+
+We manually process the image to have only the six points to which we are interested, and we also reverse the y-axis (in image processing starting from zero and go negative is standard, but this is not useful for us):
+
+```{r}
+
+chimp_env <- load.image( "material/Whiten_1999_cap2.png")
+plot(chimp_env, axes=F)
+axis(1)
+axis(2, at = seq(-100, 400, 100), labels = seq(500, 0, -100))
+grid()
+box()
+
+```
+
+Here are the approximate locations of the oranzees populations:
+
+```{r}
+
+env_or_x <- c(420, 430, 900, 905, 910, 950)
+env_or_y <- c(360, 310, 150, 130, 210, 250)
+
+plot(env_or_x, env_or_y, xlim = c(0, 1200), ylim = c(0, 500), pch = 21, bg = "red")
+grid()
+
+```
+
+For convenience, we put these locations approximately in the centre of a 1000,1000 squared environment (what is important are the relative distances, not their absolute values):
+
+```{r}
+
+env_or_x <- env_or_x - 200
+env_or_y <- env_or_y + 300
+
+par(pty = "s")
+plot(env_or_x, env_or_y, xlim = c(0, 1000), ylim = c(0, 1000), pch = 21, bg = "red")
+grid()
+
+```
+
+### Genetic and environmental gradients
