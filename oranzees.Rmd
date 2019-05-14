@@ -155,7 +155,7 @@ points(env_or_x, env_or_y, pch = 21, bg = "red")
 
 ```
 
-We can check that the $p_g$ values of the six different populations look like the ones we showed above, just before working on the visualisation. Remember, this means that population with higher values will be more genetically predisposed to acquire one of the 38 behaviours.
+We can check that the $p_g$ values of the six different populations look like the ones we showed above, just before working on the visualisation (the order of the popualtions is from left to right on the x-axis). Remember, this means that population with higher values will be more genetically predisposed to acquire one of the 38 behaviours.
 
 We can now do the same for determining $p_e$, or the ecological availability for the same behaviour. The code is basically the same, with the only difference that the distances are normalised by 500:
 
@@ -208,7 +208,7 @@ Again, we can check that the values in the plot correspond to the ones calculate
 
 ***
 
-We can now wrap up everything in a function `set_oranzees_environment()` that can be use independently from what we done so far, and that we will use in the code of the actual model (*main.R*):
+We can now wrap everything up in a function `set_oranzees_environment()` that can be use independently from what we done so far, and that we will use in the code of the actual model (*main.R*):
 
 ```{r message=FALSE}
 
@@ -266,5 +266,61 @@ We can explore the output simply writing the name of the data structure:
 ```{r}
 
 oranzees_environment
+
+```
+
+Each line of the tibble records the genetic propensity and the ecological availability for each behaviour, for each population. Since there are 38 behaviours and 6 populations, the tibble has 228 lines. 
+
+There are a couple of checks that we can do to be sure that the function works as desired. First, we would expect, on average, genetic propensities being higher than ecological availabilities, and that it is more likely that some of the latters will be equal to zero. We can use the `facet` functionality in `ggplot` to split the data for the six populations. Here are the results for $p_g$:
+
+```{r}
+
+ggplot(data=oranzees_environment) +
+  geom_point(aes(x=behaviour,y=p_g)) +
+  facet_wrap(~population) +
+  theme_bw() +
+  labs(y="Genetic propensity") +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank()) 
+
+```
+
+We can do the same plot for $p_e$:
+
+```{r}
+
+ggplot(data=oranzees_environment) +
+  geom_point(aes(x=behaviour,y=p_e)) +
+  facet_wrap(~population) +
+  theme_bw() +
+  labs(y="Ecological availability") +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank()) 
+
+```
+
+As we wanted, values of $p_e$ are lower, and a few of them are zeros. 
+
+A second check exploits the fact that both $p_e$ and $p_g$ are assignated to the six populations following a geographical gradient. We would expect, thus, that populations that are geographically close to each other are also more similar genetically and they live in a similar environment. In other words, we expect for example populations 1 and 2 to be more similar one to each other than to populations 3, (or 4, 5, and 6).
+
+We can check this with some quick scatterplots. Here the correlation between the genetic propensities of popualtions 1 and 2 (black dots) and 1 and 3 (red dots) for all 38 behaviours:
+
+```{r}
+
+par(pty = "s")
+plot(oranzees_environment[oranzees_environment$population == 1, ]$p_g, oranzees_environment[oranzees_environment$population == 2, ]$p_g, pch = 19, 
+      xlab = "Population 1", ylab = "Population 2", xlim = c(0, 1), ylim = c(0, 1))
+points(oranzees_environment[oranzees_environment$population == 1, ]$p_g, oranzees_environment[oranzees_environment$population == 3 , ]$p_g, pch = 19, col = "red")
+grid()
+
+```
+
+And the same for the ecological availabilities:
+
+```{r}
+
+par(pty = "s")
+plot(oranzees_environment[oranzees_environment$population == 1, ]$p_e, oranzees_environment[oranzees_environment$population == 2, ]$p_e, pch = 19, 
+      xlab = "Population 1", ylab = "Population 2", xlim = c(0, 1), ylim = c(0, 1))
+points(oranzees_environment[oranzees_environment$population == 1, ]$p_e, oranzees_environment[oranzees_environment$population == 3 , ]$p_e, pch = 19, col = "red")
+grid()
 
 ```
