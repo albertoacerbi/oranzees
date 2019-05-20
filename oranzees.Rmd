@@ -67,7 +67,7 @@ grid()
 
 ### Genetic and environmental gradients
 
-Following again Whiten et al., 1999, we consider 38 possible behaviours. The exact charactersitics of these behaviours will be examined later. For now, we implement the idea that the probability to acquire any of these behaviours depends (among other things) by two factors:
+Following again Whiten et al., 1999, we consider 38 possible behaviours. The exact characteristics of these behaviours will be examined later. For now, we implement the idea that the probability to acquire any of these behaviours depends (among other things) by two factors:
 
 * genetic propensity
 
@@ -75,7 +75,7 @@ Following again Whiten et al., 1999, we consider 38 possible behaviours. The exa
 
 Both are modelled as a probability $p(0,1)$, with two values: $p_g$ (genetic propensity) and $p_e$ (ecological availability).
 
-These probabilities are assigned randomly and indpendently to each behaviours. To assign them to the different populations we use a geographical gradient. For each behaviour, a random point is chosen in the cartesian space and its distance to each population is calculated. This distance is then normalised between 0 and 1000 for the genetic propensitiy and between 0 and 500 for the ecological availability. The actual probabilities are then calcualted as $1-d_{norm}$.
+These probabilities are assigned randomly and independently to each behaviours. To assign them to the different populations we use a geographical gradient. For each behaviour, a random point is chosen in the Cartesian space and its distance to each population is calculated. This distance is then normalised between 0 and 1000 for the genetic propensity and between 0 and 500 for the ecological availability. The actual probabilities are then calculated as $1-d_{norm}$.
 
 Here an example:
 
@@ -109,7 +109,7 @@ d_g
 
 ```
 
-Since we are working with the genetic propensity, we normalised the distance by 1000, and we then find the final probability subtracting from 1 (values that are below 0, i.e. popualtion that were at more than 1000 units distance, are considered 0):
+Since we are working with the genetic propensity, we normalized the distance by 1000, and we then find the final probability subtracting from 1 (values that are below 0, i.e. population that were at more than 1000 units distance, are considered 0):
 
 ```{r}
 
@@ -127,7 +127,7 @@ p_g
 
 ```
 
-An intuitive way to see this graphically is to use a gradient. The code is slighlty more complicated, but we just need to run it once to visualise the effect. We first calculate the values of $p_g$ for all the points in the environment:
+An intuitive way to see this graphically is to use a gradient. The code is slightly more complicated, but we just need to run it once to visualise the effect. We first calculate the values of $p_g$ for all the points in the environment:
 
 ```{r}
 
@@ -155,7 +155,7 @@ points(env_or_x, env_or_y, pch = 21, bg = "red")
 
 ```
 
-We can check that the $p_g$ values of the six different populations look like the ones we showed above, just before working on the visualisation (the order of the popualtions is from left to right on the x-axis). Remember, this means that population with higher values will be more genetically predisposed to acquire one of the 38 behaviours.
+We can check that the $p_g$ values of the six different populations look like the ones we showed above, just before working on the visualisation (the order of the populations is from left to right on the x-axis). Remember, this means that population with higher values will be more genetically predisposed to acquire one of the 38 behaviours.
 
 We can now do the same for determining $p_e$, or the ecological availability for the same behaviour. The code is basically the same, with the only difference that the distances are normalised by 500:
 
@@ -183,7 +183,7 @@ p_e
 
 ```
 
-And we can visualise them, using the same tecnique:
+And we can visualise them, using the same technique:
 
 ```{r}
 
@@ -204,7 +204,7 @@ points(env_or_x, env_or_y, pch = 21, bg = "red")
 
 ```
 
-Again, we can check that the values in the plot correspond to the ones calculated above. The difference between the plot for genetic propensity and the plot for ecological availability illustrates the difference in the normalisation (1000 for the former and 500 for the latter). In the ecological availability plot, depending where the random point has been placed, it is more likely that some areas of the environment will be with $p_e=0$, including possibly some of our six populations. This reflects the fact that, for example, some raw materials can be availble in a population, but not in another. The likelyhood of $p_g=0$ is instead lower, reflecting that genetic constraints are less strong. This is of course a semplification, and can be changed in successive versions of the model (or perhaps be parametrised).
+Again, we can check that the values in the plot correspond to the ones calculated above. The difference between the plot for genetic propensity and the plot for ecological availability illustrates the difference in the normalisation (1000 for the former and 500 for the latter). In the ecological availability plot, depending where the random point has been placed, it is more likely that some areas of the environment will be with $p_e=0$, including possibly some of our six populations. This reflects the fact that, for example, some raw materials can be available in a population, but not in another. The likelihood of $p_g=0$ is instead lower, reflecting that genetic constraints are less strong. This is of course a simplification, and can be changed in successive versions of the model (or perhaps be parametrised).
 
 ***
 
@@ -271,7 +271,7 @@ oranzees_environment
 
 Each line of the tibble records the genetic propensity and the ecological availability for each behaviour, for each population. Since there are 38 behaviours and 6 populations, the tibble has 228 lines. 
 
-There are a couple of checks that we can do to be sure that the function works as desired. First, we would expect, on average, genetic propensities being higher than ecological availabilities, and that it is more likely that some of the latters will be equal to zero. We can use the `facet` functionality in `ggplot` to split the data for the six populations. Here are the results for $p_g$:
+There are a couple of checks that we can do to be sure that the function works as desired. First, we would expect, on average, genetic propensities being higher than ecological availabilities, and that it is more likely that some of the latter will be equal to zero. We can use the `facet` functionality in `ggplot` to split the data for the six populations. Here are the results for $p_g$:
 
 ```{r}
 
@@ -299,15 +299,15 @@ ggplot(data=oranzees_environment) +
 
 As we wanted, values of $p_e$ are lower, and a few of them are zeros. 
 
-A second check exploits the fact that both $p_e$ and $p_g$ are assignated to the six populations following a geographical gradient. We would expect, thus, that populations that are geographically close to each other are also more similar genetically and they live in a similar environment. In other words, we expect for example populations 1 and 2 to be more similar one to each other than to populations 3, (or 4, 5, and 6).
+A second check exploits the fact that both $p_e$ and $p_g$ are assigned to the six populations following a geographical gradient. We would expect, thus, that populations that are geographically close to each other are also more similar genetically and they live in a similar environment. In other words, we expect for example populations 1 and 2 to be more similar one to each other than to populations 3 (or 4, 5, and 6).
 
-We can check this with some quick scatterplots. Here the correlation between the genetic propensities of popualtions 1 and 2 (black dots) and 1 and 3 (red dots) for all 38 behaviours:
+We can check this with some quick scatterplots. Here the correlation between the genetic propensities of populations 1 and 2 (black dots) and 1 and 3 (red dots) for all 38 behaviours:
 
 ```{r}
 
 par(pty = "s")
 plot(oranzees_environment[oranzees_environment$population == 1, ]$p_g, oranzees_environment[oranzees_environment$population == 2, ]$p_g, pch = 19, 
-      xlab = "Population 1", ylab = "Population 2", xlim = c(0, 1), ylim = c(0, 1))
+      xlab = "Population 1", ylab = "Population check", xlim = c(0, 1), ylim = c(0, 1))
 points(oranzees_environment[oranzees_environment$population == 1, ]$p_g, oranzees_environment[oranzees_environment$population == 3 , ]$p_g, pch = 19, col = "red")
 grid()
 
@@ -319,8 +319,12 @@ And the same for the ecological availabilities:
 
 par(pty = "s")
 plot(oranzees_environment[oranzees_environment$population == 1, ]$p_e, oranzees_environment[oranzees_environment$population == 2, ]$p_e, pch = 19, 
-      xlab = "Population 1", ylab = "Population 2", xlim = c(0, 1), ylim = c(0, 1))
+      xlab = "Population 1", ylab = "Population check", xlim = c(0, 1), ylim = c(0, 1))
 points(oranzees_environment[oranzees_environment$population == 1, ]$p_e, oranzees_environment[oranzees_environment$population == 3 , ]$p_e, pch = 19, col = "red")
 grid()
 
 ```
+
+### The six populations
+
+
