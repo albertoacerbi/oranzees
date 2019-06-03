@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-This Rmarkdown file documents the development of the Oranzees model. The code-only version to run the model is in the file *main.R* in the same repository.
+This R markdown file documents the development of the Oranzees model. The code-only version to run the model is in the file *main.R* in the same repository.
 
 ### Spatial set-up
 
@@ -24,7 +24,6 @@ library(imager)
 chimp_env <- load.image("material/Whiten_1999_cap.png")
 plot(chimp_env)
 box()
-
 ```
 
 We manually process the image to have only the six points to which we are interested, and we also reverse the y-axis (in image processing starting from zero and go negative is standard, but this is not useful for us):
@@ -37,7 +36,6 @@ axis(1)
 axis(2, at = seq(-100, 400, 100), labels = seq(500, 0, -100))
 grid()
 box()
-
 ```
 
 Here are the approximate locations of the oranzees populations:
@@ -49,7 +47,6 @@ env_or_y <- c(360, 310, 150, 130, 210, 250)
 
 plot(env_or_x, env_or_y, xlim = c(0, 1200), ylim = c(0, 500), pch = 21, bg = "red")
 grid()
-
 ```
 
 For convenience, we put these locations approximately in the centre of a 1000,1000 squared environment (what is important are the relative distances, not their absolute values):
@@ -62,7 +59,6 @@ env_or_y <- env_or_y + 300
 par(pty = "s")
 plot(env_or_x, env_or_y, xlim = c(0, 1000), ylim = c(0, 1000), pch = 21, bg = "red")
 grid()
-
 ```
 
 ### Genetic and environmental gradients
@@ -87,10 +83,9 @@ y_g <- sample(1:1000, 1)
 
 # calcualte the distance from the six populations:
 d_g <- c()
-for(i in 1:6) {
+for (i in 1:6) {
   d_g[i] <- sqrt((x_g - env_or_x[i])^2 + (y_g - env_or_y[i])^2)
 }
-
 ```
 
 Now we can see the random point we extracted:
@@ -98,7 +93,6 @@ Now we can see the random point we extracted:
 ```{r echo=FALSE}
 
 c(x_g, y_g)
-
 ```
 
 And the distances calculated:
@@ -106,7 +100,6 @@ And the distances calculated:
 ```{r echo=FALSE}
 
 d_g
-
 ```
 
 Since we are working with the genetic propensity, we normalized the distance by 1000, and we then find the final probability subtracting from 1 (values that are below 0, i.e. population that were at more than 1000 units distance, are considered 0):
@@ -115,8 +108,7 @@ Since we are working with the genetic propensity, we normalized the distance by 
 
 d_g_norm <- d_g / 1000
 p_g <- 1 - d_g_norm
-p_g[p_g < 0] = 0
-
+p_g[p_g < 0] <- 0
 ```
 
 Here are the final values for $p_g$:
@@ -124,7 +116,6 @@ Here are the final values for $p_g$:
 ```{r echo=FALSE}
 
 p_g
-
 ```
 
 An intuitive way to see this graphically is to use a gradient. The code is slightly more complicated, but we just need to run it once to visualise the effect. We first calculate the values of $p_g$ for all the points in the environment:
@@ -133,14 +124,13 @@ An intuitive way to see this graphically is to use a gradient. The code is sligh
 
 gradient_g <- matrix(nrow = 1000, ncol = 1000)
 
-for(i in 1:1000) {
-  for(j in 1:1000) {
-    gradient_g[i,j] <- sqrt((x_g - i)^2 + (y_g - j)^2)
+for (i in 1:1000) {
+  for (j in 1:1000) {
+    gradient_g[i, j] <- sqrt((x_g - i)^2 + (y_g - j)^2)
   }
 }
-gradient_g = 1 - gradient_g / 1000
-gradient_g[gradient_g < 0] = 0 
-
+gradient_g <- 1 - gradient_g / 1000
+gradient_g[gradient_g < 0] <- 0
 ```
 
 And we then plot it, using the R package [`viridis`](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html), for the colour scale.
@@ -150,9 +140,8 @@ And we then plot it, using the R package [`viridis`](https://cran.r-project.org/
 library(viridis)
 par(pty = "s")
 image(1:1000, 1:1000, gradient_g, col = viridis(10), xlab = "env_or_x", ylab = "env_or_y")
-contour(1:1000, 1:1000, gradient_g, add = TRUE) 
+contour(1:1000, 1:1000, gradient_g, add = TRUE)
 points(env_or_x, env_or_y, pch = 21, bg = "red")
-
 ```
 
 We can check that the $p_g$ values of the six different populations look like the ones we showed above, just before working on the visualisation (the order of the populations is from left to right on the x-axis). Remember, this means that population with higher values will be more genetically predisposed to acquire one of the 38 behaviours.
@@ -165,14 +154,13 @@ x_e <- sample(1:1000, 1)
 y_e <- sample(1:1000, 1)
 
 d_e <- c()
-for(i in 1:6) {
+for (i in 1:6) {
   d_e[i] <- sqrt((x_e - env_or_x[i])^2 + (y_e - env_or_y[i])^2)
 }
 
 d_e_norm <- d_e / 500
 p_e <- 1 - d_e_norm
-p_e[p_e < 0] = 0
-
+p_e[p_e < 0] <- 0
 ```
 
 As before, here are the final values for $p_e$:
@@ -180,7 +168,6 @@ As before, here are the final values for $p_e$:
 ```{r echo=FALSE}
 
 p_e
-
 ```
 
 And we can visualise them, using the same technique:
@@ -189,19 +176,18 @@ And we can visualise them, using the same technique:
 
 gradient_e <- matrix(nrow = 1000, ncol = 1000)
 
-for(i in 1:1000) {
-  for(j in 1:1000) {
-    gradient_e[i,j] <- sqrt((x_e - i)^2 + (y_e - j)^2)
+for (i in 1:1000) {
+  for (j in 1:1000) {
+    gradient_e[i, j] <- sqrt((x_e - i)^2 + (y_e - j)^2)
   }
 }
-gradient_e = 1 - gradient_e / 500
-gradient_e[gradient_e < 0] = 0 
+gradient_e <- 1 - gradient_e / 500
+gradient_e[gradient_e < 0] <- 0
 
 par(pty = "s")
 image(1:1000, 1:1000, gradient_e, col = magma(10), xlab = "env_or_x", ylab = "env_or_y")
-contour(1:1000, 1:1000, gradient_e, add = TRUE) 
+contour(1:1000, 1:1000, gradient_e, add = TRUE)
 points(env_or_x, env_or_y, pch = 21, bg = "red")
-
 ```
 
 Again, we can check that the values in the plot correspond to the ones calculated above. The difference between the plot for genetic propensity and the plot for ecological availability illustrates the difference in the normalisation (1000 for the former and 500 for the latter). In the ecological availability plot, depending where the random point has been placed, it is more likely that some areas of the environment will be with $p_e=0$, including possibly some of our six populations. This reflects the fact that, for example, some raw materials can be available in a population, but not in another. The likelihood of $p_g=0$ is instead lower, reflecting that genetic constraints are less strong. This is of course a simplification, and can be changed in successive versions of the model (or perhaps be parametrised).
@@ -215,42 +201,43 @@ We can now wrap everything up in a function `set_oranzees_environment()` that ca
 library(tidyverse)
 
 set_oranzees_environment <- function() {
-  
-  output <- tibble( population = as.factor(rep(1:6, each = 38)),
-                          behaviour = as.factor(rep(1:38, 6)),
-                          p_g = rep(NA, 38 * 6), 
-                          p_e = rep(NA, 38 * 6))
-  
+  output <- tibble(
+    population = as.factor(rep(1:6, each = 38)),
+    behaviour = as.factor(rep(1:38, 6)),
+    p_g = rep(NA, 38 * 6),
+    p_e = rep(NA, 38 * 6)
+  )
+
   env_or_x <- c(220, 230, 700, 705, 710, 750)
   env_or_y <- c(660, 610, 450, 430, 510, 550)
-  
+
   # genetic predispositions for the 38 behaviours:
   x_g <- sample(1:1000, 38)
   y_g <- sample(1:1000, 38)
-  
+
   # ecological availability for the 38 behaviours:
   x_e <- sample(1:1000, 38)
   y_e <- sample(1:1000, 38)
-  
-  for(oranzees_pop in 1:6){
-    for(behav in 1:38) {
-      
-      output[output$population==oranzees_pop & output$behaviour == behav,]$p_g <- 1 - sqrt((x_g[behav] - env_or_x[oranzees_pop])^2 + (y_g[behav] - env_or_y[oranzees_pop])^2)/1000
-      
-      output[output$population==oranzees_pop & output$behaviour == behav,]$p_e <- 1 - sqrt((x_e[behav] - env_or_x[oranzees_pop])^2 + (y_e[behav] - env_or_y[oranzees_pop])^2)/500
+
+  for (oranzees_pop in 1:6) {
+    for (behav in 1:38) {
+      output[output$population == oranzees_pop & output$behaviour == behav, ]$p_g <- 1 - sqrt((x_g[behav] - env_or_x[oranzees_pop])^2 + (y_g[behav] - env_or_y[oranzees_pop])^2) / 1000
+
+      output[output$population == oranzees_pop & output$behaviour == behav, ]$p_e <- 1 - sqrt((x_e[behav] - env_or_x[oranzees_pop])^2 + (y_e[behav] - env_or_y[oranzees_pop])^2) / 500
     }
   }
-  
+
   # replace negative values with 0s:
-  if(dim(output[output$p_g < 0, ])[1] > 0 )
-    output[output$p_g < 0, ]$p_g = 0
-  if(dim(output[output$p_e < 0, ])[1] > 0 )
-    output[output$p_e < 0, ]$p_e = 0
-  
+  if (dim(output[output$p_g < 0, ])[1] > 0) {
+    output[output$p_g < 0, ]$p_g <- 0
+  }
+  if (dim(output[output$p_e < 0, ])[1] > 0) {
+    output[output$p_e < 0, ]$p_e <- 0
+  }
+
   # return the tibble:
   output
 }
-
 ```
 
 This code does what we already did, but for all the 38 behaviours, and store everything in the `tibble` structure, provided by the library `tidyverse`. In the main code, we just need to run the function to start the set-up of a simulation:
@@ -258,7 +245,6 @@ This code does what we already did, but for all the 38 behaviours, and store eve
 ```{r}
 
 oranzees_environment <- set_oranzees_environment()
-
 ```
 
 We can explore the output simply writing the name of the data structure:
@@ -266,7 +252,6 @@ We can explore the output simply writing the name of the data structure:
 ```{r}
 
 oranzees_environment
-
 ```
 
 Each line of the tibble records the genetic propensity and the ecological availability for each behaviour, for each population. Since there are 38 behaviours and 6 populations, the tibble has 228 lines. 
@@ -275,26 +260,24 @@ There are a couple of checks that we can do to be sure that the function works a
 
 ```{r}
 
-ggplot(data=oranzees_environment) +
-  geom_point(aes(x=behaviour,y=p_g)) +
+ggplot(data = oranzees_environment) +
+  geom_point(aes(x = behaviour, y = p_g)) +
   facet_wrap(~population) +
   theme_bw() +
-  labs(y="Genetic propensity") +
-  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank()) 
-
+  labs(y = "Genetic propensity") +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
 ```
 
 We can do the same plot for $p_e$:
 
 ```{r}
 
-ggplot(data=oranzees_environment) +
-  geom_point(aes(x=behaviour,y=p_e)) +
+ggplot(data = oranzees_environment) +
+  geom_point(aes(x = behaviour, y = p_e)) +
   facet_wrap(~population) +
   theme_bw() +
-  labs(y="Ecological availability") +
-  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank()) 
-
+  labs(y = "Ecological availability") +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
 ```
 
 As we wanted, values of $p_e$ are lower, and a few of them are zeros. 
@@ -303,26 +286,29 @@ A second check exploits the fact that both $p_e$ and $p_g$ are assigned to the s
 
 We can check this with some quick scatterplots. Here the correlation between the genetic propensities of populations 1 and 2 (black dots) and 1 and 3 (red dots) for all 38 behaviours:
 
-```{r}
+```{r message=FALSE}
 
+library(scales) # provide alpha
 par(pty = "s")
-plot(oranzees_environment[oranzees_environment$population == 1, ]$p_g, oranzees_environment[oranzees_environment$population == 2, ]$p_g, pch = 19, 
-      xlab = "Population 1", ylab = "Population check", xlim = c(0, 1), ylim = c(0, 1))
-points(oranzees_environment[oranzees_environment$population == 1, ]$p_g, oranzees_environment[oranzees_environment$population == 3 , ]$p_g, pch = 19, col = "red")
+plot(oranzees_environment[oranzees_environment$population == 1, ]$p_g, oranzees_environment[oranzees_environment$population == 2, ]$p_g,
+  pch = 19,
+  xlab = "Population 1", ylab = "Population check", xlim = c(0, 1), ylim = c(0, 1), col = alpha("black", 0.8)
+)
+points(oranzees_environment[oranzees_environment$population == 1, ]$p_g, oranzees_environment[oranzees_environment$population == 3, ]$p_g, pch = 19, col = alpha("red", 0.8))
 grid()
-
 ```
 
-And the same for the ecological availabilities:
+And the same for the ecological availabilities (*explain in case the black ones are at zero*):
 
 ```{r}
 
 par(pty = "s")
-plot(oranzees_environment[oranzees_environment$population == 1, ]$p_e, oranzees_environment[oranzees_environment$population == 2, ]$p_e, pch = 19, 
-      xlab = "Population 1", ylab = "Population check", xlim = c(0, 1), ylim = c(0, 1))
-points(oranzees_environment[oranzees_environment$population == 1, ]$p_e, oranzees_environment[oranzees_environment$population == 3 , ]$p_e, pch = 19, col = "red")
+plot(oranzees_environment[oranzees_environment$population == 1, ]$p_e, oranzees_environment[oranzees_environment$population == 2, ]$p_e,
+  pch = 19,
+  xlab = "Population 1", ylab = "Population check", xlim = c(0, 1), ylim = c(0, 1), col = alpha("black", 0.8)
+)
+points(oranzees_environment[oranzees_environment$population == 1, ]$p_e, oranzees_environment[oranzees_environment$population == 3, ]$p_e, pch = 19, col = alpha("red", 0.8))
 grid()
-
 ```
 
 ### The six populations
