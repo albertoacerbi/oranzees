@@ -46,7 +46,27 @@ plot(env_or_x, env_or_y, xlim = c(0, 1200), ylim = c(0, 500), pch = 21, bg = "re
 grid()
 ```
 
-For convenience, we put these locations approximately in the centre of a 1000,1000 squared environment (what is important are the relative distances, not their absolute values):
+Just for visualisation purposes, here a plot with the same locations overimposed to a map of the imaginary 'Pongogea', where oranzees live. Notice the command `-env_or_y + 400` which move back to y coordinates to the reversed y-axis. The names of the sites are the reversed version of the names in Whiten et al., 1999 (e.g. 'Uossob' = 'Bossou', etc.)
+
+```{r}
+pongogea <- load.image("material/pongogea_cap.png")
+plot(pongogea)
+points(env_or_x, -env_or_y + 400, pch = 21, bg = "red", cex = 0.5)
+text(100, 30, "Uossob", font = 2, cex = 0.9)
+segments(180, 30, env_or_x[1], -env_or_y[1] + 400)
+text(120, 270, "Iat Forest", font = 2, cex = 0.9)
+segments(210, 270, env_or_x[2], -env_or_y[2] + 400)
+text(540, 30, "Elabik", font = 2, cex = 0.9)
+segments(600, 30, env_or_x[5], -env_or_y[5] + 400)
+text(540, 270, "Ebmog", font = 2, cex = 0.9)
+segments(600, 270, env_or_x[3], -env_or_y[3] + 400)
+text(1220, 30, "Ognodub", font = 2, cex = 0.9)
+segments(1120, 30, env_or_x[6], -env_or_y[6] + 400)
+text(1200, 270, "Elaham", font = 2, cex = 0.9)
+segments(1120, 270, env_or_x[4], -env_or_y[4] + 400)
+```
+
+For modelling convenience, we put these locations approximately in the centre of a 1000,1000 squared environment (what is important are the relative distances, not their absolute values):
 
 ```{r}
 env_or_x <- env_or_x - 200
@@ -55,16 +75,6 @@ env_or_y <- env_or_y + 300
 par(pty = "s")
 plot(env_or_x, env_or_y, xlim = c(0, 1000), ylim = c(0, 1000), pch = 21, bg = "red")
 grid()
-```
-
-Just for visualisation purposes, here the same locations overimposed to a map of the imaginary 'Pongogea', where oranzees live. 
-
-```{r}
-pongogea <- load.image("material/pongogea.png")
-par(pty = "s")
-plot(pongogea, xlim = c(0, 1000), ylim = c(0, 1000))
-points(env_or_x, env_or_y, pch = 21, bg = "red", cex = 0.5)
-box()
 ```
 
 ## The behaviours
