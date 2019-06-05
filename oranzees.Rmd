@@ -57,6 +57,16 @@ plot(env_or_x, env_or_y, xlim = c(0, 1000), ylim = c(0, 1000), pch = 21, bg = "r
 grid()
 ```
 
+Just for visualisation purposes, here the same locations overimposed to a map of the imaginary 'Pongogea', where oranzees live. 
+
+```{r}
+pongogea <- load.image("material/pongogea.png")
+par(pty = "s")
+plot(pongogea, xlim = c(0, 1000), ylim = c(0, 1000))
+points(env_or_x, env_or_y, pch = 21, bg = "red", cex = 0.5)
+box()
+```
+
 ## The behaviours
 
 Following again Whiten et al., 1999, we consider 38 possible behaviours. We distinguish among 16 'social' and 22 'food-related' behaviours.
