@@ -52,18 +52,25 @@ Just for visualisation purposes, here a plot with the same locations overimposed
 pongogea <- load.image("material/pongogea_cap.png")
 plot(pongogea)
 points(env_or_x, -env_or_y + 400, pch = 21, bg = "red", cex = 0.5)
+
 text(100, 30, "Uossob", font = 2, cex = 0.9)
 segments(180, 30, env_or_x[1], -env_or_y[1] + 400)
+
 text(120, 270, "Iat Forest", font = 2, cex = 0.9)
 segments(210, 270, env_or_x[2], -env_or_y[2] + 400)
-text(540, 30, "Elabik", font = 2, cex = 0.9)
-segments(600, 30, env_or_x[5], -env_or_y[5] + 400)
+
 text(540, 270, "Ebmog", font = 2, cex = 0.9)
 segments(600, 270, env_or_x[3], -env_or_y[3] + 400)
-text(1220, 30, "Ognodub", font = 2, cex = 0.9)
-segments(1120, 30, env_or_x[6], -env_or_y[6] + 400)
+
 text(1200, 270, "Elaham", font = 2, cex = 0.9)
 segments(1120, 270, env_or_x[4], -env_or_y[4] + 400)
+
+text(540, 30, "Elabik", font = 2, cex = 0.9)
+segments(600, 30, env_or_x[5], -env_or_y[5] + 400)
+
+text(1220, 30, "Ognodub", font = 2, cex = 0.9)
+segments(1120, 30, env_or_x[6], -env_or_y[6] + 400)
+
 ```
 
 For modelling convenience, we put these locations approximately in the centre of a 1000,1000 squared environment (what is important are the relative distances, not their absolute values):
@@ -253,8 +260,9 @@ We can now wrap everything up in a function `set_oranzees_environment()` that ca
 library(tidyverse)
 
 set_oranzees_environment <- function() {
+  list_pop <- c('Uossob', 'Iat Forest', 'Ebmog', 'Elaham', 'Elabik', 'Ognodub')
   output <- tibble(
-    population = as.factor(rep(1:6, each = 38)),
+    population = rep(list_pop, each = 38),
     behaviour = as.factor(rep(1:38, 6)),
     type = rep(c(rep("social", 16), rep("food-related", 22)), 6),
     category = rep(c(
@@ -277,12 +285,12 @@ set_oranzees_environment <- function() {
   x_e <- sample(1:1000, 38)
   y_e <- sample(1:1000, 38)
 
-  for (oranzees_pop in 1:6) {
+  for (i in 1:6) {
     for (behav in 1:38) {
-      output[output$population == oranzees_pop & output$behaviour == behav, ]$p_g <- 1 - sqrt((x_g[behav] - env_or_x[oranzees_pop])^2 + (y_g[behav] - env_or_y[oranzees_pop])^2) / 1000
+      output[output$population == list_pop[i] & output$behaviour == behav, ]$p_g <- 1 - sqrt((x_g[behav] - env_or_x[i])^2 + (y_g[behav] - env_or_y[i])^2) / 1000
 
       if (behav > 16) { # only for food-related behaviours:
-        output[output$population == oranzees_pop & output$behaviour == behav, ]$p_e <- 1 - sqrt((x_e[behav] - env_or_x[oranzees_pop])^2 + (y_e[behav] - env_or_y[oranzees_pop])^2) / 500
+        output[output$population == list_pop[i] & output$behaviour == behav, ]$p_e <- 1 - sqrt((x_e[behav] - env_or_x[i])^2 + (y_e[behav] - env_or_y[i])^2) / 500
       }
     }
   }

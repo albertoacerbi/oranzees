@@ -1,8 +1,9 @@
 library(tidyverse)
 
 set_oranzees_environment <- function() {
+  list_pop <- c('Uossob', 'Iat Forest', 'Ebmog', 'Elaham', 'Elabik', 'Ognodub')
   output <- tibble(
-    population = as.factor(rep(1:6, each = 38)),
+    population = rep(list_pop, each = 38),
     behaviour = as.factor(rep(1:38, 6)),
     type = rep(c(rep("social", 16), rep("food-related", 22)), 6),
     category = rep(c(
@@ -25,12 +26,12 @@ set_oranzees_environment <- function() {
   x_e <- sample(1:1000, 38)
   y_e <- sample(1:1000, 38)
   
-  for (oranzees_pop in 1:6) {
+  for (i in 1:6) {
     for (behav in 1:38) {
-      output[output$population == oranzees_pop & output$behaviour == behav, ]$p_g <- 1 - sqrt((x_g[behav] - env_or_x[oranzees_pop])^2 + (y_g[behav] - env_or_y[oranzees_pop])^2) / 1000
+      output[output$population == list_pop[i] & output$behaviour == behav, ]$p_g <- 1 - sqrt((x_g[behav] - env_or_x[i])^2 + (y_g[behav] - env_or_y[i])^2) / 1000
       
       if (behav > 16) { # only for food-related behaviours:
-        output[output$population == oranzees_pop & output$behaviour == behav, ]$p_e <- 1 - sqrt((x_e[behav] - env_or_x[oranzees_pop])^2 + (y_e[behav] - env_or_y[oranzees_pop])^2) / 500
+        output[output$population == list_pop[i] & output$behaviour == behav, ]$p_e <- 1 - sqrt((x_e[behav] - env_or_x[i])^2 + (y_e[behav] - env_or_y[i])^2) / 500
       }
     }
   }
