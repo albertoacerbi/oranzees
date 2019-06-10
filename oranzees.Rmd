@@ -451,9 +451,9 @@ We can also visualise the age structure of the popualtion when the simulation is
 ```{r}
 tibble(age = pop) %>%
 ggplot(aes(x = age/12)) +
-  geom_histogram( binwidth = 5) +
+  geom_histogram(binwidth = 5) +
   coord_flip() +
-  labs(x = 'Number of individuals', y = 'Age') +
+  labs(x = 'Age', y = 'Number of individuals') +
   theme_bw()
 ```
 
