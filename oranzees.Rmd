@@ -70,7 +70,6 @@ segments(600, 30, env_or_x[5], -env_or_y[5] + 400)
 
 text(1220, 30, "Ognodub", font = 2, cex = 0.9)
 segments(1120, 30, env_or_x[6], -env_or_y[6] + 400)
-
 ```
 
 For modelling convenience, we put these locations approximately in the centre of a 1000,1000 squared environment (what is important are the relative distances, not their absolute values):
@@ -83,6 +82,8 @@ par(pty = "s")
 plot(env_or_x, env_or_y, xlim = c(0, 1000), ylim = c(0, 1000), pch = 21, bg = "red")
 grid()
 ```
+
+***
 
 ## The behaviours
 
@@ -254,13 +255,15 @@ J        | 38 |    |    |    |    Z
 
 ***
 
+## Setting-up the environment
+
 We can now wrap everything up in a function `set_oranzees_environment()` that can be used independently from what we done so far, and that we will use in the code of the actual model (*main.R*):
 
 ```{r message=FALSE}
 library(tidyverse)
 
 set_oranzees_environment <- function() {
-  list_pop <- c('Uossob', 'Iat Forest', 'Ebmog', 'Elaham', 'Elabik', 'Ognodub')
+  list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
   output <- tibble(
     population = rep(list_pop, each = 38),
     behaviour = as.factor(rep(1:38, 6)),
@@ -346,31 +349,115 @@ ggplot(data = oranzees_environment) +
 
 As we wanted, values of $p_e$ are lower, and a few of them are zeros (also notice that the first 16 values for each population, on the left side of the plots, are not present as they are social behaviours). 
 
-A second check exploits the fact that both $p_e$ and $p_g$ are assigned to the six populations following a geographical gradient. We would expect, thus, that populations that are geographically close to each other are also more similar genetically and they live in a similar environment. In other words, we expect for example populations 1 and 2 to be more similar one to each other than to populations 3 (or 4, 5, and 6).
+A second check exploits the fact that both $p_e$ and $p_g$ are assigned to the six populations following a geographical gradient. We would expect, thus, that populations that are geographically close to each other are also more similar genetically and they live in a similar environment. In other words, we expect for example populations 'Uossob' and 'Iat Forest' to be more similar one to each other than to populations 'Elabik' (or any of the others).
 
-We can check this with some quick scatterplots. Here the correlation between the genetic propensities of populations 1 and 2 (black dots) and 1 and 3 (red dots) for all 38 behaviours:
+We can check this with some quick scatterplots. Here the correlation between the genetic propensities of populations 'Uossob' and 'Iat Forest' and 'Uossob' and 'Elabik':
 
-```{r}
-par(pty = "s")
-plot(oranzees_environment[oranzees_environment$population == 1, ]$p_g, oranzees_environment[oranzees_environment$population == 2, ]$p_g,
-  pch = 19,
-  xlab = "Population 1", ylab = "Population check", xlim = c(0, 1), ylim = c(0, 1)
-)
-points(oranzees_environment[oranzees_environment$population == 1, ]$p_g, oranzees_environment[oranzees_environment$population == 3, ]$p_g, pch = 19, col = "red")
-grid()
+```{r message=FALSE}
+library(gridExtra)
+
+p <- ggplot(mapping = aes(x = x, y = y)) + # basic scatterplot
+  theme_bw() +
+  xlim(0, 1) +
+  ylim(0, 1) +
+  coord_fixed()
+
+data_to_plot <- tibble(x = oranzees_environment[oranzees_environment$population == "Uossob", ]$p_g, y = oranzees_environment[oranzees_environment$population == "Iat Forest", ]$p_g)
+p1 <- p +
+  geom_point(data = data_to_plot) +
+  labs(x = "Uossob", y = "Iat Forest")
+
+data_to_plot <- tibble(x = oranzees_environment[oranzees_environment$population == "Uossob", ]$p_g, y = oranzees_environment[oranzees_environment$population == "Elabik", ]$p_g)
+p2 <- p +
+  geom_point(data = data_to_plot) +
+  labs(x = "Uossob", y = "Elabik")
+
+grid.arrange(p1, p2, ncol = 2)
 ```
 
 And the same for the the ecological availabilities of the 22 food-related behaviours:
 
-```{r}
-par(pty = "s")
-plot(oranzees_environment[oranzees_environment$population == 1, ]$p_e, oranzees_environment[oranzees_environment$population == 2, ]$p_e,
-  pch = 19,
-  xlab = "Population 1", ylab = "Population check", xlim = c(0, 1), ylim = c(0, 1)
-)
-points(oranzees_environment[oranzees_environment$population == 1, ]$p_e, oranzees_environment[oranzees_environment$population == 3, ]$p_e, pch = 19, col = "red")
-grid()
+```{r warning=FALSE}
+data_to_plot <- tibble(x = oranzees_environment[oranzees_environment$population == "Uossob", ]$p_e, y = oranzees_environment[oranzees_environment$population == "Iat Forest", ]$p_e)
+p1 <- p +
+  geom_point(data = data_to_plot) +
+  labs(x = "Uossob", y = "Iat Forest")
+
+data_to_plot <- tibble(x = oranzees_environment[oranzees_environment$population == "Uossob", ]$p_e, y = oranzees_environment[oranzees_environment$population == "Elabik", ]$p_e)
+p2 <- p +
+  geom_point(data = data_to_plot) +
+  labs(x = "Uossob", y = "Elabik")
+
+grid.arrange(p1, p2, ncol = 2)
 ```
 
+***
 
+## The individuals
+
+### Basic demography
+
+Let's assume a population of $N=100$ individuals. This is a mock-up population that we will later use to model the real oranzees populations. Individuals go through two age stages of different length. The first, and shorter, one is a juvenile stage, where they are more prone to innovation, opposed to the second, an longer, adult stage, where they are less. 
+
+For now, let's assume that that a time step $t$ of the simulation represents a month. Mortality is very simple: from when they are 25 years old, there is a 1% probability an oranzee will day each month, or they die when they are 60 years old (more complex version are possible: see e.g. Figure 3 in Hill et al., 2001). We also assume that oranzees are in the juvenile stage until they reach 15 years, i.e. 180 months of age. The number of individuals in the population is fixed, so each time an oranzee dies is replaced by a newborn. At the beginning the population is randomly initialised, with individuals between 0 and 25 years (i.e. 300 months) old.
+
+Let's first initalise this population. We simply call **pop** the matrix with individuals ages (notice we are using matrices and not tibbles to speed up later the simulation):
+
+```{r}
+N <- 100 
+pop <- sample(1:300, N, replace = TRUE)
+```
+
+We can model this simple demography in this way. We fix $t_{max}=12000$, i.e. 1,000 years. To see what happens, we record some outputs, such as the average and the maximum age in the population, and the number of juveniles.
+
+```{r}
+t_max = 12000
+output <- tibble( time = 1:t_max, av_age = rep(NA, t_max), max_age = rep(NA, t_max), juveniles = rep(NA, t_max)) 
+for(t in 1:t_max){
+  pop = pop + 1
+  pop[pop >= 720] = 0
+  old <- which(pop >300)
+  dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
+  pop[old[dead]] = 0
+  output$av_age[t] <- mean(pop)
+  output$max_age[t] <- max(pop)
+  output$juveniles[t] <- sum(pop < 180)
+}
+```
+
+We can now plot the output to see how the age structure of our population looks like:
+
+```{r}
+ggplot(data = output) +
+  geom_line(aes(x = time, y = av_age/12)) +
+  labs(y = 'Average age') +
+  ylim(0, 30) +
+  theme_bw()
+
+ggplot(data = output) +
+  geom_line(aes(x = time, y = max_age/12)) +
+  labs(y = 'Maximum age') +
+  theme_bw()
+
+ggplot(data = output) +
+  geom_line(aes(x = time, y = juveniles)) +
+  labs(y = 'Number of juveniles') +
+  ylim(0, 100) +
+  theme_bw()
+```
+
+We can also visualise the age structure of the popualtion when the simulation is finsihed: 
+
+```{r}
+tibble(age = pop) %>%
+ggplot(aes(x = age/12)) +
+  geom_histogram( binwidth = 5) +
+  coord_flip() +
+  labs(x = 'Number of individuals', y = 'Age') +
+  theme_bw()
+```
+
+***
+
+### Individual 'state'
 
