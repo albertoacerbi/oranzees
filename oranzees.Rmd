@@ -397,9 +397,9 @@ grid.arrange(p1, p2, ncol = 2)
 
 ### Basic demography
 
-Let's assume a population of $N=100$ individuals. This is a mock-up population that we will later use to model the real oranzees populations. Individuals go through two age stages of different length. The first, and shorter, one is a juvenile stage, where they are more prone to innovation, opposed to the second, an longer, adult stage, where they are less. 
+Let's assume a population of $N=100$ individuals. This is a mock-up population that we will later use to model the real oranzees populations. Individuals go through two age stages of different length. The first and shorter one is a juvenile stage, where they are more prone to innovation, opposed to the second, and longer, adult stage, where they are less. 
 
-For now, let's assume that that a time step $t$ of the simulation represents a month. Mortality is very simple: from when they are 25 years old, there is a 1% probability an oranzee will day each month, or they die when they are 60 years old (more complex version are possible: see e.g. Figure 3 in Hill et al., 2001). We also assume that oranzees are in the juvenile stage until they reach 15 years, i.e. 180 months of age. The number of individuals in the population is fixed, so each time an oranzee dies is replaced by a newborn. At the beginning the population is randomly initialised, with individuals between 0 and 25 years (i.e. 300 months) old.
+For now, let's assume that a time step $t$ of the simulation represents a month. Mortality is very simple: from when they are 25 years old, there is a 1% probability an oranzee will day each month, or they die when they are 60 years old (more complex version are possible: see e.g. Figure 3 in Hill et al., 2001). We also assume that oranzees are in the juvenile stage until they reach 15 years, i.e. 180 months of age. The number of individuals in the population is fixed, so each time an oranzee dies is replaced by a newborn. At the beginning the population is randomly initialised, with individuals between 0 and 25 years (i.e. 300 months) old.
 
 Let's first initalise this population. We simply call **pop** the matrix with individuals ages (notice we are using matrices and not tibbles to speed up later the simulation):
 
@@ -416,7 +416,7 @@ output <- tibble( time = 1:t_max, av_age = rep(NA, t_max), max_age = rep(NA, t_m
 for(t in 1:t_max){
   pop = pop + 1
   pop[pop >= 720] = 0
-  old <- which(pop >300)
+  old <- which(pop > 300)
   dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
   pop[old[dead]] = 0
   output$av_age[t] <- mean(pop)
@@ -425,7 +425,7 @@ for(t in 1:t_max){
 }
 ```
 
-We can now plot the output to see how the age structure of our population looks like:
+We can now plot the output to see how the age dynamics of our population look like:
 
 ```{r}
 ggplot(data = output) +
@@ -446,7 +446,7 @@ ggplot(data = output) +
   theme_bw()
 ```
 
-We can also visualise the age structure of the popualtion when the simulation is finsihed: 
+We can also visualise the age structure of the population when the simulation is finsihed: 
 
 ```{r}
 tibble(age = pop) %>%
