@@ -214,7 +214,7 @@ Again, we can check that the values in the plot correspond to the ones calculate
 
 We model the idea that different behaviours can serve the same goal, so that if behaviour $1$ and $2$ serve the same goal, an individual performing $1$ will be unlikely to also perform $2$. 
 
-In the case of social behaviours, we assume 4 categories of behaviours, each with 4 possible different behaviours, that serve the same goal, as illustrated here (notice the categories' names are purely indicative):
+In the case of social behaviours, we assume four categories of behaviours, each with four possible different behaviours, that serve the same goal, as illustrated here (notice the categories' names are purely indicative):
 
 Category  |    |    |    | 
 --------- |----|----|----|----
@@ -323,7 +323,7 @@ We can explore the output simply writing the name of the data structure:
 oranzees_environment
 ```
 
-Each line of the tibble *oranzees_environment* records the information for each behaviour, for each population. Since there are 38 behaviours and 6 populations, the tibble has 228 lines. You can notice that the values of $nutrient$ and $p_e$ for behaviours of the $social$ category are NA, that is "not available", which is what we described above.
+Each line of the tibble **oranzees_environment** records the information for each behaviour, for each population. Since there are 38 behaviours and 6 populations, the tibble has 228 lines. You can notice that the values of $nutrient$ and $p_e$ for behaviours of the $social$ category are NA, that is "not available", which is what we described above.
 
 There are a couple of checks that we can do to be sure that the function works as desired. First, we would expect, on average, genetic propensities being higher than ecological availabilities, and that it is more likely that some of the latter will be equal to zero. We can use the `facet` functionality in `ggplot` to split the data for the six populations. Here are the results for $p_g$:
 
@@ -401,24 +401,24 @@ Let's assume a population of $N=100$ individuals. This is a mock-up population t
 
 For now, let's assume that a time step $t$ of the simulation represents a month. Mortality is very simple: from when they are 25 years old, there is a 1% probability an oranzee will day each month, or they die when they are 60 years old (more complex version are possible: see e.g. Figure 3 in Hill et al., 2001). We also assume that oranzees are in the juvenile stage until they reach 15 years, i.e. 180 months of age. The number of individuals in the population is fixed, so each time an oranzee dies is replaced by a newborn. At the beginning the population is randomly initialised, with individuals between 0 and 25 years (i.e. 300 months) old.
 
-Let's first initalise this population. We simply call **pop** the matrix with individuals ages (notice we are using matrices and not tibbles to speed up later the simulation):
+Let's first initalise this population. We simply call $pop$ the data structure with individuals ages (notice we are using integers and not tibbles to speed up later the simulation):
 
 ```{r}
-N <- 100 
+N <- 100
 pop <- sample(1:300, N, replace = TRUE)
 ```
 
 We can model this simple demography in this way. We fix $t_{max}=12000$, i.e. 1,000 years. To see what happens, we record some outputs, such as the average and the maximum age in the population, and the number of juveniles.
 
 ```{r}
-t_max = 12000
-output <- tibble( time = 1:t_max, av_age = rep(NA, t_max), max_age = rep(NA, t_max), juveniles = rep(NA, t_max)) 
-for(t in 1:t_max){
-  pop = pop + 1
-  pop[pop >= 720] = 0
+t_max <- 12000
+output <- tibble(time = 1:t_max, av_age = rep(NA, t_max), max_age = rep(NA, t_max), juveniles = rep(NA, t_max))
+for (t in 1:t_max) {
+  pop <- pop + 1
+  pop[pop >= 720] <- 0
   old <- which(pop > 300)
   dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
-  pop[old[dead]] = 0
+  pop[old[dead]] <- 0
   output$av_age[t] <- mean(pop)
   output$max_age[t] <- max(pop)
   output$juveniles[t] <- sum(pop < 180)
@@ -429,19 +429,19 @@ We can now plot the output to see how the age dynamics of our population look li
 
 ```{r}
 ggplot(data = output) +
-  geom_line(aes(x = time, y = av_age/12)) +
-  labs(y = 'Average age') +
+  geom_line(aes(x = time, y = av_age / 12)) +
+  labs(y = "Average age") +
   ylim(0, 30) +
   theme_bw()
 
 ggplot(data = output) +
-  geom_line(aes(x = time, y = max_age/12)) +
-  labs(y = 'Maximum age') +
+  geom_line(aes(x = time, y = max_age / 12)) +
+  labs(y = "Maximum age") +
   theme_bw()
 
 ggplot(data = output) +
   geom_line(aes(x = time, y = juveniles)) +
-  labs(y = 'Number of juveniles') +
+  labs(y = "Number of juveniles") +
   ylim(0, 100) +
   theme_bw()
 ```
@@ -450,14 +450,84 @@ We can also visualise the age structure of the population when the simulation is
 
 ```{r}
 tibble(age = pop) %>%
-ggplot(aes(x = age/12)) +
+  ggplot(aes(x = age / 12)) +
   geom_histogram(binwidth = 5) +
   coord_flip() +
-  labs(x = 'Age', y = 'Number of individuals') +
+  labs(x = "Age", y = "Number of individuals") +
   theme_bw()
 ```
 
 ***
 
 ### Individual 'state'
+
+The second features of oranzees that influence their propensity to innovate is their 'state'. For now, we focus on the social behaviours, as defined above. We assume that the propensity to innovate is based on how many of the four goals (each realised by having at least one behaviour in one of the four categories) are fulfilled. We need to modify the $pop$ structure to also record the behaviour that an individual possess, so we create a matrix, where the last column represents the age, and the other 38 columns all possible behaviours (this is handy so that the numbers of columns correspond to the numbers of behaviours:
+
+```{r}
+pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+```
+
+How do we calculate the state of an individual for social behaviours? An oranzee needs to have at least one among behaviours 1 to 4, one among 5 to 9, and so on. The state of the individual $1$ is thus: 
+
+```{r}
+state <- ((sum(pop[1, 1:4]) > 1) + (sum(pop[1, 5:8]) > 1) + (sum(pop[1, 9:12]) > 1) + (sum(pop[1, 13:16]) > 1)) / 4
+```
+
+Where $1$ means that all goals are fulfilled, and $0$ means that none of them are. At the beginning, all behaviours are $0$s, i.e. they are not possessed. We can call $p_{state}$ the probability to innovate influenced by the state of the individuals. This quantity is drawn from a normal distribution with mean equal to $1-state$ (meaning that the less goals are fulfilled the higher) and with a small standard deviation. This mean that even when all goals are fulfilled, that is the mean is zero, there may be still some probability to innovate: 
+
+```{r}
+p_state <- rnorm(1, mean = 1 - state, sd = .01)
+```
+
+We can now iterate this process to all the population: 
+
+```{r}
+state <- rep(0, N)
+p_state <- rep(NA, N)
+for (i in 1:N) {
+  state[i] <- ((sum(pop[i, 1:4]) > 1) + (sum(pop[i, 5:8]) > 1) + (sum(pop[i, 9:12]) > 1) + (sum(pop[i, 13:16]) > 1)) / 4
+  p_state[i] <- rnorm(1, mean = 1 - state[i], sd = .01)
+}
+```
+
+Let's have a look at $p_{state}$:
+
+```{r}
+head(p_state)
+```
+
+As we initalised all behaviours to zero, all the values of $p_{state}$ are, as expected, around one. This means that, at the beginning of the simulation (and at the beginning of their life) oranzees are likely to innovate. 
+
+***
+
+## Innovations
+
+The probability of innovation, at each time step $t$, depends on $p_{state}$ and on the age of the individual. We simply assume that adult individuals are more conservative, and the probability calculated by $p_state$ is divided by two for oranzees that are older than 180 months, as described above. The probability, for the individual $i$ to innovate can be calculated as:
+
+```{r}
+p_innovate <- p_state[i] / (sum(pop[i, 39] > 180) + 1)
+```
+
+In the divisor `pop[i, 39] > 180` is `TRUE` when an individual is adult, and `FALSE` when is a juvenile (the column 39 is where we stored age). In R, the `sum` of a logical counts the number of `TRUE`, so is equal to $1$ when an individual is an adult, and to $0$ when is a juvenile. Adding $1$ to this value, we divided by two $p_{state}$ for adults, and by one, i.e. we do not do nothing, for juveniles.
+
+As before, we can calculate this for all the population:
+
+```{r}
+p_innovate <- rep(NA, N)
+for (i in 1:N) {
+  state <- ((sum(pop[i, 1:4]) > 1) + (sum(pop[i, 5:8]) > 1) + (sum(pop[i, 9:12]) > 1) + (sum(pop[i, 13:16]) > 1)) / 4
+  p_state <- rnorm(1, mean = 1 - state, sd = .01)
+  p_innovate[i] <- p_state / (sum(pop[i, 39] > 180) + 1)
+}
+```
+
+And, as before, the results are not extremely informative (there are no behaviours in the population), but we should see that adults are more conservative. We can visualise this with a scatterplot of the probability to innovate versus the age of individuals:
+
+```{r}
+data_to_plot <- tibble(x = pop[, 39], y = p_innovate)
+ggplot(data = data_to_plot, aes(x = x, y = y)) +
+  geom_point() +
+  theme_bw() +
+  labs(x = "Age", y = "Probability to innovate")
+```
 
