@@ -397,9 +397,9 @@ grid.arrange(p1, p2, ncol = 2)
 
 ### Basic demography
 
-Let's assume a population of $N=100$ individuals. This is a mock-up population that we will later use to model the real oranzees populations. Individuals go through two age stages of different length. The first and shorter one is a juvenile stage, where they are more prone to innovation, opposed to the second, and longer, adult stage, where they are less. 
+Let's assume a population of $N=100$ individuals. This is a mock-up population that we will later use to model the real oranzees populations.
 
-For now, let's assume that a time step $t$ of the simulation represents a month. Mortality is very simple: from when they are 25 years old, there is a 1% probability an oranzee will day each month, or they die when they are 60 years old (more complex version are possible: see e.g. Figure 3 in Hill et al., 2001). We also assume that oranzees are in the juvenile stage until they reach 15 years, i.e. 180 months of age. The number of individuals in the population is fixed, so each time an oranzee dies is replaced by a newborn. At the beginning the population is randomly initialised, with individuals between 0 and 25 years (i.e. 300 months) old.
+For now, let's assume that a time step $t$ of the simulation represents a month. Mortality is very simple: from when they are 25 years old, there is a 1% probability an oranzee will day each month, or they die when they are 60 years old (more complex version are possible: see e.g. Figure 3 in Hill et al., 2001). The number of individuals in the population is fixed, so each time an oranzee dies is replaced by a newborn. At the beginning the population is randomly initialised, with individuals between 0 and 25 years (i.e. 300 months) old.
 
 Let's first initalise this population. We simply call $pop$ the data structure with individuals ages (notice we are using integers and not tibbles to speed up later the simulation):
 
@@ -408,7 +408,7 @@ N <- 100
 pop <- sample(1:300, N, replace = TRUE)
 ```
 
-We can model this simple demography in this way. We fix $t_{max}=12000$, i.e. 1,000 years. To see what happens, we record some outputs, such as the average and the maximum age in the population, and the number of juveniles.
+We can model this simple demography in this way. We fix $t_{max}=12000$, i.e. 1,000 years. To see what happens, we record some outputs, such as the average and the maximum age in the population.
 
 ```{r}
 t_max <- 12000
@@ -421,7 +421,6 @@ for (t in 1:t_max) {
   pop[old[dead]] <- 0
   output$av_age[t] <- mean(pop)
   output$max_age[t] <- max(pop)
-  output$juveniles[t] <- sum(pop < 180)
 }
 ```
 
@@ -437,12 +436,6 @@ ggplot(data = output) +
 ggplot(data = output) +
   geom_line(aes(x = time, y = max_age / 12)) +
   labs(y = "Maximum age") +
-  theme_bw()
-
-ggplot(data = output) +
-  geom_line(aes(x = time, y = juveniles)) +
-  labs(y = "Number of juveniles") +
-  ylim(0, 100) +
   theme_bw()
 ```
 
