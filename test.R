@@ -70,37 +70,43 @@ test_oranzees1 <- function(t_max){
     # innovation bit:
     for(i in 1:N){
       state <- ((sum(pop[i, 1:4]) >= 1) + (sum(pop[i, 5:8]) >= 1) + (sum(pop[i, 9:12]) >= 1) + (sum(pop[i, 13:16]) >= 1)) / 4
-      p_state <- rnorm(1, mean = 1 - state, sd = .01)
-      p_innovate <- p_state / (sum(pop[i, 39] > 180) + 1)
+      p_state <- rnorm(1, mean = 1 - state, sd = 0.05)
+      p_innovate <- p_state
       if(p_innovate > 1)
         p_innovate <- 1
       if(p_innovate < 0)
         p_innovate <- 0
       if( sample(c(T, F), 1, prob=c(p_innovate, 1 - p_innovate), replace = T)){
         count_innovation[t] = count_innovation[t] + 1
-        p_peering <- colSums(pop[, 1:16])/sum(pop[, 1:16])
-        p_peering[is.na(p_peering)] <- 0
-        p_genetic <- test_environment$p_g[1:16] / sum(test_environment$p_g[1:16])
-        p_behaviour <- (.5*p_peering + .5*p_genetic)
-        innovation_i <- sample(1:16, 1, prob = p_behaviour)
-        if(innovation_i <= 4){
-          pop[i, 1:4] = 0
-          pop[i, innovation_i] = 1
-        } else if(innovation_i > 4 & innovation_i <= 8){
-          pop[i, 5:8] = 0
-          pop[i, innovation_i] = 1
-        } else if(innovation_i > 8 & innovation_i <= 12){
-          pop[i, 9:12] = 0
-          pop[i, innovation_i] = 1
-        } else{
-          pop[i, 13:16] = 0
-          pop[i, innovation_i] = 1
+        
+        p_peering <- rnorm(16, mean = colSums(pop[, 1:16]))
+        p_peering[p_peering < 0] = 0
+        
+        innovation_i <- sample(1:16, 1, prob = p_peering)
+        
+        p_genetic <- test_environment$p_g[innovation_i]
+        p_genetic = 1
+        if( sample(c(T, F), 1, prob=c(p_genetic, 1 - p_genetic), replace = T)){
+          if(innovation_i <= 4){
+            pop[i, 1:4] = 0
+            pop[i, innovation_i] = 1
+          } else if(innovation_i > 4 & innovation_i <= 8){
+            pop[i, 5:8] = 0
+            pop[i, innovation_i] = 1
+          } else if(innovation_i > 8 & innovation_i <= 12){
+            pop[i, 9:12] = 0
+            pop[i, innovation_i] = 1
+          } else{
+            pop[i, 13:16] = 0
+            pop[i, innovation_i] = 1
+          }
         }
       }
     }
   }
   output
-  #count_innovation
+ # count_innovation
 }
 
 # mypop <- test_oranzees1(200)
+# matplot(mypop[,1:4], type = "l")
