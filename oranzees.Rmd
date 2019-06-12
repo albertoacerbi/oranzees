@@ -491,7 +491,7 @@ As we initalised all behaviours to zero, all the values of $p_{state}$ are, as e
 
 ## Innovations
 
-Having calculate $p_{state}$, we can now work on what oranzees will innovate. As explained above, all behaviours have a genetic propensity which influences the likelihood they are expressed by oranzees. In addition to this, we assume that what other individuals do also influence this propensity. We assume a linear relationship (notice we can simply change here to implement other kinds of frequency-dependent behaviours) between the number of individual present in the population showing a behaviour and its probability to innovate it. These values, let's call it $p_{peering}$, are drawn from a normal distribution of the total instances of each behaviour in the population. The normal distribution is useful because allows for non-observed behaviours (their frequency is equal to zero), to be anyway possible to be innovate (with low probability. The standard deviation value can be parametrised.) As standard deviations can be negate numbers, we replace them with $0$s, and then draw a possible innovation from this distribution.  
+Having calculate $p_{state}$, we can now work on what oranzees will innovate. As explained above, all behaviours have a genetic propensity which influences the likelihood they are expressed by oranzees. In addition to this, we assume that what other individuals do also influence this propensity. We assume a linear relationship (notice we can simply change here to implement other kinds of frequency-dependent behaviours) between the number of individual present in the population showing a behaviour and its probability to innovate it. These values, let's call it $p_{peering}$, are drawn from a normal distribution of the total instances of each behaviour in the population. The normal distribution is useful because allows for non-observed behaviours (their frequency is equal to zero), to be anyway possible to be innovate (with low probability. The standard deviation value can be parametrised.) As standard deviations can be negative numbers, we replace them with $0$s, and then draw a possible innovation from this distribution.  
 
 ```{r}
 p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
@@ -556,7 +556,7 @@ test_oranzees1 <- function(t_max) {
       state <- ((sum(pop[i, 1:4]) >= 1) + (sum(pop[i, 5:8]) >= 1) + (sum(pop[i, 9:12]) >= 1) + (sum(pop[i, 13:16]) >= 1)) / 4
       p_state <- rnorm(1, mean = 1 - state, sd = 0.05)
       if (runif(1) < p_state) {
-        p_peering <- rnorm(16, mean = colSums(pop[, 1:16]))
+        p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
         p_peering[p_peering < 0] <- 0
         innovation_i <- sample(1:16, 1, prob = p_peering)
         if (runif(1) < test_environment$p_g[innovation_i]) {
@@ -632,7 +632,7 @@ test_oranzees2 <- function(t_max) {
       state <- ((sum(pop[i, 1:4]) >= 1) + (sum(pop[i, 5:8]) >= 1) + (sum(pop[i, 9:12]) >= 1) + (sum(pop[i, 13:16]) >= 1)) / 4
       p_state <- rnorm(1, mean = 1 - state, sd = 0.05)
       if (runif(1) < p_state) {
-        p_peering <- rnorm(16, mean = colSums(pop[, 1:16]))
+        p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
         p_peering[p_peering < 0] <- 0
         innovation_i <- sample(1:16, 1, prob = p_peering)
         if (runif(1) < test_environment$p_g[innovation_i]) {
@@ -704,6 +704,15 @@ tibble(p_g = genes$V1, total = colSums(results), category = as_factor(c(rep("pla
 ```
 
 This is not a surprising result, as genetic propensity is the only directional force in the model, and still variability is possible, given random small initial difference amplified by the effects of the observations of other individuals.
+
+***
+
+**NOTE:**
+Two parameters that may be interesting to study in an advanced version of the model:
+
+* The weight of $p_g$. I have not decided yet how to implement it. Less effect of $p_g$ should make different runs with the same initial set-up more different between each other than what we have now. It should also make more variable the frequency of behaviours within a single run, as the only force acting is an analogous of drift (so less weights of genes would produce, understandably, less stable 'cultures').  
+
+* The standard deviation in: `p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)` now fixed to $1$. This has a role similar to 'noise' in oranzees' observations, especially important for behaviours at lower frequencies. Lower values of the standard deviation should make runs more stable. In particular, lower values should create stable 'cultures' even when the effect of $g_p$ is lower.
 
 ***
 
