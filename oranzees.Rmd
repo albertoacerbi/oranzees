@@ -697,8 +697,8 @@ The winning behaviours are generally similar in different runs with the same set
 ```{r}
 genes <- read.table("output/gene_test1_p_g.csv")
 tibble(p_g = genes$V1, total = colSums(results), category = as_factor(c(rep("play", 4), rep("display", 4), rep("groom", 4), rep("courthsip", 4)))) %>%
-  ggplot() +
-  geom_point(aes(y = total, x = p_g)) +
+  ggplot(aes(y = total, x = p_g)) +
+  geom_point() +
   facet_wrap(~category) +
   theme_bw()
 ```
