@@ -52,11 +52,12 @@ test_oranzees1 <- function(t_max){
   oranzees_environment <- set_oranzees_environment()
   test_environment <- oranzees_environment %>%
     filter(population == 'Uossob')
+  
   N <- 100
+  
   pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
   
   output <- matrix( nrow = t_max, ncol = 16)
-  count_innovation <- rep(0, t_max)
   
   for (t in 1:t_max) {
     
@@ -71,22 +72,11 @@ test_oranzees1 <- function(t_max){
     for(i in 1:N){
       state <- ((sum(pop[i, 1:4]) >= 1) + (sum(pop[i, 5:8]) >= 1) + (sum(pop[i, 9:12]) >= 1) + (sum(pop[i, 13:16]) >= 1)) / 4
       p_state <- rnorm(1, mean = 1 - state, sd = 0.05)
-      p_innovate <- p_state
-      if(p_innovate > 1)
-        p_innovate <- 1
-      if(p_innovate < 0)
-        p_innovate <- 0
-      if( sample(c(T, F), 1, prob=c(p_innovate, 1 - p_innovate), replace = T)){
-        count_innovation[t] = count_innovation[t] + 1
-        
+      if(runif(1) < p_state){
         p_peering <- rnorm(16, mean = colSums(pop[, 1:16]))
         p_peering[p_peering < 0] = 0
-        
         innovation_i <- sample(1:16, 1, prob = p_peering)
-        
-        p_genetic <- test_environment$p_g[innovation_i]
-        p_genetic = 1
-        if( sample(c(T, F), 1, prob=c(p_genetic, 1 - p_genetic), replace = T)){
+        if( runif(1) < test_environment$p_g[innovation_i]){
           if(innovation_i <= 4){
             pop[i, 1:4] = 0
             pop[i, innovation_i] = 1
@@ -105,7 +95,6 @@ test_oranzees1 <- function(t_max){
     }
   }
   output
- # count_innovation
 }
 
 # mypop <- test_oranzees1(200)
