@@ -587,11 +587,22 @@ test_oranzees1 <- function(t_max){
 To run the function, we call it, and store the output in a new data structure `my_test`. The function has one parameter, $t_{max}$, the number of time steps (months) we want the simulation to run.
 
 ```{r}
-#my_test <- test_oranzees1(12000)
+t_max <- 12000
+my_test <- test_oranzees1(t_max)
 ```
 
 We can rearrange the data and plot them:
 
-```{r}
+```{r warning=FALSE}
+my_test <- gather(as_tibble(my_test), 1:16, key = "behaviour", value = "frequency")
+data_to_plot = tibble(behaviour = my_test$behaviour, 
+                      frequency = my_test$frequency, 
+                      time = rep(1:t_max ,16), 
+                      category = c(rep("play", t_max * 4), rep("display", t_max * 4), rep("groom", t_max * 4), rep("courthsip", t_max * 4)))
 
+ggplot(data = data_to_plot) +
+  geom_line(aes(x = time, y = frequency, color = behaviour)) +
+  facet_wrap(~category) +
+  theme_bw() +
+  theme(legend.position = "none")
 ```

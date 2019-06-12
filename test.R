@@ -97,5 +97,20 @@ test_oranzees1 <- function(t_max){
   output
 }
 
-# mypop <- test_oranzees1(200)
-# matplot(mypop[,1:4], type = "l")
+my_test <- test_oranzees1(t_max)
+# matplot(my_test[,1:4], type = "l")
+
+# PLOT
+
+my_test <- gather(as_tibble(my_test), 1:16, key = "behaviour", value = "frequency")
+data_to_plot = tibble(behaviour = my_test$behaviour, 
+                      frequency = my_test$frequency, 
+                      time = rep(1:t_max ,16), 
+                      category = c(rep("play", t_max*4), rep("display", t_max*4), rep("groom", t_max*4), rep("courthsip", t_max*4)))
+
+ggplot(data = data_to_plot) +
+  geom_line(aes(x = time, y = frequency, color = behaviour)) +
+  facet_wrap(~category) +
+  theme_bw() +
+  theme(legend.position = "none")
+  
