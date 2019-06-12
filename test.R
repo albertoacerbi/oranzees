@@ -80,7 +80,7 @@ test_oranzees1 <- function(t_max){
       state <- ((sum(pop[i, 1:4]) >= 1) + (sum(pop[i, 5:8]) >= 1) + (sum(pop[i, 9:12]) >= 1) + (sum(pop[i, 13:16]) >= 1)) / 4
       p_state <- rnorm(1, mean = 1 - state, sd = 0.05)
       if(runif(1) < p_state){
-        p_peering <- rnorm(16, mean = colSums(pop[, 1:16]))
+        p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd=1)
         p_peering[p_peering < 0] = 0
         innovation_i <- sample(1:16, 1, prob = p_peering)
         if( runif(1) < test_environment$p_g[innovation_i]){
@@ -106,7 +106,6 @@ test_oranzees1 <- function(t_max){
 
 t_max = 12000
 my_test <- test_oranzees1(t_max)
-# matplot(my_test[,1:4], type = "l")
 
 # PLOT
 
