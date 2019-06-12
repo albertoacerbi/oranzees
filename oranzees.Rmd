@@ -1,14 +1,13 @@
 ---
 title: "Oranzees model"
 author: "Alberto Acerbi"
-output: html_document
-
+output:
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
 
 This R markdown file documents the development of the Oranzees model. The code-only version to run the model is in the file *main.R* in the same repository.
 
@@ -597,7 +596,7 @@ data_to_plot <- tibble(
   behaviour = my_test$behaviour,
   frequency = my_test$frequency,
   time = rep(1:t_max, 16),
-  category = c(rep("play", t_max * 4), rep("display", t_max * 4), rep("groom", t_max * 4), rep("courthsip", t_max * 4))
+  category = as_factor(c(rep("play", t_max * 4), rep("display", t_max * 4), rep("groom", t_max * 4), rep("courthsip", t_max * 4)))
 )
 
 ggplot(data = data_to_plot) +
@@ -693,7 +692,7 @@ as_tibble(melt(results, varnames = c("run", "behaviour"), value.name = "frequenc
   theme_bw()
 ```
 
-The winning behaviours are generally similar in different runs with the same set-up of `oranzees_environment`, suggesting a relatively strong effect of the initalisation of $p_g$. We can check it directly, and see whether the winning behaviours are indeed the ones with higher $p_g$:
+The winning behaviours are generally similar in different runs with the same set-up of `oranzees_environment`, showing the effect of the initalisation of $p_g$. We can check it directly, and see whether the winning behaviours are indeed the ones with higher $p_g$:
 
 ```{r}
 genes <- read.table("output/gene_test1_p_g.csv")
@@ -704,7 +703,10 @@ tibble(p_g = genes$V1, total = colSums(results), category = as_factor(c(rep("pla
   theme_bw()
 ```
 
-This is not a surprising result, as genetic propensity is the only directional force in the model, but why we may think about possible options to have genetic influence with a minor role.
+This is not a surprising result, as genetic propensity is the only directional force in the model, and still variability is possible, given random small initial difference amplified by the effects of the observations of other individuals.
+
+***
+
 
 
 
