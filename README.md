@@ -12,6 +12,6 @@ The material is organised as follows:
 
 Plus two folders:
 
-* material/: folder with media used in the Rmd files.
+* [material/](material): folder with media used in the Rmd files.
 
-* output/: folder with outputs from simulatiosn used in the Rmd files.
+* [output/](output): folder with outputs from simulatiosn used in the Rmd files.
