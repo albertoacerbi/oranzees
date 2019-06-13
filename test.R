@@ -1,5 +1,10 @@
 library(tidyverse)
 
+# 
+# set_oranzees_environment()
+# function commons to all the tests
+#
+
 set_oranzees_environment <- function() {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
   output <- tibble(
@@ -48,11 +53,10 @@ set_oranzees_environment <- function() {
   output
 }
 
-##
-##
-##
-##
-# TEST FOR ONE RUN:
+#############################################################################
+#
+# TEST FOR ONE RUN (only social behaviours)
+#
 
 test_oranzees1 <- function(t_max){
 
@@ -121,11 +125,10 @@ ggplot(data = data_to_plot) +
   theme_bw() +
   theme(legend.position = "none")
 
-##
-##
-##
-##
-# TEST FOR MULTIPLE RUNS:
+#############################################################################
+#
+# TEST FOR MULTIPLE RUNS WITH SAME INITIALISATION (only social behaviours)
+#
   
 test_oranzees2 <- function(t_max){
   
@@ -135,6 +138,7 @@ test_oranzees2 <- function(t_max){
   for (t in 1:t_max) {
     
     # demographic bit:
+    
     pop[, 39] <- pop[, 39] + 1
     pop[pop[, 39] >= 720, ] <- 0
     old <- which(pop[, 39] > 300)
@@ -184,9 +188,25 @@ for(run in 1:n_run){
 write(t(gene_test1), file = "output/gene_test1.csv", ncolumns = 16)
 write(test_environment$p_g[1:16], file = "output/gene_test1_p_g.csv", ncolumns = 1)
 
+# PLOT:
+library(reshape2)
+results <- as.matrix(read.table("output/gene_test1.csv"))
+colnames(results) <- 1:16
 
+as_tibble(melt(results, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
+  mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
+  add_column(category = as_factor(c(rep("play", 40), rep("display", 40), rep("groom", 40), rep("courthsip", 40)))) %>%
+  ggplot() +
+  geom_raster(aes(x = behaviour, y = run, fill = frequency)) +
+  facet_wrap(~category, scales = "free") +
+  scale_fill_gradient(low = "grey90", high = "red") +
+  theme_bw()
 
-#### FOOD:
+#############################################################################
+#
+# TEST FOR ONE RUN (only food behaviours)
+#
+
 test_oranzees3 <- function(t_max) {
   oranzees_environment <- set_oranzees_environment()
   test_environment <- oranzees_environment %>%
@@ -199,7 +219,92 @@ test_oranzees3 <- function(t_max) {
   output <- matrix(nrow = t_max, ncol = 22)
   
   for (t in 1:t_max) {
+    # demographic bit:
     output[t, ] <- colSums(pop[, 17:38])
+    pop[, 39] <- pop[, 39] + 1
+    pop[pop[, 39] >= 720, ] <- 0
+    old <- which(pop[, 39] > 300)
+    dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
+    pop[old[dead], ] <- 0
+    # innovation bit:
+    for (i in 1:N) {
+      food_behaviours <- which(pop[i, 17:38] > 0) + 16
+      if (length(food_behaviours) > 1) {
+        amount <- test_environment$p_e[food_behaviours]
+        nutrients <- test_environment$nutrient[food_behaviours]
+        if (length(unique(nutrients)) > 1) {
+          state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount) / 10) / 2
+        } else {
+          state <- 0
+        }
+      } else {
+        state <- 0
+      }
+      p_state <- rnorm(1, mean = 1 - state, sd = .05)
+      if (runif(1) < p_state) {
+        p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
+        p_peering[p_peering < 0] <- 0
+        innovation_i <- sample(17:38, 1, prob = p_peering)
+        if (runif(1) < test_environment$p_g[innovation_i]) {
+          if (innovation_i <= 20) {
+            pop[i, 17:20] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 20 & innovation_i <= 24) {
+            pop[i, 21:24] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 24 & innovation_i <= 27) {
+            pop[i, 25:27] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 27 & innovation_i <= 30) {
+            pop[i, 28:30] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 30 & innovation_i <= 32) {
+            pop[i, 31:32] <- 0
+            pop[i, innovation_i] <- 1 
+          } else if (innovation_i > 32 & innovation_i <= 34) {
+            pop[i, 33:34] <- 0
+            pop[i, innovation_i] <- 1
+          } else {
+            pop[i, innovation_i] <- 1
+          }
+        }
+      }
+    }
+  }
+  output <- colSums(pop[, 17:38])
+}
+
+t_max = 12000
+my_test <- test_oranzees3(t_max)
+
+# PLOT
+
+my_test <- gather(as_tibble(my_test), 1:22, key = "behaviour", value = "frequency")
+data_to_plot = tibble(behaviour = my_test$behaviour, 
+                      frequency = my_test$frequency, 
+                      time = rep(1:t_max, 22), 
+                      category = as_factor(c(rep("A", t_max*4), rep("B", t_max*4), rep("C", t_max*3), rep("D", t_max*3), 
+                                   rep("E", t_max*2), rep("F", t_max*2), rep("G", t_max), rep("H", t_max), 
+                                   rep("I", t_max), rep("J", t_max))))
+
+ggplot(data = data_to_plot) +
+  geom_line(aes(x = time, y = frequency, color = behaviour)) +
+  facet_wrap(~category) +
+  theme_bw() +
+  theme(legend.position = "none")
+
+#############################################################################
+#
+# TEST FOR MULTIPLE RUNS WITH SAME INITIALISATION (only food behaviours)
+#
+
+test_oranzees4 <- function(t_max) {
+  
+  N <- 100
+  
+  pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+  
+  for (t in 1:t_max) {
     # demographic bit:
     pop[, 39] <- pop[, 39] + 1
     pop[pop[, 39] >= 720, ] <- 0
@@ -233,7 +338,7 @@ test_oranzees3 <- function(t_max) {
             pop[i, 21:24] <- 0
             pop[i, innovation_i] <- 1
           } else if (innovation_i > 24 & innovation_i <= 27) {
-            pop[i, 25:17] <- 0
+            pop[i, 25:27] <- 0
             pop[i, innovation_i] <- 1
           } else if (innovation_i > 27 & innovation_i <= 30) {
             pop[i, 28:30] <- 0
@@ -251,25 +356,38 @@ test_oranzees3 <- function(t_max) {
       }
     }
   }
-  output
+  output <- colSums(pop[, 17:38])
 }
 
-t_max = 12000
-my_test <- test_oranzees3(t_max)
+oranzees_environment <- set_oranzees_environment()
+test_environment <- oranzees_environment %>%
+  filter(population == 'Uossob')
 
-# PLOT
+n_run <- 10
+t_max <- 12000
+food_test1 <- matrix(nrow = n_run, ncol = 22)
+for(run in 1:n_run){
+  food_test1[run, ] <- test_oranzees4(t_max)
+  print(run)
+}
+write(t(food_test1), file = "output/food_test1.csv", ncolumns = 22)
+write(test_environment$p_g[17:38], file = "output/food_test1_p_g.csv", ncolumns = 1)
+write(test_environment$p_e[17:38], file = "output/food_test1_p_e.csv", ncolumns = 1)
 
-my_test <- gather(as_tibble(my_test), 1:22, key = "behaviour", value = "frequency")
-data_to_plot = tibble(behaviour = my_test$behaviour, 
-                      frequency = my_test$frequency, 
-                      time = rep(1:t_max, 22), 
-                      category = c(rep("A", t_max*4), rep("B", t_max*4), rep("C", t_max*3), rep("D", t_max*3), 
-                                   rep("E", t_max*2), rep("F", t_max*2), rep("G", t_max), rep("H", t_max), 
-                                   rep("I", t_max), rep("J", t_max)))
 
-ggplot(data = data_to_plot) +
-  geom_line(aes(x = time, y = frequency, color = behaviour)) +
-  facet_wrap(~category) +
-  theme_bw() +
-  theme(legend.position = "none")
+# PLOT:
 
+library(reshape2)
+results <- as.matrix(read.table("output/food_test1.csv"))
+colnames(results) <- 17:38
+
+as_tibble(melt(results, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
+  mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
+  add_column(category = as_factor(c(rep("A", 40), rep("B", 40), rep("C", 30), rep("D", 30), 
+                                 rep("E", 20), rep("F", 20), rep("G", 10), rep("H", 10), 
+                                  rep("I", 10), rep("J", 10)))) %>%
+  ggplot() +
+    geom_raster(aes(x = behaviour, y = run, fill = frequency)) +
+    facet_wrap(~category, scales = "free") +
+    scale_fill_gradient(low = "grey90", high = "red") +
+    theme_bw()

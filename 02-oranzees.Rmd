@@ -1,5 +1,5 @@
 ---
-title: "Oranzees model"
+title: "Oranzees model (02)"
 author: "Alberto Acerbi"
 output:
   html_document: default
@@ -144,7 +144,7 @@ With all the behaviours initalised to zero, all the values of $p_{state}$ are ar
 head(p_state)
 ```
 
-However, since the calculation of the state for food-related behaviours is more complex, is worth to do some tests to check that everything works as we want. Let's buil a custom `test_environment$p_e` that we can use for the test:
+However, since the calculation of the state for food-related behaviours is more complex, is worth to do some tests to check that everything works as we want. Let's build a custom `test_environment$p_e` that we can use for the test:
 
 ```{r}
 test_environment$p_e <- c(rep(NA, 16), 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0.5, 0.5, 0.5, 0.5, 1, 0, 0, 1)
@@ -163,7 +163,7 @@ H        | 36 **(0)**   |    |    |    |    Z
 I        | 37 **(0)**   |    |    |    |    Y
 J        | 38 **(1)**   |    |    |    |    Z 
 
-As well as some custom individuals in the popualtion that cover some possible cases. We can build them looking at the table above. For example, we want an individual that has an optimal and balances diet:
+As well as some custom individuals in the population that cover some possible cases. We can build them looking at the table above. For example, we want an individual that has an optimal and balances diet:
 
 ```{r}
 pop[1, c(17, 28, 31, 33, 35, 38)] <- 1
@@ -268,14 +268,14 @@ test_oranzees3 <- function(t_max) {
             pop[i, 21:24] <- 0
             pop[i, innovation_i] <- 1
           } else if (innovation_i > 24 & innovation_i <= 27) {
-            pop[i, 25:17] <- 0
+            pop[i, 25:27] <- 0
             pop[i, innovation_i] <- 1
           } else if (innovation_i > 27 & innovation_i <= 30) {
             pop[i, 28:30] <- 0
             pop[i, innovation_i] <- 1
           } else if (innovation_i > 30 & innovation_i <= 32) {
             pop[i, 31:32] <- 0
-            pop[i, innovation_i] <- 1 
+            pop[i, innovation_i] <- 1
           } else if (innovation_i > 32 & innovation_i <= 34) {
             pop[i, 33:34] <- 0
             pop[i, innovation_i] <- 1
@@ -298,14 +298,18 @@ my_test <- test_oranzees3(t_max)
 
 And to plot the results:
 
-```{r}
+```{r warning=FALSE}
 my_test <- gather(as_tibble(my_test), 1:22, key = "behaviour", value = "frequency")
-data_to_plot = tibble(behaviour = my_test$behaviour, 
-                      frequency = my_test$frequency, 
-                      time = rep(1:t_max, 22), 
-                      category = c(rep("A", t_max*4), rep("B", t_max*4), rep("C", t_max*3), rep("D", t_max*3), 
-                                   rep("E", t_max*2), rep("F", t_max*2), rep("G", t_max), rep("H", t_max), 
-                                   rep("I", t_max), rep("J", t_max)))
+data_to_plot <- tibble(
+  behaviour = my_test$behaviour,
+  frequency = my_test$frequency,
+  time = rep(1:t_max, 22),
+  category = as_factor(c(
+    rep("A", t_max * 4), rep("B", t_max * 4), rep("C", t_max * 3), rep("D", t_max * 3),
+    rep("E", t_max * 2), rep("F", t_max * 2), rep("G", t_max), rep("H", t_max),
+    rep("I", t_max), rep("J", t_max)
+  ))
+)
 
 ggplot(data = data_to_plot) +
   geom_line(aes(x = time, y = frequency, color = behaviour)) +
@@ -313,3 +317,116 @@ ggplot(data = data_to_plot) +
   theme_bw() +
   theme(legend.position = "none")
 ```
+
+As we did for social behaviours, we can run the simulations several times, with the same initialisation, and look at the final results. With the same logic, here the modified function `test_oranzees4()`:
+
+```{r}
+test_oranzees4 <- function(t_max) {
+  N <- 100
+
+  pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+
+  for (t in 1:t_max) {
+    # demographic bit:
+    pop[, 39] <- pop[, 39] + 1
+    pop[pop[, 39] >= 720, ] <- 0
+    old <- which(pop[, 39] > 300)
+    dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
+    pop[old[dead], ] <- 0
+    # innovation bit:
+    for (i in 1:N) {
+      food_behaviours <- which(pop[i, 17:38] > 0) + 16
+      if (length(food_behaviours) > 1) {
+        amount <- test_environment$p_e[food_behaviours]
+        nutrients <- test_environment$nutrient[food_behaviours]
+        if (length(unique(nutrients)) > 1) {
+          state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount) / 10) / 2
+        } else {
+          state <- 0
+        }
+      } else {
+        state <- 0
+      }
+      p_state <- rnorm(1, mean = 1 - state, sd = .05)
+      if (runif(1) < p_state) {
+        p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
+        p_peering[p_peering < 0] <- 0
+        innovation_i <- sample(17:38, 1, prob = p_peering)
+        if (runif(1) < test_environment$p_g[innovation_i]) {
+          if (innovation_i <= 20) {
+            pop[i, 17:20] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 20 & innovation_i <= 24) {
+            pop[i, 21:24] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 24 & innovation_i <= 27) {
+            pop[i, 25:27] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 27 & innovation_i <= 30) {
+            pop[i, 28:30] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 30 & innovation_i <= 32) {
+            pop[i, 31:32] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 32 & innovation_i <= 34) {
+            pop[i, 33:34] <- 0
+            pop[i, innovation_i] <- 1
+          } else {
+            pop[i, innovation_i] <- 1
+          }
+        }
+      }
+    }
+  }
+  output <- colSums(pop[, 17:38])
+}
+```
+
+And here to code to run 10 replications (as for social behaviours we are not actually running it, but we saved the data once):
+
+```{r eval=FALSE}
+oranzees_environment <- set_oranzees_environment()
+test_environment <- oranzees_environment %>%
+  filter(population == "Uossob")
+
+n_run <- 10
+t_max <- 12000
+food_test1 <- matrix(nrow = n_run, ncol = 22)
+for (run in 1:n_run) {
+  food_test1[run, ] <- test_oranzees4(t_max)
+}
+write(t(food_test1), file = "output/food_test1.csv", ncolumns = 22)
+write(test_environment$p_g[17:38], file = "output/food_test1_p_g.csv", ncolumns = 1)
+write(test_environment$p_e[17:38], file = "output/food_test1_p_e.csv", ncolumns = 1)
+```
+
+We can then print the results:
+
+```{r message=FALSE}
+library(reshape2)
+results <- as.matrix(read.table("output/food_test1.csv"))
+colnames(results) <- 17:38
+
+as_tibble(melt(results, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
+  mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
+  add_column(category = as_factor(c(
+    rep("A", 40), rep("B", 40), rep("C", 30), rep("D", 30),
+    rep("E", 20), rep("F", 20), rep("G", 10), rep("H", 10),
+    rep("I", 10), rep("J", 10)
+  ))) %>%
+  ggplot() +
+  geom_raster(aes(x = behaviour, y = run, fill = frequency)) +
+  facet_wrap(~category, scales = "free") +
+  scale_fill_gradient(low = "grey90", high = "red") +
+  theme_bw()
+```
+
+***
+
+**NOTE:**
+
+* There is probably less variability with respect to social behaviours. This may be due to the fact that both $p_g$ and $p_e$ contribute to the results. **TO DO**: the analysis of their effects
+
+* Having categories of behaviours of different size (for social behaviours they are all categories of four behaviours) is likely to create possibly unwanted effects. In particular, as behaviours are discarded only when a new behaviour in the same category is innovated, I would expect that behaviours that are the only one for their category, like the last four food-related behaviours, will be advantaged. 
+
+***
