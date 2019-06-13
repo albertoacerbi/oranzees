@@ -9,7 +9,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This R markdown file documents the development of the Oranzees model. The code-only version to run the model is in the file *main.R* in the same repository.
+This R markdown file documents the development of the Oranzees model. The code-only version to run the model is in the file [main.R](main.R) in the same repository.
 
 ## Spatial set-up
 
@@ -716,6 +716,7 @@ Two parameters that may be interesting to study in an advanced version of the mo
 
 ***
 
+The documentation continues in [02-oranzees.Rmd](02-oranzees.Rmd)
 
 
 
