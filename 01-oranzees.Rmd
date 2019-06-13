@@ -163,7 +163,7 @@ We can check that the $p_g$ values of the six different populations look like th
 
 ### Ecological availability
 
-We define, together with genetic propensity, a similar variable $p_e(0,1)$, standing for ecological availability. Whereas the likelihood of acquiring all beahviours depends on $g_e$, ecological availability has influence only on food-related behaviours. Ecological availability can be thought as the probability of finding a resource, or its nutritional values, in one of the site.
+We define, together with genetic propensity, a similar variable $p_e(0,1)$, standing for ecological availability. Whereas the likelihood of acquiring all beahviours depends on $p_g$, ecological availability has influence only on food-related behaviours. Ecological availability can be thought as the probability of finding a resource, or its nutritional values, in one of the site.
 
 ecological availability is implemented as genetic propensity, with the only difference that the distances are normalised by 500:
 
@@ -712,7 +712,7 @@ Two parameters that may be interesting to study in an advanced version of the mo
 
 * The weight of $p_g$. I have not decided yet how to implement it. Less effect of $p_g$ should make different runs with the same initial set-up more different between each other than what we have now. It should also make more variable the frequency of behaviours within a single run, as the only force acting is an analogous of drift (so less weights of genes would produce, understandably, less stable 'cultures').  
 
-* The standard deviation in: `p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)` now fixed to $1$. This has a role similar to 'noise' in oranzees' observations, especially important for behaviours at lower frequencies. Lower values of the standard deviation should make runs more stable. In particular, lower values should create stable 'cultures' even when the effect of $g_p$ is lower.
+* The standard deviation in: `p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)` now fixed to $1$. This has a role similar to 'noise' in oranzees' observations, especially important for behaviours at lower frequencies. Lower values of the standard deviation should make runs more stable. In particular, lower values should create stable 'cultures' even when the effect of $p_g$ is lower.
 
 ***
 
