@@ -13,4 +13,303 @@ This R markdown file documents the development of the Oranzees model (it continu
 
 ## Food-related behaviours
 
-Now that we had implmented 
+Now that we had implemented the social behaviours, we can work on the food-related ones. As before, we need to define how the state of an oranzee influences its probability to innovate. First, we want that the two nutrients Y and Z are balanced. Here is a way to implement this:
+
+```{r}
+N <- 100
+pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+```
+
+We first rebuild our basic population, and then we use a similar strategy that we used for the social behavior. In the previous case the optimal state was to have at least one behaviour in all categories, now is to have the same amount of behaviours in the two nutrients. Thus, for the individual $1$ in the population:
+
+```{r}
+nut_y <- sum(pop[1, 17:20]) + sum(pop[1, 25:27]) + sum(pop[1, 31:32]) + pop[1, 35] + pop[1, 37]
+nut_z <- sum(pop[1, 21:24]) + sum(pop[1, 28:30]) + sum(pop[1, 33:34]) + pop[1, 36] + pop[1, 38]
+
+state <- 1 - abs(nut_y - nut_z) / 5
+```
+
+The value of $state$ is calculated by comparing how many behaviours an oranzees has that provide nutrient Y and how many the provided nutrient Z. Is then divided by 5, which is the maximum possible unbalance (all Y and no Z or viceversa, in which case $state=0$). If an oranzee, for example, has one behaviours providing Y and two providing Z, its state will be:
+
+```{r}
+state <- 1 - abs(1 - 2) / 5
+state
+```
+
+Beside balancing nutrients, however, oranzees need to eat something. The amount of food per behaviour depends from the ecological gradients we described before. Let's initialise again the environment, using as before, for the mock-up population, the values for ‘Uossob’ (remember the code for the function `set_oranzees_environment()` is in the previous document, so we call it here with the option `echo=FALSE`, meaning that is run, but not shown in the html document).
+
+```{r echo=FALSE, message=FALSE}
+library(tidyverse)
+
+set_oranzees_environment <- function() {
+  list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
+  output <- tibble(
+    population = rep(list_pop, each = 38),
+    behaviour = as.factor(rep(1:38, 6)),
+    type = rep(c(rep("social", 16), rep("food-related", 22)), 6),
+    category = rep(c(
+      rep("play", 4), rep("display", 4), rep("groom", 4), rep("courthsip", 4),
+      "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C", "D", "D", "D", "E", "E", "F", "F", "G", "H", "I", "J"
+    ), 6),
+    nutrient = rep(c(rep(NA, 16), "Y", "Y", "Y", "Y", "Z", "Z", "Z", "Z", "Y", "Y", "Y", "Z", "Z", "Z", "Y", "Y", "Z", "Z", "Y", "Z", "Y", "Z"), 6),
+    p_g = rep(NA, 38 * 6),
+    p_e = rep(NA, 38 * 6)
+  )
+
+  env_or_x <- c(220, 230, 700, 705, 710, 750)
+  env_or_y <- c(660, 610, 450, 430, 510, 550)
+
+  # genetic predispositions:
+  x_g <- sample(1:1000, 38)
+  y_g <- sample(1:1000, 38)
+
+  # ecological availability:
+  x_e <- sample(1:1000, 38)
+  y_e <- sample(1:1000, 38)
+
+  for (i in 1:6) {
+    for (behav in 1:38) {
+      output[output$population == list_pop[i] & output$behaviour == behav, ]$p_g <- 1 - sqrt((x_g[behav] - env_or_x[i])^2 + (y_g[behav] - env_or_y[i])^2) / 1000
+
+      if (behav > 16) { # only for food-related behaviours:
+        output[output$population == list_pop[i] & output$behaviour == behav, ]$p_e <- 1 - sqrt((x_e[behav] - env_or_x[i])^2 + (y_e[behav] - env_or_y[i])^2) / 500
+      }
+    }
+  }
+
+  # replace negative values with 0s:
+  if (dim(output[output$p_g < 0, ])[1] > 0) {
+    output[output$p_g < 0, ]$p_g <- 0
+  }
+  if (dim(output[output$p_e < 0 & !is.na(output$p_e), ])[1] > 0) {
+    output[output$p_e < 0 & !is.na(output$p_e), ]$p_e <- 0
+  }
+
+  # return the tibble:
+  output
+}
+```
+
+```{r}
+oranzees_environment <- set_oranzees_environment()
+test_environment <- oranzees_environment %>%
+  filter(population == "Uossob")
+```
+  
+We can think that what oranzees need to balance is not the amount of food-related behaviours per se, but the amount of food and, also, the more they eat, the better. We can rewrite the previous $state$ calculation as:
+
+```{r}
+
+food_behaviours <- which(pop[1, 17:38] > 0) + 16
+if (length(food_behaviours) > 1) {
+  amount <- test_environment$p_e[food_behaviours]
+  nutrients <- test_environment$nutrient[food_behaviours]
+  if (length(unique(nutrients)) > 1) {
+    state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount / 5)) / 2
+  } else {
+    state <- 0
+  }
+} else {
+  state <- 0
+}
+```
+
+The code is more complex: we are checking that the individual has at least two food-related beahviours (`if(length(food_behaviours) > 1)`) and that they are providing the two nutrients  (`length(unique(nutrients)) > 1`) otherwise $state=0$. If the conditions are satisfied, the state is calculated similarly to what we were doing before, but adding the amount of food per nutrients (`((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5)`), but there is also a second term that consider the total amount of food per se (`sum(amount / 5))`). Both are divided by 5 (the theoretical maximum possible amount of food).
+
+We can, as we did for social behaviours, run the calculation for all the population, together with the probability of innovating calculation `p_state <- rnorm(1, mean = 1 - state, sd = .05)`
+
+```{r}
+state <- rep(0, N)
+p_state <- rep(NA, N)
+for (i in 1:N) {
+  food_behaviours <- which(pop[i, 17:38] > 0) + 16
+  if (length(food_behaviours) > 1) {
+    amount <- test_environment$p_e[food_behaviours]
+    nutrients <- test_environment$nutrient[food_behaviours]
+    if (length(unique(nutrients)) > 1) {
+      state[i] <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount / 5)) / 2
+    } else {
+      state[i] <- 0
+    }
+  } else {
+    state[i] <- 0
+  }
+  p_state[i] <- rnorm(1, mean = 1 - state[i], sd = .05)
+}
+```
+
+With all the behaviours initalised to zero, all the values of $p_{state}$ are around one, as for social behaviours:
+
+```{r}
+head(p_state)
+```
+
+However, since the calculation of the state for food-related behaviours is more complex, is worth to do some tests to check that everything works as we want. Let's buil a custom `test_environment$p_e` that we can use for the test:
+
+```{r}
+test_environment$p_e <- c(rep(NA, 16), 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0.5, 0.5, 0.5, 0.5, 1, 0, 0, 1)
+```
+
+Category |    |    |    |    | Nutrient
+---------|----|----|----|----|---------
+A        | 17 **(1)**   | 18 **(1)**   | 19 **(1)** | 20 **(1)** |    Y
+B        | 21 **(0)**   | 22 **(0)**   | 23 **(0)** | 24 **(0)** |    Z
+C        | 25 **(0)**   | 26 **(0)**   | 27 **(0)** |            |    Y
+D        | 28 **(1)**   | 29 **(1)**   | 30 **(1)** |            |    Z
+E        | 31 **(0.5)** | 32 **(0.5)** |            |            |    Y
+F        | 33 **(0.5)** | 34 **(0.5)** |            |           |    Z
+G        | 35 **(1)**   |    |    |    |    Y
+H        | 36 **(0)**   |    |    |    |    Z
+I        | 37 **(0)**   |    |    |    |    Y
+J        | 38 **(1)**   |    |    |    |    Z 
+
+As well as some custom individuals in the popualtion that cover some possible cases. We can build them looking at the table above. For example, we want an individual that has an optimal and balances diet:
+
+```{r}
+pop[1, c(17, 28, 31, 33, 35, 38)] <- 1
+```
+
+One with an abundant, but relatively unbalanced:
+
+```{r}
+pop[2, c(17, 31, 33, 35)] <- 1
+```
+
+One with abundant, but with only one nutrient:
+
+```{r}
+pop[3, c(29, 34, 38)] <- 1
+```
+
+One with a poor but balanced diet:
+
+```{r}
+pop[4, c(31, 34)] <- 1
+```
+
+Let's rerun the calculation now (again the code is not shown), and have a look at $p_{state}$:
+
+```{r echo=FALSE}
+state <- rep(0, N)
+p_state <- rep(NA, N)
+for (i in 1:N) {
+  food_behaviours <- which(pop[i, 17:38] > 0) + 16
+  if (length(food_behaviours) > 1) {
+    amount <- test_environment$p_e[food_behaviours]
+    nutrients <- test_environment$nutrient[food_behaviours]
+    if (length(unique(nutrients)) > 1) {
+      state[i] <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount / 5)) / 2
+    } else {
+      state[i] <- 0
+    }
+  } else {
+    state[i] <- 0
+  }
+  p_state[i] <- rnorm(1, mean = 1 - state[i], sd = .05)
+}
+```
+
+```{r}
+head(p_state)
+```
+
+It should show a very low value for the first individual, a somewhat middle value for the second (abundant but unbalanced), a value around one for the third (lacking a nutrient, $state=0$), again a middle value for the fourth (poor but balanced), and around one for all the rest.
+
+***
+
+## Population dynamics
+
+At this point, innovations are made as they were done for social behaviours, so we can wrap everything up in the function `test_oranzees3()`. We need to change the output, to record food behaviours instead of the social ones,  
+
+```{r}
+test_oranzees3 <- function(t_max) {
+  oranzees_environment <- set_oranzees_environment()
+  test_environment <- oranzees_environment %>%
+    filter(population == "Uossob")
+
+  N <- 100
+
+  pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+
+  output <- matrix(nrow = t_max, ncol = 22)
+
+  for (t in 1:t_max) {
+    output[t, ] <- colSums(pop[, 17:38])
+    # demographic bit:
+    pop[, 39] <- pop[, 39] + 1
+    pop[pop[, 39] >= 720, ] <- 0
+    old <- which(pop[, 39] > 300)
+    dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
+    pop[old[dead], ] <- 0
+    # innovation bit:
+    for (i in 1:N) {
+      food_behaviours <- which(pop[i, 17:38] > 0) + 16
+      if (length(food_behaviours) > 1) {
+        amount <- test_environment$p_e[food_behaviours]
+        nutrients <- test_environment$nutrient[food_behaviours]
+        if (length(unique(nutrients)) > 1) {
+          state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount / 5)) / 2
+        } else {
+          state <- 0
+        }
+      } else {
+        state <- 0
+      }
+      p_state <- rnorm(1, mean = 1 - state, sd = .05)
+      if (runif(1) < p_state) {
+        p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
+        p_peering[p_peering < 0] <- 0
+        innovation_i <- sample(17:38, 1, prob = p_peering)
+        if (runif(1) < test_environment$p_g[innovation_i]) {
+          if (innovation_i <= 20) {
+            pop[i, 17:20] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 20 & innovation_i <= 24) {
+            pop[i, 21:24] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 24 & innovation_i <= 27) {
+            pop[i, 25:17] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 27 & innovation_i <= 30) {
+            pop[i, 28:30] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 30 & innovation_i <= 32) {
+            pop[i, 31:32] <- 0
+            pop[i, innovation_i] <- 1 
+          } else if (innovation_i > 32 & innovation_i <= 34) {
+            pop[i, 33:34] <- 0
+            pop[i, innovation_i] <- 1
+          } else {
+            pop[i, innovation_i] <- 1
+          }
+        }
+      }
+    }
+  }
+  output
+}
+```
+
+Here, to run:
+```{r}
+t_max <- 12000
+my_test <- test_oranzees3(t_max)
+```
+
+And to plot the results:
+
+```{r}
+my_test <- gather(as_tibble(my_test), 1:22, key = "behaviour", value = "frequency")
+data_to_plot = tibble(behaviour = my_test$behaviour, 
+                      frequency = my_test$frequency, 
+                      time = rep(1:t_max, 22), 
+                      category = c(rep("A", t_max*4), rep("B", t_max*4), rep("C", t_max*3), rep("D", t_max*3), 
+                                   rep("E", t_max*2), rep("F", t_max*2), rep("G", t_max), rep("H", t_max), 
+                                   rep("I", t_max), rep("J", t_max)))
+
+ggplot(data = data_to_plot) +
+  geom_line(aes(x = time, y = frequency, color = behaviour)) +
+  facet_wrap(~category) +
+  theme_bw() +
+  theme(legend.position = "none")
+```

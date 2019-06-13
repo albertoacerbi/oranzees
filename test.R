@@ -186,5 +186,90 @@ write(test_environment$p_g[1:16], file = "output/gene_test1_p_g.csv", ncolumns =
 
 
 
+#### FOOD:
+test_oranzees3 <- function(t_max) {
+  oranzees_environment <- set_oranzees_environment()
+  test_environment <- oranzees_environment %>%
+    filter(population == "Uossob")
+  
+  N <- 100
+  
+  pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+  
+  output <- matrix(nrow = t_max, ncol = 22)
+  
+  for (t in 1:t_max) {
+    output[t, ] <- colSums(pop[, 17:38])
+    # demographic bit:
+    pop[, 39] <- pop[, 39] + 1
+    pop[pop[, 39] >= 720, ] <- 0
+    old <- which(pop[, 39] > 300)
+    dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
+    pop[old[dead], ] <- 0
+    # innovation bit:
+    for (i in 1:N) {
+      food_behaviours <- which(pop[i, 17:38] > 0) + 16
+      if (length(food_behaviours) > 1) {
+        amount <- test_environment$p_e[food_behaviours]
+        nutrients <- test_environment$nutrient[food_behaviours]
+        if (length(unique(nutrients)) > 1) {
+          state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount / 5)) / 2
+        } else {
+          state <- 0
+        }
+      } else {
+        state <- 0
+      }
+      p_state <- rnorm(1, mean = 1 - state, sd = .05)
+      if (runif(1) < p_state) {
+        p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
+        p_peering[p_peering < 0] <- 0
+        innovation_i <- sample(17:38, 1, prob = p_peering)
+        if (runif(1) < test_environment$p_g[innovation_i]) {
+          if (innovation_i <= 20) {
+            pop[i, 17:20] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 20 & innovation_i <= 24) {
+            pop[i, 21:24] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 24 & innovation_i <= 27) {
+            pop[i, 25:17] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 27 & innovation_i <= 30) {
+            pop[i, 28:30] <- 0
+            pop[i, innovation_i] <- 1
+          } else if (innovation_i > 30 & innovation_i <= 32) {
+            pop[i, 31:32] <- 0
+            pop[i, innovation_i] <- 1 
+          } else if (innovation_i > 32 & innovation_i <= 34) {
+            pop[i, 33:34] <- 0
+            pop[i, innovation_i] <- 1
+          } else {
+            pop[i, innovation_i] <- 1
+          }
+        }
+      }
+    }
+  }
+  output
+}
 
+t_max = 12000
+my_test <- test_oranzees3(t_max)
+
+# PLOT
+
+my_test <- gather(as_tibble(my_test), 1:22, key = "behaviour", value = "frequency")
+data_to_plot = tibble(behaviour = my_test$behaviour, 
+                      frequency = my_test$frequency, 
+                      time = rep(1:t_max, 22), 
+                      category = c(rep("A", t_max*4), rep("B", t_max*4), rep("C", t_max*3), rep("D", t_max*3), 
+                                   rep("E", t_max*2), rep("F", t_max*2), rep("G", t_max), rep("H", t_max), 
+                                   rep("I", t_max), rep("J", t_max)))
+
+ggplot(data = data_to_plot) +
+  geom_line(aes(x = time, y = frequency, color = behaviour)) +
+  facet_wrap(~category) +
+  theme_bw() +
+  theme(legend.position = "none")
 
