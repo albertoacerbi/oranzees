@@ -213,7 +213,7 @@ test_oranzees3 <- function(t_max) {
         amount <- test_environment$p_e[food_behaviours]
         nutrients <- test_environment$nutrient[food_behaviours]
         if (length(unique(nutrients)) > 1) {
-          state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount / 5)) / 2
+          state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount) / 10) / 2
         } else {
           state <- 0
         }

@@ -105,7 +105,7 @@ if (length(food_behaviours) > 1) {
   amount <- test_environment$p_e[food_behaviours]
   nutrients <- test_environment$nutrient[food_behaviours]
   if (length(unique(nutrients)) > 1) {
-    state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount / 5)) / 2
+    state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount) / 10) / 2
   } else {
     state <- 0
   }
@@ -114,7 +114,7 @@ if (length(food_behaviours) > 1) {
 }
 ```
 
-The code is more complex: we are checking that the individual has at least two food-related beahviours (`if(length(food_behaviours) > 1)`) and that they are providing the two nutrients  (`length(unique(nutrients)) > 1`) otherwise $state=0$. If the conditions are satisfied, the state is calculated similarly to what we were doing before, but adding the amount of food per nutrients (`((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5)`), but there is also a second term that consider the total amount of food per se (`sum(amount / 5))`). Both are divided by 5 (the theoretical maximum possible amount of food).
+The code is more complex: we are checking that the individual has at least two food-related beahviours (`if(length(food_behaviours) > 1)`) and that they are providing the two nutrients  (`length(unique(nutrients)) > 1`) otherwise $state=0$. If the conditions are satisfied, the state is calculated similarly to what we were doing before, but adding the amount of food per nutrients (`((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5)`), but there is also a second term that consider the total amount of food per se (`sum(amount / 10))`). The first is divided by 5 (the maximum possible difference between nutrients), and the second is divided by 10 (the theoretical maximum possible amount of food).
 
 We can, as we did for social behaviours, run the calculation for all the population, together with the probability of innovating calculation `p_state <- rnorm(1, mean = 1 - state, sd = .05)`
 
@@ -127,7 +127,7 @@ for (i in 1:N) {
     amount <- test_environment$p_e[food_behaviours]
     nutrients <- test_environment$nutrient[food_behaviours]
     if (length(unique(nutrients)) > 1) {
-      state[i] <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount / 5)) / 2
+      state[i] <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount) / 10) / 2
     } else {
       state[i] <- 0
     }
@@ -198,7 +198,7 @@ for (i in 1:N) {
     amount <- test_environment$p_e[food_behaviours]
     nutrients <- test_environment$nutrient[food_behaviours]
     if (length(unique(nutrients)) > 1) {
-      state[i] <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount / 5)) / 2
+      state[i] <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount) / 10) / 2
     } else {
       state[i] <- 0
     }
@@ -248,7 +248,7 @@ test_oranzees3 <- function(t_max) {
         amount <- test_environment$p_e[food_behaviours]
         nutrients <- test_environment$nutrient[food_behaviours]
         if (length(unique(nutrients)) > 1) {
-          state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount / 5)) / 2
+          state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount) / 10) / 2
         } else {
           state <- 0
         }
