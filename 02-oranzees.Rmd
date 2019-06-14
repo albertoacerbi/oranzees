@@ -421,6 +421,34 @@ as_tibble(melt(results, varnames = c("run", "behaviour"), value.name = "frequenc
   theme_bw()
 ```
 
+### The effects of genetic propensity and ecological availability
+
+We can then visalise the correlation between the overall frequency of a behaviour and its $p_g$ value. 
+
+```{r}
+genes <- read.table("output/food_test1_p_g.csv")
+tibble(p_g = genes$V1, total = colSums(results), 
+       category = as_factor(c(rep("A", 4), rep("B", 4), rep("C", 3), rep("D", 3),
+    rep("E", 2), rep("F", 2), "G", "H", "I", "J"))) %>%
+  ggplot(aes(y = total, x = p_g)) +
+  geom_point() +
+  facet_wrap(~category) +
+  theme_bw()
+```
+
+And the same for its $p_e$ value:
+
+```{r}
+eco <- read.table("output/food_test1_p_e.csv")
+tibble(p_e = eco$V1, total = colSums(results), 
+       category = as_factor(c(rep("A", 4), rep("B", 4), rep("C", 3), rep("D", 3),
+    rep("E", 2), rep("F", 2), "G", "H", "I", "J"))) %>%
+  ggplot(aes(y = total, x = p_e)) +
+  geom_point() +
+  facet_wrap(~category) +
+  theme_bw()
+```
+
 ***
 
 **NOTE:**

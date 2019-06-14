@@ -671,15 +671,15 @@ for (run in 1:n_run) {
   gene_test1[run, ] <- test_oranzees2(t_max)
 }
 
-write(t(gene_test1), file = "output/gene_test1.csv", ncolumns = 16)
-write(test_environment$p_g[1:16], file = "output/gene_test1_p_g.csv", ncolumns = 1)
+write(t(gene_test1), file = "output/social_test1.csv", ncolumns = 16)
+write(test_environment$p_g[1:16], file = "output/social_test1_p_g.csv", ncolumns = 1)
 ```
 
 To save time, we do not run this bit each time (see the instruction `{r eval=FALSE}`). This simulation has been run only once and the results have been saved in an external file with the function `write()`. We can load the data and print the result:
 
 ```{r message=FALSE}
 library(reshape2)
-results <- as.matrix(read.table("output/gene_test1.csv"))
+results <- as.matrix(read.table("output/social_test1.csv"))
 colnames(results) <- 1:16
 
 as_tibble(melt(results, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
@@ -695,7 +695,7 @@ as_tibble(melt(results, varnames = c("run", "behaviour"), value.name = "frequenc
 The winning behaviours are generally similar in different runs with the same set-up of `oranzees_environment`, showing the effect of the initalisation of $p_g$. We can check it directly, and see whether the winning behaviours are indeed the ones with higher $p_g$:
 
 ```{r}
-genes <- read.table("output/gene_test1_p_g.csv")
+genes <- read.table("output/social_test1_p_g.csv")
 tibble(p_g = genes$V1, total = colSums(results), category = as_factor(c(rep("play", 4), rep("display", 4), rep("groom", 4), rep("courthsip", 4)))) %>%
   ggplot(aes(y = total, x = p_g)) +
   geom_point() +

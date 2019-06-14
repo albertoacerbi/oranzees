@@ -185,8 +185,8 @@ for(run in 1:n_run){
   gene_test1[run,] <- test_oranzees2(t_max)
 }
 
-write(t(gene_test1), file = "output/gene_test1.csv", ncolumns = 16)
-write(test_environment$p_g[1:16], file = "output/gene_test1_p_g.csv", ncolumns = 1)
+write(t(gene_test1), file = "output/social_test1.csv", ncolumns = 16)
+write(test_environment$p_g[1:16], file = "output/social_test1_p_g.csv", ncolumns = 1)
 
 # PLOT:
 library(reshape2)
