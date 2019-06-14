@@ -163,7 +163,7 @@ H        | 36 **(0)**   |    |    |    |    Z
 I        | 37 **(0)**   |    |    |    |    Y
 J        | 38 **(1)**   |    |    |    |    Z 
 
-As well as some custom individuals in the population that cover some possible cases. We can build them looking at the table above. For example, we want an individual that has an optimal and balances diet:
+As well as some custom individuals in the population that cover some possible cases. We can build them looking at the table above. For example, we want an individual that has an optimal and balanced diet:
 
 ```{r}
 pop[1, c(17, 28, 31, 33, 35, 38)] <- 1
@@ -318,6 +318,8 @@ ggplot(data = data_to_plot) +
   theme(legend.position = "none")
 ```
 
+### Multiple runs
+
 As we did for social behaviours, we can run the simulations several times, with the same initialisation, and look at the final results. With the same logic, here the modified function `test_oranzees4()`:
 
 ```{r}
@@ -423,7 +425,7 @@ as_tibble(melt(results, varnames = c("run", "behaviour"), value.name = "frequenc
 
 ### The effects of genetic propensity and ecological availability
 
-We can then visalise the correlation between the overall frequency of a behaviour and its $p_g$ value. 
+We can then visaulise the correlation between the overall frequency of a behaviour and its $p_g$ value. 
 
 ```{r}
 genes <- read.table("output/food_test1_p_g.csv")
@@ -449,12 +451,21 @@ tibble(p_e = eco$V1, total = colSums(results),
   theme_bw()
 ```
 
+There are a few things to notice:
+
+* As seen in the first figure, there is seemingly less variability with respect to social behaviours. There are many reasons why this could be the case, such as (i) more possible behaviours (10 versus 4), (ii) categories of different size (see below), or (iii) the fact that both $p_g$ and $p_e$ contribute to the results. 
+
+* Whereas $p_g$ has a similar effect (see second figure), $p_e$ has a small effect (see third figure). In the third figure we can see, for example, that the winning behaviours in category A and B have zero $p_e$ so they do not contribute to the overall food intake. Still, they are both the ones with higher $p_g$. 
+
+
+* Having categories of behaviours of different size (for social behaviours they are all categories of four behaviours) is likely to create possibly unwanted effects. In particular, as behaviours are discarded only when a new behaviour in the same category is innovated, behaviours that are the only one for their category, like the last four food-related behaviours, will be advantaged, and this is what we see here, where all four single-category behaviours are present in all runs.
+
 ***
 
-**NOTE:**
+##### TO DO:
 
-* There is probably less variability with respect to social behaviours. This may be due to the fact that both $p_g$ and $p_e$ contribute to the results. **TO DO**: the analysis of their effects
-
-* Having categories of behaviours of different size (for social behaviours they are all categories of four behaviours) is likely to create possibly unwanted effects. In particular, as behaviours are discarded only when a new behaviour in the same category is innovated, I would expect that behaviours that are the only one for their category, like the last four food-related behaviours, will be advantaged. 
+* check that all of the above is not an idiosyncrasy of this specific set-up: run five sets of ten runs, each set with a different initial set-up, and calculate global measures (variability, effects of $p_g$ and $p_e$, and frequency of single-category behaviours). 
 
 ***
+
+
