@@ -36,7 +36,14 @@ state <- 1 - abs(1 - 2) / 5
 state
 ```
 
-Beside balancing nutrients, however, oranzees need to eat something. The amount of food per behaviour depends from the ecological gradients we described before. Let's initialise again the environment, using as before, for the mock-up population, the values for ‘Uossob’ (remember the code for the function `set_oranzees_environment()` is in the previous document, so we call it here with the option `echo=FALSE`, meaning that is run, but not shown in the html document).
+Beside balancing nutrients, however, oranzees need to eat something. We can add in the $state$ calculation a part that rewards oranzees for having more food.
+
+```{r}
+
+
+
+
+The amount of food per behaviour depends from the ecological gradients we described before. Let's initialise again the environment, using as before, for the mock-up population, the values for ‘Uossob’ (remember the code for the function `set_oranzees_environment()` is in the previous document, so we call it here with the option `echo=FALSE`, meaning that is run, but not shown in the html document).
 
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
