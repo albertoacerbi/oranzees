@@ -39,11 +39,25 @@ state
 Beside balancing nutrients, however, oranzees need to eat something. We can add in the $state$ calculation a part that rewards oranzees for having more food.
 
 ```{r}
+nut_y <- sum(pop[1, 17:20]) + sum(pop[1, 25:27]) + sum(pop[1, 31:32]) + pop[1, 35] + pop[1, 37]
+nut_z <- sum(pop[1, 21:24]) + sum(pop[1, 28:30]) + sum(pop[1, 33:34]) + pop[1, 36] + pop[1, 38]
+state <- (sum(nut_y + nut_z) - abs(nut_y - nut_z)) / 10 
+   
+```
 
+Everything is similar as before, but now the 'unbalance' value is not substracted from $1$, but from the total amount of foodstuff, and all divided by the maxmium possible amount, i.e. $10$.
 
+Using the same example (an oranzee with one behaviour providing Y and two providing Z), the state will be:
 
+```{r}
+state <- ((1 + 2) - abs(1 - 2)) / 10
+```
 
-The amount of food per behaviour depends from the ecological gradients we described before. Let's initialise again the environment, using as before, for the mock-up population, the values for ‘Uossob’ (remember the code for the function `set_oranzees_environment()` is in the previous document, so we call it here with the option `echo=FALSE`, meaning that is run, but not shown in the html document).
+***
+
+## Population dynamics
+
+Let's initialise again the environment, using as before, for the mock-up population, the values for ‘Uossob’ (remember the code for the function `set_oranzees_environment()` is in the previous document, so we call it here with the option `echo=FALSE`, meaning that is run, but not shown in the html document).
 
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
@@ -102,131 +116,17 @@ oranzees_environment <- set_oranzees_environment()
 test_environment <- oranzees_environment %>%
   filter(population == "Uossob")
 ```
-  
-We can think that what oranzees need to balance is not the amount of food-related behaviours per se, but the amount of food and, also, the more they eat, the better. We can rewrite the previous $state$ calculation as:
+
+At this point, innovations can be made as they were done for social behaviours, with a further difference. In the calculation for social behaviour, the possible behaviour drawn with  $p_{peering}$ was then actually innovated according to its genetic propensity, $p_g$. Now we add to this $p_e$, i.e. its the ecological availability. The simplest way to do it is to multiply one for the other. 
 
 ```{r}
-
-food_behaviours <- which(pop[1, 17:38] > 0) + 16
-if (length(food_behaviours) > 1) {
-  amount <- test_environment$p_e[food_behaviours]
-  nutrients <- test_environment$nutrient[food_behaviours]
-  if (length(unique(nutrients)) > 1) {
-    state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount) / 10) / 2
-  } else {
-    state <- 0
-  }
-} else {
-  state <- 0
-}
+p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
+p_peering[p_peering < 0] <- 0
+innovation_i <- sample(1:16, 1, prob = p_peering)
+p_innovate <- test_environment$p_g[innovation_i] * test_environment$p_e[innovation_i]
 ```
 
-The code is more complex: we are checking that the individual has at least two food-related beahviours (`if(length(food_behaviours) > 1)`) and that they are providing the two nutrients  (`length(unique(nutrients)) > 1`) otherwise $state=0$. If the conditions are satisfied, the state is calculated similarly to what we were doing before, but adding the amount of food per nutrients (`((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5)`), but there is also a second term that consider the total amount of food per se (`sum(amount / 10))`). The first is divided by 5 (the maximum possible difference between nutrients), and the second is divided by 10 (the theoretical maximum possible amount of food).
-
-We can, as we did for social behaviours, run the calculation for all the population, together with the probability of innovating calculation `p_state <- rnorm(1, mean = 1 - state, sd = .05)`
-
-```{r}
-state <- rep(0, N)
-p_state <- rep(NA, N)
-for (i in 1:N) {
-  food_behaviours <- which(pop[i, 17:38] > 0) + 16
-  if (length(food_behaviours) > 1) {
-    amount <- test_environment$p_e[food_behaviours]
-    nutrients <- test_environment$nutrient[food_behaviours]
-    if (length(unique(nutrients)) > 1) {
-      state[i] <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount) / 10) / 2
-    } else {
-      state[i] <- 0
-    }
-  } else {
-    state[i] <- 0
-  }
-  p_state[i] <- rnorm(1, mean = 1 - state[i], sd = .05)
-}
-```
-
-With all the behaviours initalised to zero, all the values of $p_{state}$ are around one, as for social behaviours:
-
-```{r}
-head(p_state)
-```
-
-However, since the calculation of the state for food-related behaviours is more complex, is worth to do some tests to check that everything works as we want. Let's build a custom `test_environment$p_e` that we can use for the test:
-
-```{r}
-test_environment$p_e <- c(rep(NA, 16), 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0.5, 0.5, 0.5, 0.5, 1, 0, 0, 1)
-```
-
-Category |    |    |    |    | Nutrient
----------|----|----|----|----|---------
-A        | 17 **(1)**   | 18 **(1)**   | 19 **(1)** | 20 **(1)** |    Y
-B        | 21 **(0)**   | 22 **(0)**   | 23 **(0)** | 24 **(0)** |    Z
-C        | 25 **(0)**   | 26 **(0)**   | 27 **(0)** |            |    Y
-D        | 28 **(1)**   | 29 **(1)**   | 30 **(1)** |            |    Z
-E        | 31 **(0.5)** | 32 **(0.5)** |            |            |    Y
-F        | 33 **(0.5)** | 34 **(0.5)** |            |           |    Z
-G        | 35 **(1)**   |    |    |    |    Y
-H        | 36 **(0)**   |    |    |    |    Z
-I        | 37 **(0)**   |    |    |    |    Y
-J        | 38 **(1)**   |    |    |    |    Z 
-
-As well as some custom individuals in the population that cover some possible cases. We can build them looking at the table above. For example, we want an individual that has an optimal and balanced diet:
-
-```{r}
-pop[1, c(17, 28, 31, 33, 35, 38)] <- 1
-```
-
-One with an abundant, but relatively unbalanced:
-
-```{r}
-pop[2, c(17, 31, 33, 35)] <- 1
-```
-
-One with abundant, but with only one nutrient:
-
-```{r}
-pop[3, c(29, 34, 38)] <- 1
-```
-
-One with a poor but balanced diet:
-
-```{r}
-pop[4, c(31, 34)] <- 1
-```
-
-Let's rerun the calculation now (again the code is not shown), and have a look at $p_{state}$:
-
-```{r echo=FALSE}
-state <- rep(0, N)
-p_state <- rep(NA, N)
-for (i in 1:N) {
-  food_behaviours <- which(pop[i, 17:38] > 0) + 16
-  if (length(food_behaviours) > 1) {
-    amount <- test_environment$p_e[food_behaviours]
-    nutrients <- test_environment$nutrient[food_behaviours]
-    if (length(unique(nutrients)) > 1) {
-      state[i] <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount) / 10) / 2
-    } else {
-      state[i] <- 0
-    }
-  } else {
-    state[i] <- 0
-  }
-  p_state[i] <- rnorm(1, mean = 1 - state[i], sd = .05)
-}
-```
-
-```{r}
-head(p_state)
-```
-
-It should show a very low value for the first individual, a somewhat middle value for the second (abundant but unbalanced), a value around one for the third (lacking a nutrient, $state=0$), again a middle value for the fourth (poor but balanced), and around one for all the rest.
-
-***
-
-## Population dynamics
-
-At this point, innovations are made as they were done for social behaviours, so we can wrap everything up in the function `test_oranzees3()`. We need to change the output, to record food behaviours instead of the social ones,  
+We can now, as usual, wrap everything together in a function:
 
 ```{r}
 test_oranzees3 <- function(t_max) {
@@ -250,24 +150,15 @@ test_oranzees3 <- function(t_max) {
     pop[old[dead], ] <- 0
     # innovation bit:
     for (i in 1:N) {
-      food_behaviours <- which(pop[i, 17:38] > 0) + 16
-      if (length(food_behaviours) > 1) {
-        amount <- test_environment$p_e[food_behaviours]
-        nutrients <- test_environment$nutrient[food_behaviours]
-        if (length(unique(nutrients)) > 1) {
-          state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount) / 10) / 2
-        } else {
-          state <- 0
-        }
-      } else {
-        state <- 0
-      }
+      nut_y <- sum(pop[i, 17:20]) + sum(pop[i, 25:27]) + sum(pop[i, 31:32]) + pop[i, 35] + pop[i, 37]
+      nut_z <- sum(pop[i, 21:24]) + sum(pop[i, 28:30]) + sum(pop[i, 33:34]) + pop[i, 36] + pop[i, 38]
+      state <- (sum(nut_y + nut_z) - abs(nut_y - nut_z)) / 10 
       p_state <- rnorm(1, mean = 1 - state, sd = .05)
       if (runif(1) < p_state) {
         p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
         p_peering[p_peering < 0] <- 0
         innovation_i <- sample(17:38, 1, prob = p_peering)
-        if (runif(1) < test_environment$p_g[innovation_i]) {
+        if (runif(1) < (test_environment$p_g[innovation_i] * test_environment$p_e[innovation_i])) {
           if (innovation_i <= 20) {
             pop[i, 17:20] <- 0
             pop[i, innovation_i] <- 1
@@ -344,24 +235,15 @@ test_oranzees4 <- function(t_max) {
     pop[old[dead], ] <- 0
     # innovation bit:
     for (i in 1:N) {
-      food_behaviours <- which(pop[i, 17:38] > 0) + 16
-      if (length(food_behaviours) > 1) {
-        amount <- test_environment$p_e[food_behaviours]
-        nutrients <- test_environment$nutrient[food_behaviours]
-        if (length(unique(nutrients)) > 1) {
-          state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount) / 10) / 2
-        } else {
-          state <- 0
-        }
-      } else {
-        state <- 0
-      }
+      nut_y <- sum(pop[i, 17:20]) + sum(pop[i, 25:27]) + sum(pop[i, 31:32]) + pop[i, 35] + pop[i, 37]
+      nut_z <- sum(pop[i, 21:24]) + sum(pop[i, 28:30]) + sum(pop[i, 33:34]) + pop[i, 36] + pop[i, 38]
+      state <- (sum(nut_y + nut_z) - abs(nut_y - nut_z)) / 10 
       p_state <- rnorm(1, mean = 1 - state, sd = .05)
       if (runif(1) < p_state) {
         p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
         p_peering[p_peering < 0] <- 0
         innovation_i <- sample(17:38, 1, prob = p_peering)
-        if (runif(1) < test_environment$p_g[innovation_i]) {
+        if (runif(1) < (test_environment$p_g[innovation_i] * test_environment$p_e[innovation_i])) {
           if (innovation_i <= 20) {
             pop[i, 17:20] <- 0
             pop[i, innovation_i] <- 1
@@ -467,128 +349,5 @@ There are a few things to notice:
 * Whereas $p_g$ has a similar effect (see second figure), $p_e$ has a small effect (see third figure). In the third figure we can see, for example, that the winning behaviours in category A and B have zero $p_e$ so they do not contribute to the overall food intake. Still, they are both the ones with higher $p_g$. 
 
 * Having categories of behaviours of different size (for social behaviours they are all categories of four behaviours) is likely to create possibly unwanted effects. In particular, as behaviours are discarded only when a new behaviour in the same category is innovated, behaviours that are the only one for their category, like the last four food-related behaviours, will be advantaged, and this is what we see here, where all four single-category behaviours are present in all runs.
-
-***
-
-## Additional analyses of five sets of ten runs
-
-### Variability
-
-To be sure that all of the above is not an idiosyncrasy of this specific set-up we run five sets of ten runs, each set with a different initial set-up, and calculate global measures (variability, effects of $p_g$ and $p_e$, and frequency of single-category behaviours). Let's first check the variability (we load the `DescTools` library, to calculate the Gini coefficient) in the first four categories (the ones with respectively four, four, three, and three behaviours):
-
-```{r}
-library(DescTools)
-nset <- 5
-gini_sets <- tibble(category = c(rep("A", nset), rep("B", nset), rep("C", nset), rep("D", nset)), set = as_factor(rep(1:nset,4)), gini = rep(NA, 4*nset))
-for(s in 1:nset){
-  results <- as.matrix(read.table(paste("output/food_test", s, ".csv", sep="")))
-  gini_sets[gini_sets$set==s & gini_sets$category=="A",]$gini <- Gini(colSums(results)[1:4])
-  gini_sets[gini_sets$set==s & gini_sets$category=="B",]$gini <- Gini(colSums(results)[5:8])
-  gini_sets[gini_sets$set==s & gini_sets$category=="C",]$gini <- Gini(colSums(results)[9:11])
-  gini_sets[gini_sets$set==s & gini_sets$category=="D",]$gini <- Gini(colSums(results)[12:14])
-}
-ggplot(data = gini_sets, aes(y = gini, x = category, color = category)) +
-  geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(width = 0.2) +
-  theme_bw() +
-  coord_cartesian(ylim = c(0, 1)) +
-  theme(legend.position = "none")
-```
-
-Gini coefficients are quite high. We can compare the categories A and B with the results for the 10 runs of the simulations with only social behaviours:
-
-```{r}
-gini_social = rep(NA, 4)
-results <- as.matrix(read.table("output/social_test1.csv"))
-gini_social[1] <- Gini(colSums(results)[1:4])
-gini_social[2] <-Gini(colSums(results)[5:8])
-gini_social[3] <-Gini(colSums(results)[9:12])
-gini_social[4] <-Gini(colSums(results)[13:16])
-gini_social
-```
-
-The gini coefficients for the four categories of the simulation with only social behaviours tend to be lower (remember the comparable situation is with category A and B).
-
-### Effects of genes and ecology
-
-Now let's move to the effects pf $p_g$ and $p_e$. To start with, we can measure the correlation of all behaviours with their genetic propensities and ecological availability. While we loose details (the effect of $p_g$ and $p_e$ depends on the values of their 'competitors' in the same category, that is why we plotted them separately when analysing ten runs with the same initialisation), this gives an overall indication of the importance of the two factors.
-
-```{r message=FALSE}
-nset <- 5
-all_runs <- tibble(frequency = rep(NA, nset * 22), p_g = rep(NA, nset * 22), p_e = rep(NA, nset * 22))
-c <- 1
-for(s in 1:nset){
-  results <- as.matrix(read.table(paste("output/food_test", s, ".csv", sep="")))
-  all_runs$frequency[c:(c+21)] <- as.numeric(colSums(results))/1000
-  all_runs$p_g[c:(c+21)] <- read.table(paste("output/food_test", s, "_p_g.csv", sep=""))$V1
-  all_runs$p_e[c:(c+21)] <- read.table(paste("output/food_test", s, "_p_e.csv", sep=""))$V1
-  c <- c + 22
-}
-
-library(gridExtra)
-p1 <- ggplot(data = all_runs) +
-  geom_point(aes( x = frequency, y = p_g)) + 
-  theme_bw() +
-  xlim(0, 1) +
-  ylim(0, 1) +
-  coord_fixed()
-
-p2 <- ggplot(data = all_runs) +
-  geom_point(aes( x = frequency, y = p_e)) + 
-  theme_bw() +
-  xlim(0, 1) +
-  ylim(0, 1) +
-  coord_fixed()
-
-grid.arrange(p1, p2, ncol = 2)
-```
-
-It looks like there is a correlation for $p_g$, but not for $p_e$. We can calculate the correlations:
-
-```{r message=FALSE}
-library(Hmisc)
-corr_genes <- rcorr(all_runs$frequency, all_runs$p_g, type = "spearman")
-corr_eco <- rcorr(all_runs$frequency, all_runs$p_e, type = "spearman")
-```
-
-We can look at them. For genes:
-```{r}
-corr_genes$r[2]
-corr_genes$P[2]
-```
-
-For ecology:
-```{r}
-corr_eco$r[2]
-corr_eco$P[2]
-```
-
-They are both correlated (which is good), still it is strange that some behaviour that bring zero food reach higher frequencies. We may want to change the $state$ calculation.
-
-### One-behaviour categories
-
-Finally, we can check whether there is an advantage for behaviours that are in a category without any other behaviour, i.e. categories G, H, I, J. We can compare their final frequencies with the frequencies of the behaviours in the other categories.
-
-```{r}
-tibble(type = c(rep("single_category", 4*nset), rep("others", 18*nset)), 
-  frequency = c(all_runs$frequency[c(19:22, 41:44, 63:66, 85:88, 107:110)],
-all_runs$frequency[-c(19:22, 41:44, 63:66, 85:88, 107:110)])) %>%
-  ggplot(aes(y = frequency, x = type, color = type)) +
- # geom_boxplot(outlier.shape = NA) + 
-  geom_jitter(width = 0.2) +
-  theme_bw() +
-  coord_cartesian(ylim = c(0, 1)) +
-  theme(legend.position = "none")  
-```
-
-Results show that there are clear differences, with single-category behaviours being always successful.
-
-***
-
-#### TO DO
-
-* we may want to change the $state$ calculation for food related behaviours, to give more importance to $p_e$. It is not necessary, as there is a correlation, but may be more realistic. Also it could change the results of the variability analysis, making runs more different (we do not know).
-
-* Is the single-category behaviours a problem? If it is, there are two alternatives: (i) having ways to discard behaviours (but this will change everything, so I am not inclined), or (ii) having also for food-related behaviours categories with the same number of behaviours.
 
 ***
