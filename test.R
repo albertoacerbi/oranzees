@@ -292,7 +292,7 @@ ggplot(data = data_to_plot) +
 #
 
 test_oranzees4 <- function(t_max) {
-  N <- 100
+  N <- 100 
   
   pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
   
