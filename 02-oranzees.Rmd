@@ -216,6 +216,8 @@ ggplot(data = data_to_plot) +
   theme(legend.position = "none")
 ```
 
+***
+
 ### Multiple runs
 
 As we did for social behaviours, we can run the simulations several times, with the same initialisation, and look at the final results. With the same logic, here the modified function `test_oranzees4()`:
@@ -312,8 +314,6 @@ as_tibble(melt(results, varnames = c("run", "behaviour"), value.name = "frequenc
   theme_bw()
 ```
 
-### The effects of genetic propensity and ecological availability
-
 We can then visualise the correlation between the overall frequency of a behaviour and its $p_g$ value. 
 
 ```{r}
@@ -340,14 +340,121 @@ tibble(p_e = eco$V1, total = colSums(results),
   theme_bw()
 ```
 
-***
+The main thing to notice is that, as seen in the first figure, there is seemingly less variability with respect to social behaviours. There are many reasons why this could be the case, including more possible behaviours (10 versus 4),and categories of different size (see below), but the main is probably the fact that the results are a constrained by both $p_g$ and $p_e$, plus the need to keep a balance between nutrients, while in the case of social behaviours, they were only constrained by $p_g$
 
-There are a few things to notice:
-
-* As seen in the first figure of the 'Multiple runs' section, there is seemingly less variability with respect to social behaviours. There are many reasons why this could be the case, such as (i) more possible behaviours (10 versus 4), (ii) categories of different size (see below), or (iii) the fact that both $p_g$ and $p_e$ contribute to the results. 
-
-* Whereas $p_g$ has a similar effect (see second figure), $p_e$ has a small effect (see third figure). In the third figure we can see, for example, that the winning behaviours in category A and B have zero $p_e$ so they do not contribute to the overall food intake. Still, they are both the ones with higher $p_g$. 
-
-* Having categories of behaviours of different size (for social behaviours they are all categories of four behaviours) is likely to create possibly unwanted effects. In particular, as behaviours are discarded only when a new behaviour in the same category is innovated, behaviours that are the only one for their category, like the last four food-related behaviours, will be advantaged, and this is what we see here, where all four single-category behaviours are present in all runs.
+Also, having categories of behaviours of different size (for social behaviours they are all categories of four behaviours) is likely to create possibly unwanted effects. In particular, as behaviours are discarded only when a new behaviour in the same category is innovated, behaviours that are the only one for their category, like the last four food-related behaviours, will be advantaged, as long as their $p_g * p_e > 0$
 
 ***
+
+## Additional analyses of five sets of ten runs
+
+### Variability
+
+To be sure that all of the above is not an idiosyncrasy of this specific set-up we run five sets of ten runs, each set with a different initial set-up, and calculate global measures (variability, effects of $p_g$ and $p_e$, and frequency of single-category behaviours). Let's first check the variability (we load the `DescTools` library, to calculate the Gini coefficient) in the first four categories (the ones with respectively four, four, three, and three behaviours):
+
+```{r}
+library(DescTools)
+nset <- 5
+gini_sets <- tibble(category = c(rep("A", nset), rep("B", nset), rep("C", nset), rep("D", nset)), set = as_factor(rep(1:nset,4)), gini = rep(NA, 4*nset))
+for(s in 1:nset){
+  results <- as.matrix(read.table(paste("output/food_test", s, ".csv", sep="")))
+  gini_sets[gini_sets$set==s & gini_sets$category=="A",]$gini <- Gini(colSums(results)[1:4])
+  gini_sets[gini_sets$set==s & gini_sets$category=="B",]$gini <- Gini(colSums(results)[5:8])
+  gini_sets[gini_sets$set==s & gini_sets$category=="C",]$gini <- Gini(colSums(results)[9:11])
+  gini_sets[gini_sets$set==s & gini_sets$category=="D",]$gini <- Gini(colSums(results)[12:14])
+}
+ggplot(data = gini_sets, aes(y = gini, x = category, color = category)) +
+  geom_boxplot(outlier.shape = NA) + 
+  geom_jitter(width = 0.2) +
+  theme_bw() +
+  coord_cartesian(ylim = c(0, 1)) +
+  theme(legend.position = "none")
+```
+
+Gini coefficients are quite high. We can compare the categories A and B with the results for the 10 runs of the simulations with only social behaviours:
+
+```{r}
+gini_social = rep(NA, 4)
+results <- as.matrix(read.table("output/social_test1.csv"))
+gini_social[1] <- Gini(colSums(results)[1:4])
+gini_social[2] <-Gini(colSums(results)[5:8])
+gini_social[3] <-Gini(colSums(results)[9:12])
+gini_social[4] <-Gini(colSums(results)[13:16])
+gini_social
+```
+
+The gini coefficients for the four categories of the simulation with only social behaviours tend to be lower (remember the comparable situation is with category A and B).
+
+### Effects of genes and ecology
+
+Now let's move to the effects pf $p_g$ and $p_e$. To start with, we can measure the correlation of all behaviours with their genetic propensities and ecological availability. While we loose details (the effect of $p_g$ and $p_e$ depends on the values of their 'competitors' in the same category, that is why we plotted them separately when analysing ten runs with the same initialisation), this gives an overall indication of the importance of the two factors.
+
+```{r message=FALSE}
+nset <- 5
+all_runs <- tibble(frequency = rep(NA, nset * 22), p_g = rep(NA, nset * 22), p_e = rep(NA, nset * 22))
+c <- 1
+for(s in 1:nset){
+  results <- as.matrix(read.table(paste("output/food_test", s, ".csv", sep="")))
+  all_runs$frequency[c:(c+21)] <- as.numeric(colSums(results))/1000
+  all_runs$p_g[c:(c+21)] <- read.table(paste("output/food_test", s, "_p_g.csv", sep=""))$V1
+  all_runs$p_e[c:(c+21)] <- read.table(paste("output/food_test", s, "_p_e.csv", sep=""))$V1
+  c <- c + 22
+}
+library(gridExtra)
+p1 <- ggplot(data = all_runs) +
+  geom_point(aes( x = frequency, y = p_g)) + 
+  theme_bw() +
+  xlim(0, 1) +
+  ylim(0, 1) +
+  coord_fixed()
+p2 <- ggplot(data = all_runs) +
+  geom_point(aes( x = frequency, y = p_e)) + 
+  theme_bw() +
+  xlim(0, 1) +
+  ylim(0, 1) +
+  coord_fixed()
+grid.arrange(p1, p2, ncol = 2)
+```
+
+It looks like there is a correlation for $p_g$, but not for $p_e$. We can calculate the correlations:
+
+```{r message=FALSE}
+library(Hmisc)
+corr_genes <- rcorr(all_runs$frequency, all_runs$p_g, type = "spearman")
+corr_eco <- rcorr(all_runs$frequency, all_runs$p_e, type = "spearman")
+```
+
+We can look at them. For genes:
+```{r}
+corr_genes$r[2]
+corr_genes$P[2]
+```
+
+For ecology:
+```{r}
+corr_eco$r[2]
+corr_eco$P[2]
+```
+
+They are both correlated (which is good), still it is strange that some behaviour that bring zero food reach higher frequencies. We may want to change the $state$ calculation.
+
+### One-behaviour categories
+
+Finally, we can check whether there is an advantage for behaviours that are in a category without any other behaviour, i.e. categories G, H, I, J. We can compare their final frequencies with the frequencies of the behaviours in the other categories.
+
+```{r}
+tibble(type = c(rep("single_category", 4*nset), rep("others", 18*nset)), 
+  frequency = c(all_runs$frequency[c(19:22, 41:44, 63:66, 85:88, 107:110)],
+all_runs$frequency[-c(19:22, 41:44, 63:66, 85:88, 107:110)])) %>%
+  ggplot(aes(y = frequency, x = type, color = type)) +
+ # geom_boxplot(outlier.shape = NA) + 
+  geom_jitter(width = 0.2) +
+  theme_bw() +
+  coord_cartesian(ylim = c(0, 1)) +
+  theme(legend.position = "none")  
+```
+
+Results show that there are clear differences, with single-category behaviours being always successful.
+
+***
+
