@@ -345,7 +345,7 @@ test_oranzees4 <- function(t_max) {
 oranzees_environment <- set_oranzees_environment()
 test_environment <- oranzees_environment %>%
   filter(population == "Uossob")
-
+library(tictoc)
 n_run <- 10
 t_max <- 12000
 food_test1 <- matrix(nrow = n_run, ncol = 22)
@@ -355,15 +355,15 @@ for (run in 1:n_run) {
   print(run)
   toc()
 }
-write(t(food_test1), file = "output/food_test2.csv", ncolumns = 22)
-write(test_environment$p_g[17:38], file = "output/food_test2_p_g.csv", ncolumns = 1)
-write(test_environment$p_e[17:38], file = "output/food_test2_p_e.csv", ncolumns = 1)
+write(t(food_test1), file = "output/food_test5.csv", ncolumns = 22)
+write(test_environment$p_g[17:38], file = "output/food_test5_p_g.csv", ncolumns = 1)
+write(test_environment$p_e[17:38], file = "output/food_test5_p_e.csv", ncolumns = 1)
 
 
 # PLOT:
 
 library(reshape2)
-results <- as.matrix(read.table("output/food_test2.csv"))
+results <- as.matrix(read.table("output/food_test5.csv"))
 colnames(results) <- 17:38
 
 as_tibble(melt(results, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
