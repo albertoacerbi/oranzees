@@ -423,26 +423,16 @@ for (t in 1:t_max) {
   pop[old[dead], ] <- 0
   # innovation bit:
   for (i in 1:N) {
-    food_behaviours <- which(pop[i, 17:38] > 0) + 16
-    if (length(food_behaviours) > 1) {
-      amount <- test_environment$p_e[food_behaviours]
-      nutrients <- test_environment$nutrient[food_behaviours]
-      if (length(unique(nutrients)) > 1) {
-       #           state <- ((1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5) + sum(amount) / 10) / 2
-          state <- 1 - abs(sum(amount[nutrients == "Y"]) - sum(amount[nutrients == "Z"])) / 5
-      } else {
-        state <- 0
-      }
-    } else {
-      state <- 0
-    }
+    nut_y <- sum(pop[i, 17:20]) + sum(pop[i, 25:27]) + sum(pop[i, 31:32]) + pop[i, 35] + pop[i, 37]
+    nut_z <- sum(pop[i, 21:24]) + sum(pop[i, 28:30]) + sum(pop[i, 33:34]) + pop[i, 36] + pop[i, 38]
+    state <- sum(nut_y + nut_z)/10 - abs(nut_y - nut_z)/5 
     p_state <- rnorm(1, mean = 1 - state, sd = .05)
     output_state_t <- output_state_t + state
     if (runif(1) < p_state) {
       p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
       p_peering[p_peering < 0] <- 0
       innovation_i <- sample(17:38, 1, prob = p_peering)
-      if (runif(1) < test_environment$p_g[innovation_i]) {
+      if (runif(1) < (test_environment$p_g[innovation_i] * test_environment$p_e[innovation_i])) {
         if (innovation_i <= 20) {
           pop[i, 17:20] <- 0
           pop[i, innovation_i] <- 1
