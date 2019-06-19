@@ -407,4 +407,10 @@ The gini coefficients for the four categories of the simulation with only social
 ***
 
 **NOTE:**
-The only drawback here seems that there is not much variability, but we can parametrise the effect of $p_g$ and $p_e$. If we agree with the implementation, I'd go on this path.
+
+* The only drawback here seems that there is not much variability, but we can parametrise the effect of $p_g$ and $p_e$. If we agree with the implementation, I'd go on this path.
+
+***
+
+The documentation continues in [03-oranzees.html](03-oranzees.html)
+
