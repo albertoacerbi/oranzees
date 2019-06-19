@@ -408,6 +408,7 @@ It is finally time to put all together, for a simulation running single runs of 
 ```{r}
 mockup_oranzees <- function(t_max, init_environment) {
   # initalise everything:
+  N <- 100
   pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
   output <- matrix(nrow = t_max, ncol = 38)
   if (init_environment) {
@@ -428,87 +429,3 @@ mockup_oranzees <- function(t_max, init_environment) {
 
 Something like that should do what we want. Notice that we still need to write the appropriate functions, and also the new parameter `init_environment`. We will pass `TRUE` (or $1$) if we want the environment to be initialised each time we run the function, and `FALSE` (or $0$) if we want to use an environment created separately. This is helpful to run multiple tests with the same or different environments (before we were using two different functions).
 
-Let's start with the function `update_demography()`:
-
-```{r}
-update_demography <- function(pop) {
-  pop[, 39] <- pop[, 39] + 1
-  pop[pop[, 39] >= 720, ] <- 0
-  old <- which(pop[, 39] > 300)
-  dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
-  pop[old[dead], ] <- 0
-  pop
-}
-```
-
-Now for social behaviours:
-
-```{r}
-update_social_behaviours <- function(pop) {
-  state <- ((rowSums(pop[, 1:4]) >= 1) + (rowSums(pop[, 5:8]) >= 1) + (rowSums(pop[, 9:12]) >= 1) + (rowSums(pop[, 13:16]) >= 1)) / 4
-  p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
-  p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
-  p_peering[p_peering < 0] <- 0
-  innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
-  p_innovate <- runif(N) < test_environment$p_g[innovation_i]  * p_state
-  for(i in 1:N){
-    if(p_innovate[i]){
-      pop[i,] <- add_social_behaviour(pop[i,], innovation_i[i])
-    }
-  }
-  pop
-}    
-```
-    
-And for food-related behaviours:
-
-```{r}
-update_food_behaviours <- function(pop) {
-  nut_y <- (rowSums(pop[, 17:20])>=1) + (rowSums(pop[, 25:27])>=1) + (rowSums(pop[, 31:32])>=1) + pop[, 35] + pop[, 37]
-  nut_z <- (rowSums(pop[, 21:24])>=1) + (rowSums(pop[, 28:30])>=1) + (rowSums(pop[, 33:34])>=1) + pop[, 36] + pop[, 38]
-  state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10 
-  p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
-  p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
-  p_peering[p_peering < 0] <- 0
-  innovation_i <- sample(17:38, N, prob = p_peering, replace = TRUE)
-  p_innovate <- runif(N) < test_environment$p_g[innovation_i] * test_environment$p_e[innovation_i] * p_state
-  for(i in 1:N){
-    if(p_innovate[i]){
-      pop[i,] <- add_food_behaviour(pop[i,], innovation_i[i])
-    }
-  }
-  pop
-}
-```
-
-We can now run the main function (and check the running time):
-
-```{r}
-t_max <- 12000
-tic()
-my_test <- mockup_oranzees(t_max, TRUE)
-toc()
-```
-
-Let's plot all the results:
-
-```{r}
-my_test <- gather(as_tibble(my_test), 1:38, key = "behaviour", value = "frequency")
-data_to_plot <- tibble(
-  behaviour = my_test$behaviour,
-  frequency = my_test$frequency,
-  time = rep(1:t_max, 38),
-  category = as_factor(c(
-    rep("play", t_max * 4), rep("display", t_max * 4), rep("groom", t_max * 4), rep("courthsip", t_max * 4),
-    rep("A", t_max * 4), rep("B", t_max * 4), rep("C", t_max * 3), rep("D", t_max * 3),
-    rep("E", t_max * 2), rep("F", t_max * 2), rep("G", t_max), rep("H", t_max),
-    rep("I", t_max), rep("J", t_max)
-  ))
-)
-
-ggplot(data = data_to_plot) +
-  geom_line(aes(x = time, y = frequency, color = behaviour)) +
-  facet_wrap(~category) +
-  theme_bw() +
-  theme(legend.position = "none")
-```

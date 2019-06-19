@@ -8,7 +8,7 @@ The material is organised as follows:
 
 * [01-oranzees.Rmd](01-oranzees.Rmd), etc.: R Markdown files documenting the development of the model.
 
-* [test.R](test.R), etc.: code-only files to test codes that will end in the R Markdown files.
+* [test.R](test.R): code-only file to test code that will end in the R Markdown files.
 
 Plus two folders:
 

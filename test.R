@@ -2,6 +2,7 @@
 # COMMON FUNCTIONS:
 ####
 library(tidyverse)
+library(tictoc)
 
 set_oranzees_environment <- function() {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
@@ -140,6 +141,7 @@ update_food_behaviours <- function(pop) {
 
 mockup_oranzees <- function(t_max, init_environment) {
   # initalise everything:
+  N <- 100
   pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
   output <- matrix(nrow = t_max, ncol = 38)
   if (init_environment) {
@@ -157,3 +159,29 @@ mockup_oranzees <- function(t_max, init_environment) {
   output
 }
 
+
+
+#### WORK HERE:
+t_max <- 5000
+tic()
+my_test <- mockup_oranzees(t_max, TRUE)
+toc()
+
+my_test <- gather(as_tibble(my_test), 1:38, key = "behaviour", value = "frequency")
+data_to_plot <- tibble(
+  behaviour = my_test$behaviour,
+  frequency = my_test$frequency,
+  time = rep(1:t_max, 38),
+  category = as_factor(c(
+    rep("play", t_max * 4), rep("display", t_max * 4), rep("groom", t_max * 4), rep("courthsip", t_max * 4),
+    rep("A", t_max * 4), rep("B", t_max * 4), rep("C", t_max * 3), rep("D", t_max * 3),
+    rep("E", t_max * 2), rep("F", t_max * 2), rep("G", t_max), rep("H", t_max),
+    rep("I", t_max), rep("J", t_max)
+  ))
+)
+
+ggplot(data = data_to_plot) +
+  geom_line(aes(x = time, y = frequency, color = behaviour)) +
+  facet_wrap(~category) +
+  theme_bw() +
+  theme(legend.position = "none")
