@@ -81,7 +81,7 @@ add_food_behaviour <- function(oranzee, b){
     oranzee[b] <- 1
   } else if (b > 24 & b <= 27) {
     oranzee[25:27] <- 0
-    oranzee[innovation_i] <- 1
+    oranzee[b] <- 1
   } else if (b > 27 & b <= 30) {
     oranzee[28:30] <- 0
     oranzee[b] <- 1
@@ -227,8 +227,8 @@ test_oranzees3 <- function(t_max) {
     pop[old[dead], ] <- 0
     # innovation bit:
     for (i in 1:N) {
-      nut_y <- (sum(pop[i, 17:20])) + (sum(pop[i, 25:27])) + (sum(pop[i, 31:32])) + pop[i, 35] + pop[i, 37]
-      nut_z <- (sum(pop[i, 21:24])) + (sum(pop[i, 28:30])) + (sum(pop[i, 33:34])) + pop[i, 36] + pop[i, 38]
+      nut_y <- (sum(pop[1, 17:20])>=1) + (sum(pop[1, 25:27])>=1) + (sum(pop[1, 31:32])>=1) + pop[1, 35] + pop[1, 37]
+      nut_z <- (sum(pop[1, 21:24])>=1) + (sum(pop[1, 28:30])>=1) + (sum(pop[1, 33:34])>=1) + pop[1, 36] + pop[1, 38]
       state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10 
       p_state <- rnorm(1, mean = 1 - state, sd = .05)
       if (runif(1) < p_state) {
@@ -263,7 +263,6 @@ test_oranzees3 <- function(t_max) {
   }
   output
 }
-
 ## OPTIMISED:
 
 test_oranzees3_better <- function(t_max) {
@@ -301,9 +300,10 @@ oranzees_environment <- set_oranzees_environment()
 test_environment <- oranzees_environment %>%
   filter(population == "Uossob")
 
-t_max <- 1000
+t_max <- 5000
+tic()
 my_test <- test_oranzees3(t_max)
-
+toc()
 # PLOT
 
 my_test <- gather(as_tibble(my_test), 1:22, key = "behaviour", value = "frequency")
