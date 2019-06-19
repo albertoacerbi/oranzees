@@ -23,8 +23,8 @@ pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byr
 We first rebuild our basic population, and then we use a similar strategy that we used for the social behavior. In the previous case the optimal state was to have at least one behaviour in all categories, now is to have the same amount of behaviours in the two nutrients. Thus, for the individual $1$ in the population:
 
 ```{r}
-nut_y <- sum(pop[1, 17:20]) + sum(pop[1, 25:27]) + sum(pop[1, 31:32]) + pop[1, 35] + pop[1, 37]
-nut_z <- sum(pop[1, 21:24]) + sum(pop[1, 28:30]) + sum(pop[1, 33:34]) + pop[1, 36] + pop[1, 38]
+nut_y <- (sum(pop[1, 17:20])>=1) + (sum(pop[1, 25:27])>=1) + (sum(pop[1, 31:32])>=1) + pop[1, 35] + pop[1, 37]
+nut_z <- (sum(pop[1, 21:24])>=1) + (sum(pop[1, 28:30])>=1) + (sum(pop[1, 33:34])>=1) + pop[1, 36] + pop[1, 38]
 
 state <- 1 - abs(nut_y - nut_z) / 5
 ```
@@ -39,9 +39,9 @@ state
 Beside balancing nutrients, however, oranzees need to eat something. We can add in the $state$ calculation a part that rewards oranzees for having more food.
 
 ```{r}
-nut_y <- sum(pop[1, 17:20]) + sum(pop[1, 25:27]) + sum(pop[1, 31:32]) + pop[1, 35] + pop[1, 37]
-nut_z <- sum(pop[1, 21:24]) + sum(pop[1, 28:30]) + sum(pop[1, 33:34]) + pop[1, 36] + pop[1, 38]
-state <- (sum(nut_y + nut_z) - abs(nut_y - nut_z)) / 10
+nut_y <- (sum(pop[1, 17:20])>=1) + (sum(pop[1, 25:27])>=1) + (sum(pop[1, 31:32])>=1) + pop[1, 35] + pop[1, 37]
+nut_z <- (sum(pop[1, 21:24])>=1) + (sum(pop[1, 28:30])>=1) + (sum(pop[1, 33:34])>=1) + pop[1, 36] + pop[1, 38]
+state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10
 ```
 
 Everything is similar as before, but now the 'unbalance' value is not subtracted from $1$, but from the total amount of foodstuff, and all divided by the maximum possible amount, i.e. $10$.
@@ -49,7 +49,7 @@ Everything is similar as before, but now the 'unbalance' value is not subtracted
 Using the same example (an oranzee with one behaviour providing Y and two providing Z), the state will be:
 
 ```{r}
-state <- ((1 + 2) - abs(1 - 2)) / 10
+state <- (1 + 2 - abs(1 - 2)) / 10
 ```
 
 ***
@@ -149,9 +149,9 @@ test_oranzees3 <- function(t_max) {
     pop[old[dead], ] <- 0
     # innovation bit:
     for (i in 1:N) {
-      nut_y <- sum(pop[i, 17:20]) + sum(pop[i, 25:27]) + sum(pop[i, 31:32]) + pop[i, 35] + pop[i, 37]
-      nut_z <- sum(pop[i, 21:24]) + sum(pop[i, 28:30]) + sum(pop[i, 33:34]) + pop[i, 36] + pop[i, 38]
-      state <- (sum(nut_y + nut_z) - abs(nut_y - nut_z)) / 10
+      nut_y <- (sum(pop[1, 17:20])>=1) + (sum(pop[1, 25:27])>=1) + (sum(pop[1, 31:32])>=1) + pop[1, 35] + pop[1, 37]
+      nut_z <- (sum(pop[1, 21:24])>=1) + (sum(pop[1, 28:30])>=1) + (sum(pop[1, 33:34])>=1) + pop[1, 36] + pop[1, 38]
+      state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10
       p_state <- rnorm(1, mean = 1 - state, sd = .05)
       if (runif(1) < p_state) {
         p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
@@ -236,9 +236,9 @@ test_oranzees4 <- function(t_max) {
     pop[old[dead], ] <- 0
     # innovation bit:
     for (i in 1:N) {
-      nut_y <- sum(pop[i, 17:20]) + sum(pop[i, 25:27]) + sum(pop[i, 31:32]) + pop[i, 35] + pop[i, 37]
-      nut_z <- sum(pop[i, 21:24]) + sum(pop[i, 28:30]) + sum(pop[i, 33:34]) + pop[i, 36] + pop[i, 38]
-      state <- (sum(nut_y + nut_z) - abs(nut_y - nut_z)) / 10
+      nut_y <- (sum(pop[1, 17:20])>=1) + (sum(pop[1, 25:27])>=1) + (sum(pop[1, 31:32])>=1) + pop[1, 35] + pop[1, 37]
+      nut_z <- (sum(pop[1, 21:24])>=1) + (sum(pop[1, 28:30])>=1) + (sum(pop[1, 33:34])>=1) + pop[1, 36] + pop[1, 38]
+      state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10
       p_state <- rnorm(1, mean = 1 - state, sd = .05)
       if (runif(1) < p_state) {
         p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
