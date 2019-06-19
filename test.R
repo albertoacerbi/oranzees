@@ -103,7 +103,8 @@ update_demography <- function(pop) {
   pop
 }
 
-update_social_behaviours <- function(pop) {
+update_social_behaviours <- function(pop, test_environment) {
+  N <- dim(pop)[1]
   state <- ((rowSums(pop[, 1:4]) >= 1) + (rowSums(pop[, 5:8]) >= 1) + (rowSums(pop[, 9:12]) >= 1) + (rowSums(pop[, 13:16]) >= 1)) / 4
   p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
   p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
@@ -118,7 +119,8 @@ update_social_behaviours <- function(pop) {
   pop
 }  
 
-update_food_behaviours <- function(pop) {
+update_food_behaviours <- function(pop, test_environment) {
+  N <- dim(pop)[1]
   nut_y <- (rowSums(pop[, 17:20])>=1) + (rowSums(pop[, 25:27])>=1) + (rowSums(pop[, 31:32])>=1) + pop[, 35] + pop[, 37]
   nut_z <- (rowSums(pop[, 21:24])>=1) + (rowSums(pop[, 28:30])>=1) + (rowSums(pop[, 33:34])>=1) + pop[, 36] + pop[, 38]
   state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10 
@@ -151,10 +153,10 @@ mockup_oranzees <- function(t_max, init_environment) {
   }
   # start simulation here:
   for (t in 1:t_max) {
-    output <- colSums(pop[, 1:38])
+    output[t,] <- colSums(pop[, 1:38])
     pop <- update_demography(pop)
-    update_social_behaviours(pop)
-    update_food_behaviours(pop)
+    pop <- update_social_behaviours(pop, test_environment)
+    pop <- update_food_behaviours(pop, test_environment)
   }
   output
 }
