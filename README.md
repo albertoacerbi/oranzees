@@ -6,9 +6,9 @@ The material is organised as follows:
 
 * [main.R](main.R): the actual code (so far only the function `set_oranzees_environment()` is present).
 
-* [01-oranzees.Rmd](01-oranzees.Rmd) and [02-oranzees.Rmd](02-oranzees.Rmd): R Markdown files documenting the development of the model.
+* [01-oranzees.Rmd](01-oranzees.Rmd), etc.: R Markdown files documenting the development of the model.
 
-* [test.R](test.R): code-only file to test codes that will end in the R Markdown files.
+* [test.R](test.R), etc.: code-only files to test codes that will end in the R Markdown files.
 
 Plus two folders:
 
