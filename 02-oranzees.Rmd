@@ -280,7 +280,7 @@ And here to code to run 10 replications (as for social behaviours we are not act
 
 ```{r eval=FALSE}
 oranzees_world <- set_oranzees_world()
-test_world <- oranzees_worldt %>%
+test_world <- oranzees_world %>%
   filter(population == "Uossob")
 
 n_run <- 10
