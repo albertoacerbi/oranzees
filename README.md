@@ -4,7 +4,7 @@ This repository contains the code and documents the development of the oranzees 
 
 The material is organised as follows:
 
-* [main.R](main.R): the actual code (so far only the function `set_oranzees_environment()` is present).
+* [main.R](main.R): the actual code (so far only the function `set_oranzees_world()` is present).
 
 * [01-oranzees.Rmd](01-oranzees.Rmd), etc.: R Markdown files documenting the development of the model.
 

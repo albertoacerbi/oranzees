@@ -22,7 +22,7 @@ First, we can work to make the code more efficient. The most important thing is 
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
 
-set_oranzees_environment <- function() {
+set_oranzees_world <- function() {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
   output <- tibble(
     population = rep(list_pop, each = 38),
@@ -71,8 +71,8 @@ set_oranzees_environment <- function() {
 }
 
 test_oranzees1 <- function(t_max) {
-  oranzees_environment <- set_oranzees_environment()
-  test_environment <- oranzees_environment %>%
+  oranzees_world <- set_oranzees_world()
+  test_world <- oranzees_world %>%
     filter(population == "Uossob")
 
   N <- 100
@@ -97,20 +97,21 @@ test_oranzees1 <- function(t_max) {
         p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
         p_peering[p_peering < 0] <- 0
         innovation_i <- sample(1:16, 1, prob = p_peering)
-        if (runif(1) < test_environment$p_g[innovation_i]) {
-          if (innovation_i <= 4) {
-            pop[i, 1:4] <- 0
-            pop[i, innovation_i] <- 1
-          } else if (innovation_i > 4 & innovation_i <= 8) {
-            pop[i, 5:8] <- 0
-            pop[i, innovation_i] <- 1
-          } else if (innovation_i > 8 & innovation_i <= 12) {
-            pop[i, 9:12] <- 0
-            pop[i, innovation_i] <- 1
-          } else {
-            pop[i, 13:16] <- 0
-            pop[i, innovation_i] <- 1
-          }
+        if (runif(1) < test_world$p_g[innovation_i]) {
+          pop[i, innovation_i] <- 1
+          # if (innovation_i <= 4) {
+          #   pop[i, 1:4] <- 0
+          #   pop[i, innovation_i] <- 1
+          # } else if (innovation_i > 4 & innovation_i <= 8) {
+          #   pop[i, 5:8] <- 0
+          #   pop[i, innovation_i] <- 1
+          # } else if (innovation_i > 8 & innovation_i <= 12) {
+          #   pop[i, 9:12] <- 0
+          #   pop[i, innovation_i] <- 1
+          # } else {
+          #   pop[i, 13:16] <- 0
+          #   pop[i, innovation_i] <- 1
+          # }
         }
       }
     }
@@ -160,19 +161,19 @@ innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
 And, calculate the probability to actually innovate a behaviour (given by its genetic propensity) we first need to recreate the environment: 
 
 ```{r}
-oranzees_environment <- set_oranzees_environment()
-test_environment <- oranzees_environment %>%
+oranzees_world <- set_oranzees_world()
+test_world <- oranzees_world %>%
   filter(population == "Uossob")
 ```
 
 And we can then calculate it:
 
 ```{r}
-p_innovate <- test_environment$p_g[innovation_i]
+p_innovate <- test_world$p_g[innovation_i]
 p_innovate <- runif(N) < p_innovate * p_state
 ```
 
-The last part is more tricky. The innovators are `pop[p_innovate,]`, and they will innovate the `innovation_i[p_innovate]` behaviour. For now, we simply iterate through them, using an ad-hoc function:
+The last part is more tricky. The innovators are `pop[p_innovate,]`, and they will innovate the `innovation_i[p_innovate]` behaviour. For now, we simply iterate through them, using an ad-hoc function: THIS WILL NEED TO CHANGE
 
 ```{r}
 add_social_behaviour <- function(oranzee, b) {
@@ -203,8 +204,8 @@ Putting everything together, in a new function:
 
 ```{r}
 test_oranzees1_better <- function(t_max) {
-  oranzees_environment <- set_oranzees_environment()
-  test_environment <- oranzees_environment %>%
+  oranzees_world <- set_oranzees_world()
+  test_world<- oranzees_world %>%
     filter(population == "Uossob")
 
   N <- 100
@@ -227,7 +228,7 @@ test_oranzees1_better <- function(t_max) {
     p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
     p_peering[p_peering < 0] <- 0
     innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
-    p_innovate <- runif(N) < test_environment$p_g[innovation_i] * p_state
+    p_innovate <- runif(N) < test_world$p_g[innovation_i] * p_state
     for (i in 1:N) {
       if (p_innovate[i]) {
         pop[i, ] <- add_social_behaviour(pop[i, ], innovation_i[i])
@@ -255,8 +256,8 @@ Let's do the same thing for food-related behaviours. We need now to run the func
 
 ```{r echo=FALSE}
 test_oranzees3 <- function(t_max) {
-  oranzees_environment <- set_oranzees_environment()
-  test_environment <- oranzees_environment %>%
+  oranzees_world <- set_oranzees_world()
+  test_world <- oranzees_world %>%
     filter(population == "Uossob")
 
   N <- 100
@@ -283,28 +284,29 @@ test_oranzees3 <- function(t_max) {
         p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
         p_peering[p_peering < 0] <- 0
         innovation_i <- sample(17:38, 1, prob = p_peering)
-        if (runif(1) < (test_environment$p_g[innovation_i] * test_environment$p_e[innovation_i])) {
-          if (innovation_i <= 20) {
-            pop[i, 17:20] <- 0
-            pop[i, innovation_i] <- 1
-          } else if (innovation_i > 20 & innovation_i <= 24) {
-            pop[i, 21:24] <- 0
-            pop[i, innovation_i] <- 1
-          } else if (innovation_i > 24 & innovation_i <= 27) {
-            pop[i, 25:27] <- 0
-            pop[i, innovation_i] <- 1
-          } else if (innovation_i > 27 & innovation_i <= 30) {
-            pop[i, 28:30] <- 0
-            pop[i, innovation_i] <- 1
-          } else if (innovation_i > 30 & innovation_i <= 32) {
-            pop[i, 31:32] <- 0
-            pop[i, innovation_i] <- 1
-          } else if (innovation_i > 32 & innovation_i <= 34) {
-            pop[i, 33:34] <- 0
-            pop[i, innovation_i] <- 1
-          } else {
-            pop[i, innovation_i] <- 1
-          }
+        if (runif(1) < (test_world$p_g[innovation_i] * test_world$p_e[innovation_i])) {
+          pop[i, innovation_i] <- 1
+          # if (innovation_i <= 20) {
+          #   pop[i, 17:20] <- 0
+          #   pop[i, innovation_i] <- 1
+          # } else if (innovation_i > 20 & innovation_i <= 24) {
+          #   pop[i, 21:24] <- 0
+          #   pop[i, innovation_i] <- 1
+          # } else if (innovation_i > 24 & innovation_i <= 27) {
+          #   pop[i, 25:27] <- 0
+          #   pop[i, innovation_i] <- 1
+          # } else if (innovation_i > 27 & innovation_i <= 30) {
+          #   pop[i, 28:30] <- 0
+          #   pop[i, innovation_i] <- 1
+          # } else if (innovation_i > 30 & innovation_i <= 32) {
+          #   pop[i, 31:32] <- 0
+          #   pop[i, innovation_i] <- 1
+          # } else if (innovation_i > 32 & innovation_i <= 34) {
+          #   pop[i, 33:34] <- 0
+          #   pop[i, innovation_i] <- 1
+          # } else {
+          #   pop[i, innovation_i] <- 1
+          # }
         }
       }
     }
@@ -322,7 +324,7 @@ my_test <- test_oranzees3(t_max)
 toc()
 ```
 
-The logic is the same of what we just did for social behaviours, so here is directly the new function, with the related function `add_food_behaviour()`:
+The logic is the same of what we just did for social behaviours, so here is directly the new function, with the related function `add_food_behaviour()`: THIS WILL NEED TO CHANGE
 
 ```{r}
 add_food_behaviour <- function(oranzee, b) {
@@ -351,8 +353,8 @@ add_food_behaviour <- function(oranzee, b) {
 }
 
 test_oranzees3_better <- function(t_max) {
-  oranzees_environment <- set_oranzees_environment()
-  test_environment <- oranzees_environment %>%
+  oranzees_world <- set_oranzees_world()
+  test_world<- oranzees_world %>%
     filter(population == "Uossob")
 
   N <- 100
@@ -377,7 +379,7 @@ test_oranzees3_better <- function(t_max) {
     p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
     p_peering[p_peering < 0] <- 0
     innovation_i <- sample(17:38, N, prob = p_peering, replace = TRUE)
-    p_innovate <- runif(N) < test_environment$p_g[innovation_i] * test_environment$p_e[innovation_i] * p_state
+    p_innovate <- runif(N) < test_world$p_g[innovation_i] * test_world$p_e[innovation_i] * p_state
     for (i in 1:N) {
       if (p_innovate[i]) {
         pop[i, ] <- add_food_behaviour(pop[i, ], innovation_i[i])
@@ -403,31 +405,31 @@ This is usually between 10 and 20 times faster!
 
 ## Final code for mock-up population
 
-It is finally time to put all together, for a simulation running single runs of the complete (social plus food-related behaviours). We will use this to perform some in-depth analyses to be sure that everything works as intended, before applying it to the 'real' oranzees populations. The final code make use of the functions we already wrote, `set_oranzees_environment()`, `add_food_behaviour()`, and `add_social_behaviour()`. We need to rewrite the optimised versions of the social and the food-related behaviours, taking out global instructions (e.g. demography, or the initalisation of the environment) plus a final function that puts everything together. It is easy to start from how the final function should look like, and then add the sub-functions.
+It is finally time to put all together, for a simulation running single runs of the complete (social plus food-related behaviours). We will use this to perform some in-depth analyses to be sure that everything works as intended, before applying it to the 'real' oranzees populations. The final code make use of the functions we already wrote, `set_oranzees_world()`, `add_food_behaviour()`, and `add_social_behaviour()`. We need to rewrite the optimised versions of the social and the food-related behaviours, taking out global instructions (e.g. demography, or the initalisation of the environment) plus a final function that puts everything together. It is easy to start from how the final function should look like, and then add the sub-functions.
 
 ```{r}
-mockup_oranzees <- function(t_max, init_environment) {
+mockup_oranzees <- function(t_max, init_world) {
   # initalise everything:
   N <- 100
   pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
   output <- matrix(nrow = t_max, ncol = 38)
-  if (init_environment) {
-    oranzees_environment <- set_oranzees_environment()
-    test_environment <- oranzees_environment %>%
+  if (init_world) {
+    oranzees_world <- set_oranzees_world()
+    test_world <- oranzees_world %>%
       filter(population == "Uossob")
   }
   # start simulation here:
   for (t in 1:t_max) {
     output[t,] <- colSums(pop[, 1:38])
     pop <- update_demography(pop)
-    pop <- update_social_behaviours(pop, test_environment)
-    pop <- update_food_behaviours(pop, test_environment)
+    pop <- update_social_behaviours(pop, test_world)
+    pop <- update_food_behaviours(pop, test_world)
   }
   output
 }
 ```
 
-Something like that should do what we want. Notice that we still need to write the appropriate functions, and also the new parameter `init_environment`. We will pass `TRUE` (or $1$) if we want the environment to be initialised each time we run the function, and `FALSE` (or $0$) if we want to use an environment created separately. This is helpful to run multiple tests with the same or different environments (before we were using two different functions).
+Something like that should do what we want. Notice that we still need to write the appropriate functions, and also the new parameter `init_world`. We will pass `TRUE` (or $1$) if we want the environment to be initialised each time we run the function, and `FALSE` (or $0$) if we want to use an environment created separately. This is helpful to run multiple tests with the same or different environments (before we were using two different functions).
 
 Let's write here the three new functions we need:
 ```{r}
@@ -440,14 +442,14 @@ update_demography <- function(pop) {
   pop
 }
 
-update_social_behaviours <- function(pop, test_environment) {
+update_social_behaviours <- function(pop, test_world) {
   N <- dim(pop)[1]
   state <- ((rowSums(pop[, 1:4]) >= 1) + (rowSums(pop[, 5:8]) >= 1) + (rowSums(pop[, 9:12]) >= 1) + (rowSums(pop[, 13:16]) >= 1)) / 4
   p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
   p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
   p_peering[p_peering < 0] <- 0
   innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
-  p_innovate <- runif(N) < test_environment$p_g[innovation_i]  * p_state
+  p_innovate <- runif(N) < test_world$p_g[innovation_i]  * p_state
   for(i in 1:N){
     if(p_innovate[i]){
       pop[i,] <- add_social_behaviour(pop[i,], innovation_i[i])
@@ -456,7 +458,7 @@ update_social_behaviours <- function(pop, test_environment) {
   pop
 }  
 
-update_food_behaviours <- function(pop, test_environment) {
+update_food_behaviours <- function(pop, test_world) {
   N <- dim(pop)[1]
   nut_y <- (rowSums(pop[, 17:20])>=1) + (rowSums(pop[, 25:27])>=1) + (rowSums(pop[, 31:32])>=1) + pop[, 35] + pop[, 37]
   nut_z <- (rowSums(pop[, 21:24])>=1) + (rowSums(pop[, 28:30])>=1) + (rowSums(pop[, 33:34])>=1) + pop[, 36] + pop[, 38]
@@ -465,7 +467,7 @@ update_food_behaviours <- function(pop, test_environment) {
   p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
   p_peering[p_peering < 0] <- 0
   innovation_i <- sample(17:38, N, prob = p_peering, replace = TRUE)
-  p_innovate <- runif(N) < test_environment$p_g[innovation_i] * test_environment$p_e[innovation_i] * p_state
+  p_innovate <- runif(N) < test_world$p_g[innovation_i] * test_world$p_e[innovation_i] * p_state
   for(i in 1:N){
     if(p_innovate[i]){
       pop[i,] <- add_food_behaviour(pop[i,], innovation_i[i])

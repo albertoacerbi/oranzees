@@ -4,7 +4,7 @@
 library(tidyverse)
 library(tictoc)
 
-set_oranzees_environment <- function() {
+set_oranzees_world <- function() {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
   output <- tibble(
     population = rep(list_pop, each = 38),
@@ -103,14 +103,14 @@ update_demography <- function(pop) {
   pop
 }
 
-update_social_behaviours <- function(pop, test_environment) {
+update_social_behaviours <- function(pop, test_world) {
   N <- dim(pop)[1]
   state <- ((rowSums(pop[, 1:4]) >= 1) + (rowSums(pop[, 5:8]) >= 1) + (rowSums(pop[, 9:12]) >= 1) + (rowSums(pop[, 13:16]) >= 1)) / 4
   p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
   p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
   p_peering[p_peering < 0] <- 0
   innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
-  p_innovate <- runif(N) < test_environment$p_g[innovation_i]  * p_state
+  p_innovate <- runif(N) < test_world$p_g[innovation_i]  * p_state
   for(i in 1:N){
     if(p_innovate[i]){
       pop[i,] <- add_social_behaviour(pop[i,], innovation_i[i])
@@ -119,7 +119,7 @@ update_social_behaviours <- function(pop, test_environment) {
   pop
 }  
 
-update_food_behaviours <- function(pop, test_environment) {
+update_food_behaviours <- function(pop, test_world {
   N <- dim(pop)[1]
   nut_y <- (rowSums(pop[, 17:20])>=1) + (rowSums(pop[, 25:27])>=1) + (rowSums(pop[, 31:32])>=1) + pop[, 35] + pop[, 37]
   nut_z <- (rowSums(pop[, 21:24])>=1) + (rowSums(pop[, 28:30])>=1) + (rowSums(pop[, 33:34])>=1) + pop[, 36] + pop[, 38]
@@ -128,7 +128,7 @@ update_food_behaviours <- function(pop, test_environment) {
   p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
   p_peering[p_peering < 0] <- 0
   innovation_i <- sample(17:38, N, prob = p_peering, replace = TRUE)
-  p_innovate <- runif(N) < test_environment$p_g[innovation_i] * test_environment$p_e[innovation_i] * p_state
+  p_innovate <- runif(N) < test_world$p_g[innovation_i] * test_world$p_e[innovation_i] * p_state
   for(i in 1:N){
     if(p_innovate[i]){
       pop[i,] <- add_food_behaviour(pop[i,], innovation_i[i])
@@ -141,22 +141,22 @@ update_food_behaviours <- function(pop, test_environment) {
 ### MAIN FUNCTION
 ###
 
-mockup_oranzees <- function(t_max, init_environment) {
+mockup_oranzees <- function(t_max, init_world) {
   # initalise everything:
   N <- 100
   pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
   output <- matrix(nrow = t_max, ncol = 38)
-  if (init_environment) {
-    oranzees_environment <- set_oranzees_environment()
-    test_environment <- oranzees_environment %>%
+  if (init_world) {
+    oranzees_world <- set_oranzees_world()
+    test_world <- oranzees_world %>%
       filter(population == "Uossob")
   }
   # start simulation here:
   for (t in 1:t_max) {
     output[t,] <- colSums(pop[, 1:38])
     pop <- update_demography(pop)
-    pop <- update_social_behaviours(pop, test_environment)
-    pop <- update_food_behaviours(pop, test_environment)
+    pop <- update_social_behaviours(pop, test_world)
+    pop <- update_food_behaviours(pop, test_world)
   }
   output
 }
