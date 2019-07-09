@@ -1,10 +1,23 @@
-####
-# COMMON FUNCTIONS:
-####
+---
+title: "Oranzees model (04)"
+author: "Alberto Acerbi"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This R markdown file documents the development of the Oranzees model (it continues from [03-oranzees.html](03-oranzees.html)). The code-only version to run the model is in the file [main.R](main.R) in the same repository.
+
+## Testing the mockup function
+
+we should first run the code for all the fucntion we wrote, without showing it in the html rendering (remember the option`echo=FALSE`).
+
+```{r echo=FALSE, message=FALSE}
 library(tidyverse)
 library(scales)
-library(tictoc)
-library(reshape)
 
 set_oranzees_world <- function(alpha_g, alpha_e) {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
@@ -20,14 +33,14 @@ set_oranzees_world <- function(alpha_g, alpha_e) {
     p_g = rep(NA, 38 * 6),
     p_e = rep(NA, 38 * 6)
   )
-  
+
   env_or_x <- c(220, 230, 700, 705, 710, 750)
   env_or_y <- c(660, 610, 450, 430, 510, 550)
-  
+
   # genetic predispositions:
   x_g <- sample(1:1000, 38)
   y_g <- sample(1:1000, 38)
-  
+
   # ecological availability:
   x_e <- sample(1:1000, 38)
   y_e <- sample(1:1000, 38)
@@ -36,7 +49,7 @@ set_oranzees_world <- function(alpha_g, alpha_e) {
     output[output$behaviour == behav,]$p_g <- 1 - rescale(sqrt((x_g[behav] - env_or_x)^2 + (y_g[behav] - env_or_y)^2), to = c(1 - alpha_g, alpha_g))
     
     if(behav > 16){
-      output[output$behaviour == behav,]$p_e <- 1 - rescale(sqrt((x_e[behav] - env_or_x)^2 + (y_e[behav] - env_or_y)^2), to = c(1 - alpha_e, alpha_e))
+          output[output$behaviour == behav,]$p_e <- 1 - rescale(sqrt((x_e[behav] - env_or_x)^2 + (y_e[behav] - env_or_y)^2), to = c(1 - alpha_e, alpha_e))
     }
   }
   # return the tibble:
@@ -123,42 +136,5 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
   }
   output
 }
-
-#### WORK HERE:
-
-# plot single run:
-
-my_test <- gather(as_tibble(my_test), 1:38, key = "behaviour", value = "frequency")
-data_to_plot <- tibble(
-  behaviour = my_test$behaviour,
-  frequency = my_test$frequency,
-  time = rep(1:t_max, 38),
-  category = as_factor(c(
-    rep("play", t_max * 4), rep("display", t_max * 4), rep("groom", t_max * 4), rep("courthsip", t_max * 4),
-    rep("A", t_max * 4), rep("B", t_max * 4), rep("C", t_max * 3), rep("D", t_max * 3),
-    rep("E", t_max * 2), rep("F", t_max * 2), rep("G", t_max), rep("H", t_max),
-    rep("I", t_max), rep("J", t_max)
-  ))
-)
-ggplot(data = data_to_plot) +
-  geom_line(aes(x = time, y = frequency, color = behaviour)) +
-  facet_wrap(~category) +
-  theme_bw() +
-  theme(legend.position = "none")
-
-# plot multiple runs (final composition of the popualtions):
-
-as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
-  mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
-  add_column(category = as_factor(c(
-    rep("play", 40), rep("display", 40), rep("groom", 40), rep("courthsip", 40),
-    rep("A", 40), rep("B", 40), rep("C", 30), rep("D", 30),
-    rep("E", 20), rep("F", 20), rep("G", 10), rep("H", 10),
-    rep("I", 10), rep("J", 10)
-  ))) %>%
-  ggplot() +
-  geom_raster(aes(x = behaviour, y = run, fill = frequency)) +
-  facet_wrap(~category, scales = "free") +
-  scale_fill_gradient(low = "grey90", high = "red") +
-  theme_bw()
+```
 
