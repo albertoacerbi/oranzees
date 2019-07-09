@@ -60,8 +60,9 @@ Let's initialise again the environment, using as before, for the mock-up populat
 
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
+library(scales)
 
-set_oranzees_world <- function() {
+set_oranzees_world <- function(alpha_g, alpha_e) {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
   output <- tibble(
     population = rep(list_pop, each = 38),
@@ -86,32 +87,23 @@ set_oranzees_world <- function() {
   # ecological availability:
   x_e <- sample(1:1000, 38)
   y_e <- sample(1:1000, 38)
-
-  for (i in 1:6) {
-    for (behav in 1:38) {
-      output[output$population == list_pop[i] & output$behaviour == behav, ]$p_g <- 1 - sqrt((x_g[behav] - env_or_x[i])^2 + (y_g[behav] - env_or_y[i])^2) / 1000
-
-      if (behav > 16) { # only for food-related behaviours:
-        output[output$population == list_pop[i] & output$behaviour == behav, ]$p_e <- 1 - sqrt((x_e[behav] - env_or_x[i])^2 + (y_e[behav] - env_or_y[i])^2) / 500
-      }
+  
+  for(behav in 1:38){
+    output[output$behaviour == behav,]$p_g <- 1 - rescale(sqrt((x_g[behav] - env_or_x)^2 + (y_g[behav] - env_or_y)^2), to = c(1 - alpha_g, alpha_g))
+    
+    if(behav > 16){
+          output[output$behaviour == behav,]$p_e <- 1 - rescale(sqrt((x_e[behav] - env_or_x)^2 + (y_e[behav] - env_or_y)^2), to = c(1 - alpha_e, alpha_e))
     }
   }
-
-  # replace negative values with 0s:
-  if (dim(output[output$p_g < 0, ])[1] > 0) {
-    output[output$p_g < 0, ]$p_g <- 0
-  }
-  if (dim(output[output$p_e < 0 & !is.na(output$p_e), ])[1] > 0) {
-    output[output$p_e < 0 & !is.na(output$p_e), ]$p_e <- 0
-  }
-
   # return the tibble:
   output
 }
 ```
 
 ```{r}
-oranzees_world <- set_oranzees_world()
+alpha_g = 0.7
+alpha_e = 0.9
+oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
 test_world <- oranzees_world %>%
   filter(population == "Uossob")
 ```
@@ -128,8 +120,8 @@ p_innovate <- test_world$p_g[innovation_i] * test_world$p_e[innovation_i]
 We can now, as usual, wrap everything together in a function:
 
 ```{r}
-test_oranzees3 <- function(t_max) {
-  oranzees_world <- set_oranzees_world()
+test_oranzees3 <- function(t_max, alpha_g, alpha_e) {
+  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
   test_world <- oranzees_world %>%
     filter(population == "Uossob")
 
@@ -159,27 +151,6 @@ test_oranzees3 <- function(t_max) {
         innovation_i <- sample(17:38, 1, prob = p_peering)
         if (runif(1) < (test_world$p_g[innovation_i] * test_world$p_e[innovation_i])) {
           pop[i, innovation_i] <- 1
-          # if (innovation_i <= 20) {
-          #   pop[i, 17:20] <- 0
-          #   pop[i, innovation_i] <- 1
-          # } else if (innovation_i > 20 & innovation_i <= 24) {
-          #   pop[i, 21:24] <- 0
-          #   pop[i, innovation_i] <- 1
-          # } else if (innovation_i > 24 & innovation_i <= 27) {
-          #   pop[i, 25:27] <- 0
-          #   pop[i, innovation_i] <- 1
-          # } else if (innovation_i > 27 & innovation_i <= 30) {
-          #   pop[i, 28:30] <- 0
-          #   pop[i, innovation_i] <- 1
-          # } else if (innovation_i > 30 & innovation_i <= 32) {
-          #   pop[i, 31:32] <- 0
-          #   pop[i, innovation_i] <- 1
-          # } else if (innovation_i > 32 & innovation_i <= 34) {
-          #   pop[i, 33:34] <- 0
-          #   pop[i, innovation_i] <- 1
-          # } else {
-          #   pop[i, innovation_i] <- 1
-          # }
         }
       }
     }
@@ -191,7 +162,7 @@ test_oranzees3 <- function(t_max) {
 Here, to run:
 ```{r}
 t_max <- 12000
-my_test <- test_oranzees3(t_max)
+my_test <- test_oranzees3(t_max, alpha_g, alpha_e)
 ```
 
 And to plot the results:
@@ -247,27 +218,6 @@ test_oranzees4 <- function(t_max) {
         innovation_i <- sample(17:38, 1, prob = p_peering)
         if (runif(1) < (test_world$p_g[innovation_i] * test_world$p_e[innovation_i])) {
           pop[i, innovation_i] <- 1
-          # if (innovation_i <= 20) {
-          #   pop[i, 17:20] <- 0
-          #   pop[i, innovation_i] <- 1
-          # } else if (innovation_i > 20 & innovation_i <= 24) {
-          #   pop[i, 21:24] <- 0
-          #   pop[i, innovation_i] <- 1
-          # } else if (innovation_i > 24 & innovation_i <= 27) {
-          #   pop[i, 25:27] <- 0
-          #   pop[i, innovation_i] <- 1
-          # } else if (innovation_i > 27 & innovation_i <= 30) {
-          #   pop[i, 28:30] <- 0
-          #   pop[i, innovation_i] <- 1
-          # } else if (innovation_i > 30 & innovation_i <= 32) {
-          #   pop[i, 31:32] <- 0
-          #   pop[i, innovation_i] <- 1
-          # } else if (innovation_i > 32 & innovation_i <= 34) {
-          #   pop[i, 33:34] <- 0
-          #   pop[i, innovation_i] <- 1
-          # } else {
-          #   pop[i, innovation_i] <- 1
-          # }
         }
       }
     }
@@ -279,7 +229,7 @@ test_oranzees4 <- function(t_max) {
 And here to code to run 10 replications (as for social behaviours we are not actually running it, but we saved the data once):
 
 ```{r eval=FALSE}
-oranzees_world <- set_oranzees_world()
+oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
 test_world <- oranzees_world %>%
   filter(population == "Uossob")
 

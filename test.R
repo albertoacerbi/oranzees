@@ -2,9 +2,10 @@
 # COMMON FUNCTIONS:
 ####
 library(tidyverse)
+library(scales)
 library(tictoc)
 
-set_oranzees_world <- function() {
+set_oranzees_world <- function(alpha_g, alpha_e) {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
   output <- tibble(
     population = rep(list_pop, each = 38),
@@ -30,24 +31,13 @@ set_oranzees_world <- function() {
   x_e <- sample(1:1000, 38)
   y_e <- sample(1:1000, 38)
   
-  for (i in 1:6) {
-    for (behav in 1:38) {
-      output[output$population == list_pop[i] & output$behaviour == behav, ]$p_g <- 1 - sqrt((x_g[behav] - env_or_x[i])^2 + (y_g[behav] - env_or_y[i])^2) / 1000
-      
-      if (behav > 16) { # only for food-related behaviours:
-        output[output$population == list_pop[i] & output$behaviour == behav, ]$p_e <- 1 - sqrt((x_e[behav] - env_or_x[i])^2 + (y_e[behav] - env_or_y[i])^2) / 500
-      }
+  for(behav in 1:38){
+    output[output$behaviour == behav,]$p_g <- 1 - rescale(sqrt((x_g[behav] - env_or_x)^2 + (y_g[behav] - env_or_y)^2), to = c(1 - alpha_g, alpha_g))
+    
+    if(behav > 16){
+      output[output$behaviour == behav,]$p_e <- 1 - rescale(sqrt((x_e[behav] - env_or_x)^2 + (y_e[behav] - env_or_y)^2), to = c(1 - alpha_e, alpha_e))
     }
   }
-  
-  # replace negative values with 0s:
-  if (dim(output[output$p_g < 0, ])[1] > 0) {
-    output[output$p_g < 0, ]$p_g <- 0
-  }
-  if (dim(output[output$p_e < 0 & !is.na(output$p_e), ])[1] > 0) {
-    output[output$p_e < 0 & !is.na(output$p_e), ]$p_e <- 0
-  }
-  
   # return the tibble:
   output
 }
@@ -111,15 +101,13 @@ update_social_behaviours <- function(pop, test_world) {
   p_peering[p_peering < 0] <- 0
   innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
   p_innovate <- runif(N) < test_world$p_g[innovation_i]  * p_state
-  for(i in 1:N){
-    if(p_innovate[i]){
-      pop[i,] <- add_social_behaviour(pop[i,], innovation_i[i])
-    }
+  for (i in (1:N)[p_innovate]) {
+    pop[i, innovation_i[i]] <- 1
   }
   pop
 }  
 
-update_food_behaviours <- function(pop, test_world {
+update_food_behaviours <- function(pop, test_world) {
   N <- dim(pop)[1]
   nut_y <- (rowSums(pop[, 17:20])>=1) + (rowSums(pop[, 25:27])>=1) + (rowSums(pop[, 31:32])>=1) + pop[, 35] + pop[, 37]
   nut_z <- (rowSums(pop[, 21:24])>=1) + (rowSums(pop[, 28:30])>=1) + (rowSums(pop[, 33:34])>=1) + pop[, 36] + pop[, 38]
@@ -129,10 +117,8 @@ update_food_behaviours <- function(pop, test_world {
   p_peering[p_peering < 0] <- 0
   innovation_i <- sample(17:38, N, prob = p_peering, replace = TRUE)
   p_innovate <- runif(N) < test_world$p_g[innovation_i] * test_world$p_e[innovation_i] * p_state
-  for(i in 1:N){
-    if(p_innovate[i]){
-      pop[i,] <- add_food_behaviour(pop[i,], innovation_i[i])
-    }
+  for (i in (1:N)[p_innovate]) {
+    pop[i, innovation_i[i]] <- 1
   }
   pop
 }
@@ -141,13 +127,13 @@ update_food_behaviours <- function(pop, test_world {
 ### MAIN FUNCTION
 ###
 
-mockup_oranzees <- function(t_max, init_world) {
+mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world) {
   # initalise everything:
   N <- 100
   pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
   output <- matrix(nrow = t_max, ncol = 38)
   if (init_world) {
-    oranzees_world <- set_oranzees_world()
+    oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
     test_world <- oranzees_world %>%
       filter(population == "Uossob")
   }
@@ -160,7 +146,6 @@ mockup_oranzees <- function(t_max, init_world) {
   }
   output
 }
-
 
 
 #### WORK HERE:
