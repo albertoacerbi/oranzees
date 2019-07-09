@@ -405,6 +405,73 @@ ggplot(data = data_to_plot) +
   theme(legend.position = "none")
 ```
 
+Just to check that everything work as expected, we can run, as we did before separately for social and food-related behaviours, 10 runs with the same initalisation and visualise the results. We can rewrite a the function with the additional parameter $n_run$. If $n_run>1$ the fucntion does not store all the history of the traits, but only the final state of the population.
+
+```{r}
+mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
+  
+  N <- 100
+  
+  if(n_run == 1){
+    output <- matrix(nrow = t_max, ncol = 38)
+  }
+  else{
+    output <- matrix(nrow = n_run, ncol = 38)
+  }
+  
+  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+  test_world <- oranzees_world %>%
+    filter(population == "Uossob")
+  
+  for(run in 1:n_run){
+    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+    if (init_world) {
+      oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+      test_world <- oranzees_world %>%
+        filter(population == "Uossob")
+    }
+    # start simulation here:
+    for (t in 1:t_max) {
+      if(n_run == 1){
+        output[t,] <- colSums(pop[, 1:38])
+      }
+      pop <- update_demography(pop)
+      pop <- update_social_behaviours(pop, test_world)
+      pop <- update_food_behaviours(pop, test_world)
+    }
+    if( n_run > 1){
+      output[run, ] <- colSums(pop[, 1:38])
+    }  
+  }
+  output
+}
+```
+
+It is now easy to run the simulation online. To repeat the same test, we simply need to call:
+
+```{r}
+my_test <- mockup_oranzees(t_max = 12000, alpha_g = 0.7, alpha_e = 0.9, init_world = FALSE, n_run = 10)
+```
+
+And plot:
+
+```{r}
+library(reshape2)
+as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
+  mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
+  add_column(category = as_factor(c(
+    rep("play", 40), rep("display", 40), rep("groom", 40), rep("courthsip", 40),
+    rep("A", 40), rep("B", 40), rep("C", 30), rep("D", 30),
+    rep("E", 20), rep("F", 20), rep("G", 10), rep("H", 10),
+    rep("I", 10), rep("J", 10)
+  ))) %>%
+  ggplot() +
+  geom_raster(aes(x = behaviour, y = run, fill = frequency)) +
+  facet_wrap(~category, scales = "free") +
+  scale_fill_gradient(low = "grey90", high = "red") +
+  theme_bw()
+```
+
 **NOTE:**
 
 All the codes needed to run `mockup_oranzees()` are in [test.R](test.R).

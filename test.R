@@ -4,6 +4,7 @@
 library(tidyverse)
 library(scales)
 library(tictoc)
+library(reshape)
 
 set_oranzees_world <- function(alpha_g, alpha_e) {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
@@ -127,32 +128,47 @@ update_food_behaviours <- function(pop, test_world) {
 ### MAIN FUNCTION
 ###
 
-mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world) {
-  # initalise everything:
+mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
+  
   N <- 100
-  pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
-  output <- matrix(nrow = t_max, ncol = 38)
-  if (init_world) {
-    oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
-    test_world <- oranzees_world %>%
-      filter(population == "Uossob")
+  
+  if(n_run == 1){
+    output <- matrix(nrow = t_max, ncol = 38)
   }
-  # start simulation here:
-  for (t in 1:t_max) {
-    output[t,] <- colSums(pop[, 1:38])
-    pop <- update_demography(pop)
-    pop <- update_social_behaviours(pop, test_world)
-    pop <- update_food_behaviours(pop, test_world)
+  else{
+    output <- matrix(nrow = n_run, ncol = 38)
+  }
+  
+  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+  test_world <- oranzees_world %>%
+    filter(population == "Uossob")
+  
+  for(run in 1:n_run){
+    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+    if (init_world) {
+      oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+      test_world <- oranzees_world %>%
+        filter(population == "Uossob")
+    }
+    # start simulation here:
+    for (t in 1:t_max) {
+      if(n_run == 1){
+        output[t,] <- colSums(pop[, 1:38])
+      }
+      pop <- update_demography(pop)
+      pop <- update_social_behaviours(pop, test_world)
+      pop <- update_food_behaviours(pop, test_world)
+    }
+    if( n_run > 1){
+      output[run, ] <- colSums(pop[, 1:38])
+    }  
   }
   output
 }
 
-
 #### WORK HERE:
-t_max <- 5000
-tic()
-my_test <- mockup_oranzees(t_max, TRUE)
-toc()
+
+# plot single run:
 
 my_test <- gather(as_tibble(my_test), 1:38, key = "behaviour", value = "frequency")
 data_to_plot <- tibble(
@@ -166,9 +182,25 @@ data_to_plot <- tibble(
     rep("I", t_max), rep("J", t_max)
   ))
 )
-
 ggplot(data = data_to_plot) +
   geom_line(aes(x = time, y = frequency, color = behaviour)) +
   facet_wrap(~category) +
   theme_bw() +
   theme(legend.position = "none")
+
+# plot multiple runs (final composition of the popualtions):
+
+as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
+  mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
+  add_column(category = as_factor(c(
+    rep("play", 40), rep("display", 40), rep("groom", 40), rep("courthsip", 40),
+    rep("A", 40), rep("B", 40), rep("C", 30), rep("D", 30),
+    rep("E", 20), rep("F", 20), rep("G", 10), rep("H", 10),
+    rep("I", 10), rep("J", 10)
+  ))) %>%
+  ggplot() +
+  geom_raster(aes(x = behaviour, y = run, fill = frequency)) +
+  facet_wrap(~category, scales = "free") +
+  scale_fill_gradient(low = "grey90", high = "red") +
+  theme_bw()
+
