@@ -374,7 +374,7 @@ tibble(age = pop) %>%
 
 ### Individual 'state'
 
-The propensity to innovate is influenced by oranzees 'state'. For now, we focus on the social behaviours, as defined above. We assume that the propensity to innovate is based on how many of the four goals (each realised by having at least one behaviour in one of the four categories) are fulfilled. We need to modify the $pop$ structure to also record the behaviour that an individual possess, so we create a matrix, where the last column represents the age, and the other 38 columns all possible behaviours (this is handy so that the numbers of columns correspond to the numbers of behaviours:
+The propensity to innovate is influenced by oranzees 'state'. For now, we focus on the social behaviours, as defined above. We assume that the propensity to innovate is based on how many of the four goals (each realised by having at least one behaviour in one of the four categories) are fulfilled (notice the state is calculated between categories, so it may happen that an oranzee that fulfilled, say, only the category of 'play', will have high probability to innovate, including behaviours in the fulfilled category. This is reasonable for food-related behaviours, where oranzees do not know what nutrients foods are providing, but it is a simplification for social behaviours). We need to modify the $pop$ structure to also record the behaviour that an individual possess, so we create a matrix, where the last column represents the age, and the other 38 columns all possible behaviours (this is handy so that the numbers of columns correspond to the numbers of behaviours:
 
 ```{r}
 pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
