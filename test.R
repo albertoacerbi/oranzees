@@ -4,7 +4,7 @@
 library(tidyverse)
 library(scales)
 library(tictoc)
-library(reshape)
+library(reshape2)
 
 set_oranzees_world <- function(alpha_g, alpha_e) {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
@@ -148,7 +148,7 @@ ggplot(data = data_to_plot) +
 
 # plot multiple runs (final composition of the popualtions):
 
-as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
+as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "MM")) %>%
   mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
   add_column(category = as_factor(c(
     rep("play", 40), rep("display", 40), rep("groom", 40), rep("courthsip", 40),

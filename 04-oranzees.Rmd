@@ -13,7 +13,7 @@ This R markdown file documents the development of the Oranzees model (it continu
 
 ## Testing the mockup function
 
-we should first run the code for all the fucntion we wrote, without showing it in the html rendering (remember the option`echo=FALSE`).
+We should first run the code for all the fucntion we wrote, without showing it in the html rendering (remember the option`echo=FALSE`).
 
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
@@ -137,4 +137,88 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
   output
 }
 ```
+
+It is worth to recapitulate how the main function `mockup_oranzees()` works. The parameters `t_max`, `alpha_g`, and `alpha_e` set the values of these variables. If `init_world` is `TRUE`, oranzees' world is initalised before each run, if `FALSE` only before the first one (if there is only one run, it does not have any effect, because the world is always initalised at the beginning). `n_run` sets the number of runs, and also changes the output accordingly. If a single run, the output is the full history of the behaviours through time; if more than one, only the final state of the population, for each run. 
+
+We can also wrap into functions the code to visaulise the results. For one run:
+
+```{r}
+plot_one_run <- function(my_test, t_max){
+  my_test <- gather(as_tibble(my_test), 1:38, key = "behaviour", value = "frequency")
+  data_to_plot <- tibble(
+    behaviour = my_test$behaviour,
+    frequency = my_test$frequency,
+    time = rep(1:t_max, 38),
+    category = as_factor(c(
+      rep("play", t_max * 4), rep("display", t_max * 4), rep("groom", t_max * 4), rep("courthsip", t_max * 4),
+      rep("A", t_max * 4), rep("B", t_max * 4), rep("C", t_max * 3), rep("D", t_max * 3),
+      rep("E", t_max * 2), rep("F", t_max * 2), rep("G", t_max), rep("H", t_max),
+      rep("I", t_max), rep("J", t_max)
+    ))
+  )
+  ggplot(data = data_to_plot) +
+    geom_line(aes(x = time, y = frequency, color = behaviour)) +
+    facet_wrap(~category) +
+    theme_bw() +
+    theme(legend.position = "none")
+}
+```
+
+Thus, running and visualising a run is as simple as:
+
+```{r echo=FALSE, message=FALSE}
+my_test <- mockup_oranzees(t_max = 12000, alpha_g = 0.7, alpha_e = 0.9, init_world = FALSE, n_run = 1)
+plot_one_run(my_test = my_test ,t_max = 12000)
+```
+
+Here the function to visualise multiple runs:
+
+```{r echo=FALSE, message=FALSE}
+library(reshape2)
+plot_multiple_runs <- function(my_test, n_run){
+  as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
+    mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
+    add_column(category = as_factor(c(
+      rep("play", 4 * n_run), rep("display", 4 * n_run), rep("groom", 4 * n_run), rep("courthsip", 4 * n_run),
+      rep("A", 4 * n_run), rep("B", 4 * n_run), rep("C", 3 * n_run), rep("D", 3 * n_run),
+      rep("E", 2 * n_run), rep("F", 2 * n_run), rep("G", n_run), rep("H", n_run),
+      rep("I", n_run), rep("J", n_run)
+    ))) %>%
+    ggplot() +
+      geom_raster(aes(x = behaviour, y = run, fill = frequency)) +
+      facet_wrap(~category, scales = "free") +
+      scale_fill_gradient(low = "grey90", high = "red") +
+      theme_bw()
+}
+```
+
+Here the code to run, and visualise, multiple runs.
+
+```{r echo=FALSE, message=FALSE}
+my_test <- mockup_oranzees(t_max = 12000, alpha_g = 0.7, alpha_e = 0.9, init_world = FALSE, n_run = 10)
+plot_multiple_runs(my_test = my_test, n_run = 10)
+```
+
+We can now do some basic tests to see that everything works. What happens, for example, if we run again 10 runs, but this time with `init_world = TRUE`? We should expect much more diversity between runs:
+
+```{r}
+my_test <- mockup_oranzees(t_max = 12000, alpha_g = 0.7, alpha_e = 0.9, init_world = TRUE, n_run = 10)
+plot_multiple_runs(my_test = my_test, n_run = 10)
+```
+
+Let's go back to the usual `init_world = FALSE`. If we set `alpha_g = 0.5` and `alpha_e = 0.5` there is not any effect of genetic predisposition and ecological availability. 
+
+```{r}
+my_test <- mockup_oranzees(t_max = 12000, alpha_g = 0.5, alpha_e = 0.5, init_world = FALSE, n_run = 10)
+plot_multiple_runs(my_test = my_test, n_run = 10)
+```
+
+Finally, we can do the opposite, and set both to $1$, for maximum effect:
+
+```{r}
+my_test <- mockup_oranzees(t_max = 12000, alpha_g = 1, alpha_e = 1, init_world = FALSE, n_run = 10)
+plot_multiple_runs(my_test = my_test, n_run = 10)
+```
+
+
 
