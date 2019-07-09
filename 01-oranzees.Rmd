@@ -120,7 +120,7 @@ And the distances calculated:
 d_g
 ```
 
-Now we can rescale these values, using the function `rescale()` from the library `scales`. To tune the importance of genetic propensity we use a parameter $\alpha_g$ that tells us the range of the output. If $\alpha_g=1$ the range is maximum: the higest distance is rescaled to $1$ and the lowest to $0$. Intermediate values give less effect to genetic propensity, until$\alpha_g=0.5$ that produces all probabilities equal to $0.5$. We finally calcualted the actual proabiality as $1$ minus the rescaled values. We can start with a limited effect of genetic propensity, for example, $\alpha_g=.7$:    
+Now we can rescale these values, using the function `rescale()` from the library `scales`. To tune the importance of genetic propensity we use a parameter $\alpha_g$ that tells us the range of the output. If $\alpha_g=1$ the range is maximum: the highest distance is rescaled to $1$ and the lowest to $0$. Intermediate values give less effect to genetic propensity, until$\alpha_g=0.5$ that produces all probabilities equal to $0.5$. We finally calculated the actual probability as $1$ minus the rescaled values. We can start with a limited effect of genetic propensity, for example, $\alpha_g=.7$:    
 
 ```{r}
 library(scales)
@@ -568,6 +568,7 @@ t_max <- 12000
 gene_test1 <- matrix(nrow = n_run, ncol = 16)
 for (run in 1:n_run) {
   gene_test1[run, ] <- test_oranzees2(t_max)
+  print(run)
 }
 
 write(t(gene_test1), file = "output/social_test1.csv", ncolumns = 16)
@@ -607,7 +608,7 @@ This is not a surprising result, as genetic propensity is the only directional f
 ***
 
 **NOTE:**
-Two parameters that may be interesting to study in an advanced version of the model:
+It may be interesting to study in an advanced version of the model:
 
 * The weight of $p_g$ and $p_e$, by varying $\alpha_g$ and $\alpha_e$. Less effect of $p_g$ should make different runs with the same initial set-up more different between each other than what we have now. It should also make more variable the frequency of behaviours within a single run, as the only force acting is an analogous of drift (so less weights of genes would produce, understandably, less stable 'cultures').  
 
