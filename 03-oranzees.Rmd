@@ -455,7 +455,7 @@ my_test <- mockup_oranzees(t_max = 12000, alpha_g = 0.7, alpha_e = 0.9, init_wor
 
 And plot:
 
-```{r}
+```{r message=FALSE}
 library(reshape2)
 as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
   mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
@@ -472,7 +472,7 @@ as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequenc
   theme_bw()
 ```
 
-**NOTE:**
+***
 
-All the codes needed to run `mockup_oranzees()` are in [test.R](test.R).
+The documentation continues in [04-oranzees.html](04-oranzees.html)
 

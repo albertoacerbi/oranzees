@@ -216,7 +216,7 @@ plot_one_run(my_test = my_test, t_max = 12000)
 
 As expected, higher values of $\alpha$ creates 'cultures' where few traits are strongly majoritary in the population, with respect to our intermediate test situation, and lower values have the opposite effect. Another thing to notice is that we probably do not need to run our simulations until $t_{max}=12000$: to save time, in the next tests (involving several runs), we will use $t_{max}=6000$.
 
-To test if what we observed from single runs is not due to any particular initialisation, we analyse now 100 runs, initalising each time the world (`init_world = TRUE`), for various values of $\alpha$. Let's start with $\alpha=0.5$. As before, we run the simulations only once, and we load the data here.
+To test if what we observed from single runs is not due to any particular initialisation, we analyse now 100 runs, initialising each time the world (`init_world = TRUE`), for various values of $\alpha$. Let's start with $\alpha=0.5$. As before, we run the simulations only once, and we load the data here.
 
 ```{r eval=FALSE}
 my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, init_world = TRUE, n_run = 100)
@@ -370,15 +370,15 @@ bind_rows(cumulative_05, cumulative_06, cumulative_07, cumulative_08, cumulative
     theme_bw()
 ```
 
-This plot shows a few interesting results. First, as we would expect, the effect of varying $\alpha$ is stronger for food-related than for social behviours. This is expected, because the former are constrained both by ecology and genes, while the latter only by genes. Second, when there are no constraints $\alpha=0.5$ all behaviours are present, but none of them is customary (and very few habitual). Whereas this is somehwat intuitive, we would expect social influence to have some effect on behaviours even when there are not other constraints. 
+This plot shows a few interesting results. First, as we would expect, the effect of varying $\alpha$ is stronger for food-related than for social behviours. This is expected, because the former are constrained both by ecology and genes, while the latter only by genes. Second, when there are no constraints $\alpha=0.5$ all behaviours are present, but none of them is customary (and very few habitual). Whereas this is somewhat intuitive, we would expect social influence to have some effect on behaviours even when there are not other constraints. 
 
-### The 'precision' of 'social influence
+### The 'precision' of social influence
 
-The probability of innovating a specific behaviour is given by genetic and environemntal constraint as well as its frequency in the population. Common behaviours are more likely to be innovated. This should create, because of random drift, a situation in which some behaviours are more common than others. To study this effect, we need to modulate the standard deviation in the calcualation of `p_peering` (see note at the end of [01-oranzees.html](01-oranzees.html)). 
+The probability of innovating a specific behaviour is given by genetic and environmental constraint as well as its frequency in the population. Common behaviours are more likely to be innovated. This should create, because of random drift, a situation in which some behaviours are more common than others. To study this effect, we need to modulate the standard deviation in the calculation of `p_peering` (see note at the end of [01-oranzees.html](01-oranzees.html)). 
 
-Intuitively, low standard deviations will produce, also when there are not environmental or ecological constraints, 'cultures' with less, and costumary, behaviours, because of random initial small differences. 
+Intuitively, low standard deviations will produce, also when there are not environmental or ecological constraints, 'cultures' with less, and customary, behaviours, because of random initial small differences. 
 
-To test this, we should rewrite our functions adding a new parameter that specifies the standard deviation in the calcualation of `p_peering`. Let's call it `sd_peering`. 
+To test this, we should rewrite our functions adding a new parameter that specifies the standard deviation in the calculation of `p_peering`. Let's call it `sd_peering`. 
 
 ```{r echo=FALSE}
 update_social_behaviours <- function(pop, test_world, sd_peering) {
@@ -454,17 +454,20 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_r
 }
 ```
 
-We can now call again the main function, for the case of $\alpha=0.5$, but for two lower values of `sd_peering`, i.e. 0.1 and 0.01 (as before, the data are saved beforehand):
+We can now call again the main function, for the case of $\alpha=0.5$, but for two lower values of `sd_peering`, i.e. 0.1, 0.01, 0.001 (as before, the data are saved beforehand):
 
 ```{R eval=FALSE}
 my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, sd_peering = 0.1, init_world = TRUE, n_run = 100)
 write(t(my_test), file = "output/test_alpha=0.5_sd=0.1.csv", ncolumns = 38)
 
 my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, sd_peering = 0.01, init_world = TRUE, n_run = 100)
-write(t(my_test), file = "output/test_alpha=0.5_sd=0.1.csv", ncolumns = 38)
+write(t(my_test), file = "output/test_alpha=0.5_sd=0.01.csv", ncolumns = 38)
+
+my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, sd_peering = 0.001, init_world = TRUE, n_run = 100)
+write(t(my_test), file = "output/test_alpha=0.5_sd=0.001.csv", ncolumns = 38)
 ```
 
-We can plot the results similarly to what we did for different $\alpha$, but comparing now the effect of `sd_peering` (code in the Rmd document).
+We can plot the results similarly to what we did for different $\alpha$, but comparing now the effect of `sd_peering` (code to upload the data in the Rmd document).
 
 ```{r echo=FALSE}
 results <- as.matrix(read.table("output/test_alpha=0.5_sd=0.1.csv"))
@@ -497,10 +500,27 @@ cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", 
 
 cumulative_05_001 <- cumulative
 
-cumulative <- bind_rows(cumulative_05, cumulative_05_01, cumulative_05_001) %>%
-  add_column(sd=c(rep(1, 8), rep(0.1, 8), rep(0.01, 8)))
+results <- as.matrix(read.table("output/test_alpha=0.5_sd=0.001.csv"))
 
-cumulative$sd <- factor(cumulative$sd, levels = c(1, 0.1, 0.01))
+cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", "absent", "customary", "habitual", "present", "absent")),
+                     type = as_factor(c(rep("social", 4), rep("food", 4))),
+                     n_behaviours = c(sum(results[, 1:16]>=90), 
+                                  sum(results[, 1:16]>=70 & results[, 1:16]<90), 
+                                  sum(results[, 1:16]>=10 & results[, 1:16]<70), 
+                                  sum(results[, 1:16]<10),
+                                  sum(results[, 17:38]>=90), 
+                                  sum(results[, 17:38]>=70 & results[, 17:38]<90), 
+                                  sum(results[, 17:38]>=10 & results[, 17:38]<70), 
+                                  sum(results[, 17:38]<10)))
+
+cumulative_05_0001 <- cumulative
+```
+
+```{R}
+cumulative <- bind_rows(cumulative_05, cumulative_05_01, cumulative_05_001, cumulative_05_0001) %>%
+  add_column(sd=c(rep(1, 8), rep(0.1, 8), rep(0.01, 8), rep(0.001, 8)))
+
+cumulative$sd <- factor(cumulative$sd, levels = c(1, 0.1, 0.01, 0.001))
 
 ggplot(data = cumulative, aes(x = sd, y = n_behaviours/100, color = category, group = category)) +
   geom_point() +
@@ -509,4 +529,9 @@ ggplot(data = cumulative, aes(x = sd, y = n_behaviours/100, color = category, gr
   theme_bw()
 ```
 
+The effect of decreasing the noise in the observation is qualitatively the same of adding constraints (genetic or environmental) - compare this with the previous plot. This is an extreme scenario (with zero effect of genes, and, especially, no environmental constraints), and we can still obtain that some traits are absent and others are customary/habitual tuning `sd_peering`.
+
 ***
+
+The documentation continues in [05-oranzees.html](05-oranzees.html)
+
