@@ -184,6 +184,8 @@ test_oranzees1_better <- function(t_max, alpha_g, alpha_e) {
     for (i in (1:N)[p_innovate]) {
       pop[i, innovation_i[i]] <- 1
     }
+    # notice the for cycle is faster than the vectorised alternative I found i.e.:
+    # pop[cbind((1:N)[p_innovate], innovation_i[p_innovate])] <- 1
   }
   output
 }

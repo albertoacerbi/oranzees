@@ -102,7 +102,6 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_r
     filter(population == "Uossob")
   
   for(run in 1:n_run){
-    print(run)
     pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
     if (init_world) {
       oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
@@ -163,8 +162,9 @@ plot_multiple_runs <- function(my_test, n_run) {
 
 #### WORK HERE:
 # run sims:
+
 tic()
-my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, sd_peering = 1, init_world = TRUE, n_run = 100)
+my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, sd_peering = 1, init_world = TRUE, n_run = 1)
 toc()
 
 
@@ -175,4 +175,7 @@ write(t(my_test), file = "output/test_alpha=0.5.csv", ncolumns = 38)
 
 # load data:
 results <- as.matrix(read.table("output/test_alpha=0.5.csv"))
+
+
+
 
