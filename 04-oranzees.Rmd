@@ -165,14 +165,14 @@ plot_one_run <- function(my_test, t_max) {
 
 Thus, running and visualising a run is as simple as:
 
-```{r echo=FALSE, message=FALSE}
+```{r warning=FALSE}
 my_test <- mockup_oranzees(t_max = 12000, alpha_g = 0.7, alpha_e = 0.9, init_world = FALSE, n_run = 1)
 plot_one_run(my_test = my_test, t_max = 12000)
 ```
 
 Here the function to visualise multiple runs:
 
-```{r echo=FALSE, message=FALSE}
+```{r}
 library(reshape2)
 plot_multiple_runs <- function(my_test, n_run) {
   as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
@@ -193,30 +193,33 @@ plot_multiple_runs <- function(my_test, n_run) {
 
 Here the code to run, and visualise, multiple runs.
 
-```{r echo=FALSE, message=FALSE}
+```{r}
 my_test <- mockup_oranzees(t_max = 12000, alpha_g = 0.7, alpha_e = 0.9, init_world = FALSE, n_run = 10)
 plot_multiple_runs(my_test = my_test, n_run = 10)
 ```
 
-We can now do some basic tests to see that everything works. What happens, for example, if we run again 10 runs, but this time with `init_world = TRUE`? We should expect much more diversity between runs:
+### The effect of the parameter $\alpha$
+
+Let's start to examine more in detail the oranzees model as built so far. One first obvious factor that determines the final distribution of behaviours is the parameter $\alpha$. Let's have a look at one run with $\alpha_g=1$ and $\alpha_e=1$, i.e. the maximum effect of genetic and environmental constraints:  
 
 ```{r}
-my_test <- mockup_oranzees(t_max = 12000, alpha_g = 0.7, alpha_e = 0.9, init_world = TRUE, n_run = 10)
-plot_multiple_runs(my_test = my_test, n_run = 10)
+my_test <- mockup_oranzees(t_max = 12000, alpha_g = 1, alpha_e = 1, init_world = FALSE, n_run = 1)
+plot_one_run(my_test = my_test, t_max = 12000)
 ```
 
-Let's go back to the usual `init_world = FALSE`. If we set `alpha_g = 0.5` and `alpha_e = 0.5` there is not any effect of genetic predisposition and ecological availability. 
+And the opposite case, i.e., $\alpha_g=0.5$ and $\alpha_e=0.5$, thus no effect:
 
 ```{r}
-my_test <- mockup_oranzees(t_max = 12000, alpha_g = 0.5, alpha_e = 0.5, init_world = FALSE, n_run = 10)
-plot_multiple_runs(my_test = my_test, n_run = 10)
+my_test <- mockup_oranzees(t_max = 12000, alpha_g = 0.5, alpha_e = 0.5, init_world = FALSE, n_run = 1)
+plot_one_run(my_test = my_test, t_max = 12000)
 ```
 
-Finally, we can do the opposite, and set both to $1$, for maximum effect:
+As expected, higher values of $\alpha$ creates 'cultures' where few traits are strongly majoritary in the population, with respect to our intermediate test situation, and lower values have the opposite effect. Another thing to notice is that we probably do not need to run our simulations until $t_max=12000$: to save time, in the next tests (involving several runs), we will use $t_max=6000$.
 
-```{r}
-my_test <- mockup_oranzees(t_max = 12000, alpha_g = 1, alpha_e = 1, init_world = FALSE, n_run = 10)
-plot_multiple_runs(my_test = my_test, n_run = 10)
+To test if what we observed from single runs is not due to any particular initialisation, we analyse now 100 runs, initalising each time the world (`init_world = TRUE`), for various values of $\alpha$. Let's start with $\alpha=1$. As before, we run the simulations only once, and we upload the data here.
+
+```{r eval=FALSE}
+my_test <- mockup_oranzees(t_max = 6000, alpha_g = 1, alpha_e = 1, init_world = TRUE, n_run = 100)
 ```
 
 
