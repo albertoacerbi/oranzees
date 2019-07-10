@@ -124,41 +124,67 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
   output
 }
 
+### PLOTTING FUNCTIONS:
+plot_one_run <- function(my_test, t_max) {
+  my_test <- gather(as_tibble(my_test), 1:38, key = "behaviour", value = "frequency")
+  data_to_plot <- tibble(
+    behaviour = my_test$behaviour,
+    frequency = my_test$frequency,
+    time = rep(1:t_max, 38),
+    category = as_factor(c(
+      rep("play", t_max * 4), rep("display", t_max * 4), rep("groom", t_max * 4), rep("courthsip", t_max * 4),
+      rep("A", t_max * 4), rep("B", t_max * 4), rep("C", t_max * 3), rep("D", t_max * 3),
+      rep("E", t_max * 2), rep("F", t_max * 2), rep("G", t_max), rep("H", t_max),
+      rep("I", t_max), rep("J", t_max)
+    ))
+  )
+  ggplot(data = data_to_plot) +
+    geom_line(aes(x = time, y = frequency, color = behaviour)) +
+    facet_wrap(~category) +
+    theme_bw() +
+    theme(legend.position = "none")
+}
+
+plot_multiple_runs <- function(my_test, n_run) {
+  as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
+    mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
+    add_column(category = as_factor(c(
+      rep("play", 4 * n_run), rep("display", 4 * n_run), rep("groom", 4 * n_run), rep("courthsip", 4 * n_run),
+      rep("A", 4 * n_run), rep("B", 4 * n_run), rep("C", 3 * n_run), rep("D", 3 * n_run),
+      rep("E", 2 * n_run), rep("F", 2 * n_run), rep("G", n_run), rep("H", n_run),
+      rep("I", n_run), rep("J", n_run)
+    ))) %>%
+    ggplot() +
+    geom_raster(aes(x = behaviour, y = run, fill = frequency)) +
+    facet_wrap(~category, scales = "free") +
+    scale_fill_gradient(low = "grey90", high = "red") +
+    theme_bw()
+}
+
 #### WORK HERE:
+# run sims:
+tic()
+my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, init_world = TRUE, n_run = 100)
+toc()
+# save data:
+write(t(my_test), file = "output/test_alpha=0.5.csv", ncolumns = 38)
+# load data:
+results <- as.matrix(read.table("output/test_alpha=0.5.csv"))
 
-# plot single run:
+# plot:
+cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", "absent", "customary", "habitual", "present", "absent")),
+                     type = c(rep("social", 4), rep("food", 4)),
+                     n_behaviours = c(sum(results[, 1:16]>=90), 
+                                  sum(results[, 1:16]>=70 & results[, 1:16]<90), 
+                                  sum(results[, 1:16]>=10 & results[, 1:16]<70), 
+                                  sum(results[, 1:16]<10),
+                                  sum(results[, 17:38]>=90), 
+                                  sum(results[, 17:38]>=70 & results[, 17:38]<90), 
+                                  sum(results[, 17:38]>=10 & results[, 17:38]<70), 
+                                  sum(results[, 17:38]<10)))
 
-my_test <- gather(as_tibble(my_test), 1:38, key = "behaviour", value = "frequency")
-data_to_plot <- tibble(
-  behaviour = my_test$behaviour,
-  frequency = my_test$frequency,
-  time = rep(1:t_max, 38),
-  category = as_factor(c(
-    rep("play", t_max * 4), rep("display", t_max * 4), rep("groom", t_max * 4), rep("courthsip", t_max * 4),
-    rep("A", t_max * 4), rep("B", t_max * 4), rep("C", t_max * 3), rep("D", t_max * 3),
-    rep("E", t_max * 2), rep("F", t_max * 2), rep("G", t_max), rep("H", t_max),
-    rep("I", t_max), rep("J", t_max)
-  ))
-)
-ggplot(data = data_to_plot) +
-  geom_line(aes(x = time, y = frequency, color = behaviour)) +
-  facet_wrap(~category) +
-  theme_bw() +
-  theme(legend.position = "none")
-
-# plot multiple runs (final composition of the popualtions):
-
-as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "MM")) %>%
-  mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
-  add_column(category = as_factor(c(
-    rep("play", 40), rep("display", 40), rep("groom", 40), rep("courthsip", 40),
-    rep("A", 40), rep("B", 40), rep("C", 30), rep("D", 30),
-    rep("E", 20), rep("F", 20), rep("G", 10), rep("H", 10),
-    rep("I", 10), rep("J", 10)
-  ))) %>%
-  ggplot() +
-  geom_raster(aes(x = behaviour, y = run, fill = frequency)) +
-  facet_wrap(~category, scales = "free") +
-  scale_fill_gradient(low = "grey90", high = "red") +
-  theme_bw()
+ggplot(data = cumulative) +
+  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
+  facet_wrap(~type) +
+  theme_bw() 
 
