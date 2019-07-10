@@ -219,7 +219,7 @@ As expected, higher values of $\alpha$ creates 'cultures' where few traits are s
 To test if what we observed from single runs is not due to any particular initialisation, we analyse now 100 runs, initalising each time the world (`init_world = TRUE`), for various values of $\alpha$. Let's start with $\alpha=0.5$. As before, we run the simulations only once, and we load the data here.
 
 ```{r eval=FALSE}
-my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 1, init_world = TRUE, n_run = 100)
+my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, init_world = TRUE, n_run = 100)
 write(t(my_test), file = "output/test_alpha=0.5.csv", ncolumns = 38)
 ```
 
@@ -371,5 +371,143 @@ bind_rows(cumulative_05, cumulative_06, cumulative_07, cumulative_08, cumulative
 ```
 
 This plot shows a few interesting results. First, as we would expect, the effect of varying $\alpha$ is stronger for food-related than for social behviours. This is expected, because the former are constrained both by ecology and genes, while the latter only by genes. Second, when there are no constraints $\alpha=0.5$ all behaviours are present, but none of them is customary (and very few habitual). Whereas this is somehwat intuitive, we would expect social influence to have some effect on behaviours even when there are not other constraints. 
+
+### The 'precision' of 'social influence
+
+The probability of innovating a specific behaviour is given by genetic and environemntal constraint as well as its frequency in the population. Common behaviours are more likely to be innovated. This should create, because of random drift, a situation in which some behaviours are more common than others. To study this effect, we need to modulate the standard deviation in the calcualation of `p_peering` (see note at the end of [01-oranzees.html](01-oranzees.html)). 
+
+Intuitively, low standard deviations will produce, also when there are not environmental or ecological constraints, 'cultures' with less, and costumary, behaviours, because of random initial small differences. 
+
+### TO DO FROM HERE::::
+
+To test this, we should rewrite our functions adding a new parameter that specifies the standard deviation in the calcualation of `p_peering`. Let's call it `sd_peering`. 
+
+```{r echo=FALSE}
+update_social_behaviours <- function(pop, test_world, sd_peering) {
+  N <- dim(pop)[1]
+  state <- ((rowSums(pop[, 1:4]) >= 1) + (rowSums(pop[, 5:8]) >= 1) + (rowSums(pop[, 9:12]) >= 1) + (rowSums(pop[, 13:16]) >= 1)) / 4
+  p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
+  p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = sd_peering)
+  p_peering[p_peering < 0] <- 0
+  innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
+  p_innovate <- runif(N) < test_world$p_g[innovation_i]  * p_state
+  for (i in (1:N)[p_innovate]) {
+    pop[i, innovation_i[i]] <- 1
+  }
+  pop
+}  
+
+update_food_behaviours <- function(pop, test_world, sd_peering) {
+  N <- dim(pop)[1]
+  nut_y <- (rowSums(pop[, 17:20])>=1) + (rowSums(pop[, 25:27])>=1) + (rowSums(pop[, 31:32])>=1) + pop[, 35] + pop[, 37]
+  nut_z <- (rowSums(pop[, 21:24])>=1) + (rowSums(pop[, 28:30])>=1) + (rowSums(pop[, 33:34])>=1) + pop[, 36] + pop[, 38]
+  state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10 
+  p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
+  p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = sd_peering)
+  p_peering[p_peering < 0] <- 0
+  innovation_i <- sample(17:38, N, prob = p_peering, replace = TRUE)
+  p_innovate <- runif(N) < test_world$p_g[innovation_i] * test_world$p_e[innovation_i] * p_state
+  for (i in (1:N)[p_innovate]) {
+    pop[i, innovation_i[i]] <- 1
+  }
+  pop
+}
+
+###
+### MAIN FUNCTION
+###
+
+mockup_oranzees <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_run) {
+  
+  N <- 100
+  
+  if(n_run == 1){
+    output <- matrix(nrow = t_max, ncol = 38)
+  }
+  else{
+    output <- matrix(nrow = n_run, ncol = 38)
+  }
+  
+  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+  test_world <- oranzees_world %>%
+    filter(population == "Uossob")
+  
+  for(run in 1:n_run){
+    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+    if (init_world) {
+      oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+      test_world <- oranzees_world %>%
+        filter(population == "Uossob")
+    }
+    # start simulation here:
+    for (t in 1:t_max) {
+      if(n_run == 1){
+        output[t,] <- colSums(pop[, 1:38])
+      }
+      pop <- update_demography(pop)
+      pop <- update_social_behaviours(pop, test_world, sd_peering)
+      pop <- update_food_behaviours(pop, test_world, sd_peering)
+    }
+    if( n_run > 1){
+      output[run, ] <- colSums(pop[, 1:38])
+    }  
+  }
+  output
+}
+```
+
+We can now call again the main function, for the case of $\alpha=0.5$, but for two lower values of `sd_peering`, i.e. 0.1 and 0.01 (as before, the data are saved beforehand:
+
+```{R eval=FALSE}
+my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, sd_peering = 0.1, init_world = TRUE, n_run = 100)
+write(t(my_test), file = "output/test_alpha=0.5_sd=0.1.csv", ncolumns = 38)
+
+my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, sd_peering = 0.01, init_world = TRUE, n_run = 100)
+write(t(my_test), file = "output/test_alpha=0.5_sd=0.1.csv", ncolumns = 38)
+```
+
+We can plot the results similarly to what we did for different $\alpha$, but comparing now the effect of `sd_peering` (code in the Rmd document).
+
+```{r echo=FALSE}
+results <- as.matrix(read.table("output/test_alpha=0.5_sd=0.1.csv"))
+
+cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", "absent", "customary", "habitual", "present", "absent")),
+                     type = as_factor(c(rep("social", 4), rep("food", 4))),
+                     n_behaviours = c(sum(results[, 1:16]>=90), 
+                                  sum(results[, 1:16]>=70 & results[, 1:16]<90), 
+                                  sum(results[, 1:16]>=10 & results[, 1:16]<70), 
+                                  sum(results[, 1:16]<10),
+                                  sum(results[, 17:38]>=90), 
+                                  sum(results[, 17:38]>=70 & results[, 17:38]<90), 
+                                  sum(results[, 17:38]>=10 & results[, 17:38]<70), 
+                                  sum(results[, 17:38]<10)))
+
+cumulative_05_01 <- cumulative
+
+results <- as.matrix(read.table("output/test_alpha=0.5_sd=0.01.csv"))
+
+cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", "absent", "customary", "habitual", "present", "absent")),
+                     type = as_factor(c(rep("social", 4), rep("food", 4))),
+                     n_behaviours = c(sum(results[, 1:16]>=90), 
+                                  sum(results[, 1:16]>=70 & results[, 1:16]<90), 
+                                  sum(results[, 1:16]>=10 & results[, 1:16]<70), 
+                                  sum(results[, 1:16]<10),
+                                  sum(results[, 17:38]>=90), 
+                                  sum(results[, 17:38]>=70 & results[, 17:38]<90), 
+                                  sum(results[, 17:38]>=10 & results[, 17:38]<70), 
+                                  sum(results[, 17:38]<10)))
+
+cumulative_05_001 <- cumulative
+
+bind_rows(cumulative_05, cumulative_05_01, cumulative_05_001) %>%
+  add_column(sd=c(rep(1, 8), rep(0.1, 8), rep(0.01, 8))) %>%
+  ggplot(aes(x = sd, y = n_behaviours/100, color = category)) +
+    geom_point() +
+    geom_line() +
+    facet_wrap(~type) +
+    coord_trans(x = "log2") +
+    theme_bw()
+
+```
 
 ***

@@ -52,11 +52,11 @@ update_demography <- function(pop) {
   pop
 }
 
-update_social_behaviours <- function(pop, test_world) {
+update_social_behaviours <- function(pop, test_world, sd_peering) {
   N <- dim(pop)[1]
   state <- ((rowSums(pop[, 1:4]) >= 1) + (rowSums(pop[, 5:8]) >= 1) + (rowSums(pop[, 9:12]) >= 1) + (rowSums(pop[, 13:16]) >= 1)) / 4
   p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
-  p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
+  p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = sd_peering)
   p_peering[p_peering < 0] <- 0
   innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
   p_innovate <- runif(N) < test_world$p_g[innovation_i]  * p_state
@@ -66,13 +66,13 @@ update_social_behaviours <- function(pop, test_world) {
   pop
 }  
 
-update_food_behaviours <- function(pop, test_world) {
+update_food_behaviours <- function(pop, test_world, sd_peering) {
   N <- dim(pop)[1]
   nut_y <- (rowSums(pop[, 17:20])>=1) + (rowSums(pop[, 25:27])>=1) + (rowSums(pop[, 31:32])>=1) + pop[, 35] + pop[, 37]
   nut_z <- (rowSums(pop[, 21:24])>=1) + (rowSums(pop[, 28:30])>=1) + (rowSums(pop[, 33:34])>=1) + pop[, 36] + pop[, 38]
   state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10 
   p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
-  p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
+  p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = sd_peering)
   p_peering[p_peering < 0] <- 0
   innovation_i <- sample(17:38, N, prob = p_peering, replace = TRUE)
   p_innovate <- runif(N) < test_world$p_g[innovation_i] * test_world$p_e[innovation_i] * p_state
@@ -86,7 +86,7 @@ update_food_behaviours <- function(pop, test_world) {
 ### MAIN FUNCTION
 ###
 
-mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
+mockup_oranzees <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_run) {
   
   N <- 100
   
@@ -114,8 +114,8 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
         output[t,] <- colSums(pop[, 1:38])
       }
       pop <- update_demography(pop)
-      pop <- update_social_behaviours(pop, test_world)
-      pop <- update_food_behaviours(pop, test_world)
+      pop <- update_social_behaviours(pop, test_world, sd_peering)
+      pop <- update_food_behaviours(pop, test_world, sd_peering)
     }
     if( n_run > 1){
       output[run, ] <- colSums(pop[, 1:38])
@@ -123,7 +123,6 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
   }
   output
 }
-
 ### PLOTTING FUNCTIONS:
 plot_one_run <- function(my_test, t_max) {
   my_test <- gather(as_tibble(my_test), 1:38, key = "behaviour", value = "frequency")
@@ -163,15 +162,13 @@ plot_multiple_runs <- function(my_test, n_run) {
 
 #### WORK HERE:
 # run sims:
-my_test <- mockup_oranzees(t_max = 20000, alpha_g = 0.5, alpha_e = 0.5, init_world = TRUE, n_run = 1)
-
-
-plot_one_run(my_test = my_test, t_max = 20000)
-
+tic()
+my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, sd_peering = .01, init_world = TRUE, n_run = 100)
+toc()
 
 
 # save data:
-write(t(my_test), file = "output/test_alpha=0.9.csv", ncolumns = 38)
+write(t(my_test), file = "output/test_alpha=0.5_sd=0.01.csv", ncolumns = 38)
 
 
 # load data:
