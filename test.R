@@ -164,27 +164,12 @@ plot_multiple_runs <- function(my_test, n_run) {
 #### WORK HERE:
 # run sims:
 tic()
-my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, init_world = TRUE, n_run = 100)
+my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.9, alpha_e = 0.9, init_world = TRUE, n_run = 100)
 toc()
 # save data:
-write(t(my_test), file = "output/test_alpha=0.5.csv", ncolumns = 38)
+write(t(my_test), file = "output/test_alpha=0.9.csv", ncolumns = 38)
+
+
 # load data:
 results <- as.matrix(read.table("output/test_alpha=0.5.csv"))
-
-# plot:
-cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", "absent", "customary", "habitual", "present", "absent")),
-                     type = c(rep("social", 4), rep("food", 4)),
-                     n_behaviours = c(sum(results[, 1:16]>=90), 
-                                  sum(results[, 1:16]>=70 & results[, 1:16]<90), 
-                                  sum(results[, 1:16]>=10 & results[, 1:16]<70), 
-                                  sum(results[, 1:16]<10),
-                                  sum(results[, 17:38]>=90), 
-                                  sum(results[, 17:38]>=70 & results[, 17:38]<90), 
-                                  sum(results[, 17:38]>=10 & results[, 17:38]<70), 
-                                  sum(results[, 17:38]<10)))
-
-ggplot(data = cumulative) +
-  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
-  facet_wrap(~type) +
-  theme_bw() 
 

@@ -216,10 +216,164 @@ plot_one_run(my_test = my_test, t_max = 12000)
 
 As expected, higher values of $\alpha$ creates 'cultures' where few traits are strongly majoritary in the population, with respect to our intermediate test situation, and lower values have the opposite effect. Another thing to notice is that we probably do not need to run our simulations until $t_{max}=12000$: to save time, in the next tests (involving several runs), we will use $t_{max}=6000$.
 
-To test if what we observed from single runs is not due to any particular initialisation, we analyse now 100 runs, initalising each time the world (`init_world = TRUE`), for various values of $\alpha$. Let's start with $\alpha=1$. As before, we run the simulations only once, and we upload the data here.
+To test if what we observed from single runs is not due to any particular initialisation, we analyse now 100 runs, initalising each time the world (`init_world = TRUE`), for various values of $\alpha$. Let's start with $\alpha=0.5$. As before, we run the simulations only once, and we load the data here.
 
 ```{r eval=FALSE}
-my_test <- mockup_oranzees(t_max = 6000, alpha_g = 1, alpha_e = 1, init_world = TRUE, n_run = 100)
+my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 1, init_world = TRUE, n_run = 100)
+write(t(my_test), file = "output/test_alpha=0.5.csv", ncolumns = 38)
 ```
+
+We can use the same categories of Whiten et al., 1999, to see how many behaviours are categorised as 'customary', 'habitual', 'present', or 'absent'. We use for now custom boundaries (see the code below), as there is not a precise quantitative definition in Whiten et al. Of course, these can be changed for the final analysis. We also distinguish the results for social and food-related behaviours: 
+
+```{r}
+results <- as.matrix(read.table("output/test_alpha=0.5.csv"))
+
+cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", "absent", "customary", "habitual", "present", "absent")),
+                     type = as_factor(c(rep("social", 4), rep("food", 4))),
+                     n_behaviours = c(sum(results[, 1:16]>=90), 
+                                  sum(results[, 1:16]>=70 & results[, 1:16]<90), 
+                                  sum(results[, 1:16]>=10 & results[, 1:16]<70), 
+                                  sum(results[, 1:16]<10),
+                                  sum(results[, 17:38]>=90), 
+                                  sum(results[, 17:38]>=70 & results[, 17:38]<90), 
+                                  sum(results[, 17:38]>=10 & results[, 17:38]<70), 
+                                  sum(results[, 17:38]<10)))
+
+cumulative_05 <- cumulative
+
+ggplot(data = cumulative) +
+  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
+  facet_wrap(~type) +
+  labs(title = "α = 0.5") +
+  theme_bw() 
+```
+
+Let's do the same for other values of $\alpha$, until $\alpha=0.1$. We only show the plots in the output document, as the code is the same for all cases:
+
+```{r echo=FALSE}
+results <- as.matrix(read.table("output/test_alpha=0.6.csv"))
+
+cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", "absent", "customary", "habitual", "present", "absent")),
+                     type = as_factor(c(rep("social", 4), rep("food", 4))),
+                     n_behaviours = c(sum(results[, 1:16]>=90), 
+                                  sum(results[, 1:16]>=70 & results[, 1:16]<90), 
+                                  sum(results[, 1:16]>=10 & results[, 1:16]<70), 
+                                  sum(results[, 1:16]<10),
+                                  sum(results[, 17:38]>=90), 
+                                  sum(results[, 17:38]>=70 & results[, 17:38]<90), 
+                                  sum(results[, 17:38]>=10 & results[, 17:38]<70), 
+                                  sum(results[, 17:38]<10)))
+
+ggplot(data = cumulative) +
+  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
+  facet_wrap(~type) +
+  labs(title = "α = 0.6") +
+  theme_bw() 
+
+cumulative_06 <- cumulative
+
+results <- as.matrix(read.table("output/test_alpha=0.7.csv"))
+
+cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", "absent", "customary", "habitual", "present", "absent")),
+                     type = as_factor(c(rep("social", 4), rep("food", 4))),
+                     n_behaviours = c(sum(results[, 1:16]>=90), 
+                                  sum(results[, 1:16]>=70 & results[, 1:16]<90), 
+                                  sum(results[, 1:16]>=10 & results[, 1:16]<70), 
+                                  sum(results[, 1:16]<10),
+                                  sum(results[, 17:38]>=90), 
+                                  sum(results[, 17:38]>=70 & results[, 17:38]<90), 
+                                  sum(results[, 17:38]>=10 & results[, 17:38]<70), 
+                                  sum(results[, 17:38]<10)))
+
+ggplot(data = cumulative) +
+  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
+  facet_wrap(~type) +
+  labs(title = "α = 0.7") +
+  theme_bw() 
+
+cumulative_07 <- cumulative
+
+results <- as.matrix(read.table("output/test_alpha=0.8.csv"))
+
+cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", "absent", "customary", "habitual", "present", "absent")),
+                     type = as_factor(c(rep("social", 4), rep("food", 4))),
+                     n_behaviours = c(sum(results[, 1:16]>=90), 
+                                  sum(results[, 1:16]>=70 & results[, 1:16]<90), 
+                                  sum(results[, 1:16]>=10 & results[, 1:16]<70), 
+                                  sum(results[, 1:16]<10),
+                                  sum(results[, 17:38]>=90), 
+                                  sum(results[, 17:38]>=70 & results[, 17:38]<90), 
+                                  sum(results[, 17:38]>=10 & results[, 17:38]<70), 
+                                  sum(results[, 17:38]<10)))
+
+ggplot(data = cumulative) +
+  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
+  facet_wrap(~type) +
+  labs(title = "α = 0.8") +
+  theme_bw() 
+
+cumulative_08 <- cumulative
+
+results <- as.matrix(read.table("output/test_alpha=0.9.csv"))
+
+cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", "absent", "customary", "habitual", "present", "absent")),
+                     type = as_factor(c(rep("social", 4), rep("food", 4))),
+                     n_behaviours = c(sum(results[, 1:16]>=90), 
+                                  sum(results[, 1:16]>=70 & results[, 1:16]<90), 
+                                  sum(results[, 1:16]>=10 & results[, 1:16]<70), 
+                                  sum(results[, 1:16]<10),
+                                  sum(results[, 17:38]>=90), 
+                                  sum(results[, 17:38]>=70 & results[, 17:38]<90), 
+                                  sum(results[, 17:38]>=10 & results[, 17:38]<70), 
+                                  sum(results[, 17:38]<10)))
+
+ggplot(data = cumulative) +
+  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
+  facet_wrap(~type) +
+  labs(title = "α = 0.9") +
+  theme_bw() 
+
+cumulative_09 <- cumulative
+
+results <- as.matrix(read.table("output/test_alpha=1.csv"))
+
+cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", "absent", "customary", "habitual", "present", "absent")),
+                     type = as_factor(c(rep("social", 4), rep("food", 4))),
+                     n_behaviours = c(sum(results[, 1:16]>=90), 
+                                  sum(results[, 1:16]>=70 & results[, 1:16]<90), 
+                                  sum(results[, 1:16]>=10 & results[, 1:16]<70), 
+                                  sum(results[, 1:16]<10),
+                                  sum(results[, 17:38]>=90), 
+                                  sum(results[, 17:38]>=70 & results[, 17:38]<90), 
+                                  sum(results[, 17:38]>=10 & results[, 17:38]<70), 
+                                  sum(results[, 17:38]<10)))
+
+ggplot(data = cumulative) +
+  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
+  facet_wrap(~type) +
+  labs(title = "α = 1") +
+  theme_bw() 
+
+cumulative_1 <- cumulative
+
+```
+
+To summarise all:
+
+```{r}
+bind_rows(cumulative_05, cumulative_06, cumulative_07, cumulative_08, cumulative_09, cumulative_1) %>%
+  add_column(alpha=c(rep(0.5, 8), rep(0.6, 8), rep(0.7, 8), rep(0.8, 8), rep(0.9, 8), rep(1, 8))) %>%
+  ggplot(aes(x = alpha, y = n_behaviours, color = category)) +
+    geom_point() +
+    geom_line() +
+    facet_wrap(~type) +
+    theme_bw()
+```
+
+This plot shows a few interesting results. First, as we would expect, the effect of varying $\alpha$ is stronger for food-related than for social behviours. This is expected, because the former are constrained both by ecology and genes, while the latter only by genes. Second, when there are no constraints $\alpha=0.5$ all behaviours are present, but none of them is customary (and very few habitual). Whereas this is somehwat intuitive, we would expect social influence to have some effect on behaviours even when there are not other constraints.
+
+
+
+
 
 ***
