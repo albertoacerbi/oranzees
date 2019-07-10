@@ -378,8 +378,6 @@ The probability of innovating a specific behaviour is given by genetic and envir
 
 Intuitively, low standard deviations will produce, also when there are not environmental or ecological constraints, 'cultures' with less, and costumary, behaviours, because of random initial small differences. 
 
-### TO DO FROM HERE::::
-
 To test this, we should rewrite our functions adding a new parameter that specifies the standard deviation in the calcualation of `p_peering`. Let's call it `sd_peering`. 
 
 ```{r echo=FALSE}
@@ -456,7 +454,7 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_r
 }
 ```
 
-We can now call again the main function, for the case of $\alpha=0.5$, but for two lower values of `sd_peering`, i.e. 0.1 and 0.01 (as before, the data are saved beforehand:
+We can now call again the main function, for the case of $\alpha=0.5$, but for two lower values of `sd_peering`, i.e. 0.1 and 0.01 (as before, the data are saved beforehand):
 
 ```{R eval=FALSE}
 my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, sd_peering = 0.1, init_world = TRUE, n_run = 100)
@@ -499,15 +497,16 @@ cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", 
 
 cumulative_05_001 <- cumulative
 
-bind_rows(cumulative_05, cumulative_05_01, cumulative_05_001) %>%
-  add_column(sd=c(rep(1, 8), rep(0.1, 8), rep(0.01, 8))) %>%
-  ggplot(aes(x = sd, y = n_behaviours/100, color = category)) +
-    geom_point() +
-    geom_line() +
-    facet_wrap(~type) +
-    coord_trans(x = "log2") +
-    theme_bw()
+cumulative <- bind_rows(cumulative_05, cumulative_05_01, cumulative_05_001) %>%
+  add_column(sd=c(rep(1, 8), rep(0.1, 8), rep(0.01, 8)))
 
+cumulative$sd <- factor(cumulative$sd, levels = c(1, 0.1, 0.01))
+
+ggplot(data = cumulative, aes(x = sd, y = n_behaviours/100, color = category, group = category)) +
+  geom_point() +
+  stat_summary(fun.y = mean, geom="line" ) +
+  facet_wrap(~type) +
+  theme_bw()
 ```
 
 ***

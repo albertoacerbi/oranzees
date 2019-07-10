@@ -168,7 +168,7 @@ toc()
 
 
 # save data:
-write(t(my_test), file = "output/test_alpha=0.5_sd=0.01.csv", ncolumns = 38)
+write(t(my_test), file = "output/test_alpha=0.5_sd=0.01_b.csv", ncolumns = 38)
 
 
 # load data:
