@@ -242,7 +242,7 @@ cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", 
 cumulative_05 <- cumulative
 
 ggplot(data = cumulative) +
-  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
+  geom_bar(aes(x = category, y = n_behaviours/100), stat = 'identity') +
   facet_wrap(~type) +
   labs(title = "α = 0.5") +
   theme_bw() 
@@ -265,7 +265,7 @@ cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", 
                                   sum(results[, 17:38]<10)))
 
 ggplot(data = cumulative) +
-  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
+  geom_bar(aes(x = category, y = n_behaviours/100), stat = 'identity') +
   facet_wrap(~type) +
   labs(title = "α = 0.6") +
   theme_bw() 
@@ -286,7 +286,7 @@ cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", 
                                   sum(results[, 17:38]<10)))
 
 ggplot(data = cumulative) +
-  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
+  geom_bar(aes(x = category, y = n_behaviours/100), stat = 'identity') +
   facet_wrap(~type) +
   labs(title = "α = 0.7") +
   theme_bw() 
@@ -307,7 +307,7 @@ cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", 
                                   sum(results[, 17:38]<10)))
 
 ggplot(data = cumulative) +
-  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
+  geom_bar(aes(x = category, y = n_behaviours/100), stat = 'identity') +
   facet_wrap(~type) +
   labs(title = "α = 0.8") +
   theme_bw() 
@@ -328,7 +328,7 @@ cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", 
                                   sum(results[, 17:38]<10)))
 
 ggplot(data = cumulative) +
-  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
+  geom_bar(aes(x = category, y = n_behaviours/100), stat = 'identity') +
   facet_wrap(~type) +
   labs(title = "α = 0.9") +
   theme_bw() 
@@ -349,7 +349,7 @@ cumulative <- tibble(category = as_factor(c("customary", "habitual", "present", 
                                   sum(results[, 17:38]<10)))
 
 ggplot(data = cumulative) +
-  geom_bar(aes(x = category, y = n_behaviours), stat = 'identity') +
+  geom_bar(aes(x = category, y = n_behaviours/100), stat = 'identity') +
   facet_wrap(~type) +
   labs(title = "α = 1") +
   theme_bw() 
@@ -363,17 +363,13 @@ To summarise all:
 ```{r}
 bind_rows(cumulative_05, cumulative_06, cumulative_07, cumulative_08, cumulative_09, cumulative_1) %>%
   add_column(alpha=c(rep(0.5, 8), rep(0.6, 8), rep(0.7, 8), rep(0.8, 8), rep(0.9, 8), rep(1, 8))) %>%
-  ggplot(aes(x = alpha, y = n_behaviours, color = category)) +
+  ggplot(aes(x = alpha, y = n_behaviours/100, color = category)) +
     geom_point() +
     geom_line() +
     facet_wrap(~type) +
     theme_bw()
 ```
 
-This plot shows a few interesting results. First, as we would expect, the effect of varying $\alpha$ is stronger for food-related than for social behviours. This is expected, because the former are constrained both by ecology and genes, while the latter only by genes. Second, when there are no constraints $\alpha=0.5$ all behaviours are present, but none of them is customary (and very few habitual). Whereas this is somehwat intuitive, we would expect social influence to have some effect on behaviours even when there are not other constraints.
-
-
-
-
+This plot shows a few interesting results. First, as we would expect, the effect of varying $\alpha$ is stronger for food-related than for social behviours. This is expected, because the former are constrained both by ecology and genes, while the latter only by genes. Second, when there are no constraints $\alpha=0.5$ all behaviours are present, but none of them is customary (and very few habitual). Whereas this is somehwat intuitive, we would expect social influence to have some effect on behaviours even when there are not other constraints. 
 
 ***

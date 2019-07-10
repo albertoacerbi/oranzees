@@ -163,8 +163,10 @@ plot_multiple_runs <- function(my_test, n_run) {
 
 #### WORK HERE:
 # run sims:
-my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, init_world = TRUE, n_run = 1)
-plot_one_run(my_test = my_test, t_max = 6000)
+my_test <- mockup_oranzees(t_max = 20000, alpha_g = 0.5, alpha_e = 0.5, init_world = TRUE, n_run = 1)
+
+
+plot_one_run(my_test = my_test, t_max = 20000)
 
 
 
