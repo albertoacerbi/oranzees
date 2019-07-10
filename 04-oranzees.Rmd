@@ -172,7 +172,7 @@ plot_one_run(my_test = my_test, t_max = 12000)
 
 Here the function to visualise multiple runs:
 
-```{r}
+```{r message=FALSE}
 library(reshape2)
 plot_multiple_runs <- function(my_test, n_run) {
   as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
@@ -214,7 +214,7 @@ my_test <- mockup_oranzees(t_max = 12000, alpha_g = 0.5, alpha_e = 0.5, init_wor
 plot_one_run(my_test = my_test, t_max = 12000)
 ```
 
-As expected, higher values of $\alpha$ creates 'cultures' where few traits are strongly majoritary in the population, with respect to our intermediate test situation, and lower values have the opposite effect. Another thing to notice is that we probably do not need to run our simulations until $t_max=12000$: to save time, in the next tests (involving several runs), we will use $t_max=6000$.
+As expected, higher values of $\alpha$ creates 'cultures' where few traits are strongly majoritary in the population, with respect to our intermediate test situation, and lower values have the opposite effect. Another thing to notice is that we probably do not need to run our simulations until $t_{max}=12000$: to save time, in the next tests (involving several runs), we will use $t_{max}=6000$.
 
 To test if what we observed from single runs is not due to any particular initialisation, we analyse now 100 runs, initalising each time the world (`init_world = TRUE`), for various values of $\alpha$. Let's start with $\alpha=1$. As before, we run the simulations only once, and we upload the data here.
 
@@ -222,5 +222,4 @@ To test if what we observed from single runs is not due to any particular initia
 my_test <- mockup_oranzees(t_max = 6000, alpha_g = 1, alpha_e = 1, init_world = TRUE, n_run = 100)
 ```
 
-
-
+***
