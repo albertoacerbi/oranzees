@@ -163,9 +163,11 @@ plot_multiple_runs <- function(my_test, n_run) {
 
 #### WORK HERE:
 # run sims:
-tic()
-my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.9, alpha_e = 0.9, init_world = TRUE, n_run = 100)
-toc()
+my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, init_world = TRUE, n_run = 1)
+plot_one_run(my_test = my_test, t_max = 6000)
+
+
+
 # save data:
 write(t(my_test), file = "output/test_alpha=0.9.csv", ncolumns = 38)
 
