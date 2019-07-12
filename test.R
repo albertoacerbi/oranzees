@@ -165,7 +165,7 @@ plot_multiple_runs <- function(my_test, n_run) {
 # run sims:
 
 tic()
-my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.7, alpha_e = 0.9, sd_peering = 1, init_world = TRUE, n_run = 10)
+my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, sd_peering = 1, init_world = TRUE, n_run = 10)
 toc()
 
 
