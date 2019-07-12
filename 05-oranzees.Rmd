@@ -35,23 +35,23 @@ set_oranzees_world <- function(alpha_g, alpha_e) {
     p_g = rep(NA, 38 * 6),
     p_e = rep(NA, 38 * 6)
   )
-  
+
   env_or_x <- c(220, 230, 700, 705, 710, 750)
   env_or_y <- c(660, 610, 450, 430, 510, 550)
-  
+
   # genetic predispositions:
   x_g <- sample(1:1000, 38)
   y_g <- sample(1:1000, 38)
-  
+
   # ecological availability:
   x_e <- sample(1:1000, 38)
   y_e <- sample(1:1000, 38)
-  
-  for(behav in 1:38){
-    output[output$behaviour == behav,]$p_g <- 1 - rescale(sqrt((x_g[behav] - env_or_x)^2 + (y_g[behav] - env_or_y)^2), to = c(1 - alpha_g, alpha_g))
-    
-    if(behav > 16){
-      output[output$behaviour == behav,]$p_e <- 1 - rescale(sqrt((x_e[behav] - env_or_x)^2 + (y_e[behav] - env_or_y)^2), to = c(1 - alpha_e, alpha_e))
+
+  for (behav in 1:38) {
+    output[output$behaviour == behav, ]$p_g <- 1 - rescale(sqrt((x_g[behav] - env_or_x)^2 + (y_g[behav] - env_or_y)^2), to = c(1 - alpha_g, alpha_g))
+
+    if (behav > 16) {
+      output[output$behaviour == behav, ]$p_e <- 1 - rescale(sqrt((x_e[behav] - env_or_x)^2 + (y_e[behav] - env_or_y)^2), to = c(1 - alpha_e, alpha_e))
     }
   }
   # return the tibble:
@@ -74,18 +74,18 @@ update_social_behaviours <- function(pop, test_world, sd_peering) {
   p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = sd_peering)
   p_peering[p_peering < 0] <- 0
   innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
-  p_innovate <- runif(N) < test_world$p_g[innovation_i]  * p_state
+  p_innovate <- runif(N) < test_world$p_g[innovation_i] * p_state
   for (i in (1:N)[p_innovate]) {
     pop[i, innovation_i[i]] <- 1
   }
   pop
-}  
+}
 
 update_food_behaviours <- function(pop, test_world, sd_peering) {
   N <- dim(pop)[1]
-  nut_y <- (rowSums(pop[, 17:20])>=1) + (rowSums(pop[, 25:27])>=1) + (rowSums(pop[, 31:32])>=1) + pop[, 35] + pop[, 37]
-  nut_z <- (rowSums(pop[, 21:24])>=1) + (rowSums(pop[, 28:30])>=1) + (rowSums(pop[, 33:34])>=1) + pop[, 36] + pop[, 38]
-  state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10 
+  nut_y <- (rowSums(pop[, 17:20]) >= 1) + (rowSums(pop[, 25:27]) >= 1) + (rowSums(pop[, 31:32]) >= 1) + pop[, 35] + pop[, 37]
+  nut_z <- (rowSums(pop[, 21:24]) >= 1) + (rowSums(pop[, 28:30]) >= 1) + (rowSums(pop[, 33:34]) >= 1) + pop[, 36] + pop[, 38]
+  state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10
   p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
   p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = sd_peering)
   p_peering[p_peering < 0] <- 0
@@ -131,7 +131,67 @@ head(my_test)
 
 Each of the first six lines shows an oranzee. A first aspect is, as said before, the distribution of traits among the population. 
 
+```{r}
+tibble(sum_traits = rowSums(my_test[, 1:38]), individual = 1:100) %>%
+  ggplot() +
+  geom_histogram(aes(x = sum_traits), bins = 15, colour = "black") +
+  labs(x = "Number of traits", y = "Number of oranzees") +
+  geom_vline(aes(xintercept = mean(sum_traits)), color = "red") +
+  theme_bw()
+```
 
+The distribution looks as expected. Oranzees have an average number of traits of 15 or slightly more (this changes depending on the run), and the distribution is roughly normal. The left side of the distribution is however more skewed, meaninig that some individuals have less traits that what would be predicted. They are likley to be younger individuals, that did not have time yet to acquire their traits. To check this, we can visually check the correlation between age and number of traits:
+
+```{r}
+tibble(sum_traits = rowSums(my_test[, 1:38]), individual = 1:100, age = my_test[, 39]) %>%
+  ggplot(aes(x = age / 12, y = sum_traits)) +
+  geom_point() +
+  labs(x = "Age (in years)", y = "Number of traits") +
+  geom_smooth(method = loess) +
+  theme_bw()
+```
+
+This plot shows that, indeed, younger individuals have less traits, and that they acquire them during their life. Not only, it also shows that, at a certain age, usually around 20 years, the number of traits arrive at a plateau, meaning that oranzees stop to acquire new traits. 
+
+We can also examine in the same way what happens for other parameters, for exmaple when there are strong genetic and environmental constraints (i.e. $\alpha_g=1$ and $\alpha_e=1$):
+
+```{r}
+my_test <- mockup_oranzees_pop(t_max = 6000, alpha_g = 1, alpha_e = 1, sd_peering = 1)
+my_test <- tibble(sum_traits = rowSums(my_test[, 1:38]), individual = 1:100, age = my_test[, 39])
+
+ggplot(data = my_test) +
+  geom_histogram(aes(x = sum_traits), bins = 15, colour = "black") +
+  labs(x = "Number of traits", y = "Number of oranzees") +
+  geom_vline(aes(xintercept = mean(sum_traits)), color = "red") +
+  theme_bw()
+
+ggplot(data = my_test, aes(x = age / 12, y = sum_traits)) +
+  geom_point() +
+  labs(x = "Age (in years)", y = "Number of traits") +
+  geom_smooth(method = loess) +
+  theme_bw()
+```
+
+There are two intesting aspects to notice: the traits that each individual possesses are less, (as we already knew), and the acquisition is faster, with the plateau reached at around 10 years.   
+
+We can now do the same for the situation in which there are not genetic or environmental constraints, that is with $\alpha_g=0.5$ and $\alpha_e=0.5$ (code not shown):
+
+```{r echo=FALSE}
+my_test <- mockup_oranzees_pop(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, sd_peering = 1)
+my_test <- tibble(sum_traits = rowSums(my_test[, 1:38]), individual = 1:100, age = my_test[, 39])
+
+ggplot(data = my_test) +
+  geom_histogram(aes(x = sum_traits), bins = 15, colour = "black") +
+  labs(x = "Number of traits", y = "Number of oranzees") +
+  geom_vline(aes(xintercept = mean(sum_traits)), color = "red") +
+  theme_bw()
+
+ggplot(data = my_test, aes(x = age / 12, y = sum_traits)) +
+  geom_point() +
+  labs(x = "Age (in years)", y = "Number of traits") +
+  geom_smooth(method = loess) +
+  theme_bw()
+```
 
 
 ***
