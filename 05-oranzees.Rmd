@@ -13,7 +13,7 @@ This R markdown file documents the development of the Oranzees model (it continu
 
 ### Tests at individual-level
 
-So far, we focused on the results at population and trait-level: how many traits are in the population? What are the successfull traits? And so on. Another important aspect is to understand what happens at individual level. Are there some individuals with many traits and other with few? What is the effect of age? How do these features interact with our other parameters, such as the two values of $\alpha$?
+So far, we focused on the results at population and trait-level: how many traits are in the population? What are the successful traits? And so on. Another important aspect is to understand what happens at individual level. Are there some individuals with many traits and other with few? What is the effect of age? How do these features interact with our other parameters, such as the two values of $\alpha$?
 
 As usual, We first run the code for the last versions of the functions we wrote, without showing it in the html rendering (remember the option`echo=FALSE`).
 
@@ -140,7 +140,7 @@ tibble(sum_traits = rowSums(my_test[, 1:38]), individual = 1:100) %>%
   theme_bw()
 ```
 
-The distribution looks as expected. Oranzees have an average number of traits of 15 or slightly more (this changes depending on the run), and the distribution is roughly normal. The left side of the distribution is however more skewed, meaninig that some individuals have less traits that what would be predicted. They are likley to be younger individuals, that did not have time yet to acquire their traits. To check this, we can visually check the correlation between age and number of traits:
+The distribution looks as expected. Oranzees have an average number of traits of 15 or slightly more (this changes depending on the run), and the distribution is roughly normal. The left side of the distribution is however more skewed, meaning that some individuals have less traits that what would be predicted. They are likely to be younger individuals, that did not have time yet to acquire their traits. To check this, we can visually check the correlation between age and number of traits:
 
 ```{r}
 tibble(sum_traits = rowSums(my_test[, 1:38]), individual = 1:100, age = my_test[, 39]) %>%
@@ -153,7 +153,7 @@ tibble(sum_traits = rowSums(my_test[, 1:38]), individual = 1:100, age = my_test[
 
 This plot shows that, indeed, younger individuals have less traits, and that they acquire them during their life. Not only, it also shows that, at a certain age, usually around 20 years, the number of traits arrive at a plateau, meaning that oranzees stop to acquire new traits. 
 
-We can also examine in the same way what happens for other parameters, for exmaple when there are strong genetic and environmental constraints (i.e. $\alpha_g=1$ and $\alpha_e=1$):
+We can also examine in the same way what happens for other parameters, for example when there are strong genetic and environmental constraints (i.e. $\alpha_g=1$ and $\alpha_e=1$):
 
 ```{r}
 my_test <- mockup_oranzees_pop(t_max = 6000, alpha_g = 1, alpha_e = 1, sd_peering = 1)
@@ -172,7 +172,7 @@ ggplot(data = my_test, aes(x = age / 12, y = sum_traits)) +
   theme_bw()
 ```
 
-There are two intesting aspects to notice: the traits that each individual possesses are less, (as we already knew), and the acquisition is faster, with the plateau reached at around 10 years.   
+There are two interesting aspects to notice: the traits that each individual possesses are less, (as we already knew), and the acquisition is faster, with the plateau reached at around 10 years.   
 
 We can now do the same for the situation in which there are not genetic or environmental constraints, that is with $\alpha_g=0.5$ and $\alpha_e=0.5$ (code not shown):
 
@@ -193,6 +193,83 @@ ggplot(data = my_test, aes(x = age / 12, y = sum_traits)) +
   theme_bw()
 ```
 
+As we explored in [04-oranzees.html](04-oranzees.html), increasing the precision of social influence should make the unconstrained situation, more similar to the intermediate one. We can run the same set-up, but now with `sd_peering=0.01`:
+
+```{r echo=FALSE}
+my_test <- mockup_oranzees_pop(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, sd_peering = 0.01)
+my_test <- tibble(sum_traits = rowSums(my_test[, 1:38]), individual = 1:100, age = my_test[, 39])
+
+ggplot(data = my_test) +
+  geom_histogram(aes(x = sum_traits), bins = 15, colour = "black") +
+  labs(x = "Number of traits", y = "Number of oranzees") +
+  geom_vline(aes(xintercept = mean(sum_traits)), color = "red") +
+  theme_bw()
+
+ggplot(data = my_test, aes(x = age / 12, y = sum_traits)) +
+  geom_point() +
+  labs(x = "Age (in years)", y = "Number of traits") +
+  geom_smooth(method = loess) +
+  theme_bw()
+```
+
+***
+
+Another way to look at similar information is to follow each individual through time. We can modify again `mockup_oranzee()` to produce as output the full story of all oranzees stored in one slot of the matrix population, say the first one (this choice is purely arbitrary). Since when an oranzee dies a naive one replace him in the matrix, a slot in a matrix is effectively a random sample of the population:
+
+```{r}
+mockup_oranzees_pop2 <- function(t_max, alpha_g, alpha_e, sd_peering) {
+  N <- 100
+  output <- matrix(nrow = t_max, ncol = 39)
+  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+  test_world <- oranzees_world %>%
+    filter(population == "Uossob")
+  pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+  # start simulation here:
+  for (t in 1:t_max) {
+    pop <- update_demography(pop)
+    pop <- update_social_behaviours(pop, test_world, sd_peering)
+    pop <- update_food_behaviours(pop, test_world, sd_peering)
+    output[t, ] <- pop[1, ]
+  }
+  output
+}
+```
+
+Again, let's run if for $\alpha_g=0.7$ and $\alpha_e=0.9$:
+
+```{r}
+my_test <- mockup_oranzees_pop2(t_max = 6000, alpha_e = .9, alpha_g = .7, sd_peering = 1)
+```
+
+We can check hoe many individuals are in our sample.
+
+```{r}
+sum(my_test[, 39] == 0)
+```
+
+And at which age they died:
+
+```{r}
+my_test[which(my_test[, 39] == 0) - 1, 39] / 12
+```
+
+More interestingly, we can check how they acquired new traits through their life time:
+
+```{r}
+t_max <- 6000
+newborn_time <- which(my_test[, 39] == 0)
+individual <- as_factor(rep(
+  seq(1:(sum(my_test[, 39] == 0) + 1)),
+  c(newborn_time[1] - 1, diff(newborn_time), t_max + 1 - last(newborn_time))
+))
+
+tibble(n_traits = rowSums(my_test[, 1:38]), age = my_test[, 39] / 12, oranzee_ID = individual) %>%
+  ggplot(aes(x = age, y = n_traits, colour = oranzee_ID)) +
+  geom_line() +
+  theme_bw()
+```
+
+As expected. Notice there should be an oranzee (the one with $ID=1$) that starts at zero traits somewhere in the middle of the x-axis. This is the oranzee in the initial population, where all individuals are initialised with random ages and zero traits.
 
 ***
 
