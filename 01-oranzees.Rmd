@@ -146,6 +146,8 @@ for (i in 1:1000) {
   }
 }
 gradient_g <- 1 - rescale(gradient_g, to = c(1 - alpha_g, alpha_g), from = c(min(d_g), max(d_g)))
+gradient_g[gradient_g > 1] <- 1
+gradient_g[gradient_g < 0] <- 0
 ```
 
 And we then plot it, using the R package [`viridis`](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html), for the colour scale.
@@ -197,7 +199,8 @@ for (i in 1:1000) {
   }
 }
 gradient_e <- 1 - rescale(gradient_e, to = c(1 - alpha_e, alpha_e), from = c(min(d_e), max(d_e)))
-
+gradient_e[gradient_e > 1] <- 1
+gradient_e[gradient_e < 0] <- 0
 
 par(pty = "s")
 image(1:1000, 1:1000, gradient_e, col = magma(10), xlab = "env_or_x", ylab = "env_or_y")
