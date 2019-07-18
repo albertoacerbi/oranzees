@@ -1,4 +1,5 @@
 library(tidyverse)
+library(scales)
 
 set_oranzees_world <- function(alpha_g, alpha_e) {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
@@ -37,4 +38,7 @@ set_oranzees_world <- function(alpha_g, alpha_e) {
   output
 }
 
+# example call:
+alpha_g = 0.7
+alpha_e = 0.9
 oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
