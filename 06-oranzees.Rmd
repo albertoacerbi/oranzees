@@ -13,7 +13,7 @@ This R markdown file documents the development of the Oranzees model (it continu
 
 ### Whiten et al. codes for behaviours
 
-In [04-oranzees.html](04-oranzees.html), we tested the model using a provisional definition for the codes of Whiten et al., 1999 (‘customary’, ‘habitual’, ‘present’, or ‘absent’). We now elaborate on this codes, in order to have a closer match with the original paper. 
+In [04-oranzees.html](04-oranzees.html), we tested the model using a provisional definition for the codes of Whiten et al., 1999 (‘customary’, ‘habitual’, ‘present’, or ‘absent’). We now elaborate on these codes, in order to have a closer match with the original paper. 
 
 #### TO DO:
 
