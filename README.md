@@ -14,4 +14,4 @@ Plus two folders:
 
 * [material/](material): folder with media used in the Rmd files.
 
-* [output/](output): folder with outputs from simulatiosn used in the Rmd files.
+* [output/](output): folder with outputs from simulations used in the Rmd files.
