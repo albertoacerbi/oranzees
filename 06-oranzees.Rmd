@@ -1,0 +1,37 @@
+---
+title: "Oranzees model (06)"
+author: "Alberto Acerbi"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This R markdown file documents the development of the Oranzees model (it continues from [05-oranzees.html](05-oranzees.html)). The code-only version to run the model is in the file [main.R](main.R) in the same repository.
+
+### Whiten et al. codes for behaviours
+
+In [04-oranzees.html](04-oranzees.html), we tested the model using a provisional definition for the codes of Whiten et al., 1999 (‘customary’, ‘habitual’, ‘present’, or ‘absent’). We now elaborate on this codes, in order to have a closer match with the original paper. 
+
+#### TO DO:
+
+* Divide the population in three age-classes
+
+* *customary* is a behaviour observed in over 50% of individuals in at least one age class.
+
+* *habitual* is a behaviour observed in at least two individuals over all the population (CT suggest 'observed more than once', but we do not have actual performance of the behaviours in the model).
+
+* *present* is a behaviour observed in at least one individual over all the population.
+
+* *absent* is a behviour never observed.
+
+
+
+
+***
+
+<!-- The documentation continues in [07-oranzees.html](07-oranzees.html) -->
+
+

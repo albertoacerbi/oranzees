@@ -223,7 +223,7 @@ my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.5, alpha_e = 0.5, init_worl
 write(t(my_test), file = "output/test_alpha=0.5.csv", ncolumns = 38)
 ```
 
-We can use the same categories of Whiten et al., 1999, to see how many behaviours are categorised as 'customary', 'habitual', 'present', or 'absent'. We use for now custom boundaries (see the code below), as there is not a precise quantitative definition in Whiten et al. Of course, these can be changed for the final analysis. We also distinguish the results for social and food-related behaviours: 
+We can use the same codes of Whiten et al., 1999, to see how many behaviours are codes as 'customary', 'habitual', 'present', or 'absent'. We use for now custom boundaries (see the code below), as there is not a precise quantitative definition in Whiten et al. Of course, these can be changed for the final analysis (see [06-oranzees.html](06-oranzees.html), where other boundaries of these codes - possbily closer to the original analysis - are discussed and tested). We also distinguish the results for social and food-related behaviours: 
 
 ```{r}
 results <- as.matrix(read.table("output/test_alpha=0.5.csv"))

@@ -272,6 +272,7 @@ tibble(n_traits = rowSums(my_test[, 1:38]), age = my_test[, 39] / 12, oranzee_ID
 As expected. Notice there should be an oranzee (the one with $ID=1$) that starts at zero traits somewhere in the middle of the x-axis. This is the oranzee in the initial population, where all individuals are initialised with random ages and zero traits.
 
 ***
-<!-- The documentation continues in [06-oranzees.html](06-oranzees.html) -->
+
+The documentation continues in [06-oranzees.html](06-oranzees.html)
 
 
