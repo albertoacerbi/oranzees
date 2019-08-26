@@ -456,7 +456,7 @@ for (i in 1:N) {
 
 ## Population dynamics
 
-At this point, we can wrap all together in a function, and see what happens to our mock-up population. We declare again the variables we are interested in, and re-initialise all the data structures, to be sure in case we changed something before. We create a variable `output` to store the information we are interested for now, that is, the frequencies of all 16 behaviours through time. The only difference in the code is the part that follow a successful innovation, i.e. after `if( runif(1) < test_environment$p_g[innovation_i])`: we assume here that a behaviour innovated in a specific category ('play', etc.) will replace the previous behaviour present there (this is the only way behaviours are discarded in the model).
+At this point, we can wrap all together in a function, and see what happens to our mock-up population. We declare again the variables we are interested in, and re-initialise all the data structures, to be sure in case we changed something before. We create a variable `output` to store the information we are interested for now, that is, the frequencies of all 16 behaviours through time. 
 
 ```{r}
 test_oranzees1 <- function(t_max, alpha_g, alpha_e) {

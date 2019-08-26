@@ -309,7 +309,7 @@ This is usually between 10 and 20 times faster!
 
 ## Final code for mock-up population
 
-It is finally time to put all together, for a simulation running single runs of the complete (social plus food-related behaviours). We will use this to perform some in-depth analyses to be sure that everything works as intended, before applying it to the 'real' oranzees populations. The final code make use of the functions we already wrote, `set_oranzees_world()`, `add_food_behaviour()`, and `add_social_behaviour()`. We need to rewrite the optimised versions of the social and the food-related behaviours, taking out global instructions (e.g. demography, or the initalisation of the environment) plus a final function that puts everything together. It is easy to start from how the final function should look like, and then add the sub-functions.
+It is finally time to put all together, for a simulation running single runs of the complete (social plus food-related behaviours). We will use this to perform some in-depth analyses to be sure that everything works as intended, before applying it to the 'real' oranzees populations. The final code make use of the function we already wrote, `set_oranzees_world()`. We need to rewrite the optimised versions of the social and the food-related behaviours, taking out global instructions (e.g. demography, or the initalisation of the environment) plus a final function that puts everything together. It is easy to start from how the final function should look like, and then add the sub-functions.
 
 ```{r}
 mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world) {
@@ -333,7 +333,7 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world) {
 }
 ```
 
-Something like that should do what we want. Notice that we still need to write the appropriate functions, and also the new parameter `init_world`. We will pass `TRUE` (or $1$) if we want the environment to be initialised each time we run the function, and `FALSE` (or $0$) if we want to use an environment created separately. This is helpful to run multiple tests with the same or different environments (before we were using two different functions).
+Something like that should do what we want. Notice that we still need to write the appropriate functions, and notice also the new parameter `init_world`. We will pass `TRUE` (or $1$) if we want the environment to be initialised each time we run the function, and `FALSE` (or $0$) if we want to use an environment created separately. This is helpful to run multiple tests with the same or different environments (before we were using two different functions).
 
 Let's write here the three new functions we need:
 ```{r}
