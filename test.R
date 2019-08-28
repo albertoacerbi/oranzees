@@ -178,5 +178,61 @@ write(t(my_test), file = "output/test_alpha=0.5.csv", ncolumns = 38)
 results <- as.matrix(read.table("output/test_alpha=0.5.csv"))
 
 
+### WITH NEW WHITEN ET AL. CODES:
+mockup_oranzees_codes <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_run) {
+  
+  N <- 100
+  
+  output <- matrix(nrow = n_run, ncol = 5)
+  
+  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+  test_world <- oranzees_world %>%
+    filter(population == "Uossob")
+  
+  for(run in 1:n_run){
+    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+    if (init_world) {
+      oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+      test_world <- oranzees_world %>%
+        filter(population == "Uossob")
+    }
+    # start simulation here:
+    for (t in 1:t_max) {
+      pop <- update_demography(pop)
+      pop <- update_social_behaviours(pop, test_world, sd_peering)
+      pop <- update_food_behaviours(pop, test_world, sd_peering)
+    }
+    # calculate codes values:
+    
+    # age classes:
+    adults = pop[,39]/12 > 16
+    subadults = pop[,39]/12 > 8 & pop[,39]/12 <= 16
+    juveniles = pop[,39]/12 <= 8
+    
+    # customary:
+    customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
+    customary_subadults <- colSums(pop[subadults,1:38])>(sum(subadults)/2)
+    customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
+    customary <- customary_adults | customary_subadults | customary_juveniles
+    output[run, 1] <- sum(customary)
+    
+    # habitual:
+    habitual <- colSums(pop[,1:38])>=2 & !customary
+    output[run, 2] <- sum(habitual)
+    
+    # present:
+    present <- colSums(pop[,1:38])==1
+    output[run, 3] <- sum(present)
+    
+    # absent or ecological explanation:
+    all_absent <- !(customary | habitual | present)
+    absent <- all_absent & test_world$p_e > 0
+    output[run, 4] <- sum(absent, na.rm = TRUE)
+    ecological_explanation <- all_absent & test_world$p_e == 0
+    output[run, 5] <- sum(ecological_explanation, na.rm = TRUE)
+  }
+  output
+}
+
 
 
