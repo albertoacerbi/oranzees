@@ -190,7 +190,7 @@ tibble(code = as_factor(rep(c("customary", "habitual", "present", "absent", "eco
     theme_bw()
 ```
 
-Not surpising, the values for the code *ecological avaialbility* are all 0s. This is due to the fact that with $\alpha_e=0.9$, we rescale the output between 0.1 and 0.9. To have behaviours that are *impossible* to be innovated, we need to set $\alpha_e=1$. We can try with this new value:
+Not surpising, the values for the code *ecological availability* are all 0s. This is due to the fact that with $\alpha_e=0.9$, we rescale the output between 0.1 and 0.9. To have behaviours that are *impossible* to be innovated, we need to set $\alpha_e=1$. We can try with this new value:
 
 ```{r}
 my_test <- mockup_oranzees_codes(t_max = 6000, alpha_g = 0.7, alpha_e = 1, sd_peering = 1, init_world = TRUE, n_run = 10)
@@ -231,11 +231,125 @@ tibble(code = as_factor(rep(c("customary", "habitual", "present", "absent", "eco
 
 ### The six populations
 
-Up until now, we worked on a sinlge population to test the model. The ultimate goal of the model is, however, to compare the "culture" in the six populations of oranzees (remember the function `set_oranzees_world()`). 
+Up until now, we worked on a sinlge population to test the model. The ultimate goal of the model is, however, to compare the "cultures" in the six populations of oranzees (remember the function `set_oranzees_world()`). 
 
-We should now write a new function `run_oranzees()` that iterate the simulations on the six populations and outputs the results we are interested in. For now, we use the various implementation choices made above, and we set six custom population sizes.  
+We should now write a new function `run_oranzees()` that iterates the simulation on the six populations and outputs the results we are interested in. For now, we use the various implementation choices made above, and we set six custom population sizes.
+
+```{r}
+run_oranzees <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_run) {
+  
+  N <- c(50, 100, 150, 50, 100, 150)
+  
+  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+  
+  output <- tibble(run = rep(1:n_run, each= 38 * 6),
+                    population = rep(oranzees_world$population, n_run),
+                   behaviour = rep(1:38, 6 * n_run),
+                    code = rep("NA", 38 * 6 * n_run))
+  
+  for(run in 1:n_run){
+    
+    if (init_world) {
+      oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+    }
+    
+    for(current_population in 1:6){ 
+      pop <- matrix(c(rep(0, 38 * N[current_population]), 
+                      sample(1:300, N[current_population], replace = TRUE)), 
+                    nrow = N[current_population], byrow = FALSE)
+      current_world <- oranzees_world %>%
+        filter(population == unique(oranzees_world$population)[current_population])
+      # start simulation here:
+      for (t in 1:t_max) {
+        pop <- update_demography(pop)
+        pop <- update_social_behaviours(pop, current_world, sd_peering)
+        pop <- update_food_behaviours(pop, current_world, sd_peering)
+      }
+      
+      # calculate output:
+    
+      # age classes:
+      adults = pop[,39]/12 > 16
+      subadults = pop[,39]/12 > 8 & pop[,39]/12 <= 16
+      juveniles = pop[,39]/12 <= 8
+    
+      # customary:
+      customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
+      customary_subadults <- colSums(pop[subadults,1:38])>(sum(subadults)/2)
+      customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
+      customary <- customary_adults | customary_subadults | customary_juveniles
+      output[output$population==current_world$population & output$run == run & customary==TRUE,4] <- "customary"
+    
+      # habitual:
+      habitual <- colSums(pop[,1:38])>=2 & !customary
+      output[output$population==current_world$population & output$run == run & habitual==TRUE,4] <- "habitual"
+      
+      # present:
+      present <- colSums(pop[,1:38])==1
+      output[output$population==current_world$population & output$run == run & present==TRUE,4] <- "present"
+      
+      # absent or ecological explanation:
+      all_absent <- !(customary | habitual | present)
+      absent <- all_absent & (current_world$type == "social" | current_world$p_e > 0)
+      output[output$population==current_world$population & output$run == run & absent==TRUE,4] <- "absent"
+      ecological_explanation <- all_absent & (current_world$type == "food-related" & current_world$p_e == 0)
+      output[output$population==current_world$population & output$run == run & ecological_explanation==TRUE,4] <- "ecological explanation"
+    }
+  }
+  output
+}
+```
+
+The function is similar to the previous `mockup_oranzees_codes()` with few key differences:
+
+* we set *N* for the six populations, with: `N <- c(50, 100, 150, 50, 100, 150)` 
+
+* the `output` is different (we will explore it later)
+
+* the simulation is run six times, one for each population.
+
+We can now run it, with $\alpha_e=1$ (so we should have some behaviours that are absent because of ecology), and with the usual, intermediate, $\alpha_g=0.7$:
+
+```{r}
+my_test <- run_oranzees(t_max = 6000, alpha_g = 0.7, alpha_e = 1, sd_peering = 1, init_world = TRUE, n_run = 1)
+```
+
+Let's have a look at the output:
+
+```{r}
+my_test
+```
+
+Each line represents a behaviour, in each population, in each run. Now we have only one run, and we can visualise the results. We divide the behaviour in "social" and "food-related" in two different plots so they are easier to read. Notice the first two lines of the code: they are needed to position the populations in the "right" order (otherwise `ggplot` would position them in alphabetical order). Let's plot the social behaviours first:
+
+```{r message = FALSE, fig.height = 7}
+library(viridis)
+my_test$population <- as.factor(my_test$population)
+levels(my_test$population) <- unique(my_test$population) 
+# social behaviour
+my_test %>%
+  filter(behaviour <= 16) %>%
+  ggplot( aes(x = population, y = behaviour, colour = code)) +
+  geom_point(size = 10) +
+  scale_color_viridis(discrete = TRUE, option = "D") +
+  ggtitle("Social behaviours") +
+  theme_bw()
+```
+
+And the food-related behaviours:
+
+```{r, fig.height = 9}
+my_test %>%
+  filter(behaviour > 16) %>%
+  ggplot( aes(x = population, y = behaviour, colour = code)) +
+  geom_point(size = 10) +
+  scale_color_viridis(discrete = TRUE, option = "D") +
+  ggtitle("Food-related behaviours") +
+  theme_bw()
+```
 
 ***
+
 
 <!-- The documentation continues in [07-oranzees.html](07-oranzees.html) -->
 
