@@ -149,7 +149,28 @@ run_oranzees <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_run)
 
 ## sandbox:::
 my_output <- run_oranzees(6000,1,1,1,1,1)
+# plot (only for one run):
+my_output$population <- as.factor(my_output$population)
+levels(my_output$population) <- unique(my_output$population) # to plot in right order
+# social behaviour
+my_output %>%
+  filter(behaviour <= 16) %>%
+  ggplot( aes(x = population, y = behaviour, colour = code)) +
+  geom_point(size = 10) +
+  scale_color_viridis(discrete = TRUE, option = "D") +
+  ggtitle("Social behaviours") +
+  theme_bw()
 
-ggplot( data = my_output, aes(x=population, y=behaviour, size=run)) +
-  geom_point()
+# food-related behaviour
+my_output %>%
+  filter(behaviour > 16) %>%
+  ggplot( aes(x = population, y = behaviour, colour = code)) +
+  geom_point(size = 10) +
+  scale_color_viridis(discrete = TRUE, option = "D") +
+  ggtitle("Food-related behaviours") +
+  theme_bw()
+
+
+
+
 
