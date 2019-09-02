@@ -203,7 +203,6 @@ tibble(code = as_factor(rep(c("customary", "habitual", "present", "absent", "eco
     theme_bw()
 ```
 
-
 As expected. As a further test, we can also relax ($\alpha_g=0.5$), or increase the strength ($\alpha_g=1$), of genetic constraints. Here te two simulations, for $\alpha_g=0.5$:
 
 ```{r}
@@ -229,6 +228,12 @@ tibble(code = as_factor(rep(c("customary", "habitual", "present", "absent", "eco
     geom_jitter(width=0.05, alpha=0.5) +
     theme_bw()
 ```
+
+### The six populations
+
+Up until now, we worked on a sinlge population to test the model. The ultimate goal of the model is, however, to compare the "culture" in the six populations of oranzees (remember the function `set_oranzees_world()`). 
+
+We should now write a new function `run_oranzees()` that iterate the simulations on the six populations and outputs the results we are interested in. For now, we use the various implementation choices made above, and we set six custom population sizes.  
 
 ***
 
