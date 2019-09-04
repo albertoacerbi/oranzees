@@ -85,7 +85,7 @@ update_food_behaviours <- function(pop, test_world, sd_peering) {
 use_behaviour <- function(pop, optimisation){
   N <- dim(pop)[1]
   optimise <- sample( c(TRUE, FALSE), N , prob = c(optimisation, 1-optimisation), replace = TRUE)
-  for( i in (1:N)[optimise==TRUE]){
+  for( i in (1:N)[optimise]){
     if(sum(pop[i, 1 : 4]) > 1){
       pop[i, sample(which(pop[i, 1 : 4] == 1), 1)] = 0
     }
