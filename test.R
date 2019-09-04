@@ -226,13 +226,151 @@ mockup_oranzees_codes <- function(t_max, alpha_g, alpha_e, sd_peering, init_worl
     
     # absent or ecological explanation:
     all_absent <- !(customary | habitual | present)
-    absent <- all_absent & test_world$p_e > 0
-    output[run, 4] <- sum(absent, na.rm = TRUE)
-    ecological_explanation <- all_absent & test_world$p_e == 0
-    output[run, 5] <- sum(ecological_explanation, na.rm = TRUE)
+    absent <- all_absent & (test_world$p_e > 0 | test_world$type == "social") 
+    output[run, 4] <- sum(absent)
+    ecological_explanation <- all_absent & (test_world$p_e == 0 & test_world$type == "food-related" ) 
+    output[run, 5] <- sum(ecological_explanation)
   }
   output
 }
 
+### ADDING OPTIMISATION:
+
+use_behaviour <- function(pop, optimisation){
+  N <- dim(pop)[1]
+  optimise <- sample( c(TRUE, FALSE), N , prob = c(optimisation, 1-optimisation), replace = TRUE)
+  for(i in 1 : N){
+    if(optimise[i]){
+      if(sum(pop[i, 1 : 4]) > 1){
+        pop[i, sample(which(pop[i, 1 : 4] == 1), 1)] = 0
+      }
+      if(sum(pop[i, 5 : 8]) > 1){
+        pop[i, sample(which(pop[i, 5 : 8] == 1), 1)+4] = 0
+      }
+      if(sum(pop[i, 9 : 12]) > 1){
+        pop[i, sample(which(pop[i, 9 : 12] == 1), 1)+8] = 0
+      }
+      if(sum(pop[i, 13 : 16]) > 1){
+        pop[i, sample(which(pop[i, 13 : 16] == 1), 1)+12] = 0
+      }
+      if(sum(pop[i, 17 : 20]) > 1){
+        pop[i, sample(which(pop[i, 17 : 20] == 1), 1)+16] = 0
+      }
+      if(sum(pop[i, 21 : 24]) > 1){
+        pop[i, sample(which(pop[i, 21 : 24] == 1), 1)+20] = 0
+      }
+      if(sum(pop[i, 25 : 27]) > 1){
+        pop[i, sample(which(pop[i, 25 : 27] == 1), 1)+24] = 0
+      }
+      if(sum(pop[i, 28 : 30]) > 1){
+        pop[i, sample(which(pop[i, 28 : 30] == 1), 1)+27] = 0
+      }
+      if(sum(pop[i, 31 : 32]) > 1){
+        pop[i, sample(which(pop[i, 31 : 32] == 1), 1)+30] = 0
+      }
+      if(sum(pop[i, 33 : 34]) > 1){
+        pop[i, sample(which(pop[i, 33 : 34] == 1), 1)+32] = 0
+      }
+    }
+  }
+  pop
+}
+
+mockup_oranzees <- function(t_max, optimisation, alpha_g, alpha_e, sd_peering, init_world, n_run) {
+  
+  N <- 100
+  
+  if(n_run == 1){
+    output <- matrix(nrow = t_max, ncol = 38)
+  }
+  else{
+    output <- matrix(nrow = n_run, ncol = 38)
+  }
+  
+  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+  test_world <- oranzees_world %>%
+    filter(population == "Uossob")
+  
+  for(run in 1:n_run){
+    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+    if (init_world) {
+      oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+      test_world <- oranzees_world %>%
+        filter(population == "Uossob")
+    }
+    # start simulation here:
+    for (t in 1:t_max) {
+      if(n_run == 1){
+        output[t,] <- colSums(pop[, 1:38])
+      }
+      pop <- update_demography(pop)
+      pop <- update_social_behaviours(pop, test_world, sd_peering)
+      pop <- update_food_behaviours(pop, test_world, sd_peering)
+      if(optimisation)
+        pop <- use_behaviour(pop, optimisation)
+    }
+    if( n_run > 1){
+      output[run, ] <- colSums(pop[, 1:38])
+    }  
+  }
+  output
+}
+
+mockup_oranzees_codes <- function(t_max, optimisation, alpha_g, alpha_e, sd_peering, init_world, n_run) {
+  
+  N <- 100
+  
+  output <- matrix(nrow = n_run, ncol = 5)
+  
+  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+  test_world <- oranzees_world %>%
+    filter(population == "Uossob")
+  
+  for(run in 1:n_run){
+    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+    if (init_world) {
+      oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+      test_world <- oranzees_world %>%
+        filter(population == "Uossob")
+    }
+    # start simulation here:
+    for (t in 1:t_max) {
+      pop <- update_demography(pop)
+      pop <- update_social_behaviours(pop, test_world, sd_peering)
+      pop <- update_food_behaviours(pop, test_world, sd_peering)
+      if(optimisation)
+        pop <- use_behaviour(pop, optimisation)
+    }
+    # calculate codes values:
+    
+    # age classes:
+    adults = pop[,39]/12 > 16
+    subadults = pop[,39]/12 > 8 & pop[,39]/12 <= 16
+    juveniles = pop[,39]/12 <= 8
+    
+    # customary:
+    customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
+    customary_subadults <- colSums(pop[subadults,1:38])>(sum(subadults)/2)
+    customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
+    customary <- customary_adults | customary_subadults | customary_juveniles
+    output[run, 1] <- sum(customary)
+    
+    # habitual:
+    habitual <- colSums(pop[,1:38])>=2 & !customary
+    output[run, 2] <- sum(habitual)
+    
+    # present:
+    present <- colSums(pop[,1:38])==1
+    output[run, 3] <- sum(present)
+    
+    # absent or ecological explanation:
+    all_absent <- !(customary | habitual | present)
+    absent <- all_absent & (test_world$p_e > 0 | test_world$type == "social") 
+    output[run, 4] <- sum(absent)
+    ecological_explanation <- all_absent & (test_world$p_e == 0 & test_world$type == "food-related" ) 
+    output[run, 5] <- sum(ecological_explanation)
+  }
+  output
+}
 
 

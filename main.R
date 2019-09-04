@@ -82,7 +82,48 @@ update_food_behaviours <- function(pop, test_world, sd_peering) {
   pop
 }
 
-run_oranzees <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_run) {
+use_behaviour <- function(pop, optimisation){
+  N <- dim(pop)[1]
+  optimise <- sample( c(TRUE, FALSE), N , prob = c(optimisation, 1-optimisation), replace = TRUE)
+  for(i in 1 : N){
+    if(optimise[i]){
+      if(sum(pop[i, 1 : 4]) > 1){
+        pop[i, sample(which(pop[i, 1 : 4] == 1), 1)] = 0
+      }
+      if(sum(pop[i, 5 : 8]) > 1){
+        pop[i, sample(which(pop[i, 5 : 8] == 1), 1)+4] = 0
+      }
+      if(sum(pop[i, 9 : 12]) > 1){
+        pop[i, sample(which(pop[i, 9 : 12] == 1), 1)+8] = 0
+      }
+      if(sum(pop[i, 13 : 16]) > 1){
+        pop[i, sample(which(pop[i, 13 : 16] == 1), 1)+12] = 0
+      }
+      if(sum(pop[i, 17 : 20]) > 1){
+        pop[i, sample(which(pop[i, 17 : 20] == 1), 1)+16] = 0
+      }
+      if(sum(pop[i, 21 : 24]) > 1){
+        pop[i, sample(which(pop[i, 21 : 24] == 1), 1)+20] = 0
+      }
+      if(sum(pop[i, 25 : 27]) > 1){
+        pop[i, sample(which(pop[i, 25 : 27] == 1), 1)+24] = 0
+      }
+      if(sum(pop[i, 28 : 30]) > 1){
+        pop[i, sample(which(pop[i, 28 : 30] == 1), 1)+27] = 0
+      }
+      if(sum(pop[i, 31 : 32]) > 1){
+        pop[i, sample(which(pop[i, 31 : 32] == 1), 1)+30] = 0
+      }
+      if(sum(pop[i, 33 : 34]) > 1){
+        pop[i, sample(which(pop[i, 33 : 34] == 1), 1)+32] = 0
+      }
+    }
+  }
+  pop
+}
+
+
+run_oranzees <- function(t_max, optimisation, alpha_g, alpha_e, sd_peering, init_world, n_run) {
   
   N <- c(50, 100, 150, 50, 100, 150)
   
@@ -110,6 +151,8 @@ run_oranzees <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_run)
         pop <- update_demography(pop)
         pop <- update_social_behaviours(pop, current_world, sd_peering)
         pop <- update_food_behaviours(pop, current_world, sd_peering)
+        if(optimisation)
+          pop <- use_behaviour(pop, optimisation)
       }
       
       # calculate output:
@@ -148,7 +191,7 @@ run_oranzees <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_run)
 
 
 ## sandbox:::
-my_output <- run_oranzees(6000,1,1,1,1,1)
+my_output <- run_oranzees(6000,1,.7,1,1,TRUE,1)
 # plot (only for one run):
 my_output$population <- as.factor(my_output$population)
 levels(my_output$population) <- unique(my_output$population) # to plot in right order
