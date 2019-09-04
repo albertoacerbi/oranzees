@@ -239,42 +239,41 @@ We can write, to this end, a new function: `use_behaviour()`. The idea is that, 
 use_behaviour <- function(pop, optimisation){
   N <- dim(pop)[1]
   optimise <- sample( c(TRUE, FALSE), N , prob = c(optimisation, 1-optimisation), replace = TRUE)
-  for(i in 1 : N){
-    if(optimise[i]){
-      if(sum(pop[i, 1 : 4]) > 1){
-        pop[i, sample(which(pop[i, 1 : 4] == 1), 1)] = 0
-      }
-      if(sum(pop[i, 5 : 8]) > 1){
-        pop[i, sample(which(pop[i, 5 : 8] == 1), 1)+4] = 0
-      }
-      if(sum(pop[i, 9 : 12]) > 1){
-        pop[i, sample(which(pop[i, 9 : 12] == 1), 1)+8] = 0
-      }
-      if(sum(pop[i, 13 : 16]) > 1){
-        pop[i, sample(which(pop[i, 13 : 16] == 1), 1)+12] = 0
-      }
-      if(sum(pop[i, 17 : 20]) > 1){
-        pop[i, sample(which(pop[i, 17 : 20] == 1), 1)+16] = 0
-      }
-      if(sum(pop[i, 21 : 24]) > 1){
-        pop[i, sample(which(pop[i, 21 : 24] == 1), 1)+20] = 0
-      }
-      if(sum(pop[i, 25 : 27]) > 1){
-        pop[i, sample(which(pop[i, 25 : 27] == 1), 1)+24] = 0
-      }
-      if(sum(pop[i, 28 : 30]) > 1){
-        pop[i, sample(which(pop[i, 28 : 30] == 1), 1)+27] = 0
-      }
-      if(sum(pop[i, 31 : 32]) > 1){
-        pop[i, sample(which(pop[i, 31 : 32] == 1), 1)+30] = 0
-      }
-      if(sum(pop[i, 33 : 34]) > 1){
-        pop[i, sample(which(pop[i, 33 : 34] == 1), 1)+32] = 0
-      }
+  for( i in (1:N)[optimise==TRUE]){
+    if(sum(pop[i, 1 : 4]) > 1){
+      pop[i, sample(which(pop[i, 1 : 4] == 1), 1)] = 0
+    }
+    if(sum(pop[i, 5 : 8]) > 1){
+      pop[i, sample(which(pop[i, 5 : 8] == 1), 1)+4] = 0
+    }
+    if(sum(pop[i, 9 : 12]) > 1){
+      pop[i, sample(which(pop[i, 9 : 12] == 1), 1)+8] = 0
+    }
+    if(sum(pop[i, 13 : 16]) > 1){
+      pop[i, sample(which(pop[i, 13 : 16] == 1), 1)+12] = 0
+    }
+    if(sum(pop[i, 17 : 20]) > 1){
+      pop[i, sample(which(pop[i, 17 : 20] == 1), 1)+16] = 0
+    }
+    if(sum(pop[i, 21 : 24]) > 1){
+      pop[i, sample(which(pop[i, 21 : 24] == 1), 1)+20] = 0
+    }
+    if(sum(pop[i, 25 : 27]) > 1){
+      pop[i, sample(which(pop[i, 25 : 27] == 1), 1)+24] = 0
+    }
+    if(sum(pop[i, 28 : 30]) > 1){
+      pop[i, sample(which(pop[i, 28 : 30] == 1), 1)+27] = 0
+    }
+    if(sum(pop[i, 31 : 32]) > 1){
+      pop[i, sample(which(pop[i, 31 : 32] == 1), 1)+30] = 0
+    }
+    if(sum(pop[i, 33 : 34]) > 1){
+      pop[i, sample(which(pop[i, 33 : 34] == 1), 1)+32] = 0
     }
   }
   pop
 }
+
 ```
 
 We now need to rewrite `mockup_oranzees_codes()` to add the function above, and with a parameter for $optimisation$ in the call.

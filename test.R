@@ -82,195 +82,39 @@ update_food_behaviours <- function(pop, test_world, sd_peering) {
   pop
 }
 
-###
-### MAIN FUNCTION
-###
-
-mockup_oranzees <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_run) {
-  
-  N <- 100
-  
-  if(n_run == 1){
-    output <- matrix(nrow = t_max, ncol = 38)
-  }
-  else{
-    output <- matrix(nrow = n_run, ncol = 38)
-  }
-  
-  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
-  test_world <- oranzees_world %>%
-    filter(population == "Uossob")
-  
-  for(run in 1:n_run){
-    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
-    if (init_world) {
-      oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
-      test_world <- oranzees_world %>%
-        filter(population == "Uossob")
-    }
-    # start simulation here:
-    for (t in 1:t_max) {
-      if(n_run == 1){
-        output[t,] <- colSums(pop[, 1:38])
-      }
-      pop <- update_demography(pop)
-      pop <- update_social_behaviours(pop, test_world, sd_peering)
-      pop <- update_food_behaviours(pop, test_world, sd_peering)
-    }
-    if( n_run > 1){
-      output[run, ] <- colSums(pop[, 1:38])
-    }  
-  }
-  output
-}
-### PLOTTING FUNCTIONS:
-plot_one_run <- function(my_test, t_max) {
-  my_test <- gather(as_tibble(my_test), 1:38, key = "behaviour", value = "frequency")
-  data_to_plot <- tibble(
-    behaviour = my_test$behaviour,
-    frequency = my_test$frequency,
-    time = rep(1:t_max, 38),
-    category = as_factor(c(
-      rep("play", t_max * 4), rep("display", t_max * 4), rep("groom", t_max * 4), rep("courthsip", t_max * 4),
-      rep("A", t_max * 4), rep("B", t_max * 4), rep("C", t_max * 3), rep("D", t_max * 3),
-      rep("E", t_max * 2), rep("F", t_max * 2), rep("G", t_max), rep("H", t_max),
-      rep("I", t_max), rep("J", t_max)
-    ))
-  )
-  ggplot(data = data_to_plot) +
-    geom_line(aes(x = time, y = frequency, color = behaviour)) +
-    facet_wrap(~category) +
-    theme_bw() +
-    theme(legend.position = "none")
-}
-
-plot_multiple_runs <- function(my_test, n_run) {
-  as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
-    mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
-    add_column(category = as_factor(c(
-      rep("play", 4 * n_run), rep("display", 4 * n_run), rep("groom", 4 * n_run), rep("courthsip", 4 * n_run),
-      rep("A", 4 * n_run), rep("B", 4 * n_run), rep("C", 3 * n_run), rep("D", 3 * n_run),
-      rep("E", 2 * n_run), rep("F", 2 * n_run), rep("G", n_run), rep("H", n_run),
-      rep("I", n_run), rep("J", n_run)
-    ))) %>%
-    ggplot() +
-    geom_raster(aes(x = behaviour, y = run, fill = frequency)) +
-    facet_wrap(~category, scales = "free") +
-    scale_fill_gradient(low = "grey90", high = "red") +
-    theme_bw()
-}
-
-#### WORK HERE:
-
-# run sims:
-
-tic()
-my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.7, alpha_e = 0.9, sd_peering = 1, init_world = TRUE, n_run = 10)
-toc()
-
-
-
-# save data:
-write(t(my_test), file = "output/test_alpha=0.5.csv", ncolumns = 38)
-
-
-# load data:
-results <- as.matrix(read.table("output/test_alpha=0.5.csv"))
-
-
-### WITH NEW WHITEN ET AL. CODES:
-mockup_oranzees_codes <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_run) {
-  
-  N <- 100
-  
-  output <- matrix(nrow = n_run, ncol = 5)
-  
-  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
-  test_world <- oranzees_world %>%
-    filter(population == "Uossob")
-  
-  for(run in 1:n_run){
-    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
-    if (init_world) {
-      oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
-      test_world <- oranzees_world %>%
-        filter(population == "Uossob")
-    }
-    # start simulation here:
-    for (t in 1:t_max) {
-      pop <- update_demography(pop)
-      pop <- update_social_behaviours(pop, test_world, sd_peering)
-      pop <- update_food_behaviours(pop, test_world, sd_peering)
-    }
-    # calculate codes values:
-    
-    # age classes:
-    adults = pop[,39]/12 > 16
-    subadults = pop[,39]/12 > 8 & pop[,39]/12 <= 16
-    juveniles = pop[,39]/12 <= 8
-    
-    # customary:
-    customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
-    customary_subadults <- colSums(pop[subadults,1:38])>(sum(subadults)/2)
-    customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
-    customary <- customary_adults | customary_subadults | customary_juveniles
-    output[run, 1] <- sum(customary)
-    
-    # habitual:
-    habitual <- colSums(pop[,1:38])>=2 & !customary
-    output[run, 2] <- sum(habitual)
-    
-    # present:
-    present <- colSums(pop[,1:38])==1
-    output[run, 3] <- sum(present)
-    
-    # absent or ecological explanation:
-    all_absent <- !(customary | habitual | present)
-    absent <- all_absent & (test_world$p_e > 0 | test_world$type == "social") 
-    output[run, 4] <- sum(absent)
-    ecological_explanation <- all_absent & (test_world$p_e == 0 & test_world$type == "food-related" ) 
-    output[run, 5] <- sum(ecological_explanation)
-  }
-  output
-}
-
-### ADDING OPTIMISATION:
-
 use_behaviour <- function(pop, optimisation){
   N <- dim(pop)[1]
   optimise <- sample( c(TRUE, FALSE), N , prob = c(optimisation, 1-optimisation), replace = TRUE)
-  for(i in 1 : N){
-    if(optimise[i]){
-      if(sum(pop[i, 1 : 4]) > 1){
-        pop[i, sample(which(pop[i, 1 : 4] == 1), 1)] = 0
-      }
-      if(sum(pop[i, 5 : 8]) > 1){
-        pop[i, sample(which(pop[i, 5 : 8] == 1), 1)+4] = 0
-      }
-      if(sum(pop[i, 9 : 12]) > 1){
-        pop[i, sample(which(pop[i, 9 : 12] == 1), 1)+8] = 0
-      }
-      if(sum(pop[i, 13 : 16]) > 1){
-        pop[i, sample(which(pop[i, 13 : 16] == 1), 1)+12] = 0
-      }
-      if(sum(pop[i, 17 : 20]) > 1){
-        pop[i, sample(which(pop[i, 17 : 20] == 1), 1)+16] = 0
-      }
-      if(sum(pop[i, 21 : 24]) > 1){
-        pop[i, sample(which(pop[i, 21 : 24] == 1), 1)+20] = 0
-      }
-      if(sum(pop[i, 25 : 27]) > 1){
-        pop[i, sample(which(pop[i, 25 : 27] == 1), 1)+24] = 0
-      }
-      if(sum(pop[i, 28 : 30]) > 1){
-        pop[i, sample(which(pop[i, 28 : 30] == 1), 1)+27] = 0
-      }
-      if(sum(pop[i, 31 : 32]) > 1){
-        pop[i, sample(which(pop[i, 31 : 32] == 1), 1)+30] = 0
-      }
-      if(sum(pop[i, 33 : 34]) > 1){
-        pop[i, sample(which(pop[i, 33 : 34] == 1), 1)+32] = 0
-      }
+  for( i in (1:N)[optimise==TRUE]){
+    if(sum(pop[i, 1 : 4]) > 1){
+      pop[i, sample(which(pop[i, 1 : 4] == 1), 1)] = 0
+    }
+    if(sum(pop[i, 5 : 8]) > 1){
+      pop[i, sample(which(pop[i, 5 : 8] == 1), 1)+4] = 0
+    }
+    if(sum(pop[i, 9 : 12]) > 1){
+      pop[i, sample(which(pop[i, 9 : 12] == 1), 1)+8] = 0
+    }
+    if(sum(pop[i, 13 : 16]) > 1){
+      pop[i, sample(which(pop[i, 13 : 16] == 1), 1)+12] = 0
+    }
+    if(sum(pop[i, 17 : 20]) > 1){
+      pop[i, sample(which(pop[i, 17 : 20] == 1), 1)+16] = 0
+    }
+    if(sum(pop[i, 21 : 24]) > 1){
+      pop[i, sample(which(pop[i, 21 : 24] == 1), 1)+20] = 0
+    }
+    if(sum(pop[i, 25 : 27]) > 1){
+      pop[i, sample(which(pop[i, 25 : 27] == 1), 1)+24] = 0
+    }
+    if(sum(pop[i, 28 : 30]) > 1){
+      pop[i, sample(which(pop[i, 28 : 30] == 1), 1)+27] = 0
+    }
+    if(sum(pop[i, 31 : 32]) > 1){
+      pop[i, sample(which(pop[i, 31 : 32] == 1), 1)+30] = 0
+    }
+    if(sum(pop[i, 33 : 34]) > 1){
+      pop[i, sample(which(pop[i, 33 : 34] == 1), 1)+32] = 0
     }
   }
   pop
@@ -314,6 +158,44 @@ mockup_oranzees <- function(t_max, optimisation, alpha_g, alpha_e, sd_peering, i
     }  
   }
   output
+}
+
+
+### PLOTTING FUNCTIONS:
+plot_one_run <- function(my_test, t_max) {
+  my_test <- gather(as_tibble(my_test), 1:38, key = "behaviour", value = "frequency")
+  data_to_plot <- tibble(
+    behaviour = my_test$behaviour,
+    frequency = my_test$frequency,
+    time = rep(1:t_max, 38),
+    category = as_factor(c(
+      rep("play", t_max * 4), rep("display", t_max * 4), rep("groom", t_max * 4), rep("courthsip", t_max * 4),
+      rep("A", t_max * 4), rep("B", t_max * 4), rep("C", t_max * 3), rep("D", t_max * 3),
+      rep("E", t_max * 2), rep("F", t_max * 2), rep("G", t_max), rep("H", t_max),
+      rep("I", t_max), rep("J", t_max)
+    ))
+  )
+  ggplot(data = data_to_plot) +
+    geom_line(aes(x = time, y = frequency, color = behaviour)) +
+    facet_wrap(~category) +
+    theme_bw() +
+    theme(legend.position = "none")
+}
+
+plot_multiple_runs <- function(my_test, n_run) {
+  as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
+    mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
+    add_column(category = as_factor(c(
+      rep("play", 4 * n_run), rep("display", 4 * n_run), rep("groom", 4 * n_run), rep("courthsip", 4 * n_run),
+      rep("A", 4 * n_run), rep("B", 4 * n_run), rep("C", 3 * n_run), rep("D", 3 * n_run),
+      rep("E", 2 * n_run), rep("F", 2 * n_run), rep("G", n_run), rep("H", n_run),
+      rep("I", n_run), rep("J", n_run)
+    ))) %>%
+    ggplot() +
+    geom_raster(aes(x = behaviour, y = run, fill = frequency)) +
+    facet_wrap(~category, scales = "free") +
+    scale_fill_gradient(low = "grey90", high = "red") +
+    theme_bw()
 }
 
 mockup_oranzees_codes <- function(t_max, optimisation, alpha_g, alpha_e, sd_peering, init_world, n_run) {
@@ -373,4 +255,22 @@ mockup_oranzees_codes <- function(t_max, optimisation, alpha_g, alpha_e, sd_peer
   output
 }
 
+# WORK HERE:::
+tic()
+optimised <- mockup_oranzees_codes(6000, 1, .7, 1, 1, TRUE, 10)
+toc()
+tic()
+non_optimised <- mockup_oranzees_codes(6000, 0, .7, 1, 1, TRUE, 10)
+toc()
+# VERY LOW VALUES OF OPTIMISATION (e.g. 0.05) ARE SUFFICIENT TO PRODUCE THE DESIRED EFFECT
+tic()
+mini_optimised <- mockup_oranzees_codes(6000, .05, .7, 1, 1, TRUE, 10)
+toc()
+
+tibble(code = as_factor(rep(c("customary", "habitual", "present", "absent", "ecological"), each=10)),
+       behaviours = as.vector(mini_optimised)) %>%
+  ggplot(aes( x = code, y = behaviours, fill = code)) +
+  geom_boxplot() +
+  geom_jitter(width=0.05, alpha=0.5) +
+  theme_bw()
 
