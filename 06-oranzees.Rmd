@@ -486,7 +486,6 @@ my_test %>%
 
 ***
 
-
-<!-- The documentation continues in [07-oranzees.html](07-oranzees.html) -->
+The documentation continues in [07-oranzees.html](07-oranzees.html) 
 
 

@@ -1,0 +1,22 @@
+---
+title: "Oranzees model (07)"
+author: "Alberto Acerbi"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This R markdown file documents the development of the Oranzees model (it continues from [06-oranzees.html](06-oranzees.html)). The code-only version to run the model is in the file [main.R](main.R) in the same repository.
+
+### Consolidating main.R
+
+
+***
+
+
+<!-- The documentation continues in [07-oranzees.html](07-oranzees.html) -->
+
+
