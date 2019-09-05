@@ -13,11 +13,20 @@ This R markdown file documents the development of the Oranzees model (it continu
 
 ### Consolidating main.R
 
+At this point, we have enough material to start to run some extensive tests of the simulations
 
+```{r message=FALSE}
+source('main.R')
+```
+
+```{r message=FALSE}
+my_test <- test_oranzees_1(6000,.1,.7,1,1)
+plot_one_run(my_test)
+```
 
 ***
 
 
-<!-- The documentation continues in [07-oranzees.html](07-oranzees.html) -->
+<!-- The documentation continues in [08-oranzees.html](08-oranzees.html) -->
 
 

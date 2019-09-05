@@ -6,6 +6,7 @@ library(viridis)
 #############################
 # COMMON FUNCTIONS:
 #############################
+
 set_oranzees_world <- function(alpha_g, alpha_e) {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
   output <- tibble(
