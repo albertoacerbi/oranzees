@@ -1,6 +1,11 @@
 library(tidyverse)
 library(scales)
+library(reshape2)
+library(viridis)
 
+#############################
+# COMMON FUNCTIONS:
+#############################
 set_oranzees_world <- function(alpha_g, alpha_e) {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
   output <- tibble(
@@ -38,11 +43,6 @@ set_oranzees_world <- function(alpha_g, alpha_e) {
   output
 }
 
-# example call:
-# alpha_g = 0.7
-# alpha_e = 0.9
-# oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
-
 update_demography <- function(pop) {
   pop[, 39] <- pop[, 39] + 1
   pop[pop[, 39] >= 720, ] <- 0
@@ -52,11 +52,11 @@ update_demography <- function(pop) {
   pop
 }
 
-update_social_behaviours <- function(pop, test_world, sd_peering) {
+update_social_behaviours <- function(pop, test_world) {
   N <- dim(pop)[1]
   state <- ((rowSums(pop[, 1:4]) >= 1) + (rowSums(pop[, 5:8]) >= 1) + (rowSums(pop[, 9:12]) >= 1) + (rowSums(pop[, 13:16]) >= 1)) / 4
   p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
-  p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = sd_peering)
+  p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
   p_peering[p_peering < 0] <- 0
   innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
   p_innovate <- runif(N) < test_world$p_g[innovation_i]  * p_state
@@ -66,13 +66,13 @@ update_social_behaviours <- function(pop, test_world, sd_peering) {
   pop
 }  
 
-update_food_behaviours <- function(pop, test_world, sd_peering) {
+update_food_behaviours <- function(pop, test_world) {
   N <- dim(pop)[1]
   nut_y <- (rowSums(pop[, 17:20])>=1) + (rowSums(pop[, 25:27])>=1) + (rowSums(pop[, 31:32])>=1) + pop[, 35] + pop[, 37]
   nut_z <- (rowSums(pop[, 21:24])>=1) + (rowSums(pop[, 28:30])>=1) + (rowSums(pop[, 33:34])>=1) + pop[, 36] + pop[, 38]
   state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10 
   p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
-  p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = sd_peering)
+  p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
   p_peering[p_peering < 0] <- 0
   innovation_i <- sample(17:38, N, prob = p_peering, replace = TRUE)
   p_innovate <- runif(N) < test_world$p_g[innovation_i] * test_world$p_e[innovation_i] * p_state
@@ -120,13 +120,14 @@ use_behaviour <- function(pop, optimisation){
   pop
 }
 
-
-
-run_oranzees <- function(t_max, optimisation, alpha_g, alpha_e, sd_peering, init_world, n_run) {
+###########################
+# MAIN FUNCTIONS:
+###########################
+run_oranzees <- function(t_max, optimisation, alpha_g, init_world, n_run) {
   
   N <- c(50, 100, 150, 50, 100, 150)
   
-  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+  oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
   
   output <- tibble(run = rep(1:n_run, each= 38 * 6),
                     population = rep(oranzees_world$population, n_run),
@@ -136,7 +137,7 @@ run_oranzees <- function(t_max, optimisation, alpha_g, alpha_e, sd_peering, init
   for(run in 1:n_run){
     
     if (init_world) {
-      oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
+      oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
     }
     
     for(current_population in 1:6){ 
@@ -148,8 +149,8 @@ run_oranzees <- function(t_max, optimisation, alpha_g, alpha_e, sd_peering, init
       # start simulation here:
       for (t in 1:t_max) {
         pop <- update_demography(pop)
-        pop <- update_social_behaviours(pop, current_world, sd_peering)
-        pop <- update_food_behaviours(pop, current_world, sd_peering)
+        pop <- update_social_behaviours(pop, current_world)
+        pop <- update_food_behaviours(pop, current_world)
         if(optimisation)
           pop <- use_behaviour(pop, optimisation)
       }
@@ -187,32 +188,184 @@ run_oranzees <- function(t_max, optimisation, alpha_g, alpha_e, sd_peering, init
   output
 }
 
+# TEST FUNCTION 1 (RUN ONLY ON ONE POPULATION AND PRODUCES A RICHER OUTPUT):
 
+test_oranzees_1 <- function(t_max, optimisation, alpha_g, init_world, n_run) {
+  
+  N <- 100
+  
+  if(n_run == 1){
+    output <- matrix(nrow = t_max, ncol = 38)
+  }
+  else{
+    output <- matrix(nrow = n_run, ncol = 38)
+  }
+  
+  oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
+  test_world <- oranzees_world %>%
+    filter(population == "Uossob")
+  
+  for(run in 1:n_run){
+    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+    if (init_world) {
+      oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
+      test_world <- oranzees_world %>%
+        filter(population == "Uossob")
+    }
+    # start simulation here:
+    for (t in 1:t_max) {
+      if(n_run == 1){
+        output[t,] <- colSums(pop[, 1:38])
+      }
+      pop <- update_demography(pop)
+      pop <- update_social_behaviours(pop, test_world)
+      pop <- update_food_behaviours(pop, test_world)
+      if(optimisation)
+        pop <- use_behaviour(pop, optimisation)
+    }
+    if( n_run > 1){
+      output[run, ] <- colSums(pop[, 1:38])
+    }  
+  }
+  output
+}
 
-## sandbox:::
-my_output <- run_oranzees(6000,1,.7,1,1,TRUE,1)
-# plot (only for one run):
-my_output$population <- as.factor(my_output$population)
-levels(my_output$population) <- unique(my_output$population) # to plot in right order
-# social behaviour
-my_output %>%
-  filter(behaviour <= 16) %>%
-  ggplot( aes(x = population, y = behaviour, colour = code)) +
-  geom_point(size = 10) +
-  scale_color_viridis(discrete = TRUE, option = "D") +
-  ggtitle("Social behaviours") +
-  theme_bw()
+# TEST FUNCTION 2 (RUN ONLY ON ONE POPULATION):
 
-# food-related behaviour
-my_output %>%
-  filter(behaviour > 16) %>%
-  ggplot( aes(x = population, y = behaviour, colour = code)) +
-  geom_point(size = 10) +
-  scale_color_viridis(discrete = TRUE, option = "D") +
-  ggtitle("Food-related behaviours") +
-  theme_bw()
+test_oranzees_2 <- function(t_max, optimisation, alpha_g, init_world, n_run) {
+  
+  N <- 100
+  
+  output <- matrix(nrow = n_run, ncol = 5)
+  
+  oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
+  test_world <- oranzees_world %>%
+    filter(population == "Uossob")
+  
+  for(run in 1:n_run){
+    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+    if (init_world) {
+      oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
+      test_world <- oranzees_world %>%
+        filter(population == "Uossob")
+    }
+    # start simulation here:
+    for (t in 1:t_max) {
+      pop <- update_demography(pop)
+      pop <- update_social_behaviours(pop, test_world)
+      pop <- update_food_behaviours(pop, test_world)
+      if(optimisation)
+        pop <- use_behaviour(pop, optimisation)
+    }
+    # calculate codes values:
+    
+    # age classes:
+    adults = pop[,39]/12 > 16
+    subadults = pop[,39]/12 > 8 & pop[,39]/12 <= 16
+    juveniles = pop[,39]/12 <= 8
+    
+    # customary:
+    customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
+    customary_subadults <- colSums(pop[subadults,1:38])>(sum(subadults)/2)
+    customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
+    customary <- customary_adults | customary_subadults | customary_juveniles
+    output[run, 1] <- sum(customary)
+    
+    # habitual:
+    habitual <- colSums(pop[,1:38])>=2 & !customary
+    output[run, 2] <- sum(habitual)
+    
+    # present:
+    present <- colSums(pop[,1:38])==1
+    output[run, 3] <- sum(present)
+    
+    # absent or ecological explanation:
+    all_absent <- !(customary | habitual | present)
+    absent <- all_absent & (test_world$p_e > 0 | test_world$type == "social") 
+    output[run, 4] <- sum(absent)
+    ecological_explanation <- all_absent & (test_world$p_e == 0 & test_world$type == "food-related" ) 
+    output[run, 5] <- sum(ecological_explanation)
+  }
+  output
+}
 
+#######################
+# VISUALISATIONS:
+#######################
+# TO USE WITH test_oranzees_1():
 
+plot_one_run <- function(my_test) {
+  t_max = dim(my_test)[1]
+  my_test <- gather(as_tibble(my_test), 1:38, key = "behaviour", value = "frequency")
+  data_to_plot <- tibble(
+    behaviour = my_test$behaviour,
+    frequency = my_test$frequency,
+    time = rep(1:t_max, 38),
+    category = as_factor(c(
+      rep("play", t_max * 4), rep("display", t_max * 4), rep("groom", t_max * 4), rep("courthsip", t_max * 4),
+      rep("A", t_max * 4), rep("B", t_max * 4), rep("C", t_max * 3), rep("D", t_max * 3),
+      rep("E", t_max * 2), rep("F", t_max * 2), rep("G", t_max), rep("H", t_max),
+      rep("I", t_max), rep("J", t_max)
+    ))
+  )
+  ggplot(data = data_to_plot) +
+    geom_line(aes(x = time, y = frequency, color = behaviour)) +
+    facet_wrap(~category) +
+    theme_bw() +
+    theme(legend.position = "none")
+}
 
+plot_multiple_runs <- function(my_test) {
+  n_run = dim(my_test)[1]
+  as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
+    mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
+    add_column(category = as_factor(c(
+      rep("play", 4 * n_run), rep("display", 4 * n_run), rep("groom", 4 * n_run), rep("courthsip", 4 * n_run),
+      rep("A", 4 * n_run), rep("B", 4 * n_run), rep("C", 3 * n_run), rep("D", 3 * n_run),
+      rep("E", 2 * n_run), rep("F", 2 * n_run), rep("G", n_run), rep("H", n_run),
+      rep("I", n_run), rep("J", n_run)
+    ))) %>%
+    ggplot() +
+    geom_raster(aes(x = behaviour, y = run, fill = frequency)) +
+    facet_wrap(~category, scales = "free") +
+    scale_fill_gradient(low = "grey90", high = "red") +
+    theme_bw()
+}
 
+# TO USE WITH test_oranzees_2():
+
+plot_codes_distribution <- function(my_test) {
+  n_run = dim(my_test)[1]
+  tibble(code = as_factor(rep(c("customary", "habitual", "present", "absent", "ecological"), each=n_run)),
+         behaviours = as.vector(my_test)) %>%
+  ggplot(aes( x = code, y = behaviours, fill = code)) +
+    geom_boxplot() +
+    geom_jitter(width=0.05, alpha=0.5) +
+    theme_bw()  
+}
+
+# TO USE WITH run_oranzees() - only for single runs:
+
+plot_oranzees <- function(my_test, social) {
+  my_test$population <- as.factor(my_test$population)
+  levels(my_test$population) <- unique(my_test$population) # to plot in right order
+  if(social){
+    my_test %>%
+      filter(behaviour <= 16) %>%
+      ggplot( aes(x = population, y = behaviour, colour = code)) +
+        geom_point(size = 10) +
+        scale_color_viridis(discrete = TRUE, option = "D") +
+        ggtitle("Social behaviours") +
+        theme_bw()
+  }
+  else{
+    my_test %>%
+      filter(behaviour > 16) %>%
+      ggplot( aes(x = population, y = behaviour, colour = code)) +
+        geom_point(size = 10) +
+        scale_color_viridis(discrete = TRUE, option = "D") +
+        ggtitle("Food-related behaviours") +
+        theme_bw()
+  }
+}
 
