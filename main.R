@@ -83,9 +83,9 @@ update_food_behaviours <- function(pop, test_world) {
   pop
 }
 
-use_behaviour <- function(pop, optimisation){
+use_behaviour <- function(pop, opt){
   N <- dim(pop)[1]
-  optimise <- sample( c(TRUE, FALSE), N , prob = c(optimisation, 1-optimisation), replace = TRUE)
+  optimise <- sample( c(TRUE, FALSE), N , prob = c(opt, 1-opt), replace = TRUE)
   for( i in (1:N)[optimise]){
     if(sum(pop[i, 1 : 4]) > 1){
       pop[i, sample(which(pop[i, 1 : 4] == 1), 1)] = 0
@@ -124,7 +124,9 @@ use_behaviour <- function(pop, optimisation){
 ###########################
 # MAIN FUNCTIONS:
 ###########################
-run_oranzees <- function(t_max, optimisation, alpha_g, init_world, n_run) {
+# `run_oranzees()` runs the simulation on the six oranzees populations, 
+# and produces as output the code for each behaviour in each population
+run_oranzees <- function(t_max, opt, alpha_g, init_world, n_run) {
   
   N <- c(50, 100, 150, 50, 100, 150)
   
@@ -152,8 +154,8 @@ run_oranzees <- function(t_max, optimisation, alpha_g, init_world, n_run) {
         pop <- update_demography(pop)
         pop <- update_social_behaviours(pop, current_world)
         pop <- update_food_behaviours(pop, current_world)
-        if(optimisation)
-          pop <- use_behaviour(pop, optimisation)
+        if(opt)
+          pop <- use_behaviour(pop, opt)
       }
       
       # calculate output:
@@ -189,9 +191,10 @@ run_oranzees <- function(t_max, optimisation, alpha_g, init_world, n_run) {
   output
 }
 
-# TEST FUNCTION 1 (RUN ONLY ON ONE POPULATION AND PRODUCES A RICHER OUTPUT):
-
-test_oranzees_1 <- function(t_max, optimisation, alpha_g, init_world, n_run) {
+# `test_oranzees_1()` runs the simulation only on one population, and produces a richer output, 
+# consisting in the frequencies of all behaviours at each time step when `n_run=1`, 
+# and in the final frequencie of all behaviours when `n_run>1`.
+test_oranzees_1 <- function(t_max, opt, alpha_g, init_world, n_run) {
   
   N <- 100
   
@@ -221,8 +224,8 @@ test_oranzees_1 <- function(t_max, optimisation, alpha_g, init_world, n_run) {
       pop <- update_demography(pop)
       pop <- update_social_behaviours(pop, test_world)
       pop <- update_food_behaviours(pop, test_world)
-      if(optimisation)
-        pop <- use_behaviour(pop, optimisation)
+      if(opt)
+        pop <- use_behaviour(pop, opt)
     }
     if( n_run > 1){
       output[run, ] <- colSums(pop[, 1:38])
@@ -231,9 +234,9 @@ test_oranzees_1 <- function(t_max, optimisation, alpha_g, init_world, n_run) {
   output
 }
 
-# TEST FUNCTION 2 (RUN ONLY ON ONE POPULATION):
-
-test_oranzees_2 <- function(t_max, optimisation, alpha_g, init_world, n_run) {
+# `test_oranzees_2()` also runs the simulation on one population, but gives as output 
+# the behavioural codes as described in Whiten et al., 1999
+test_oranzees_2 <- function(t_max, opt, alpha_g, init_world, n_run) {
   
   N <- 100
   
@@ -255,8 +258,8 @@ test_oranzees_2 <- function(t_max, optimisation, alpha_g, init_world, n_run) {
       pop <- update_demography(pop)
       pop <- update_social_behaviours(pop, test_world)
       pop <- update_food_behaviours(pop, test_world)
-      if(optimisation)
-        pop <- use_behaviour(pop, optimisation)
+      if(opt)
+        pop <- use_behaviour(pop, opt)
     }
     # calculate codes values:
     
@@ -290,8 +293,9 @@ test_oranzees_2 <- function(t_max, optimisation, alpha_g, init_world, n_run) {
   output
 }
 
+
 #######################
-# VISUALISATIONS:
+# PLOTTING FUNCTIONS:
 #######################
 # TO USE WITH test_oranzees_1():
 

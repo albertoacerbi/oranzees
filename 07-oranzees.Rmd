@@ -13,16 +13,63 @@ This R markdown file documents the development of the Oranzees model (it continu
 
 ### Consolidating main.R
 
-At this point, we have enough material to start to run some extensive tests of the simulations
+At this point, we have enough material to begin to run some extensive tests of the simulations. Before starting, however, it is useful to consolidate the code present in [main.R](main.R). We will reuse most of the functions that we have already written, with few small differences. The main difference is that we eliminated two parameters:
+
+* $\alpha_e$ : to have some behaviours that are absent because of ecological condition (as in Whiten et al., 1999 codes) their values of $p_e$ (ecological availability) need to be 0. This happens only when $\alpha_e=1$, so we fixed the parameters to this value.
+
+* `sd_peering` : this parameter regulates the 'precision' of social influence and it was mostly intersting when genetic constraints were weak, as it kept 'stable cultures' also in these cases (see description in [04-oranzees.html](04-oranzees.html)). The new function `use_behaviour()`, with the associate new parameter $opt$ (shortcut for $optimisation$, used in [06-oranzees.html](06-oranzees.html)), has the same effect, providing that $opt>1$ and it is more intuitive.
+
+The other differences are slight improvments in the implementation (e.g. we wrote all the plotting routines as functions, etc.). Notice the function `use_behaviour()` is not optimised (at this stage, I do not know how). However, it appears that low values of $opt$ have enough effect, and with these values the function is not too slow. All this will need to be checked when doing the extensive tests.
+
+We can call all the functions with a direct call to [main.R](main.R):
 
 ```{r message=FALSE}
 source('main.R')
 ```
 
-```{r message=FALSE}
-my_test <- test_oranzees_1(6000,.1,.7,1,1)
+Here a quick description of the **MAIN FUNCTIONS** and their associated **PLOTTING FUNCTIONS** in [main.R](main.R) (**COMMON FUNCTIONS** have been described at lenght in the previous documents):
+
+#### `test_oranzees_1()`
+
+`test_oranzees_1()` runs the simulation only on one population, and produces a richer output, consisting in the frequencies of all behaviours at each time step when `n_run=1`, and in the final frequencie of all behaviours when `n_run>1`. We can test that everything works by running and plotting the first case (single run, using `plot_one_run()`):
+
+```{r message=FALSE, warning=FALSE}
+my_test <- test_oranzees_1(t_max = 6000, opt = .1, alpha_g = .7, init_world = 1, n_run = 1)
 plot_one_run(my_test)
 ```
+
+And in the second case (multiple runs, `using plot_multiple_runs()`):
+
+```{r message=FALSE, warning=FALSE}
+my_test <- test_oranzees_1(t_max = 6000, opt = .1, alpha_g = .7, init_world = 1, n_run = 5)
+plot_multiple_runs(my_test)
+```
+
+#### `test_oranzees_2()`
+
+`test_oranzees_2()` also runs the simulation on one population, but gives as output the behavioural codes as described in Whiten et al., 1999. Here an example, using the associated plotting function `plot_codes_distribution()`:
+
+```{r message=FALSE, warning=FALSE}
+my_test <- test_oranzees_2(t_max = 6000, opt = .1, alpha_g = .7, init_world = 1, n_run = 5)
+plot_codes_distribution(my_test)
+```
+
+#### `run_oranzees()`
+
+Finally, `run_oranzees()` runs the simulation on the six oranzees populations, and produces as output the code for each behaviour in each population. While it works with several run, the only possible visualisation, for the time being, concerns a single run, as illustrated below. Notice the associated plotting function `plot_oranzees()` has a further parameter `social`. When `social=TRUE`, social behaviours are visualised, when `social=FALSE`, it visualises food-related behaviours.
+
+```{r message=FALSE, warning=FALSE}
+my_test <- run_oranzees(t_max = 6000, opt = .1, alpha_g = .7, init_world = 1, n_run = 1)
+```
+
+```{r message = FALSE, fig.height = 7}
+plot_oranzees(my_test, social = TRUE)
+```
+
+```{r message = FALSE, fig.height = 9}
+plot_oranzees(my_test, social = FALSE)
+```
+
 
 ***
 
