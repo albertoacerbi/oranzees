@@ -271,9 +271,18 @@ test_oranzees_2 <- function(t_max, opt, alpha_g, init_world, n_run) {
     juveniles = pop[,39]/12 <= 8
     
     # customary:
-    customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
-    customary_subadults <- colSums(pop[subadults,1:38])>(sum(subadults)/2)
-    customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
+    customary_adults <- rep(FALSE, 38)
+    if(sum(customary_adults) > 0){
+      customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
+    }
+    customary_subadults <- rep(FALSE, 38)
+    if(sum(customary_subadults) > 0){
+      customary_subadults <- colSums(pop[subadults,1:38])>(sum(subadults)/2)
+    }
+    customary_juveniles <- rep(FALSE, 38)
+    if(sum(customary_juveniles) > 0){
+      customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
+    }
     customary <- customary_adults | customary_subadults | customary_juveniles
     output[run, 1] <- sum(customary)
     
