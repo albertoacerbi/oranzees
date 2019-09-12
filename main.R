@@ -128,7 +128,9 @@ use_behaviour <- function(pop, opt){
 # and produces as output the code for each behaviour in each population
 run_oranzees <- function(t_max, opt, alpha_g, init_world, n_run) {
   
-  N <- c(50, 100, 150, 50, 100, 150)
+ # N <- c(50, 100, 150, 50, 100, 150) for test only
+  N <- c(20, 76, 50, 95, 42, 49)
+  
   
   oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
   

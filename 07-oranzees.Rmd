@@ -17,7 +17,7 @@ At this point, we have enough material to begin to run some extensive tests of t
 
 * $\alpha_e$ : to have some behaviours that are absent because of ecological condition (as in Whiten et al., 1999 codes) their values of $p_e$ (ecological availability) need to be 0. This happens only when $\alpha_e=1$, so we fixed the parameters to this value.
 
-* `sd_peering` : this parameter regulates the 'precision' of social influence and it was mostly intersting when genetic constraints were weak, as it kept 'stable cultures' also in these cases (see description in [04-oranzees.html](04-oranzees.html)). The new function `use_behaviour()`, with the associate new parameter $opt$ (shortcut for $optimisation$, used in [06-oranzees.html](06-oranzees.html)), has the same effect, providing that $opt>1$ and it is more intuitive.
+* `sd_peering` : this parameter regulates the 'precision' of social influence and it was mostly intersting when genetic constraints were weak, as it kept 'stable cultures' also in these cases (see description in [04-oranzees.html](04-oranzees.html)). The new function `use_behaviour()`, with the associate new parameter $opt$ (shortcut for $optimisation$, used in [06-oranzees.html](06-oranzees.html)), has the same effect, providing that $opt>0$ and it is more intuitive.
 
 The other differences are slight improvments in the implementation (e.g. we wrote all the plotting routines as functions, etc.). Notice the function `use_behaviour()` is not optimised (at this stage, I do not know how). However, it appears that low values of $opt$ have enough effect, and with these values the function is not too slow. All this will need to be checked when doing the extensive tests.
 
@@ -70,10 +70,31 @@ plot_oranzees(my_test, social = TRUE)
 plot_oranzees(my_test, social = FALSE)
 ```
 
+### Estimating oranzees population sizes
+
+So far, we tested `run_oranzees()` with arbitrary values for population sizes (`N <- c(50, 100, 150, 50, 100, 150)`). Before starting the actual complete tests, we need to estabilish population sizes that are consistent with the data in Whiten et al., 1999.
+
+According to the paper, the six groups used in Figure 1 are Bossou, Kibale, Budongo, Taï, Gombe, and Mahale (M-group). No information on population sizes are, however, reported there. 
+
+Lind and Lindenfors, 2010, tested the correlation between the number of cultural traits in the seven communities of Whiten et al. (including also Mahale K-group, in which we are not interested) and their population size. They report that data from community sizes were from Wrangham, 2000. We use the same data (from table 21.1 in Wrangham, 2000), rounding them to the highest integer:
+
+Group     |  Population size  
+--------- |----
+Bossou    | 20
+Kibale    | 42
+Budongo   | 49
+Taï       | 76  
+Gombe     | 50
+Mahale(M) | 95
+
+According to the order in which our oranzees community are listed in the code ("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub"), this translated in:
+
+```{r}
+N <- c(20, 76, 50, 95, 42, 49)
+```
+
+which we can now include in the function `run_oranzees()` in [main.R](main.R).
 
 ***
-
-
-<!-- The documentation continues in [08-oranzees.html](08-oranzees.html) -->
 
 
