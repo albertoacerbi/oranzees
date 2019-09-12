@@ -12,7 +12,7 @@ The material is organised as follows:
 
 * [test.R](test.R): code to run tests
 
-* [test-results.Rmd](test-results.Rmd): results of test after first stage of development
+* [test-results.Rmd](test-results.Rmd): results of test and modifications of the code after first stage of development
 
 Plus three folders:
 

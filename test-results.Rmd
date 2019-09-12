@@ -1,0 +1,30 @@
+---
+title: "Oranzees first tests results"
+author: "Alberto Acerbi"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Code modification 1:
+
+Added checks on adults, subadults, and juveniles subsets in `run_oranzees()` and `test_oranzees_2()`. With small populations, the subsets could be equal to 0, generating an error.  
+
+```{r}
+# customary:
+customary_adults <- rep(FALSE, 38)
+if(sum(customary_adults) > 0){
+  customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
+}
+customary_subadults <- rep(FALSE, 38)
+if(sum(customary_subadults) > 0){
+  customary_subadults <- colSums(pop[subadults,1:38])>(sum(subadults)/2)
+}
+customary_juveniles <- rep(FALSE, 38)
+if(sum(customary_juveniles) > 0){
+  customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
+}
+```
