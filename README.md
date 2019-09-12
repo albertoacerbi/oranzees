@@ -1,14 +1,16 @@
 # Oranzees model
 
-This repository contains the code and documents the development of the oranzees model (more information to follow as the project develops).
+This repository contains the code and it documents the development of the the oranzees model (more information to follow as the project develops).
 
 The material is organised as follows:
 
-* [main.R](main.R): the actual code (in development)
+* [01-oranzees.Rmd](01-oranzees.Rmd) to [07-oranzees.Rmd](07-oranzees.Rmd): R Markdown files documenting the development of the model, mainly for "internal" use.
 
-* [01-oranzees.Rmd](01-oranzees.Rmd), etc.: R Markdown files documenting the development of the model.
+* [test.R](test.R): code-only file to test code  
 
-* [test.R](test.R): code-only file to test code 
+* [model-description.Rmd](model-description.Rmd): a description of the model after the first stage of the development, and *before* any extensive test.
+
+* [main.R](main.R): the model code, described in [model-description.Rmd](model-description.Rmd)
 
 Plus two folders:
 
