@@ -11,10 +11,95 @@ link-citations: true
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The code-only version to run the model is in the file [main.R](main.R).
+This document provides a general description of the "oranzees" model. The code to run and test the model can be found in the scripts [main.R](main.R) and [test.R](test.R). The consecutively numbered R markdown documents ([01-oranzees.Rmd](01-oranzees.Rmd) to [07-oranzees.Rmd](07-oranzees.Rmd)) document the full development of the model.
 
-# Here
+# The oranzees world
 
-[@whiten_cultures_1999]
+The oranzees model is an individual-based model, fully written in R, that reproduce a world where six populations of "oranzees" (an hypothetical ape species) live. The set-up is inspired by the research described in the paper *Cultures in Chimpanzees* [@whiten_cultures_1999]. The oranzees six populations are located in the continent "Pongogea", at positions analogous to the six populations of chimpanzees in @whiten_cultures_1999.
+
+The population sizes are also taken from the real chimpanzees populations considered in the study above. Following @lind_number_2010, we use data from @wrangham_why_2000:
+
+Group     |  Population size  
+--------- |----
+Uossob    | 20
+Elabik    | 42
+Ognodub   | 49
+Iat Forest| 76  
+Ebmog     | 50
+Elaham    | 95
+
+![](material/pongogea_model_description.png)
+
+In the oranzees world, 38 behaviours are possible (notice this is equivalent to the number of behaviour defined as *cultural* in @whiten_cultures_1999, whereas here 38 represent the *total* number of possible behaviours). Behaviours are divided in two categories, including 16 *social* and 22 *food-related* behaviours (more about this below).
+
+The proabability of expressing a behaviour depends, among other things, by its associated *ecological availability* and *genetic propensity*. 
+
+### Ecological availability
+
+Ecological availability has influence only on food-related behaviours. Ecological availability can be thought as the probability $p_e(0,1)$ that represents the likelohood of finding a resource or its nutritional values in each site. The is assigned randomly and independently to each behaviour. To assign it to the different populations we use a geographical gradient. For each behaviour, we choose a random point and calculate its distance to each population. Distances are then transformed to $p_e$ by rescaling them between 0 and 1, so that for the farther population $p_e=0$ i.e. the associated behaviour will be absent with an "ecological explanation" (according ot the coding in @whiten_cultures_1999)  
+
+In the example below, a single behavior will have $p_e=1$ in the Ognodub site, $p_e=0$ in Iat Forest and Uossob, and intermediate values in the other sites.
+
+![](material/eco_gradient_model_description.png)
+
+### Genetic propensity
+
+In addition, each behaviour has an associated $p_g(0,1)$, that stands for the genetic propensity to express this behaviour. $p_g$ is assigned to *all* behaviours, both in the social and in the food-related category. Genetic propensity is calculated as ecological availabity but with the difference that a parameter of the model, $\alpha_g$, determines the range of rescaling. With $\alpha_g=1$ the range is maximum and the effect is analogous to ecological availability. Intermediate values give less effect to genetic propensity, until $\alpha_g=0.5$ that produces all probabilities equal to $0.5$. Notice $\alpha_g=0.5$ does not imply that there is no genetic influence on oranzees behaviours, but that there are no differences betweeen the populations with respect of the behaviours we conisder.
+
+# The life of oranzees
+
+We assume that a time step $t$ of the simulation represents a month. Demography is very simple: from when they are 25 years old, there is a $1%$ probability an oranzee will day each month, or they die when they are 60 years old. The number of individuals in the population is fixed, so each time an oranzee dies is replaced by a newborn. At the beginning of the simulations, the populations are randomly initialised with individuals between 0 and 25 years (i.e. 300 months) old.
+
+A newborn oranzee does not have any behaviour. Behaviours can be innovated at each time step/month. 
+The process of  innovate is influenced by: (i) the oranzees ‘state’, which depends from the behaviours an individual already posseses, (ii) the frequency of the behaviours already present in the population ("socially-mediated innovation"), and (iii) the ecological availability and genetic propensity associated to the behaviour.
+
+### Oranzees state
+
+#### Social behaviours
+
+In the case of social behaviours, we assume four sub-categories of behaviours, each with four possible different behaviours, that serve the same goal, as illustrated here (notice the categories' names are purely indicative):
+
+Sub-category  |    |    |    | 
+--------------|----|----|----|----
+play          | 1  | 2  | 3  | 4
+display       | 5  | 6  | 7  | 8
+groom         | 9  | 10 | 11 | 12
+courtship     | 13 | 14 | 15 | 16
+
+We assume that the state is based on how many of the four goals (each realised by having at least one behaviour in one of the four sub-categories) are fulfilled. An oranzee has a state value of $0.25$ if, for exmaple, has at least one behaviour among behaviours 1 to 4, and none of the other, and a state value of $1$ if there is at least one behaviour in each sub-category. 
+
+$p_\text{state}$ is drawn from a normal distribution with mean equal to $1-state$, and with a small standard deviation (this mean that even when all goals are fulfilled, that is the mean is zero, there is still some probability to innovate). 
+
+#### Food-related behaviours
+
+Food-related behaviours are also divided in sub-categories/goals, whith the differences that there is a variable number of behaviours in each sub-category, and that sub-categories are associated to two different 'nutrients'. The idea is that individuals need to balance their nutritional intake, so that their optimal diet consist in a roughly equal number of foodstuff for one and the other nutrient.
+
+
+Sub-category |    |    |    |    | Nutrient
+-------------|----|----|----|----|---------
+A            | 17 | 18 | 19 | 20 |    Y
+B            | 21 | 22 | 23 | 24 |    Z
+C            | 25 | 26 | 27 |    |    Y
+D            | 28 | 29 | 30 |    |    Z
+E            | 31 | 32 |    |    |    Y
+F            | 33 | 34 |    |    |    Z
+G            | 35 |    |    |    |    Y
+H            | 36 |    |    |    |    Z
+I            | 37 |    |    |    |    Y
+J            | 38 |    |    |    |    Z 
+
+The state, for food-related behaviours, depends on the total amount of food *and* on the balance between nutrients, and it is calculated as the sum of each sub-cateogry fullfilled (as above, for this there needs to be at least one behaviour) minus the difference between the number of sub-categories providing nutrient Y and the number of sub-categories providing nutrient Z. As above, all is normalised between $0$ and $1$, and $p_\text{state}$ is then calculated. 
+
+### Innovation
+
+While the probability of innovation depends on $p_\text{state}$ as described above, what behaviour an oranzee will innovate depends both on the frequency of the behaviours already present in the population, and on the ecological availability and genetic propensity associated to the behaviour. The probability to innovate a specific behaviour is drawn from a normal distribution of the total instances of each behaviour in the population, (The normal distribution is useful because allows for absent behaviours to be anyway possible to be innovate with low probability).  
+
+After that, the behaviour chosen in the previous step is actually innovated with probablity depending on its genetic propensity (or on a combination of its genetic propensity and ecological availability in case of food-related behaviours).
+
+### Optimsation
+
+The idea is that, at each time step, oranzees may choose which behaviours to perform, among the ones they have in their repertorire. Behaviours that are not performed are excluded from their repertorire (but they can be re-innovated and included again). To decide which behaviour to perform (and, consequently, which to discard), oranzees optimise their internal state, as done to determine whether they innovate or not. If more than one behaviour is fulfilling a specific goal, one behaviour in the ‘goal-group’, chosen at random, can be discarded. Another parameter of the model, that we call optimisation
+, determine the probability that each individual will optimise its reperotire or not, at each time step. With optimisation=1mall individuals go, each time, through the process, whereas with optimisation=0
+ none does.
 
 ## References

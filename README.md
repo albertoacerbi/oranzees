@@ -8,7 +8,7 @@ The material is organised as follows:
 
 * [model-description.Rmd](model-description.Rmd): a description of the model after the first stage of the development (TO DO)
 
-* [main.R](main.R): the model code, described in [model-description.Rmd](model-description.Rmd)
+* [main.R](main.R): the code to run the model
 
 * [test.R](test.R): code to run tests
 
