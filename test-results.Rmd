@@ -10,10 +10,71 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
+### Codes for behavioural patterns
+
+Whiten et al., 1999 extract the above patterns from their data:
+
+* *A*: patterns observed in no site.
+
+* *B*: patterns not achieving habitual frequencies at any site.
+
+* *C*: patterns for which any absence can be explained by local ecological factors.
+
+* *D*: patterns customary or habitual at some sites yet absent at others, with no ecological explanation, i.e. the "cultural" behaviours.
+
+We thus need to write a further function, `analyse_table()`, in [test.R](test.R), that takes as input the output of `run_oranzees()`, and produces the proportion of "cultural" behaviours in each run:
+
+```{r}
+analyse_table <- function(my_test){
+  output <- my_test %>%
+    group_by(behaviour, run) %>%
+    summarise(A = !("absent" %in% code) && !("ecological explanation" %in% code), 
+              B = !("habitual" %in% code) && !("customary" %in% code),
+              C = !("absent" %in% code) && ("ecological explanation" %in% code)) %>%
+    ungroup() %>%
+    mutate (D = !(A | B | C)) %>%
+    group_by(run) %>%
+    count(D) %>%
+    filter(D == TRUE) 
+  output <- output$n/38
+}
+```
+
+### Running the tests
+
+Before starting, we need all the functions present in [main.R](main.R), as well as the library `tictoc`, to have information on the time needed for the simulations to run.
+
+```{r message=FALSE}
+library(tictoc)
+source("main.R")
+```
+
+We run 20 simulations for $t_\text{max}=12000$, reinitialising the world for each simulations, for the following combination of parameters:
+
+$\alpha_g$  | $opt$ 
+------------|-------
+0.5         | 0
+0.5         | 0.1
+0.6         | 0
+0.6         | 0.1
+0.7         | 0 
+0.7         | 0.1
+
+The code, for example for the first combination, is:
+
+```{r eval=FALSE}
+tic()
+test_0.5_0 <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.5, init_world = 1, n_run = 20)
+toc()
+write_csv(test_0.5_0, "output_test/test_0.5_0.csv")
+```
+
+We run seprately the simulations (see [test.R](test.R)), and simply load here the results:
 
 ***
-
 ### Code modification 1:
+
+During the tests a bugs was discovered and the code in [main.R](main.R) changed accordingly:
 
 Added checks on adults, subadults, and juveniles subsets in `run_oranzees()` and `test_oranzees_2()`. With small populations, the subsets could be equal to 0, generating an error.  
 
@@ -32,3 +93,5 @@ if(sum(customary_juveniles) > 0){
   customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
 }
 ```
+
+***
