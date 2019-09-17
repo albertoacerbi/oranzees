@@ -3,6 +3,8 @@ title: "Oranzees model description"
 author: "Alberto Acerbi"
 output:
   html_document: default
+bibliography: "biblio.bib"
+link-citations: true
 ---
 
 ```{r setup, include=FALSE}
@@ -13,3 +15,6 @@ The code-only version to run the model is in the file [main.R](main.R).
 
 # Here
 
+[@whiten_cultures_1999]
+
+## References
