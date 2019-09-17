@@ -3,9 +3,9 @@ title: "Oranzees model description"
 author: "Alberto Acerbi"
 link-citations: yes
 output:
+  html_document: 
   pdf_document: 
     fig_caption: yes
-  html_document: 
 bibliography: biblio.bib
 ---
 
@@ -70,7 +70,7 @@ courtship     | 13 | 14 | 15 | 16
 
 We assume that the state is based on how many of the four goals are fulfilled. A goal is considered fulfilled if an oranzee has at least one behaviour out of the four in the sub-category. An oranzee has a state value of $0.25$ if, for example, has at least one behaviour among behaviours 1 to 4, and none of the others, and a state value of $1$ if there is at least one behaviour in each sub-category. 
 
-$p_\text{state}$, the probability to innovate a social behaviour, is drawn from a normal distribution with mean equal to $1-state$, and with a small standard deviation (this mean that even when all goals are fulfilled, that is the mean is zero, there is still some probability to innovate). 
+$p_\text{state}$, the probability to innovate a social behaviour, is drawn from a normal distribution with mean equal to $1-state$ (this means that even when all goals are fulfilled, that is the mean is zero, there is still some probability to innovate). 
 
 #### Food-related behaviours
 
@@ -106,15 +106,15 @@ A parameter of the model, $opt$, determines the probability that each individual
 
 # Output of the model
 
-The main output we are interested is the number of behaviour that would be considered "cultural" in the populations of oranzees according to the coding of @whiten_cultures_1999. We run simulation for $t_\text{max}=12000$ (corresponding to 100 years of oranzee-time). We then classify each behaviour, in each population as:
+The main output we are interested is the number of behaviour that would be considered "cultural" in the populations of oranzees according to the coding of @whiten_cultures_1999. We run simulation for $t_\text{max}=12000$ (corresponding to 100 years of oranzee-time). We then classify each behaviour in each population as:
 
-* *customary* is a behaviour observed in over 50% of individuals in at least one age class.
+* *customary*: a behaviour observed in over 50% of individuals in at least one age class.
 
-* *habitual* is a behaviour observed in at least two individuals over all the population.
+* *habitual*: a behaviour observed in at least two individuals over all the population.
 
-* *present* is a behaviour observed in at least one individual over all the population.
+* *present*: a behaviour observed in at least one individual over all the population.
 
-* *absent* is a behaviour never observed.
+* *absent*: a behaviour never observed.
 
 * *ecological explanations* is a behaviour that is absent because of local ecological features (i.e. associated to $p_e=0$).
 
