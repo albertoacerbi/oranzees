@@ -6,7 +6,7 @@ The material is organised as follows:
 
 * [01-oranzees.Rmd](01-oranzees.Rmd) to [07-oranzees.Rmd](07-oranzees.Rmd): R Markdown files documenting the development of the model, mainly for "internal" use.
 
-* [model-description.Rmd](model-description.Rmd): a description of the model after the first stage of the development
+* [model-description.Rmd](model-description.Rmd): a description of the model after the first stage of the development (see also the output [model-description.pdf](model-description.pdf))
 
 * [main.R](main.R): code to run the model
 
