@@ -18,70 +18,59 @@ analyse_table <- function(my_test){
   output <- output$n/38
 }
 
+# TESTS HERE:
 
-# test-1 (BASELINE)
 tic()
-my_test <- run_oranzees(t_max = 12000, opt = 0.01, alpha_g = 0.7, init_world = 1, n_run = 20)
+test_0_0.5 <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.5, init_world = 1, n_run = 20)
 toc()
-# write_csv(my_test, "output_test/test-1.csv")
-# my_test <- read_csv("output_test/test-1.csv")
+write_csv(test_0_0.5, "output_test/test_0_0.5.csv")
 
-# test-2 (NO GENETIC)
 tic()
-my_test <- run_oranzees(t_max = 12000, opt = 0.01, alpha_g = 0.5, init_world = 1, n_run = 20)
+test_0_0.6 <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.6, init_world = 1, n_run = 20)
 toc()
-# write_csv(my_test, "output_test/test-2.csv")
-# my_test <- read_csv("output_test/test-2.csv")
+write_csv(test_0_0.6, "output_test/test_0_0.6.csv")
 
-# test-3 (NO OPTIMISATION)
 tic()
-my_test <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.7, init_world = 1, n_run = 20)
+test_0_0.7 <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.7, init_world = 1, n_run = 20)
 toc()
-# write_csv(my_test, "output_test/test-3.csv")
-# my_test <- read_csv("output_test/test-2.csv")
+write_csv(test_0_0.7, "output_test/test_0_0.7.csv")
 
-# test-4 (STRONGER OPTIMISATION)
 tic()
-my_test <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.7, init_world = 1, n_run = 20)
+test_0.1_0.5 <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.5, init_world = 1, n_run = 20)
 toc()
-# write_csv(my_test, "output_test/test-4.csv")
-# my_test <- read_csv("output_test/test-2.csv")
+write_csv(test_0.1_0.5, "output_test/test_0.1_0.5.csv")
 
-# test-5 (STRONG GENES)
 tic()
-my_test <- run_oranzees(t_max = 12000, opt = 0.01, alpha_g = 1, init_world = 1, n_run = 20)
+test_0.1_0.6 <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.6, init_world = 1, n_run = 20)
 toc()
-# write_csv(my_test, "output_test/test-5.csv")
-# my_test <- read_csv("output_test/test-2.csv")
+write_csv(test_0.1_0.6, "output_test/test_0.1_0.6.csv")
 
-# test-6 (NO GENES, NO OPTIMISATION)
 tic()
-my_test <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.5, init_world = 1, n_run = 20)
+test_0.1_0.7 <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.7, init_world = 1, n_run = 20)
 toc()
-write_csv(my_test, "output_test/test-6.csv")
+write_csv(test_0.1_0.7, "output_test/test_0.1_0.7.csv")
 
 # PLOT SUMMARY:
 
-# only BASELINE - NO GENES - NO GENES/NO OPTIMISATION - STRONG GENES - STRONG OPTIMISATION
-test_1 <-analyse_table(read_csv("output_test/test-1.csv"))
-test_2 <-analyse_table(read_csv("output_test/test-2.csv"))
-test_4 <-analyse_table(read_csv("output_test/test-4.csv"))
-test_5 <-analyse_table(read_csv("output_test/test-5.csv"))
-test_6 <-analyse_table(read_csv("output_test/test-6.csv"))
+test_0_05 <-analyse_table(read_csv("output_test/test_0_0.5.csv"))
+test_0_06 <-analyse_table(read_csv("output_test/test_0_0.6.csv"))
+test_0_07 <-analyse_table(read_csv("output_test/test_0_0.7.csv"))
+test_01_05 <-analyse_table(read_csv("output_test/test_0.1_0.5.csv"))
+test_01_06 <-analyse_table(read_csv("output_test/test_0.1_0.6.csv"))
+test_01_07 <-analyse_table(read_csv("output_test/test_0.1_0.7.csv"))
 
-palette_1 <- c("#FFDB6D", "#C4961A", "#F4EDCA", 
+palette_1 <- c("#FFDB6D", "#F4EDCA", "#C4961A",
                "#D16103", "#C3D7A4", "#52854C", "#4E84C4", "#293352")
 
-tibble(condition = rep(c("baseline","no genes", "no genes/no optimisation", "strong optimisation","strong genes"), each = 20), 
-      behaviours = c(test_1, test_2, test_6, test_4, test_5)) %>%
-  ggplot(aes( x = condition, y = behaviours, fill = condition)) +
+tibble(opt = rep(c("0", "0.1"), each = 60), 
+       alpha_g = rep(c("0.5", "0.6", "0.7", "0.5", "0.6", "0.7"), each = 20),
+      behaviours = c(test_0_05, test_0_06, test_0_07, test_01_05, test_01_06, test_01_07)) %>%
+  ggplot(aes( x = opt, y = behaviours, fill = alpha_g)) +
     geom_boxplot() +
-    geom_jitter(width = 0.1) +
-    scale_fill_manual(values = palette_2) +
+    geom_point(pch=21, position=position_jitterdodge(jitter.width=0.1)) +
+  scale_fill_manual(values = c("#FFDB6D", "#F4EDCA", "#D16103")) +
     theme_bw() +
-    labs(y = "proportion of traits considered 'cultural'", title = "'Culture' in oranzees (20 runs each)") +
-    theme(legend.position = "none") +
-    ggsave("output_test/second-test.pdf", width = 7, height = 4)
+    labs(y = "proportion of traits considered 'cultural'") 
     
 
 

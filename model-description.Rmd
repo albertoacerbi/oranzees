@@ -3,9 +3,9 @@ title: "Oranzees model description"
 author: "Alberto Acerbi"
 link-citations: yes
 output:
-  html_document: 
   pdf_document: 
     fig_caption: yes
+  html_document: 
 bibliography: biblio.bib
 ---
 
@@ -130,7 +130,7 @@ Age classes to calculate customary behaviours are defined as follows:
 
 Finally, we use the coding to calculate the "patterns" described in @whiten_cultures_1999:
 
-* *A*: patterns observed in no site.
+* *A*: patterns absent at no site.
 
 * *B*: patterns not achieving habitual frequencies at any site.
 
