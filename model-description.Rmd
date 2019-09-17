@@ -50,7 +50,7 @@ In addition, each behaviour has an associated $p_g(0,1)$, that stands for the ge
 
 # The life of oranzees
 
-We assume that a time step $t$ of the simulation represents a month. Demography is very simple: from when they are 25 years old, there is a 1% probability an oranzee will day each month, or they die when they are 60 years old. The number of individuals in the population is fixed, so each time an oranzee dies is replaced by a newborn. At the beginning of the simulations, the populations are randomly initialised with individuals between 0 and 25 years (i.e. 300 months) old.
+We assume that a time step $t$ of the simulation represents a month. Demography is very simple: from when they are 25 years old, there is a 1% probability an oranzee will die each month, or they die when they are 60 years old. The number of individuals in the population is fixed, so each time an oranzee dies is replaced by a newborn. At the beginning of the simulations, the populations are randomly initialised with individuals between 0 and 25 years (i.e. 300 months) old.
 
 A newborn oranzee does not have any behaviour. Behaviours can be innovated at each time step/month. 
 The process of innovation is influenced by: (i) the oranzees ‘state’, which depends from the behaviours an individual already possesses, (ii) the frequency of the behaviours already present in the population ("socially-mediated innovation"), and (iii) the ecological availability and genetic propensity associated to the behaviour.
