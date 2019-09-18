@@ -3,9 +3,9 @@ title: "Oranzees model description"
 author: "Alberto Acerbi"
 link-citations: yes
 output:
+  html_document: 
   pdf_document: 
     fig_caption: yes
-  html_document: 
 bibliography: biblio.bib
 ---
 
@@ -30,7 +30,7 @@ Iat Forest| 76
 Ebmog     | 50
 Elaham    | 95
 
-In the oranzees world, 38 behaviours are possible (notice this is equivalent to the number of behaviour defined as *cultural* in @whiten_cultures_1999, whereas in the model 38 represent the *total* number of possible behaviours). Behaviours are divided in two categories, including 16 *social* and 22 *food-related* behaviours (more about this below).
+In the oranzees world, 64 behaviours are possible (in @whiten_cultures_1999 this corresponds to 65). Behaviours are divided in two categories, including 32 *social* and 32 *food-related* behaviours (more about this below).
 
 The probability of expressing a behaviour depends, among other things, by its associated *ecological availability* and *genetic propensity*. 
 
@@ -38,7 +38,9 @@ The probability of expressing a behaviour depends, among other things, by its as
 
 ## Ecological availability
 
-Ecological availability has influence only on food-related behaviours. Ecological availability can be thought as a probability $p_e(0,1)$ that represents the likelihood of finding a resource, or its nutritional value, in each site. This probability is assigned randomly and independently to each behaviour. To assign it to the different populations we use a geographical gradient. For each behaviour, we choose a random point and calculate its distance to each population. Distances are then transformed to $p_e$ by rescaling them between 0 and 1, so that for the farther population $p_e=0$ i.e. the associated behaviour will be absent with an "ecological explanation" (according to the coding in @whiten_cultures_1999)  
+Ecological availability has influence only on food-related behaviours. Ecological availability can be thought as a probability $p_e(0,1)$ that represents the likelihood of finding a resource, or its nutritional value, in each site. This probability is assigned randomly and independently to each behaviour. A parameter of the model, $\alpha_e$, determines the probability that the ecological availability of each behaviour is equal for all the six populations, or if it is different. 
+
+If it is different we assign it using a geographical gradient. For each behaviour, we choose a random point and calculate its distance to each population. Distances are then transformed to $p_e$ by rescaling them between 0 and 1, so that for the farther population $p_e=0$ i.e. the associated behaviour will be absent with an "ecological explanation" (according to the coding in @whiten_cultures_1999)  
 
 In the example in \autoref{fig2} a particular behavior will have $p_e=1$ in the Ognodub site, $p_e=0$ in Iat Forest and Uossob, and intermediate values in the other sites.
 
@@ -46,7 +48,7 @@ In the example in \autoref{fig2} a particular behavior will have $p_e=1$ in the 
 
 ## Genetic propensity
 
-In addition, each behaviour has an associated $p_g(0,1)$, that stands for the genetic propensity to express this behaviour. $p_g$ is assigned to *all* behaviours, both in the social and in the food-related category. Genetic propensity is calculated as ecological availability but with the difference that a parameter of the model, $\alpha_g$, determines the range of rescaling. With $\alpha_g=1$ the range is maximum and the effect is analogous to ecological availability. Intermediate values give less effect to genetic propensity, until $\alpha_g=0.5$ that produces all probabilities equal to $0.5$. Notice $\alpha_g=0.5$ does not imply that there is no genetic influence on oranzees behaviours, but that there are no differences between the populations with respect of the behaviours we consider.
+In addition, each behaviour has an associated $p_g(0,1)$, that stands for the genetic propensity to express this behaviour. $p_g$ is assigned to *all* behaviours, both in the social and in the food-related category, and it is calcualted in the same way of $p_e$, using the parameter $\alpha_g$ to determine the probability of genetic propensity being different. Notice that $\alpha_g=0$ does not mean that there are not genetic influences on the behaviours, but that there are no *differences* between the populations with this respect.
 
 # The life of oranzees
 
@@ -59,16 +61,16 @@ The process of innovation is influenced by: (i) the oranzees ‘state’, which 
 
 #### Social behaviours
 
-In the case of social behaviours, we assume four sub-categories of behaviours, each with four possible different behaviours, that serve the same goal, as illustrated here (notice the categories' names are purely indicative):
+In the case of social behaviours, we assume four sub-categories of behaviours, each with eight possible different behaviours, that serve the same goal, as illustrated here (notice the categories' names are purely indicative):
 
-Sub-category  |    |    |    | 
---------------|----|----|----|----
-play          | 1  | 2  | 3  | 4
-display       | 5  | 6  | 7  | 8
-groom         | 9  | 10 | 11 | 12
-courtship     | 13 | 14 | 15 | 16
+Sub-category  |    |    |    |    |    |    |    | 
+--------------|----|----|----|----|----|----|----|----
+play          | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8
+display       | 9  | 10 | 11 | 12 | 13 | 14 | 15 | 16
+groom         | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24
+courtship     | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32
 
-We assume that the state is based on how many of the four goals are fulfilled. A goal is considered fulfilled if an oranzee has at least one behaviour out of the four in the sub-category. An oranzee has a state value of $0.25$ if, for example, has at least one behaviour among behaviours 1 to 4, and none of the others, and a state value of $1$ if there is at least one behaviour in each sub-category. 
+We assume that the state is based on how many of the four goals are fulfilled. A goal is considered fulfilled if an oranzee has at least one behaviour out of the four in the sub-category. An oranzee has a state value of $0.25$ if, for example, has at least one behaviour among behaviours 1 to 8, and none of the others, and a state value of $1$ if there is at least one behaviour in each sub-category. 
 
 $p_\text{state}$, the probability to innovate a social behaviour, is drawn from a normal distribution with mean equal to $1-state$ (this means that even when all goals are fulfilled, that is the mean is zero, there is still some probability to innovate). 
 
@@ -77,18 +79,18 @@ $p_\text{state}$, the probability to innovate a social behaviour, is drawn from 
 Food-related behaviours are also divided in sub-categories/goals, with the differences that there is a variable number of behaviours in each sub-category, and that sub-categories are associated to two different 'nutrients'. The idea is that individuals need to balance their nutritional intake, so that their optimal diet consist in a roughly equal number of foodstuff for one and the other nutrient.
 
 
-Sub-category |    |    |    |    | Nutrient
--------------|----|----|----|----|---------
-A            | 17 | 18 | 19 | 20 |    Y
-B            | 21 | 22 | 23 | 24 |    Z
-C            | 25 | 26 | 27 |    |    Y
-D            | 28 | 29 | 30 |    |    Z
-E            | 31 | 32 |    |    |    Y
-F            | 33 | 34 |    |    |    Z
-G            | 35 |    |    |    |    Y
-H            | 36 |    |    |    |    Z
-I            | 37 |    |    |    |    Y
-J            | 38 |    |    |    |    Z 
+Sub-category |    |    |    |    |    |    |    |    | Nutrient
+-------------|----|----|----|----|----|----|----|----|--------
+A            | 33 | 34 | 35 | 36 | 27 | 38 | 39 | 40 |    Y
+B            | 41 | 42 | 43 | 44 | 45 | 46 | 47 | 48 |    Z
+C            | 49 | 50 | 51 | 52 |    |    |    |    |    Y
+D            | 53 | 54 | 55 | 56 |    |    |    |    |    Z
+E            | 57 | 58 |    |    |    |    |    |    |    Y
+F            | 59 | 60 |    |    |    |    |    |    |    Z
+G            | 61 |    |    |    |    |    |    |    |    Y
+H            | 62 |    |    |    |    |    |    |    |    Z
+I            | 63 |    |    |    |    |    |    |    |    Y
+J            | 64 |    |    |    |    |    |    |    |    Z 
 
 The state, for food-related behaviours, depends on the total amount of food *and* on the balance between nutrients, and it is calculated as the sum of each sub-category fulfilled (as above, for this there needs to be at least one behaviour) minus the difference between the number of sub-categories providing nutrient Y and the number of sub-categories providing nutrient Z. As above, all is normalised between $0$ and $1$, and $p_\text{state}$ is then calculated. 
 
