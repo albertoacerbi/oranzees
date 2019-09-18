@@ -1,7 +1,7 @@
 library(tictoc)
 
 # USE FUNCTIONS IN main.R
-source("main_W.R")
+source("main.R")
 
 # function for test
 analyse_patterns <- function(my_test){
@@ -18,19 +18,35 @@ analyse_patterns <- function(my_test){
   
   temp <- count(process, A) %>%
     filter(A == FALSE)
-  output[output$pattern=="A",]$proportion <- (64 - temp$n) / 64
+  out <- temp$n
+  if(length(temp$n) < max(my_test$run)){
+    out <- c(temp$n, rep(0, max(my_test$run)-length(temp$n)))
+  }
+  output[output$pattern=="A",]$proportion <- (64 - out) / 64
   
   temp <- count(process, B) %>%
     filter(B == FALSE)
-  output[output$pattern=="B",]$proportion <- (64 - temp$n) / 64
+  out <- temp$n
+  if(length(temp$n) < max(my_test$run)){
+    out <- c(temp$n, rep(0, max(my_test$run)-length(temp$n)))
+  }
+  output[output$pattern=="B",]$proportion <- (64 - out) / 64
   
   temp <- count(process, C) %>%
     filter(C == FALSE)
-  output[output$pattern=="C",]$proportion <- (64 - temp$n) / 64
+  out <- temp$n
+  if(length(temp$n) < max(my_test$run)){
+    out <- c(temp$n, rep(0, max(my_test$run)-length(temp$n)))
+  }
+  output[output$pattern=="C",]$proportion <- (64 - out) / 64
   
   temp <- count(process, D) %>%
     filter(D == FALSE)
-  output[output$pattern=="D",]$proportion <- (64 - temp$n) / 64
+  out <- temp$n
+  if(length(temp$n) < max(my_test$run)){
+    out <- c(temp$n, rep(0, max(my_test$run)-length(temp$n)))
+  }
+  output[output$pattern=="D",]$proportion <- (64 - out) / 64
   
   output
 }
@@ -38,8 +54,53 @@ analyse_patterns <- function(my_test){
 # TESTS HERE:
 
 tic()
-test <- run_oranzees(t_max = 6000, alpha_e = 1, alpha_g = 0, init_world = 1, n_run = 5)
+test <- run_oranzees(t_max = 6000, alpha_e = 0, alpha_g = 0, init_world = 1, n_run = 20)
 toc()
+write_csv(test, "output_test/test_0_0.csv")
+
+tic()
+test <- run_oranzees(t_max = 6000, alpha_e = 0, alpha_g = 0.5, init_world = 1, n_run = 20)
+toc()
+write_csv(test, "output_test/test_0_05.csv")
+
+tic()
+test <- run_oranzees(t_max = 6000, alpha_e = 0, alpha_g = 1, init_world = 1, n_run = 20)
+toc()
+write_csv(test, "output_test/test_0_1.csv")
+
+tic()
+test <- run_oranzees(t_max = 6000, alpha_e = 0.5, alpha_g = 0, init_world = 1, n_run = 20)
+toc()
+write_csv(test, "output_test/test_05_0.csv")
+
+tic()
+test <- run_oranzees(t_max = 6000, alpha_e = 0.5, alpha_g = 0.5, init_world = 1, n_run = 20)
+toc()
+write_csv(test, "output_test/test_05_05.csv")
+
+tic()
+test <- run_oranzees(t_max = 6000, alpha_e = 0.5, alpha_g = 1, init_world = 1, n_run = 20)
+toc()
+write_csv(test, "output_test/test_05_1.csv")
+
+tic()
+test <- run_oranzees(t_max = 6000, alpha_e = 1, alpha_g = 0, init_world = 1, n_run = 20)
+toc()
+write_csv(test, "output_test/test_1_0.csv")
+
+tic()
+test <- run_oranzees(t_max = 6000, alpha_e = 1, alpha_g = 0.5, init_world = 1, n_run = 20)
+toc()
+write_csv(test, "output_test/test_1_05.csv")
+
+tic()
+test <- run_oranzees(t_max = 6000, alpha_e = 1, alpha_g = 1, init_world = 1, n_run = 20)
+toc()
+write_csv(test, "output_test/test_1_1.csv")
+
+
+#####
+
 
 data_to_plot <- analyse_patterns(test)
 whiten <- tibble(pattern = 1:4, 
@@ -47,49 +108,8 @@ whiten <- tibble(pattern = 1:4,
                  data = rep("Whiten", 4)) 
 ggplot(data = data_to_plot, aes(x = pattern, y = proportion)) +
   geom_boxplot(outlier.shape = NA) +
-  geom_jitter(width=0.05, alpha=0.5) +
+  geom_jitter(width = 0.05, alpha = 0.5) +
   theme_bw() +
-  geom_line(data = whiten, colour="red") +
-  geom_point(data = whiten, colour="red") 
-
-test <- test_oranzees_1(t_max = 6000, alpha_e = 1, alpha_g = 0, init_world = 1, n_run = 1)
-plot_one_run(test)
-test <- test_oranzees_1(t_max = 6000, alpha_e = 1, alpha_g = 0, init_world = 1, n_run = 3)
-plot_multiple_runs(test)
-test <- test_oranzees_2(t_max = 6000, alpha_e = 1, alpha_g = 0, init_world = 1, n_run = 3)
-plot_codes_distribution(test)
-
-####
-# initial tests:
-
-tic()
-test_0_05 <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.5, init_world = 1, n_run = 20)
-toc()
-write_csv(test_0_05, "output_test/test_0_0.5.csv")
-
-tic()
-test_0_06 <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.6, init_world = 1, n_run = 20)
-toc()
-write_csv(test_0_06, "output_test/test_0_0.6.csv")
-
-tic()
-test_0_07 <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.7, init_world = 1, n_run = 20)
-toc()
-write_csv(test_0_07, "output_test/test_0_0.7.csv")
-
-tic()
-test_01_05 <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.5, init_world = 1, n_run = 20)
-toc()
-write_csv(test_01_05, "output_test/test_0.1_0.5.csv")
-
-tic()
-test_01_06 <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.6, init_world = 1, n_run = 20)
-toc()
-write_csv(test_01_06, "output_test/test_0.1_0.6.csv")
-
-tic()
-test_01_07 <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.7, init_world = 1, n_run = 20)
-toc()
-write_csv(test_01_07, "output_test/test_0.1_0.7.csv")
-
+  geom_line(data = whiten, colour = "red") +
+  geom_point(data = whiten, colour = "red") 
 

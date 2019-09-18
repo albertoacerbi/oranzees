@@ -98,15 +98,9 @@ While the probability of innovation depends on $p_\text{state}$ as described abo
 
 After that, the behaviour chosen in the previous step is actually innovated with probability depending on its genetic propensity (or on a combination of its genetic propensity and ecological availability in case of food-related behaviours).
 
-## Optimsation
-
-Notice that, through the above process, oranzee can innovate behaviours that they already posses, so that innovation does not produce any modification. Also, they can innovate behaviours that are not useful for them, for example by acquiring a second behaviour in a sub-category for which they have already fulfilled the goal. 
-
-A parameter of the model, $opt$, determines the probability that each individual will "optimise" its repertoire or not, at each time step. The idea is that, at each time step, oranzees may choose which behaviours to perform, among the ones they have in their repertoire. Behaviours that are not performed are excluded from their repertoire (but they can be re-innovated and included again). To decide which behaviour to perform (and, consequently, which to discard), oranzees optimise their internal state, as done to determine whether they innovate or not. If more than one behaviour is fulfilling a specific goal, one behaviour in the ‘goal-group’, chosen at random, can be discarded. 
-
 # Output of the model
 
-The main output we are interested is the number of behaviour that would be considered "cultural" in the populations of oranzees according to the coding of @whiten_cultures_1999. We run simulation for $t_\text{max}=12000$ (corresponding to 1,000 years of oranzee-time). We then classify each behaviour in each population as:
+The main output we are interested is the number of behaviour that would be considered "cultural" in the populations of oranzees according to the coding of @whiten_cultures_1999. We run simulation for $t_\text{max}=6000$ (corresponding to 500 years of oranzee-time). We then classify each behaviour in each population as:
 
 * *customary*: a behaviour observed in over 50% of individuals in at least one age class.
 

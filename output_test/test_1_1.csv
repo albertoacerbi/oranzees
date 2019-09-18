@@ -1,0 +1,7681 @@
+run,population,behaviour,code
+1,Uossob,1,absent
+1,Uossob,2,habitual
+1,Uossob,3,absent
+1,Uossob,4,customary
+1,Uossob,5,absent
+1,Uossob,6,present
+1,Uossob,7,absent
+1,Uossob,8,absent
+1,Uossob,9,absent
+1,Uossob,10,absent
+1,Uossob,11,absent
+1,Uossob,12,absent
+1,Uossob,13,absent
+1,Uossob,14,absent
+1,Uossob,15,absent
+1,Uossob,16,customary
+1,Uossob,17,customary
+1,Uossob,18,customary
+1,Uossob,19,customary
+1,Uossob,20,absent
+1,Uossob,21,absent
+1,Uossob,22,customary
+1,Uossob,23,absent
+1,Uossob,24,absent
+1,Uossob,25,customary
+1,Uossob,26,habitual
+1,Uossob,27,habitual
+1,Uossob,28,absent
+1,Uossob,29,absent
+1,Uossob,30,absent
+1,Uossob,31,customary
+1,Uossob,32,absent
+1,Uossob,33,customary
+1,Uossob,34,ecological explanation
+1,Uossob,35,ecological explanation
+1,Uossob,36,ecological explanation
+1,Uossob,37,ecological explanation
+1,Uossob,38,absent
+1,Uossob,39,absent
+1,Uossob,40,habitual
+1,Uossob,41,absent
+1,Uossob,42,ecological explanation
+1,Uossob,43,customary
+1,Uossob,44,absent
+1,Uossob,45,absent
+1,Uossob,46,absent
+1,Uossob,47,absent
+1,Uossob,48,ecological explanation
+1,Uossob,49,absent
+1,Uossob,50,ecological explanation
+1,Uossob,51,absent
+1,Uossob,52,ecological explanation
+1,Uossob,53,ecological explanation
+1,Uossob,54,ecological explanation
+1,Uossob,55,absent
+1,Uossob,56,customary
+1,Uossob,57,customary
+1,Uossob,58,customary
+1,Uossob,59,absent
+1,Uossob,60,absent
+1,Uossob,61,absent
+1,Uossob,62,customary
+1,Uossob,63,ecological explanation
+1,Uossob,64,ecological explanation
+1,Iat Forest,1,absent
+1,Iat Forest,2,customary
+1,Iat Forest,3,absent
+1,Iat Forest,4,customary
+1,Iat Forest,5,absent
+1,Iat Forest,6,absent
+1,Iat Forest,7,absent
+1,Iat Forest,8,absent
+1,Iat Forest,9,absent
+1,Iat Forest,10,absent
+1,Iat Forest,11,absent
+1,Iat Forest,12,absent
+1,Iat Forest,13,absent
+1,Iat Forest,14,absent
+1,Iat Forest,15,absent
+1,Iat Forest,16,customary
+1,Iat Forest,17,customary
+1,Iat Forest,18,customary
+1,Iat Forest,19,customary
+1,Iat Forest,20,absent
+1,Iat Forest,21,absent
+1,Iat Forest,22,customary
+1,Iat Forest,23,absent
+1,Iat Forest,24,absent
+1,Iat Forest,25,customary
+1,Iat Forest,26,customary
+1,Iat Forest,27,present
+1,Iat Forest,28,absent
+1,Iat Forest,29,absent
+1,Iat Forest,30,absent
+1,Iat Forest,31,customary
+1,Iat Forest,32,absent
+1,Iat Forest,33,customary
+1,Iat Forest,34,absent
+1,Iat Forest,35,absent
+1,Iat Forest,36,absent
+1,Iat Forest,37,absent
+1,Iat Forest,38,present
+1,Iat Forest,39,absent
+1,Iat Forest,40,absent
+1,Iat Forest,41,absent
+1,Iat Forest,42,absent
+1,Iat Forest,43,customary
+1,Iat Forest,44,customary
+1,Iat Forest,45,ecological explanation
+1,Iat Forest,46,absent
+1,Iat Forest,47,absent
+1,Iat Forest,48,absent
+1,Iat Forest,49,absent
+1,Iat Forest,50,habitual
+1,Iat Forest,51,customary
+1,Iat Forest,52,absent
+1,Iat Forest,53,customary
+1,Iat Forest,54,absent
+1,Iat Forest,55,absent
+1,Iat Forest,56,customary
+1,Iat Forest,57,customary
+1,Iat Forest,58,customary
+1,Iat Forest,59,present
+1,Iat Forest,60,absent
+1,Iat Forest,61,absent
+1,Iat Forest,62,customary
+1,Iat Forest,63,present
+1,Iat Forest,64,absent
+1,Ebmog,1,customary
+1,Ebmog,2,absent
+1,Ebmog,3,absent
+1,Ebmog,4,absent
+1,Ebmog,5,absent
+1,Ebmog,6,habitual
+1,Ebmog,7,customary
+1,Ebmog,8,customary
+1,Ebmog,9,habitual
+1,Ebmog,10,customary
+1,Ebmog,11,customary
+1,Ebmog,12,habitual
+1,Ebmog,13,customary
+1,Ebmog,14,present
+1,Ebmog,15,absent
+1,Ebmog,16,absent
+1,Ebmog,17,absent
+1,Ebmog,18,absent
+1,Ebmog,19,absent
+1,Ebmog,20,customary
+1,Ebmog,21,customary
+1,Ebmog,22,absent
+1,Ebmog,23,present
+1,Ebmog,24,customary
+1,Ebmog,25,absent
+1,Ebmog,26,absent
+1,Ebmog,27,absent
+1,Ebmog,28,habitual
+1,Ebmog,29,habitual
+1,Ebmog,30,customary
+1,Ebmog,31,absent
+1,Ebmog,32,customary
+1,Ebmog,33,absent
+1,Ebmog,34,customary
+1,Ebmog,35,customary
+1,Ebmog,36,customary
+1,Ebmog,37,customary
+1,Ebmog,38,present
+1,Ebmog,39,customary
+1,Ebmog,40,habitual
+1,Ebmog,41,customary
+1,Ebmog,42,present
+1,Ebmog,43,absent
+1,Ebmog,44,absent
+1,Ebmog,45,customary
+1,Ebmog,46,absent
+1,Ebmog,47,customary
+1,Ebmog,48,customary
+1,Ebmog,49,absent
+1,Ebmog,50,present
+1,Ebmog,51,customary
+1,Ebmog,52,customary
+1,Ebmog,53,present
+1,Ebmog,54,habitual
+1,Ebmog,55,absent
+1,Ebmog,56,absent
+1,Ebmog,57,absent
+1,Ebmog,58,present
+1,Ebmog,59,customary
+1,Ebmog,60,absent
+1,Ebmog,61,customary
+1,Ebmog,62,customary
+1,Ebmog,63,absent
+1,Ebmog,64,customary
+1,Elaham,1,customary
+1,Elaham,2,absent
+1,Elaham,3,absent
+1,Elaham,4,absent
+1,Elaham,5,absent
+1,Elaham,6,habitual
+1,Elaham,7,customary
+1,Elaham,8,customary
+1,Elaham,9,habitual
+1,Elaham,10,customary
+1,Elaham,11,customary
+1,Elaham,12,customary
+1,Elaham,13,customary
+1,Elaham,14,absent
+1,Elaham,15,present
+1,Elaham,16,absent
+1,Elaham,17,absent
+1,Elaham,18,absent
+1,Elaham,19,absent
+1,Elaham,20,customary
+1,Elaham,21,customary
+1,Elaham,22,absent
+1,Elaham,23,present
+1,Elaham,24,customary
+1,Elaham,25,absent
+1,Elaham,26,present
+1,Elaham,27,absent
+1,Elaham,28,habitual
+1,Elaham,29,habitual
+1,Elaham,30,customary
+1,Elaham,31,absent
+1,Elaham,32,customary
+1,Elaham,33,absent
+1,Elaham,34,customary
+1,Elaham,35,customary
+1,Elaham,36,customary
+1,Elaham,37,customary
+1,Elaham,38,ecological explanation
+1,Elaham,39,customary
+1,Elaham,40,ecological explanation
+1,Elaham,41,habitual
+1,Elaham,42,absent
+1,Elaham,43,ecological explanation
+1,Elaham,44,habitual
+1,Elaham,45,customary
+1,Elaham,46,ecological explanation
+1,Elaham,47,customary
+1,Elaham,48,customary
+1,Elaham,49,ecological explanation
+1,Elaham,50,absent
+1,Elaham,51,ecological explanation
+1,Elaham,52,customary
+1,Elaham,53,absent
+1,Elaham,54,absent
+1,Elaham,55,ecological explanation
+1,Elaham,56,absent
+1,Elaham,57,ecological explanation
+1,Elaham,58,absent
+1,Elaham,59,customary
+1,Elaham,60,absent
+1,Elaham,61,customary
+1,Elaham,62,customary
+1,Elaham,63,absent
+1,Elaham,64,customary
+1,Elabik,1,habitual
+1,Elabik,2,customary
+1,Elabik,3,absent
+1,Elabik,4,absent
+1,Elabik,5,customary
+1,Elabik,6,habitual
+1,Elabik,7,customary
+1,Elabik,8,absent
+1,Elabik,9,habitual
+1,Elabik,10,habitual
+1,Elabik,11,customary
+1,Elabik,12,customary
+1,Elabik,13,customary
+1,Elabik,14,habitual
+1,Elabik,15,customary
+1,Elabik,16,absent
+1,Elabik,17,absent
+1,Elabik,18,absent
+1,Elabik,19,absent
+1,Elabik,20,habitual
+1,Elabik,21,customary
+1,Elabik,22,absent
+1,Elabik,23,habitual
+1,Elabik,24,customary
+1,Elabik,25,absent
+1,Elabik,26,absent
+1,Elabik,27,present
+1,Elabik,28,customary
+1,Elabik,29,habitual
+1,Elabik,30,habitual
+1,Elabik,31,present
+1,Elabik,32,customary
+1,Elabik,33,absent
+1,Elabik,34,customary
+1,Elabik,35,customary
+1,Elabik,36,customary
+1,Elabik,37,customary
+1,Elabik,38,absent
+1,Elabik,39,customary
+1,Elabik,40,customary
+1,Elabik,41,customary
+1,Elabik,42,absent
+1,Elabik,43,absent
+1,Elabik,44,habitual
+1,Elabik,45,customary
+1,Elabik,46,customary
+1,Elabik,47,habitual
+1,Elabik,48,customary
+1,Elabik,49,absent
+1,Elabik,50,present
+1,Elabik,51,customary
+1,Elabik,52,customary
+1,Elabik,53,absent
+1,Elabik,54,customary
+1,Elabik,55,customary
+1,Elabik,56,habitual
+1,Elabik,57,absent
+1,Elabik,58,absent
+1,Elabik,59,habitual
+1,Elabik,60,absent
+1,Elabik,61,habitual
+1,Elabik,62,absent
+1,Elabik,63,present
+1,Elabik,64,customary
+1,Ognodub,1,absent
+1,Ognodub,2,absent
+1,Ognodub,3,customary
+1,Ognodub,4,absent
+1,Ognodub,5,customary
+1,Ognodub,6,habitual
+1,Ognodub,7,habitual
+1,Ognodub,8,absent
+1,Ognodub,9,customary
+1,Ognodub,10,habitual
+1,Ognodub,11,habitual
+1,Ognodub,12,customary
+1,Ognodub,13,customary
+1,Ognodub,14,customary
+1,Ognodub,15,customary
+1,Ognodub,16,absent
+1,Ognodub,17,absent
+1,Ognodub,18,absent
+1,Ognodub,19,absent
+1,Ognodub,20,habitual
+1,Ognodub,21,habitual
+1,Ognodub,22,absent
+1,Ognodub,23,customary
+1,Ognodub,24,customary
+1,Ognodub,25,absent
+1,Ognodub,26,absent
+1,Ognodub,27,customary
+1,Ognodub,28,customary
+1,Ognodub,29,customary
+1,Ognodub,30,absent
+1,Ognodub,31,absent
+1,Ognodub,32,absent
+1,Ognodub,33,ecological explanation
+1,Ognodub,34,customary
+1,Ognodub,35,customary
+1,Ognodub,36,customary
+1,Ognodub,37,customary
+1,Ognodub,38,present
+1,Ognodub,39,ecological explanation
+1,Ognodub,40,customary
+1,Ognodub,41,ecological explanation
+1,Ognodub,42,absent
+1,Ognodub,43,absent
+1,Ognodub,44,ecological explanation
+1,Ognodub,45,absent
+1,Ognodub,46,customary
+1,Ognodub,47,ecological explanation
+1,Ognodub,48,customary
+1,Ognodub,49,absent
+1,Ognodub,50,absent
+1,Ognodub,51,customary
+1,Ognodub,52,customary
+1,Ognodub,53,absent
+1,Ognodub,54,absent
+1,Ognodub,55,customary
+1,Ognodub,56,ecological explanation
+1,Ognodub,57,absent
+1,Ognodub,58,ecological explanation
+1,Ognodub,59,ecological explanation
+1,Ognodub,60,ecological explanation
+1,Ognodub,61,ecological explanation
+1,Ognodub,62,ecological explanation
+1,Ognodub,63,absent
+1,Ognodub,64,customary
+2,Uossob,1,present
+2,Uossob,2,habitual
+2,Uossob,3,absent
+2,Uossob,4,absent
+2,Uossob,5,customary
+2,Uossob,6,customary
+2,Uossob,7,absent
+2,Uossob,8,absent
+2,Uossob,9,absent
+2,Uossob,10,absent
+2,Uossob,11,absent
+2,Uossob,12,customary
+2,Uossob,13,absent
+2,Uossob,14,absent
+2,Uossob,15,customary
+2,Uossob,16,absent
+2,Uossob,17,absent
+2,Uossob,18,absent
+2,Uossob,19,customary
+2,Uossob,20,absent
+2,Uossob,21,absent
+2,Uossob,22,customary
+2,Uossob,23,customary
+2,Uossob,24,customary
+2,Uossob,25,habitual
+2,Uossob,26,absent
+2,Uossob,27,absent
+2,Uossob,28,absent
+2,Uossob,29,habitual
+2,Uossob,30,absent
+2,Uossob,31,customary
+2,Uossob,32,absent
+2,Uossob,33,absent
+2,Uossob,34,ecological explanation
+2,Uossob,35,absent
+2,Uossob,36,absent
+2,Uossob,37,absent
+2,Uossob,38,ecological explanation
+2,Uossob,39,customary
+2,Uossob,40,customary
+2,Uossob,41,ecological explanation
+2,Uossob,42,absent
+2,Uossob,43,customary
+2,Uossob,44,absent
+2,Uossob,45,ecological explanation
+2,Uossob,46,ecological explanation
+2,Uossob,47,customary
+2,Uossob,48,customary
+2,Uossob,49,absent
+2,Uossob,50,ecological explanation
+2,Uossob,51,customary
+2,Uossob,52,ecological explanation
+2,Uossob,53,absent
+2,Uossob,54,absent
+2,Uossob,55,absent
+2,Uossob,56,customary
+2,Uossob,57,ecological explanation
+2,Uossob,58,absent
+2,Uossob,59,present
+2,Uossob,60,ecological explanation
+2,Uossob,61,customary
+2,Uossob,62,customary
+2,Uossob,63,customary
+2,Uossob,64,absent
+2,Iat Forest,1,customary
+2,Iat Forest,2,customary
+2,Iat Forest,3,absent
+2,Iat Forest,4,absent
+2,Iat Forest,5,customary
+2,Iat Forest,6,customary
+2,Iat Forest,7,absent
+2,Iat Forest,8,absent
+2,Iat Forest,9,absent
+2,Iat Forest,10,absent
+2,Iat Forest,11,present
+2,Iat Forest,12,customary
+2,Iat Forest,13,absent
+2,Iat Forest,14,habitual
+2,Iat Forest,15,customary
+2,Iat Forest,16,absent
+2,Iat Forest,17,absent
+2,Iat Forest,18,absent
+2,Iat Forest,19,customary
+2,Iat Forest,20,absent
+2,Iat Forest,21,absent
+2,Iat Forest,22,habitual
+2,Iat Forest,23,habitual
+2,Iat Forest,24,habitual
+2,Iat Forest,25,customary
+2,Iat Forest,26,absent
+2,Iat Forest,27,absent
+2,Iat Forest,28,absent
+2,Iat Forest,29,customary
+2,Iat Forest,30,absent
+2,Iat Forest,31,customary
+2,Iat Forest,32,absent
+2,Iat Forest,33,absent
+2,Iat Forest,34,absent
+2,Iat Forest,35,ecological explanation
+2,Iat Forest,36,absent
+2,Iat Forest,37,absent
+2,Iat Forest,38,absent
+2,Iat Forest,39,customary
+2,Iat Forest,40,customary
+2,Iat Forest,41,absent
+2,Iat Forest,42,ecological explanation
+2,Iat Forest,43,customary
+2,Iat Forest,44,ecological explanation
+2,Iat Forest,45,absent
+2,Iat Forest,46,absent
+2,Iat Forest,47,customary
+2,Iat Forest,48,customary
+2,Iat Forest,49,present
+2,Iat Forest,50,customary
+2,Iat Forest,51,customary
+2,Iat Forest,52,absent
+2,Iat Forest,53,customary
+2,Iat Forest,54,absent
+2,Iat Forest,55,absent
+2,Iat Forest,56,customary
+2,Iat Forest,57,absent
+2,Iat Forest,58,absent
+2,Iat Forest,59,ecological explanation
+2,Iat Forest,60,absent
+2,Iat Forest,61,absent
+2,Iat Forest,62,customary
+2,Iat Forest,63,customary
+2,Iat Forest,64,absent
+2,Ebmog,1,absent
+2,Ebmog,2,absent
+2,Ebmog,3,habitual
+2,Ebmog,4,customary
+2,Ebmog,5,absent
+2,Ebmog,6,absent
+2,Ebmog,7,habitual
+2,Ebmog,8,habitual
+2,Ebmog,9,customary
+2,Ebmog,10,customary
+2,Ebmog,11,customary
+2,Ebmog,12,absent
+2,Ebmog,13,habitual
+2,Ebmog,14,habitual
+2,Ebmog,15,absent
+2,Ebmog,16,customary
+2,Ebmog,17,absent
+2,Ebmog,18,customary
+2,Ebmog,19,present
+2,Ebmog,20,habitual
+2,Ebmog,21,habitual
+2,Ebmog,22,absent
+2,Ebmog,23,absent
+2,Ebmog,24,absent
+2,Ebmog,25,absent
+2,Ebmog,26,habitual
+2,Ebmog,27,present
+2,Ebmog,28,customary
+2,Ebmog,29,absent
+2,Ebmog,30,customary
+2,Ebmog,31,absent
+2,Ebmog,32,customary
+2,Ebmog,33,absent
+2,Ebmog,34,customary
+2,Ebmog,35,present
+2,Ebmog,36,customary
+2,Ebmog,37,absent
+2,Ebmog,38,customary
+2,Ebmog,39,absent
+2,Ebmog,40,absent
+2,Ebmog,41,customary
+2,Ebmog,42,customary
+2,Ebmog,43,absent
+2,Ebmog,44,customary
+2,Ebmog,45,customary
+2,Ebmog,46,present
+2,Ebmog,47,absent
+2,Ebmog,48,absent
+2,Ebmog,49,customary
+2,Ebmog,50,habitual
+2,Ebmog,51,absent
+2,Ebmog,52,customary
+2,Ebmog,53,absent
+2,Ebmog,54,customary
+2,Ebmog,55,customary
+2,Ebmog,56,absent
+2,Ebmog,57,customary
+2,Ebmog,58,customary
+2,Ebmog,59,present
+2,Ebmog,60,customary
+2,Ebmog,61,present
+2,Ebmog,62,absent
+2,Ebmog,63,absent
+2,Ebmog,64,customary
+2,Elaham,1,habitual
+2,Elaham,2,absent
+2,Elaham,3,customary
+2,Elaham,4,customary
+2,Elaham,5,absent
+2,Elaham,6,absent
+2,Elaham,7,absent
+2,Elaham,8,habitual
+2,Elaham,9,customary
+2,Elaham,10,customary
+2,Elaham,11,customary
+2,Elaham,12,absent
+2,Elaham,13,customary
+2,Elaham,14,customary
+2,Elaham,15,present
+2,Elaham,16,customary
+2,Elaham,17,absent
+2,Elaham,18,customary
+2,Elaham,19,absent
+2,Elaham,20,habitual
+2,Elaham,21,habitual
+2,Elaham,22,absent
+2,Elaham,23,absent
+2,Elaham,24,absent
+2,Elaham,25,habitual
+2,Elaham,26,customary
+2,Elaham,27,habitual
+2,Elaham,28,customary
+2,Elaham,29,habitual
+2,Elaham,30,customary
+2,Elaham,31,absent
+2,Elaham,32,customary
+2,Elaham,33,ecological explanation
+2,Elaham,34,customary
+2,Elaham,35,absent
+2,Elaham,36,customary
+2,Elaham,37,ecological explanation
+2,Elaham,38,customary
+2,Elaham,39,absent
+2,Elaham,40,ecological explanation
+2,Elaham,41,customary
+2,Elaham,42,customary
+2,Elaham,43,absent
+2,Elaham,44,customary
+2,Elaham,45,absent
+2,Elaham,46,absent
+2,Elaham,47,absent
+2,Elaham,48,absent
+2,Elaham,49,habitual
+2,Elaham,50,customary
+2,Elaham,51,absent
+2,Elaham,52,customary
+2,Elaham,53,ecological explanation
+2,Elaham,54,ecological explanation
+2,Elaham,55,customary
+2,Elaham,56,habitual
+2,Elaham,57,customary
+2,Elaham,58,customary
+2,Elaham,59,absent
+2,Elaham,60,customary
+2,Elaham,61,absent
+2,Elaham,62,ecological explanation
+2,Elaham,63,absent
+2,Elaham,64,habitual
+2,Elabik,1,absent
+2,Elabik,2,absent
+2,Elabik,3,customary
+2,Elabik,4,customary
+2,Elabik,5,absent
+2,Elabik,6,absent
+2,Elabik,7,customary
+2,Elabik,8,customary
+2,Elabik,9,habitual
+2,Elabik,10,habitual
+2,Elabik,11,habitual
+2,Elabik,12,absent
+2,Elabik,13,customary
+2,Elabik,14,absent
+2,Elabik,15,present
+2,Elabik,16,habitual
+2,Elabik,17,customary
+2,Elabik,18,customary
+2,Elabik,19,absent
+2,Elabik,20,customary
+2,Elabik,21,habitual
+2,Elabik,22,absent
+2,Elabik,23,habitual
+2,Elabik,24,absent
+2,Elabik,25,habitual
+2,Elabik,26,habitual
+2,Elabik,27,customary
+2,Elabik,28,customary
+2,Elabik,29,habitual
+2,Elabik,30,customary
+2,Elabik,31,absent
+2,Elabik,32,customary
+2,Elabik,33,absent
+2,Elabik,34,habitual
+2,Elabik,35,customary
+2,Elabik,36,habitual
+2,Elabik,37,absent
+2,Elabik,38,customary
+2,Elabik,39,absent
+2,Elabik,40,absent
+2,Elabik,41,customary
+2,Elabik,42,customary
+2,Elabik,43,absent
+2,Elabik,44,customary
+2,Elabik,45,customary
+2,Elabik,46,customary
+2,Elabik,47,absent
+2,Elabik,48,absent
+2,Elabik,49,habitual
+2,Elabik,50,present
+2,Elabik,51,present
+2,Elabik,52,customary
+2,Elabik,53,absent
+2,Elabik,54,customary
+2,Elabik,55,customary
+2,Elabik,56,absent
+2,Elabik,57,customary
+2,Elabik,58,customary
+2,Elabik,59,habitual
+2,Elabik,60,customary
+2,Elabik,61,absent
+2,Elabik,62,absent
+2,Elabik,63,absent
+2,Elabik,64,habitual
+2,Ognodub,1,absent
+2,Ognodub,2,absent
+2,Ognodub,3,customary
+2,Ognodub,4,customary
+2,Ognodub,5,absent
+2,Ognodub,6,absent
+2,Ognodub,7,customary
+2,Ognodub,8,habitual
+2,Ognodub,9,customary
+2,Ognodub,10,customary
+2,Ognodub,11,absent
+2,Ognodub,12,absent
+2,Ognodub,13,habitual
+2,Ognodub,14,absent
+2,Ognodub,15,absent
+2,Ognodub,16,habitual
+2,Ognodub,17,habitual
+2,Ognodub,18,habitual
+2,Ognodub,19,absent
+2,Ognodub,20,customary
+2,Ognodub,21,customary
+2,Ognodub,22,absent
+2,Ognodub,23,habitual
+2,Ognodub,24,absent
+2,Ognodub,25,absent
+2,Ognodub,26,habitual
+2,Ognodub,27,customary
+2,Ognodub,28,habitual
+2,Ognodub,29,absent
+2,Ognodub,30,customary
+2,Ognodub,31,absent
+2,Ognodub,32,habitual
+2,Ognodub,33,absent
+2,Ognodub,34,absent
+2,Ognodub,35,customary
+2,Ognodub,36,ecological explanation
+2,Ognodub,37,absent
+2,Ognodub,38,customary
+2,Ognodub,39,ecological explanation
+2,Ognodub,40,absent
+2,Ognodub,41,customary
+2,Ognodub,42,absent
+2,Ognodub,43,ecological explanation
+2,Ognodub,44,customary
+2,Ognodub,45,customary
+2,Ognodub,46,customary
+2,Ognodub,47,ecological explanation
+2,Ognodub,48,ecological explanation
+2,Ognodub,49,ecological explanation
+2,Ognodub,50,absent
+2,Ognodub,51,ecological explanation
+2,Ognodub,52,customary
+2,Ognodub,53,absent
+2,Ognodub,54,customary
+2,Ognodub,55,ecological explanation
+2,Ognodub,56,ecological explanation
+2,Ognodub,57,customary
+2,Ognodub,58,ecological explanation
+2,Ognodub,59,customary
+2,Ognodub,60,absent
+2,Ognodub,61,ecological explanation
+2,Ognodub,62,absent
+2,Ognodub,63,ecological explanation
+2,Ognodub,64,ecological explanation
+3,Uossob,1,customary
+3,Uossob,2,absent
+3,Uossob,3,absent
+3,Uossob,4,absent
+3,Uossob,5,customary
+3,Uossob,6,absent
+3,Uossob,7,absent
+3,Uossob,8,absent
+3,Uossob,9,absent
+3,Uossob,10,absent
+3,Uossob,11,absent
+3,Uossob,12,absent
+3,Uossob,13,absent
+3,Uossob,14,habitual
+3,Uossob,15,customary
+3,Uossob,16,customary
+3,Uossob,17,absent
+3,Uossob,18,customary
+3,Uossob,19,habitual
+3,Uossob,20,customary
+3,Uossob,21,absent
+3,Uossob,22,present
+3,Uossob,23,customary
+3,Uossob,24,absent
+3,Uossob,25,absent
+3,Uossob,26,customary
+3,Uossob,27,absent
+3,Uossob,28,absent
+3,Uossob,29,absent
+3,Uossob,30,absent
+3,Uossob,31,absent
+3,Uossob,32,customary
+3,Uossob,33,absent
+3,Uossob,34,customary
+3,Uossob,35,customary
+3,Uossob,36,ecological explanation
+3,Uossob,37,ecological explanation
+3,Uossob,38,ecological explanation
+3,Uossob,39,ecological explanation
+3,Uossob,40,absent
+3,Uossob,41,absent
+3,Uossob,42,ecological explanation
+3,Uossob,43,ecological explanation
+3,Uossob,44,ecological explanation
+3,Uossob,45,absent
+3,Uossob,46,ecological explanation
+3,Uossob,47,absent
+3,Uossob,48,ecological explanation
+3,Uossob,49,customary
+3,Uossob,50,ecological explanation
+3,Uossob,51,ecological explanation
+3,Uossob,52,ecological explanation
+3,Uossob,53,absent
+3,Uossob,54,absent
+3,Uossob,55,ecological explanation
+3,Uossob,56,absent
+3,Uossob,57,ecological explanation
+3,Uossob,58,customary
+3,Uossob,59,ecological explanation
+3,Uossob,60,customary
+3,Uossob,61,absent
+3,Uossob,62,ecological explanation
+3,Uossob,63,ecological explanation
+3,Uossob,64,customary
+3,Iat Forest,1,customary
+3,Iat Forest,2,absent
+3,Iat Forest,3,absent
+3,Iat Forest,4,absent
+3,Iat Forest,5,customary
+3,Iat Forest,6,absent
+3,Iat Forest,7,present
+3,Iat Forest,8,absent
+3,Iat Forest,9,absent
+3,Iat Forest,10,absent
+3,Iat Forest,11,absent
+3,Iat Forest,12,absent
+3,Iat Forest,13,absent
+3,Iat Forest,14,customary
+3,Iat Forest,15,customary
+3,Iat Forest,16,habitual
+3,Iat Forest,17,customary
+3,Iat Forest,18,habitual
+3,Iat Forest,19,absent
+3,Iat Forest,20,customary
+3,Iat Forest,21,absent
+3,Iat Forest,22,customary
+3,Iat Forest,23,customary
+3,Iat Forest,24,present
+3,Iat Forest,25,absent
+3,Iat Forest,26,customary
+3,Iat Forest,27,customary
+3,Iat Forest,28,absent
+3,Iat Forest,29,absent
+3,Iat Forest,30,absent
+3,Iat Forest,31,absent
+3,Iat Forest,32,customary
+3,Iat Forest,33,habitual
+3,Iat Forest,34,customary
+3,Iat Forest,35,absent
+3,Iat Forest,36,absent
+3,Iat Forest,37,absent
+3,Iat Forest,38,absent
+3,Iat Forest,39,absent
+3,Iat Forest,40,ecological explanation
+3,Iat Forest,41,ecological explanation
+3,Iat Forest,42,absent
+3,Iat Forest,43,absent
+3,Iat Forest,44,absent
+3,Iat Forest,45,customary
+3,Iat Forest,46,absent
+3,Iat Forest,47,present
+3,Iat Forest,48,absent
+3,Iat Forest,49,customary
+3,Iat Forest,50,present
+3,Iat Forest,51,customary
+3,Iat Forest,52,absent
+3,Iat Forest,53,customary
+3,Iat Forest,54,absent
+3,Iat Forest,55,customary
+3,Iat Forest,56,customary
+3,Iat Forest,57,absent
+3,Iat Forest,58,customary
+3,Iat Forest,59,absent
+3,Iat Forest,60,customary
+3,Iat Forest,61,ecological explanation
+3,Iat Forest,62,absent
+3,Iat Forest,63,absent
+3,Iat Forest,64,customary
+3,Ebmog,1,absent
+3,Ebmog,2,customary
+3,Ebmog,3,absent
+3,Ebmog,4,customary
+3,Ebmog,5,absent
+3,Ebmog,6,customary
+3,Ebmog,7,customary
+3,Ebmog,8,absent
+3,Ebmog,9,customary
+3,Ebmog,10,customary
+3,Ebmog,11,customary
+3,Ebmog,12,habitual
+3,Ebmog,13,present
+3,Ebmog,14,absent
+3,Ebmog,15,absent
+3,Ebmog,16,absent
+3,Ebmog,17,customary
+3,Ebmog,18,absent
+3,Ebmog,19,present
+3,Ebmog,20,absent
+3,Ebmog,21,customary
+3,Ebmog,22,customary
+3,Ebmog,23,absent
+3,Ebmog,24,absent
+3,Ebmog,25,customary
+3,Ebmog,26,absent
+3,Ebmog,27,absent
+3,Ebmog,28,customary
+3,Ebmog,29,habitual
+3,Ebmog,30,customary
+3,Ebmog,31,habitual
+3,Ebmog,32,present
+3,Ebmog,33,absent
+3,Ebmog,34,absent
+3,Ebmog,35,absent
+3,Ebmog,36,customary
+3,Ebmog,37,customary
+3,Ebmog,38,customary
+3,Ebmog,39,absent
+3,Ebmog,40,customary
+3,Ebmog,41,customary
+3,Ebmog,42,customary
+3,Ebmog,43,customary
+3,Ebmog,44,customary
+3,Ebmog,45,habitual
+3,Ebmog,46,absent
+3,Ebmog,47,absent
+3,Ebmog,48,absent
+3,Ebmog,49,absent
+3,Ebmog,50,customary
+3,Ebmog,51,customary
+3,Ebmog,52,absent
+3,Ebmog,53,absent
+3,Ebmog,54,absent
+3,Ebmog,55,habitual
+3,Ebmog,56,habitual
+3,Ebmog,57,customary
+3,Ebmog,58,absent
+3,Ebmog,59,absent
+3,Ebmog,60,absent
+3,Ebmog,61,customary
+3,Ebmog,62,customary
+3,Ebmog,63,customary
+3,Ebmog,64,absent
+3,Elaham,1,absent
+3,Elaham,2,customary
+3,Elaham,3,present
+3,Elaham,4,habitual
+3,Elaham,5,absent
+3,Elaham,6,customary
+3,Elaham,7,customary
+3,Elaham,8,habitual
+3,Elaham,9,customary
+3,Elaham,10,habitual
+3,Elaham,11,customary
+3,Elaham,12,habitual
+3,Elaham,13,absent
+3,Elaham,14,absent
+3,Elaham,15,absent
+3,Elaham,16,absent
+3,Elaham,17,habitual
+3,Elaham,18,absent
+3,Elaham,19,absent
+3,Elaham,20,absent
+3,Elaham,21,customary
+3,Elaham,22,customary
+3,Elaham,23,absent
+3,Elaham,24,absent
+3,Elaham,25,customary
+3,Elaham,26,absent
+3,Elaham,27,absent
+3,Elaham,28,habitual
+3,Elaham,29,customary
+3,Elaham,30,customary
+3,Elaham,31,habitual
+3,Elaham,32,absent
+3,Elaham,33,ecological explanation
+3,Elaham,34,absent
+3,Elaham,35,ecological explanation
+3,Elaham,36,customary
+3,Elaham,37,customary
+3,Elaham,38,customary
+3,Elaham,39,present
+3,Elaham,40,customary
+3,Elaham,41,customary
+3,Elaham,42,customary
+3,Elaham,43,customary
+3,Elaham,44,customary
+3,Elaham,45,habitual
+3,Elaham,46,absent
+3,Elaham,47,absent
+3,Elaham,48,absent
+3,Elaham,49,ecological explanation
+3,Elaham,50,customary
+3,Elaham,51,customary
+3,Elaham,52,absent
+3,Elaham,53,absent
+3,Elaham,54,ecological explanation
+3,Elaham,55,absent
+3,Elaham,56,customary
+3,Elaham,57,customary
+3,Elaham,58,absent
+3,Elaham,59,absent
+3,Elaham,60,ecological explanation
+3,Elaham,61,customary
+3,Elaham,62,customary
+3,Elaham,63,customary
+3,Elaham,64,absent
+3,Elabik,1,absent
+3,Elabik,2,customary
+3,Elabik,3,present
+3,Elabik,4,customary
+3,Elabik,5,absent
+3,Elabik,6,habitual
+3,Elabik,7,customary
+3,Elabik,8,present
+3,Elabik,9,habitual
+3,Elabik,10,habitual
+3,Elabik,11,customary
+3,Elabik,12,customary
+3,Elabik,13,customary
+3,Elabik,14,absent
+3,Elabik,15,habitual
+3,Elabik,16,absent
+3,Elabik,17,customary
+3,Elabik,18,present
+3,Elabik,19,habitual
+3,Elabik,20,absent
+3,Elabik,21,customary
+3,Elabik,22,absent
+3,Elabik,23,absent
+3,Elabik,24,habitual
+3,Elabik,25,habitual
+3,Elabik,26,absent
+3,Elabik,27,absent
+3,Elabik,28,habitual
+3,Elabik,29,customary
+3,Elabik,30,customary
+3,Elabik,31,habitual
+3,Elabik,32,absent
+3,Elabik,33,absent
+3,Elabik,34,absent
+3,Elabik,35,absent
+3,Elabik,36,customary
+3,Elabik,37,customary
+3,Elabik,38,customary
+3,Elabik,39,absent
+3,Elabik,40,customary
+3,Elabik,41,customary
+3,Elabik,42,customary
+3,Elabik,43,customary
+3,Elabik,44,customary
+3,Elabik,45,habitual
+3,Elabik,46,absent
+3,Elabik,47,present
+3,Elabik,48,absent
+3,Elabik,49,absent
+3,Elabik,50,customary
+3,Elabik,51,present
+3,Elabik,52,absent
+3,Elabik,53,absent
+3,Elabik,54,habitual
+3,Elabik,55,habitual
+3,Elabik,56,absent
+3,Elabik,57,customary
+3,Elabik,58,absent
+3,Elabik,59,customary
+3,Elabik,60,absent
+3,Elabik,61,customary
+3,Elabik,62,customary
+3,Elabik,63,customary
+3,Elabik,64,absent
+3,Ognodub,1,absent
+3,Ognodub,2,customary
+3,Ognodub,3,customary
+3,Ognodub,4,habitual
+3,Ognodub,5,absent
+3,Ognodub,6,absent
+3,Ognodub,7,habitual
+3,Ognodub,8,customary
+3,Ognodub,9,absent
+3,Ognodub,10,habitual
+3,Ognodub,11,absent
+3,Ognodub,12,customary
+3,Ognodub,13,customary
+3,Ognodub,14,absent
+3,Ognodub,15,absent
+3,Ognodub,16,absent
+3,Ognodub,17,absent
+3,Ognodub,18,habitual
+3,Ognodub,19,customary
+3,Ognodub,20,absent
+3,Ognodub,21,customary
+3,Ognodub,22,absent
+3,Ognodub,23,absent
+3,Ognodub,24,customary
+3,Ognodub,25,absent
+3,Ognodub,26,absent
+3,Ognodub,27,absent
+3,Ognodub,28,customary
+3,Ognodub,29,customary
+3,Ognodub,30,present
+3,Ognodub,31,customary
+3,Ognodub,32,absent
+3,Ognodub,33,absent
+3,Ognodub,34,ecological explanation
+3,Ognodub,35,absent
+3,Ognodub,36,customary
+3,Ognodub,37,habitual
+3,Ognodub,38,customary
+3,Ognodub,39,absent
+3,Ognodub,40,customary
+3,Ognodub,41,customary
+3,Ognodub,42,customary
+3,Ognodub,43,customary
+3,Ognodub,44,customary
+3,Ognodub,45,ecological explanation
+3,Ognodub,46,absent
+3,Ognodub,47,ecological explanation
+3,Ognodub,48,habitual
+3,Ognodub,49,absent
+3,Ognodub,50,customary
+3,Ognodub,51,absent
+3,Ognodub,52,absent
+3,Ognodub,53,ecological explanation
+3,Ognodub,54,habitual
+3,Ognodub,55,absent
+3,Ognodub,56,ecological explanation
+3,Ognodub,57,customary
+3,Ognodub,58,ecological explanation
+3,Ognodub,59,customary
+3,Ognodub,60,absent
+3,Ognodub,61,customary
+3,Ognodub,62,customary
+3,Ognodub,63,customary
+3,Ognodub,64,ecological explanation
+4,Uossob,1,absent
+4,Uossob,2,habitual
+4,Uossob,3,absent
+4,Uossob,4,absent
+4,Uossob,5,customary
+4,Uossob,6,habitual
+4,Uossob,7,absent
+4,Uossob,8,absent
+4,Uossob,9,absent
+4,Uossob,10,absent
+4,Uossob,11,absent
+4,Uossob,12,absent
+4,Uossob,13,absent
+4,Uossob,14,absent
+4,Uossob,15,customary
+4,Uossob,16,absent
+4,Uossob,17,absent
+4,Uossob,18,customary
+4,Uossob,19,customary
+4,Uossob,20,customary
+4,Uossob,21,absent
+4,Uossob,22,absent
+4,Uossob,23,absent
+4,Uossob,24,absent
+4,Uossob,25,absent
+4,Uossob,26,absent
+4,Uossob,27,absent
+4,Uossob,28,customary
+4,Uossob,29,customary
+4,Uossob,30,absent
+4,Uossob,31,absent
+4,Uossob,32,absent
+4,Uossob,33,ecological explanation
+4,Uossob,34,absent
+4,Uossob,35,customary
+4,Uossob,36,ecological explanation
+4,Uossob,37,customary
+4,Uossob,38,absent
+4,Uossob,39,ecological explanation
+4,Uossob,40,absent
+4,Uossob,41,absent
+4,Uossob,42,customary
+4,Uossob,43,absent
+4,Uossob,44,absent
+4,Uossob,45,absent
+4,Uossob,46,absent
+4,Uossob,47,ecological explanation
+4,Uossob,48,ecological explanation
+4,Uossob,49,customary
+4,Uossob,50,ecological explanation
+4,Uossob,51,customary
+4,Uossob,52,absent
+4,Uossob,53,ecological explanation
+4,Uossob,54,customary
+4,Uossob,55,absent
+4,Uossob,56,customary
+4,Uossob,57,ecological explanation
+4,Uossob,58,ecological explanation
+4,Uossob,59,ecological explanation
+4,Uossob,60,ecological explanation
+4,Uossob,61,customary
+4,Uossob,62,absent
+4,Uossob,63,absent
+4,Uossob,64,ecological explanation
+4,Iat Forest,1,absent
+4,Iat Forest,2,customary
+4,Iat Forest,3,habitual
+4,Iat Forest,4,absent
+4,Iat Forest,5,customary
+4,Iat Forest,6,customary
+4,Iat Forest,7,absent
+4,Iat Forest,8,absent
+4,Iat Forest,9,absent
+4,Iat Forest,10,absent
+4,Iat Forest,11,absent
+4,Iat Forest,12,absent
+4,Iat Forest,13,absent
+4,Iat Forest,14,absent
+4,Iat Forest,15,customary
+4,Iat Forest,16,absent
+4,Iat Forest,17,absent
+4,Iat Forest,18,customary
+4,Iat Forest,19,customary
+4,Iat Forest,20,customary
+4,Iat Forest,21,absent
+4,Iat Forest,22,absent
+4,Iat Forest,23,absent
+4,Iat Forest,24,absent
+4,Iat Forest,25,absent
+4,Iat Forest,26,absent
+4,Iat Forest,27,absent
+4,Iat Forest,28,customary
+4,Iat Forest,29,customary
+4,Iat Forest,30,absent
+4,Iat Forest,31,absent
+4,Iat Forest,32,absent
+4,Iat Forest,33,absent
+4,Iat Forest,34,absent
+4,Iat Forest,35,customary
+4,Iat Forest,36,absent
+4,Iat Forest,37,customary
+4,Iat Forest,38,absent
+4,Iat Forest,39,absent
+4,Iat Forest,40,absent
+4,Iat Forest,41,absent
+4,Iat Forest,42,customary
+4,Iat Forest,43,habitual
+4,Iat Forest,44,absent
+4,Iat Forest,45,absent
+4,Iat Forest,46,absent
+4,Iat Forest,47,habitual
+4,Iat Forest,48,customary
+4,Iat Forest,49,customary
+4,Iat Forest,50,absent
+4,Iat Forest,51,customary
+4,Iat Forest,52,habitual
+4,Iat Forest,53,absent
+4,Iat Forest,54,customary
+4,Iat Forest,55,habitual
+4,Iat Forest,56,customary
+4,Iat Forest,57,absent
+4,Iat Forest,58,absent
+4,Iat Forest,59,absent
+4,Iat Forest,60,customary
+4,Iat Forest,61,customary
+4,Iat Forest,62,ecological explanation
+4,Iat Forest,63,ecological explanation
+4,Iat Forest,64,absent
+4,Ebmog,1,customary
+4,Ebmog,2,habitual
+4,Ebmog,3,customary
+4,Ebmog,4,customary
+4,Ebmog,5,absent
+4,Ebmog,6,present
+4,Ebmog,7,habitual
+4,Ebmog,8,present
+4,Ebmog,9,absent
+4,Ebmog,10,habitual
+4,Ebmog,11,absent
+4,Ebmog,12,customary
+4,Ebmog,13,habitual
+4,Ebmog,14,habitual
+4,Ebmog,15,absent
+4,Ebmog,16,customary
+4,Ebmog,17,customary
+4,Ebmog,18,absent
+4,Ebmog,19,absent
+4,Ebmog,20,absent
+4,Ebmog,21,absent
+4,Ebmog,22,habitual
+4,Ebmog,23,habitual
+4,Ebmog,24,customary
+4,Ebmog,25,customary
+4,Ebmog,26,absent
+4,Ebmog,27,customary
+4,Ebmog,28,absent
+4,Ebmog,29,absent
+4,Ebmog,30,absent
+4,Ebmog,31,customary
+4,Ebmog,32,habitual
+4,Ebmog,33,customary
+4,Ebmog,34,absent
+4,Ebmog,35,absent
+4,Ebmog,36,absent
+4,Ebmog,37,absent
+4,Ebmog,38,customary
+4,Ebmog,39,customary
+4,Ebmog,40,absent
+4,Ebmog,41,absent
+4,Ebmog,42,absent
+4,Ebmog,43,customary
+4,Ebmog,44,absent
+4,Ebmog,45,absent
+4,Ebmog,46,present
+4,Ebmog,47,habitual
+4,Ebmog,48,absent
+4,Ebmog,49,absent
+4,Ebmog,50,customary
+4,Ebmog,51,absent
+4,Ebmog,52,customary
+4,Ebmog,53,customary
+4,Ebmog,54,absent
+4,Ebmog,55,customary
+4,Ebmog,56,absent
+4,Ebmog,57,customary
+4,Ebmog,58,customary
+4,Ebmog,59,customary
+4,Ebmog,60,absent
+4,Ebmog,61,absent
+4,Ebmog,62,absent
+4,Ebmog,63,customary
+4,Ebmog,64,customary
+4,Elaham,1,customary
+4,Elaham,2,habitual
+4,Elaham,3,customary
+4,Elaham,4,customary
+4,Elaham,5,absent
+4,Elaham,6,absent
+4,Elaham,7,absent
+4,Elaham,8,absent
+4,Elaham,9,absent
+4,Elaham,10,present
+4,Elaham,11,absent
+4,Elaham,12,customary
+4,Elaham,13,habitual
+4,Elaham,14,present
+4,Elaham,15,absent
+4,Elaham,16,customary
+4,Elaham,17,customary
+4,Elaham,18,absent
+4,Elaham,19,absent
+4,Elaham,20,absent
+4,Elaham,21,absent
+4,Elaham,22,customary
+4,Elaham,23,habitual
+4,Elaham,24,customary
+4,Elaham,25,customary
+4,Elaham,26,habitual
+4,Elaham,27,customary
+4,Elaham,28,absent
+4,Elaham,29,absent
+4,Elaham,30,absent
+4,Elaham,31,customary
+4,Elaham,32,habitual
+4,Elaham,33,customary
+4,Elaham,34,ecological explanation
+4,Elaham,35,ecological explanation
+4,Elaham,36,absent
+4,Elaham,37,ecological explanation
+4,Elaham,38,customary
+4,Elaham,39,customary
+4,Elaham,40,ecological explanation
+4,Elaham,41,ecological explanation
+4,Elaham,42,absent
+4,Elaham,43,customary
+4,Elaham,44,absent
+4,Elaham,45,absent
+4,Elaham,46,ecological explanation
+4,Elaham,47,habitual
+4,Elaham,48,absent
+4,Elaham,49,absent
+4,Elaham,50,customary
+4,Elaham,51,ecological explanation
+4,Elaham,52,customary
+4,Elaham,53,customary
+4,Elaham,54,ecological explanation
+4,Elaham,55,customary
+4,Elaham,56,absent
+4,Elaham,57,customary
+4,Elaham,58,customary
+4,Elaham,59,customary
+4,Elaham,60,present
+4,Elaham,61,absent
+4,Elaham,62,absent
+4,Elaham,63,customary
+4,Elaham,64,customary
+4,Elabik,1,customary
+4,Elabik,2,absent
+4,Elabik,3,absent
+4,Elabik,4,customary
+4,Elabik,5,absent
+4,Elabik,6,absent
+4,Elabik,7,customary
+4,Elabik,8,habitual
+4,Elabik,9,customary
+4,Elabik,10,habitual
+4,Elabik,11,customary
+4,Elabik,12,customary
+4,Elabik,13,customary
+4,Elabik,14,habitual
+4,Elabik,15,absent
+4,Elabik,16,absent
+4,Elabik,17,habitual
+4,Elabik,18,absent
+4,Elabik,19,absent
+4,Elabik,20,absent
+4,Elabik,21,customary
+4,Elabik,22,customary
+4,Elabik,23,habitual
+4,Elabik,24,habitual
+4,Elabik,25,customary
+4,Elabik,26,customary
+4,Elabik,27,habitual
+4,Elabik,28,customary
+4,Elabik,29,absent
+4,Elabik,30,customary
+4,Elabik,31,absent
+4,Elabik,32,habitual
+4,Elabik,33,customary
+4,Elabik,34,customary
+4,Elabik,35,absent
+4,Elabik,36,absent
+4,Elabik,37,absent
+4,Elabik,38,customary
+4,Elabik,39,customary
+4,Elabik,40,absent
+4,Elabik,41,present
+4,Elabik,42,absent
+4,Elabik,43,present
+4,Elabik,44,absent
+4,Elabik,45,absent
+4,Elabik,46,customary
+4,Elabik,47,absent
+4,Elabik,48,absent
+4,Elabik,49,absent
+4,Elabik,50,customary
+4,Elabik,51,absent
+4,Elabik,52,habitual
+4,Elabik,53,customary
+4,Elabik,54,absent
+4,Elabik,55,customary
+4,Elabik,56,absent
+4,Elabik,57,customary
+4,Elabik,58,customary
+4,Elabik,59,customary
+4,Elabik,60,present
+4,Elabik,61,absent
+4,Elabik,62,absent
+4,Elabik,63,customary
+4,Elabik,64,customary
+4,Ognodub,1,customary
+4,Ognodub,2,absent
+4,Ognodub,3,absent
+4,Ognodub,4,absent
+4,Ognodub,5,absent
+4,Ognodub,6,absent
+4,Ognodub,7,customary
+4,Ognodub,8,customary
+4,Ognodub,9,customary
+4,Ognodub,10,habitual
+4,Ognodub,11,absent
+4,Ognodub,12,habitual
+4,Ognodub,13,absent
+4,Ognodub,14,customary
+4,Ognodub,15,absent
+4,Ognodub,16,customary
+4,Ognodub,17,habitual
+4,Ognodub,18,absent
+4,Ognodub,19,absent
+4,Ognodub,20,absent
+4,Ognodub,21,absent
+4,Ognodub,22,customary
+4,Ognodub,23,customary
+4,Ognodub,24,habitual
+4,Ognodub,25,customary
+4,Ognodub,26,customary
+4,Ognodub,27,habitual
+4,Ognodub,28,customary
+4,Ognodub,29,absent
+4,Ognodub,30,customary
+4,Ognodub,31,absent
+4,Ognodub,32,habitual
+4,Ognodub,33,customary
+4,Ognodub,34,customary
+4,Ognodub,35,absent
+4,Ognodub,36,absent
+4,Ognodub,37,absent
+4,Ognodub,38,ecological explanation
+4,Ognodub,39,customary
+4,Ognodub,40,present
+4,Ognodub,41,customary
+4,Ognodub,42,ecological explanation
+4,Ognodub,43,ecological explanation
+4,Ognodub,44,ecological explanation
+4,Ognodub,45,ecological explanation
+4,Ognodub,46,customary
+4,Ognodub,47,absent
+4,Ognodub,48,absent
+4,Ognodub,49,ecological explanation
+4,Ognodub,50,customary
+4,Ognodub,51,absent
+4,Ognodub,52,ecological explanation
+4,Ognodub,53,customary
+4,Ognodub,54,absent
+4,Ognodub,55,ecological explanation
+4,Ognodub,56,ecological explanation
+4,Ognodub,57,customary
+4,Ognodub,58,customary
+4,Ognodub,59,customary
+4,Ognodub,60,absent
+4,Ognodub,61,ecological explanation
+4,Ognodub,62,absent
+4,Ognodub,63,customary
+4,Ognodub,64,absent
+5,Uossob,1,customary
+5,Uossob,2,customary
+5,Uossob,3,absent
+5,Uossob,4,absent
+5,Uossob,5,absent
+5,Uossob,6,customary
+5,Uossob,7,customary
+5,Uossob,8,absent
+5,Uossob,9,customary
+5,Uossob,10,absent
+5,Uossob,11,habitual
+5,Uossob,12,absent
+5,Uossob,13,absent
+5,Uossob,14,absent
+5,Uossob,15,customary
+5,Uossob,16,customary
+5,Uossob,17,absent
+5,Uossob,18,habitual
+5,Uossob,19,absent
+5,Uossob,20,absent
+5,Uossob,21,absent
+5,Uossob,22,absent
+5,Uossob,23,habitual
+5,Uossob,24,customary
+5,Uossob,25,absent
+5,Uossob,26,customary
+5,Uossob,27,absent
+5,Uossob,28,absent
+5,Uossob,29,absent
+5,Uossob,30,customary
+5,Uossob,31,absent
+5,Uossob,32,habitual
+5,Uossob,33,absent
+5,Uossob,34,customary
+5,Uossob,35,ecological explanation
+5,Uossob,36,customary
+5,Uossob,37,ecological explanation
+5,Uossob,38,ecological explanation
+5,Uossob,39,ecological explanation
+5,Uossob,40,ecological explanation
+5,Uossob,41,ecological explanation
+5,Uossob,42,ecological explanation
+5,Uossob,43,absent
+5,Uossob,44,ecological explanation
+5,Uossob,45,absent
+5,Uossob,46,absent
+5,Uossob,47,absent
+5,Uossob,48,ecological explanation
+5,Uossob,49,customary
+5,Uossob,50,ecological explanation
+5,Uossob,51,habitual
+5,Uossob,52,ecological explanation
+5,Uossob,53,absent
+5,Uossob,54,customary
+5,Uossob,55,customary
+5,Uossob,56,absent
+5,Uossob,57,ecological explanation
+5,Uossob,58,customary
+5,Uossob,59,ecological explanation
+5,Uossob,60,ecological explanation
+5,Uossob,61,ecological explanation
+5,Uossob,62,ecological explanation
+5,Uossob,63,absent
+5,Uossob,64,absent
+5,Iat Forest,1,customary
+5,Iat Forest,2,absent
+5,Iat Forest,3,absent
+5,Iat Forest,4,absent
+5,Iat Forest,5,absent
+5,Iat Forest,6,customary
+5,Iat Forest,7,customary
+5,Iat Forest,8,absent
+5,Iat Forest,9,customary
+5,Iat Forest,10,absent
+5,Iat Forest,11,customary
+5,Iat Forest,12,present
+5,Iat Forest,13,absent
+5,Iat Forest,14,absent
+5,Iat Forest,15,habitual
+5,Iat Forest,16,habitual
+5,Iat Forest,17,absent
+5,Iat Forest,18,customary
+5,Iat Forest,19,absent
+5,Iat Forest,20,absent
+5,Iat Forest,21,absent
+5,Iat Forest,22,absent
+5,Iat Forest,23,customary
+5,Iat Forest,24,customary
+5,Iat Forest,25,absent
+5,Iat Forest,26,customary
+5,Iat Forest,27,customary
+5,Iat Forest,28,absent
+5,Iat Forest,29,absent
+5,Iat Forest,30,customary
+5,Iat Forest,31,absent
+5,Iat Forest,32,customary
+5,Iat Forest,33,present
+5,Iat Forest,34,customary
+5,Iat Forest,35,absent
+5,Iat Forest,36,customary
+5,Iat Forest,37,absent
+5,Iat Forest,38,absent
+5,Iat Forest,39,absent
+5,Iat Forest,40,absent
+5,Iat Forest,41,absent
+5,Iat Forest,42,absent
+5,Iat Forest,43,habitual
+5,Iat Forest,44,absent
+5,Iat Forest,45,present
+5,Iat Forest,46,customary
+5,Iat Forest,47,customary
+5,Iat Forest,48,absent
+5,Iat Forest,49,customary
+5,Iat Forest,50,absent
+5,Iat Forest,51,ecological explanation
+5,Iat Forest,52,absent
+5,Iat Forest,53,habitual
+5,Iat Forest,54,customary
+5,Iat Forest,55,customary
+5,Iat Forest,56,absent
+5,Iat Forest,57,customary
+5,Iat Forest,58,customary
+5,Iat Forest,59,absent
+5,Iat Forest,60,absent
+5,Iat Forest,61,absent
+5,Iat Forest,62,absent
+5,Iat Forest,63,absent
+5,Iat Forest,64,absent
+5,Ebmog,1,absent
+5,Ebmog,2,absent
+5,Ebmog,3,customary
+5,Ebmog,4,habitual
+5,Ebmog,5,absent
+5,Ebmog,6,absent
+5,Ebmog,7,absent
+5,Ebmog,8,customary
+5,Ebmog,9,absent
+5,Ebmog,10,customary
+5,Ebmog,11,present
+5,Ebmog,12,customary
+5,Ebmog,13,customary
+5,Ebmog,14,habitual
+5,Ebmog,15,absent
+5,Ebmog,16,habitual
+5,Ebmog,17,customary
+5,Ebmog,18,absent
+5,Ebmog,19,habitual
+5,Ebmog,20,absent
+5,Ebmog,21,customary
+5,Ebmog,22,habitual
+5,Ebmog,23,habitual
+5,Ebmog,24,absent
+5,Ebmog,25,customary
+5,Ebmog,26,absent
+5,Ebmog,27,habitual
+5,Ebmog,28,present
+5,Ebmog,29,absent
+5,Ebmog,30,absent
+5,Ebmog,31,customary
+5,Ebmog,32,absent
+5,Ebmog,33,customary
+5,Ebmog,34,customary
+5,Ebmog,35,customary
+5,Ebmog,36,absent
+5,Ebmog,37,customary
+5,Ebmog,38,customary
+5,Ebmog,39,customary
+5,Ebmog,40,customary
+5,Ebmog,41,customary
+5,Ebmog,42,absent
+5,Ebmog,43,absent
+5,Ebmog,44,customary
+5,Ebmog,45,present
+5,Ebmog,46,customary
+5,Ebmog,47,absent
+5,Ebmog,48,customary
+5,Ebmog,49,absent
+5,Ebmog,50,present
+5,Ebmog,51,absent
+5,Ebmog,52,customary
+5,Ebmog,53,customary
+5,Ebmog,54,absent
+5,Ebmog,55,absent
+5,Ebmog,56,absent
+5,Ebmog,57,habitual
+5,Ebmog,58,absent
+5,Ebmog,59,customary
+5,Ebmog,60,absent
+5,Ebmog,61,customary
+5,Ebmog,62,customary
+5,Ebmog,63,absent
+5,Ebmog,64,customary
+5,Elaham,1,absent
+5,Elaham,2,absent
+5,Elaham,3,customary
+5,Elaham,4,habitual
+5,Elaham,5,absent
+5,Elaham,6,absent
+5,Elaham,7,absent
+5,Elaham,8,customary
+5,Elaham,9,absent
+5,Elaham,10,customary
+5,Elaham,11,habitual
+5,Elaham,12,customary
+5,Elaham,13,habitual
+5,Elaham,14,absent
+5,Elaham,15,absent
+5,Elaham,16,absent
+5,Elaham,17,customary
+5,Elaham,18,habitual
+5,Elaham,19,habitual
+5,Elaham,20,absent
+5,Elaham,21,customary
+5,Elaham,22,customary
+5,Elaham,23,absent
+5,Elaham,24,absent
+5,Elaham,25,customary
+5,Elaham,26,present
+5,Elaham,27,habitual
+5,Elaham,28,absent
+5,Elaham,29,absent
+5,Elaham,30,absent
+5,Elaham,31,customary
+5,Elaham,32,present
+5,Elaham,33,customary
+5,Elaham,34,ecological explanation
+5,Elaham,35,customary
+5,Elaham,36,absent
+5,Elaham,37,customary
+5,Elaham,38,customary
+5,Elaham,39,customary
+5,Elaham,40,customary
+5,Elaham,41,customary
+5,Elaham,42,absent
+5,Elaham,43,ecological explanation
+5,Elaham,44,customary
+5,Elaham,45,absent
+5,Elaham,46,habitual
+5,Elaham,47,ecological explanation
+5,Elaham,48,customary
+5,Elaham,49,absent
+5,Elaham,50,absent
+5,Elaham,51,absent
+5,Elaham,52,customary
+5,Elaham,53,customary
+5,Elaham,54,absent
+5,Elaham,55,absent
+5,Elaham,56,ecological explanation
+5,Elaham,57,habitual
+5,Elaham,58,ecological explanation
+5,Elaham,59,customary
+5,Elaham,60,absent
+5,Elaham,61,customary
+5,Elaham,62,customary
+5,Elaham,63,ecological explanation
+5,Elaham,64,customary
+5,Elabik,1,absent
+5,Elabik,2,habitual
+5,Elabik,3,habitual
+5,Elabik,4,habitual
+5,Elabik,5,habitual
+5,Elabik,6,absent
+5,Elabik,7,absent
+5,Elabik,8,habitual
+5,Elabik,9,absent
+5,Elabik,10,absent
+5,Elabik,11,absent
+5,Elabik,12,habitual
+5,Elabik,13,customary
+5,Elabik,14,customary
+5,Elabik,15,absent
+5,Elabik,16,customary
+5,Elabik,17,habitual
+5,Elabik,18,absent
+5,Elabik,19,customary
+5,Elabik,20,customary
+5,Elabik,21,customary
+5,Elabik,22,customary
+5,Elabik,23,absent
+5,Elabik,24,absent
+5,Elabik,25,habitual
+5,Elabik,26,absent
+5,Elabik,27,present
+5,Elabik,28,customary
+5,Elabik,29,habitual
+5,Elabik,30,absent
+5,Elabik,31,customary
+5,Elabik,32,absent
+5,Elabik,33,customary
+5,Elabik,34,customary
+5,Elabik,35,customary
+5,Elabik,36,absent
+5,Elabik,37,customary
+5,Elabik,38,customary
+5,Elabik,39,customary
+5,Elabik,40,customary
+5,Elabik,41,customary
+5,Elabik,42,absent
+5,Elabik,43,absent
+5,Elabik,44,customary
+5,Elabik,45,absent
+5,Elabik,46,absent
+5,Elabik,47,habitual
+5,Elabik,48,customary
+5,Elabik,49,absent
+5,Elabik,50,absent
+5,Elabik,51,habitual
+5,Elabik,52,customary
+5,Elabik,53,absent
+5,Elabik,54,absent
+5,Elabik,55,present
+5,Elabik,56,absent
+5,Elabik,57,present
+5,Elabik,58,absent
+5,Elabik,59,customary
+5,Elabik,60,absent
+5,Elabik,61,habitual
+5,Elabik,62,customary
+5,Elabik,63,absent
+5,Elabik,64,customary
+5,Ognodub,1,absent
+5,Ognodub,2,customary
+5,Ognodub,3,present
+5,Ognodub,4,habitual
+5,Ognodub,5,customary
+5,Ognodub,6,absent
+5,Ognodub,7,absent
+5,Ognodub,8,habitual
+5,Ognodub,9,absent
+5,Ognodub,10,absent
+5,Ognodub,11,absent
+5,Ognodub,12,customary
+5,Ognodub,13,customary
+5,Ognodub,14,customary
+5,Ognodub,15,absent
+5,Ognodub,16,customary
+5,Ognodub,17,absent
+5,Ognodub,18,absent
+5,Ognodub,19,habitual
+5,Ognodub,20,customary
+5,Ognodub,21,habitual
+5,Ognodub,22,customary
+5,Ognodub,23,absent
+5,Ognodub,24,absent
+5,Ognodub,25,habitual
+5,Ognodub,26,absent
+5,Ognodub,27,absent
+5,Ognodub,28,customary
+5,Ognodub,29,customary
+5,Ognodub,30,absent
+5,Ognodub,31,customary
+5,Ognodub,32,absent
+5,Ognodub,33,ecological explanation
+5,Ognodub,34,absent
+5,Ognodub,35,customary
+5,Ognodub,36,ecological explanation
+5,Ognodub,37,customary
+5,Ognodub,38,customary
+5,Ognodub,39,customary
+5,Ognodub,40,customary
+5,Ognodub,41,customary
+5,Ognodub,42,habitual
+5,Ognodub,43,habitual
+5,Ognodub,44,customary
+5,Ognodub,45,ecological explanation
+5,Ognodub,46,ecological explanation
+5,Ognodub,47,absent
+5,Ognodub,48,customary
+5,Ognodub,49,ecological explanation
+5,Ognodub,50,absent
+5,Ognodub,51,habitual
+5,Ognodub,52,customary
+5,Ognodub,53,ecological explanation
+5,Ognodub,54,ecological explanation
+5,Ognodub,55,ecological explanation
+5,Ognodub,56,absent
+5,Ognodub,57,absent
+5,Ognodub,58,absent
+5,Ognodub,59,customary
+5,Ognodub,60,absent
+5,Ognodub,61,absent
+5,Ognodub,62,customary
+5,Ognodub,63,present
+5,Ognodub,64,ecological explanation
+6,Uossob,1,absent
+6,Uossob,2,absent
+6,Uossob,3,habitual
+6,Uossob,4,absent
+6,Uossob,5,absent
+6,Uossob,6,absent
+6,Uossob,7,absent
+6,Uossob,8,customary
+6,Uossob,9,absent
+6,Uossob,10,customary
+6,Uossob,11,customary
+6,Uossob,12,absent
+6,Uossob,13,habitual
+6,Uossob,14,absent
+6,Uossob,15,absent
+6,Uossob,16,absent
+6,Uossob,17,absent
+6,Uossob,18,absent
+6,Uossob,19,customary
+6,Uossob,20,customary
+6,Uossob,21,absent
+6,Uossob,22,absent
+6,Uossob,23,absent
+6,Uossob,24,absent
+6,Uossob,25,absent
+6,Uossob,26,absent
+6,Uossob,27,customary
+6,Uossob,28,habitual
+6,Uossob,29,absent
+6,Uossob,30,customary
+6,Uossob,31,customary
+6,Uossob,32,absent
+6,Uossob,33,ecological explanation
+6,Uossob,34,absent
+6,Uossob,35,ecological explanation
+6,Uossob,36,ecological explanation
+6,Uossob,37,customary
+6,Uossob,38,ecological explanation
+6,Uossob,39,absent
+6,Uossob,40,absent
+6,Uossob,41,ecological explanation
+6,Uossob,42,ecological explanation
+6,Uossob,43,ecological explanation
+6,Uossob,44,absent
+6,Uossob,45,customary
+6,Uossob,46,ecological explanation
+6,Uossob,47,ecological explanation
+6,Uossob,48,ecological explanation
+6,Uossob,49,customary
+6,Uossob,50,absent
+6,Uossob,51,ecological explanation
+6,Uossob,52,customary
+6,Uossob,53,ecological explanation
+6,Uossob,54,absent
+6,Uossob,55,ecological explanation
+6,Uossob,56,ecological explanation
+6,Uossob,57,ecological explanation
+6,Uossob,58,absent
+6,Uossob,59,absent
+6,Uossob,60,absent
+6,Uossob,61,ecological explanation
+6,Uossob,62,customary
+6,Uossob,63,absent
+6,Uossob,64,customary
+6,Iat Forest,1,habitual
+6,Iat Forest,2,absent
+6,Iat Forest,3,customary
+6,Iat Forest,4,absent
+6,Iat Forest,5,absent
+6,Iat Forest,6,absent
+6,Iat Forest,7,absent
+6,Iat Forest,8,customary
+6,Iat Forest,9,absent
+6,Iat Forest,10,customary
+6,Iat Forest,11,customary
+6,Iat Forest,12,absent
+6,Iat Forest,13,customary
+6,Iat Forest,14,present
+6,Iat Forest,15,absent
+6,Iat Forest,16,absent
+6,Iat Forest,17,absent
+6,Iat Forest,18,absent
+6,Iat Forest,19,customary
+6,Iat Forest,20,customary
+6,Iat Forest,21,present
+6,Iat Forest,22,absent
+6,Iat Forest,23,absent
+6,Iat Forest,24,absent
+6,Iat Forest,25,absent
+6,Iat Forest,26,absent
+6,Iat Forest,27,customary
+6,Iat Forest,28,customary
+6,Iat Forest,29,absent
+6,Iat Forest,30,customary
+6,Iat Forest,31,customary
+6,Iat Forest,32,absent
+6,Iat Forest,33,absent
+6,Iat Forest,34,absent
+6,Iat Forest,35,absent
+6,Iat Forest,36,absent
+6,Iat Forest,37,customary
+6,Iat Forest,38,absent
+6,Iat Forest,39,customary
+6,Iat Forest,40,customary
+6,Iat Forest,41,habitual
+6,Iat Forest,42,absent
+6,Iat Forest,43,absent
+6,Iat Forest,44,absent
+6,Iat Forest,45,customary
+6,Iat Forest,46,absent
+6,Iat Forest,47,absent
+6,Iat Forest,48,absent
+6,Iat Forest,49,customary
+6,Iat Forest,50,absent
+6,Iat Forest,51,absent
+6,Iat Forest,52,customary
+6,Iat Forest,53,absent
+6,Iat Forest,54,present
+6,Iat Forest,55,customary
+6,Iat Forest,56,absent
+6,Iat Forest,57,absent
+6,Iat Forest,58,ecological explanation
+6,Iat Forest,59,ecological explanation
+6,Iat Forest,60,ecological explanation
+6,Iat Forest,61,absent
+6,Iat Forest,62,customary
+6,Iat Forest,63,habitual
+6,Iat Forest,64,customary
+6,Ebmog,1,customary
+6,Ebmog,2,customary
+6,Ebmog,3,present
+6,Ebmog,4,customary
+6,Ebmog,5,customary
+6,Ebmog,6,habitual
+6,Ebmog,7,habitual
+6,Ebmog,8,absent
+6,Ebmog,9,habitual
+6,Ebmog,10,absent
+6,Ebmog,11,absent
+6,Ebmog,12,habitual
+6,Ebmog,13,absent
+6,Ebmog,14,customary
+6,Ebmog,15,present
+6,Ebmog,16,customary
+6,Ebmog,17,habitual
+6,Ebmog,18,present
+6,Ebmog,19,absent
+6,Ebmog,20,present
+6,Ebmog,21,habitual
+6,Ebmog,22,habitual
+6,Ebmog,23,customary
+6,Ebmog,24,customary
+6,Ebmog,25,customary
+6,Ebmog,26,habitual
+6,Ebmog,27,absent
+6,Ebmog,28,absent
+6,Ebmog,29,habitual
+6,Ebmog,30,absent
+6,Ebmog,31,absent
+6,Ebmog,32,habitual
+6,Ebmog,33,customary
+6,Ebmog,34,absent
+6,Ebmog,35,customary
+6,Ebmog,36,customary
+6,Ebmog,37,absent
+6,Ebmog,38,customary
+6,Ebmog,39,customary
+6,Ebmog,40,absent
+6,Ebmog,41,absent
+6,Ebmog,42,customary
+6,Ebmog,43,customary
+6,Ebmog,44,absent
+6,Ebmog,45,absent
+6,Ebmog,46,customary
+6,Ebmog,47,customary
+6,Ebmog,48,absent
+6,Ebmog,49,absent
+6,Ebmog,50,absent
+6,Ebmog,51,customary
+6,Ebmog,52,absent
+6,Ebmog,53,customary
+6,Ebmog,54,absent
+6,Ebmog,55,customary
+6,Ebmog,56,customary
+6,Ebmog,57,customary
+6,Ebmog,58,customary
+6,Ebmog,59,customary
+6,Ebmog,60,customary
+6,Ebmog,61,customary
+6,Ebmog,62,absent
+6,Ebmog,63,absent
+6,Ebmog,64,absent
+6,Elaham,1,customary
+6,Elaham,2,customary
+6,Elaham,3,absent
+6,Elaham,4,customary
+6,Elaham,5,habitual
+6,Elaham,6,customary
+6,Elaham,7,habitual
+6,Elaham,8,absent
+6,Elaham,9,habitual
+6,Elaham,10,present
+6,Elaham,11,absent
+6,Elaham,12,customary
+6,Elaham,13,absent
+6,Elaham,14,customary
+6,Elaham,15,absent
+6,Elaham,16,habitual
+6,Elaham,17,customary
+6,Elaham,18,absent
+6,Elaham,19,absent
+6,Elaham,20,absent
+6,Elaham,21,habitual
+6,Elaham,22,present
+6,Elaham,23,customary
+6,Elaham,24,customary
+6,Elaham,25,customary
+6,Elaham,26,habitual
+6,Elaham,27,habitual
+6,Elaham,28,absent
+6,Elaham,29,habitual
+6,Elaham,30,absent
+6,Elaham,31,present
+6,Elaham,32,customary
+6,Elaham,33,customary
+6,Elaham,34,ecological explanation
+6,Elaham,35,customary
+6,Elaham,36,customary
+6,Elaham,37,absent
+6,Elaham,38,customary
+6,Elaham,39,customary
+6,Elaham,40,ecological explanation
+6,Elaham,41,absent
+6,Elaham,42,customary
+6,Elaham,43,customary
+6,Elaham,44,ecological explanation
+6,Elaham,45,ecological explanation
+6,Elaham,46,customary
+6,Elaham,47,customary
+6,Elaham,48,absent
+6,Elaham,49,ecological explanation
+6,Elaham,50,ecological explanation
+6,Elaham,51,customary
+6,Elaham,52,absent
+6,Elaham,53,habitual
+6,Elaham,54,absent
+6,Elaham,55,absent
+6,Elaham,56,customary
+6,Elaham,57,customary
+6,Elaham,58,customary
+6,Elaham,59,customary
+6,Elaham,60,habitual
+6,Elaham,61,customary
+6,Elaham,62,absent
+6,Elaham,63,absent
+6,Elaham,64,absent
+6,Elabik,1,absent
+6,Elabik,2,habitual
+6,Elabik,3,absent
+6,Elabik,4,customary
+6,Elabik,5,customary
+6,Elabik,6,habitual
+6,Elabik,7,customary
+6,Elabik,8,absent
+6,Elabik,9,habitual
+6,Elabik,10,absent
+6,Elabik,11,absent
+6,Elabik,12,habitual
+6,Elabik,13,absent
+6,Elabik,14,habitual
+6,Elabik,15,customary
+6,Elabik,16,customary
+6,Elabik,17,customary
+6,Elabik,18,customary
+6,Elabik,19,absent
+6,Elabik,20,absent
+6,Elabik,21,habitual
+6,Elabik,22,absent
+6,Elabik,23,customary
+6,Elabik,24,customary
+6,Elabik,25,customary
+6,Elabik,26,customary
+6,Elabik,27,absent
+6,Elabik,28,absent
+6,Elabik,29,habitual
+6,Elabik,30,absent
+6,Elabik,31,absent
+6,Elabik,32,customary
+6,Elabik,33,customary
+6,Elabik,34,present
+6,Elabik,35,customary
+6,Elabik,36,customary
+6,Elabik,37,absent
+6,Elabik,38,customary
+6,Elabik,39,present
+6,Elabik,40,present
+6,Elabik,41,absent
+6,Elabik,42,customary
+6,Elabik,43,customary
+6,Elabik,44,absent
+6,Elabik,45,absent
+6,Elabik,46,customary
+6,Elabik,47,customary
+6,Elabik,48,present
+6,Elabik,49,customary
+6,Elabik,50,customary
+6,Elabik,51,customary
+6,Elabik,52,absent
+6,Elabik,53,customary
+6,Elabik,54,present
+6,Elabik,55,customary
+6,Elabik,56,customary
+6,Elabik,57,customary
+6,Elabik,58,customary
+6,Elabik,59,customary
+6,Elabik,60,customary
+6,Elabik,61,customary
+6,Elabik,62,absent
+6,Elabik,63,absent
+6,Elabik,64,absent
+6,Ognodub,1,absent
+6,Ognodub,2,absent
+6,Ognodub,3,absent
+6,Ognodub,4,habitual
+6,Ognodub,5,customary
+6,Ognodub,6,present
+6,Ognodub,7,customary
+6,Ognodub,8,absent
+6,Ognodub,9,customary
+6,Ognodub,10,absent
+6,Ognodub,11,absent
+6,Ognodub,12,customary
+6,Ognodub,13,absent
+6,Ognodub,14,absent
+6,Ognodub,15,habitual
+6,Ognodub,16,customary
+6,Ognodub,17,habitual
+6,Ognodub,18,customary
+6,Ognodub,19,absent
+6,Ognodub,20,absent
+6,Ognodub,21,customary
+6,Ognodub,22,habitual
+6,Ognodub,23,habitual
+6,Ognodub,24,present
+6,Ognodub,25,customary
+6,Ognodub,26,customary
+6,Ognodub,27,absent
+6,Ognodub,28,absent
+6,Ognodub,29,customary
+6,Ognodub,30,absent
+6,Ognodub,31,absent
+6,Ognodub,32,habitual
+6,Ognodub,33,customary
+6,Ognodub,34,absent
+6,Ognodub,35,customary
+6,Ognodub,36,customary
+6,Ognodub,37,ecological explanation
+6,Ognodub,38,customary
+6,Ognodub,39,ecological explanation
+6,Ognodub,40,habitual
+6,Ognodub,41,absent
+6,Ognodub,42,customary
+6,Ognodub,43,customary
+6,Ognodub,44,absent
+6,Ognodub,45,absent
+6,Ognodub,46,customary
+6,Ognodub,47,customary
+6,Ognodub,48,present
+6,Ognodub,49,absent
+6,Ognodub,50,customary
+6,Ognodub,51,customary
+6,Ognodub,52,ecological explanation
+6,Ognodub,53,customary
+6,Ognodub,54,ecological explanation
+6,Ognodub,55,absent
+6,Ognodub,56,habitual
+6,Ognodub,57,customary
+6,Ognodub,58,customary
+6,Ognodub,59,customary
+6,Ognodub,60,customary
+6,Ognodub,61,customary
+6,Ognodub,62,ecological explanation
+6,Ognodub,63,ecological explanation
+6,Ognodub,64,ecological explanation
+7,Uossob,1,customary
+7,Uossob,2,absent
+7,Uossob,3,customary
+7,Uossob,4,customary
+7,Uossob,5,absent
+7,Uossob,6,absent
+7,Uossob,7,customary
+7,Uossob,8,present
+7,Uossob,9,customary
+7,Uossob,10,customary
+7,Uossob,11,customary
+7,Uossob,12,customary
+7,Uossob,13,absent
+7,Uossob,14,absent
+7,Uossob,15,customary
+7,Uossob,16,absent
+7,Uossob,17,customary
+7,Uossob,18,habitual
+7,Uossob,19,absent
+7,Uossob,20,customary
+7,Uossob,21,habitual
+7,Uossob,22,absent
+7,Uossob,23,absent
+7,Uossob,24,customary
+7,Uossob,25,customary
+7,Uossob,26,absent
+7,Uossob,27,absent
+7,Uossob,28,absent
+7,Uossob,29,absent
+7,Uossob,30,absent
+7,Uossob,31,absent
+7,Uossob,32,absent
+7,Uossob,33,customary
+7,Uossob,34,absent
+7,Uossob,35,ecological explanation
+7,Uossob,36,ecological explanation
+7,Uossob,37,customary
+7,Uossob,38,ecological explanation
+7,Uossob,39,ecological explanation
+7,Uossob,40,ecological explanation
+7,Uossob,41,ecological explanation
+7,Uossob,42,ecological explanation
+7,Uossob,43,ecological explanation
+7,Uossob,44,ecological explanation
+7,Uossob,45,ecological explanation
+7,Uossob,46,ecological explanation
+7,Uossob,47,ecological explanation
+7,Uossob,48,customary
+7,Uossob,49,absent
+7,Uossob,50,customary
+7,Uossob,51,absent
+7,Uossob,52,ecological explanation
+7,Uossob,53,absent
+7,Uossob,54,absent
+7,Uossob,55,ecological explanation
+7,Uossob,56,absent
+7,Uossob,57,absent
+7,Uossob,58,ecological explanation
+7,Uossob,59,customary
+7,Uossob,60,customary
+7,Uossob,61,absent
+7,Uossob,62,ecological explanation
+7,Uossob,63,ecological explanation
+7,Uossob,64,customary
+7,Iat Forest,1,habitual
+7,Iat Forest,2,absent
+7,Iat Forest,3,customary
+7,Iat Forest,4,habitual
+7,Iat Forest,5,absent
+7,Iat Forest,6,present
+7,Iat Forest,7,customary
+7,Iat Forest,8,customary
+7,Iat Forest,9,customary
+7,Iat Forest,10,customary
+7,Iat Forest,11,customary
+7,Iat Forest,12,customary
+7,Iat Forest,13,absent
+7,Iat Forest,14,absent
+7,Iat Forest,15,customary
+7,Iat Forest,16,habitual
+7,Iat Forest,17,habitual
+7,Iat Forest,18,customary
+7,Iat Forest,19,absent
+7,Iat Forest,20,habitual
+7,Iat Forest,21,customary
+7,Iat Forest,22,absent
+7,Iat Forest,23,absent
+7,Iat Forest,24,customary
+7,Iat Forest,25,customary
+7,Iat Forest,26,absent
+7,Iat Forest,27,absent
+7,Iat Forest,28,absent
+7,Iat Forest,29,absent
+7,Iat Forest,30,absent
+7,Iat Forest,31,absent
+7,Iat Forest,32,absent
+7,Iat Forest,33,customary
+7,Iat Forest,34,habitual
+7,Iat Forest,35,absent
+7,Iat Forest,36,absent
+7,Iat Forest,37,customary
+7,Iat Forest,38,habitual
+7,Iat Forest,39,absent
+7,Iat Forest,40,habitual
+7,Iat Forest,41,absent
+7,Iat Forest,42,present
+7,Iat Forest,43,absent
+7,Iat Forest,44,absent
+7,Iat Forest,45,absent
+7,Iat Forest,46,absent
+7,Iat Forest,47,absent
+7,Iat Forest,48,customary
+7,Iat Forest,49,absent
+7,Iat Forest,50,customary
+7,Iat Forest,51,habitual
+7,Iat Forest,52,absent
+7,Iat Forest,53,absent
+7,Iat Forest,54,ecological explanation
+7,Iat Forest,55,habitual
+7,Iat Forest,56,absent
+7,Iat Forest,57,habitual
+7,Iat Forest,58,absent
+7,Iat Forest,59,customary
+7,Iat Forest,60,customary
+7,Iat Forest,61,customary
+7,Iat Forest,62,present
+7,Iat Forest,63,absent
+7,Iat Forest,64,customary
+7,Ebmog,1,absent
+7,Ebmog,2,habitual
+7,Ebmog,3,habitual
+7,Ebmog,4,absent
+7,Ebmog,5,customary
+7,Ebmog,6,customary
+7,Ebmog,7,absent
+7,Ebmog,8,absent
+7,Ebmog,9,absent
+7,Ebmog,10,absent
+7,Ebmog,11,absent
+7,Ebmog,12,absent
+7,Ebmog,13,customary
+7,Ebmog,14,habitual
+7,Ebmog,15,absent
+7,Ebmog,16,customary
+7,Ebmog,17,absent
+7,Ebmog,18,absent
+7,Ebmog,19,customary
+7,Ebmog,20,present
+7,Ebmog,21,habitual
+7,Ebmog,22,absent
+7,Ebmog,23,habitual
+7,Ebmog,24,absent
+7,Ebmog,25,absent
+7,Ebmog,26,customary
+7,Ebmog,27,customary
+7,Ebmog,28,customary
+7,Ebmog,29,habitual
+7,Ebmog,30,habitual
+7,Ebmog,31,customary
+7,Ebmog,32,customary
+7,Ebmog,33,customary
+7,Ebmog,34,absent
+7,Ebmog,35,customary
+7,Ebmog,36,customary
+7,Ebmog,37,absent
+7,Ebmog,38,habitual
+7,Ebmog,39,customary
+7,Ebmog,40,customary
+7,Ebmog,41,customary
+7,Ebmog,42,present
+7,Ebmog,43,customary
+7,Ebmog,44,customary
+7,Ebmog,45,customary
+7,Ebmog,46,customary
+7,Ebmog,47,customary
+7,Ebmog,48,absent
+7,Ebmog,49,present
+7,Ebmog,50,absent
+7,Ebmog,51,customary
+7,Ebmog,52,present
+7,Ebmog,53,customary
+7,Ebmog,54,customary
+7,Ebmog,55,customary
+7,Ebmog,56,customary
+7,Ebmog,57,customary
+7,Ebmog,58,customary
+7,Ebmog,59,absent
+7,Ebmog,60,absent
+7,Ebmog,61,habitual
+7,Ebmog,62,customary
+7,Ebmog,63,customary
+7,Ebmog,64,absent
+7,Elaham,1,absent
+7,Elaham,2,habitual
+7,Elaham,3,absent
+7,Elaham,4,absent
+7,Elaham,5,customary
+7,Elaham,6,customary
+7,Elaham,7,absent
+7,Elaham,8,habitual
+7,Elaham,9,absent
+7,Elaham,10,absent
+7,Elaham,11,absent
+7,Elaham,12,present
+7,Elaham,13,customary
+7,Elaham,14,absent
+7,Elaham,15,absent
+7,Elaham,16,customary
+7,Elaham,17,absent
+7,Elaham,18,absent
+7,Elaham,19,customary
+7,Elaham,20,absent
+7,Elaham,21,absent
+7,Elaham,22,absent
+7,Elaham,23,habitual
+7,Elaham,24,absent
+7,Elaham,25,absent
+7,Elaham,26,customary
+7,Elaham,27,customary
+7,Elaham,28,customary
+7,Elaham,29,absent
+7,Elaham,30,habitual
+7,Elaham,31,customary
+7,Elaham,32,customary
+7,Elaham,33,customary
+7,Elaham,34,absent
+7,Elaham,35,absent
+7,Elaham,36,customary
+7,Elaham,37,absent
+7,Elaham,38,customary
+7,Elaham,39,customary
+7,Elaham,40,customary
+7,Elaham,41,customary
+7,Elaham,42,habitual
+7,Elaham,43,customary
+7,Elaham,44,customary
+7,Elaham,45,customary
+7,Elaham,46,customary
+7,Elaham,47,customary
+7,Elaham,48,absent
+7,Elaham,49,ecological explanation
+7,Elaham,50,ecological explanation
+7,Elaham,51,customary
+7,Elaham,52,absent
+7,Elaham,53,customary
+7,Elaham,54,customary
+7,Elaham,55,customary
+7,Elaham,56,customary
+7,Elaham,57,customary
+7,Elaham,58,customary
+7,Elaham,59,absent
+7,Elaham,60,ecological explanation
+7,Elaham,61,habitual
+7,Elaham,62,customary
+7,Elaham,63,customary
+7,Elaham,64,absent
+7,Elabik,1,present
+7,Elabik,2,customary
+7,Elabik,3,absent
+7,Elabik,4,absent
+7,Elabik,5,customary
+7,Elabik,6,customary
+7,Elabik,7,absent
+7,Elabik,8,absent
+7,Elabik,9,absent
+7,Elabik,10,absent
+7,Elabik,11,present
+7,Elabik,12,present
+7,Elabik,13,customary
+7,Elabik,14,customary
+7,Elabik,15,absent
+7,Elabik,16,present
+7,Elabik,17,absent
+7,Elabik,18,absent
+7,Elabik,19,customary
+7,Elabik,20,absent
+7,Elabik,21,absent
+7,Elabik,22,customary
+7,Elabik,23,customary
+7,Elabik,24,present
+7,Elabik,25,absent
+7,Elabik,26,customary
+7,Elabik,27,habitual
+7,Elabik,28,customary
+7,Elabik,29,customary
+7,Elabik,30,habitual
+7,Elabik,31,habitual
+7,Elabik,32,habitual
+7,Elabik,33,absent
+7,Elabik,34,absent
+7,Elabik,35,customary
+7,Elabik,36,customary
+7,Elabik,37,absent
+7,Elabik,38,absent
+7,Elabik,39,customary
+7,Elabik,40,customary
+7,Elabik,41,customary
+7,Elabik,42,habitual
+7,Elabik,43,customary
+7,Elabik,44,customary
+7,Elabik,45,customary
+7,Elabik,46,customary
+7,Elabik,47,customary
+7,Elabik,48,absent
+7,Elabik,49,absent
+7,Elabik,50,absent
+7,Elabik,51,habitual
+7,Elabik,52,absent
+7,Elabik,53,customary
+7,Elabik,54,customary
+7,Elabik,55,customary
+7,Elabik,56,customary
+7,Elabik,57,habitual
+7,Elabik,58,customary
+7,Elabik,59,absent
+7,Elabik,60,absent
+7,Elabik,61,present
+7,Elabik,62,customary
+7,Elabik,63,customary
+7,Elabik,64,absent
+7,Ognodub,1,customary
+7,Ognodub,2,customary
+7,Ognodub,3,absent
+7,Ognodub,4,absent
+7,Ognodub,5,customary
+7,Ognodub,6,present
+7,Ognodub,7,absent
+7,Ognodub,8,absent
+7,Ognodub,9,absent
+7,Ognodub,10,absent
+7,Ognodub,11,absent
+7,Ognodub,12,absent
+7,Ognodub,13,absent
+7,Ognodub,14,customary
+7,Ognodub,15,absent
+7,Ognodub,16,absent
+7,Ognodub,17,absent
+7,Ognodub,18,absent
+7,Ognodub,19,absent
+7,Ognodub,20,absent
+7,Ognodub,21,absent
+7,Ognodub,22,customary
+7,Ognodub,23,customary
+7,Ognodub,24,absent
+7,Ognodub,25,absent
+7,Ognodub,26,customary
+7,Ognodub,27,customary
+7,Ognodub,28,customary
+7,Ognodub,29,customary
+7,Ognodub,30,customary
+7,Ognodub,31,customary
+7,Ognodub,32,habitual
+7,Ognodub,33,ecological explanation
+7,Ognodub,34,ecological explanation
+7,Ognodub,35,customary
+7,Ognodub,36,customary
+7,Ognodub,37,ecological explanation
+7,Ognodub,38,absent
+7,Ognodub,39,customary
+7,Ognodub,40,absent
+7,Ognodub,41,present
+7,Ognodub,42,absent
+7,Ognodub,43,customary
+7,Ognodub,44,customary
+7,Ognodub,45,customary
+7,Ognodub,46,customary
+7,Ognodub,47,customary
+7,Ognodub,48,ecological explanation
+7,Ognodub,49,absent
+7,Ognodub,50,absent
+7,Ognodub,51,ecological explanation
+7,Ognodub,52,absent
+7,Ognodub,53,ecological explanation
+7,Ognodub,54,customary
+7,Ognodub,55,absent
+7,Ognodub,56,ecological explanation
+7,Ognodub,57,ecological explanation
+7,Ognodub,58,customary
+7,Ognodub,59,ecological explanation
+7,Ognodub,60,absent
+7,Ognodub,61,ecological explanation
+7,Ognodub,62,customary
+7,Ognodub,63,absent
+7,Ognodub,64,ecological explanation
+8,Uossob,1,absent
+8,Uossob,2,customary
+8,Uossob,3,habitual
+8,Uossob,4,customary
+8,Uossob,5,absent
+8,Uossob,6,absent
+8,Uossob,7,habitual
+8,Uossob,8,absent
+8,Uossob,9,absent
+8,Uossob,10,customary
+8,Uossob,11,customary
+8,Uossob,12,absent
+8,Uossob,13,customary
+8,Uossob,14,customary
+8,Uossob,15,customary
+8,Uossob,16,absent
+8,Uossob,17,absent
+8,Uossob,18,absent
+8,Uossob,19,customary
+8,Uossob,20,absent
+8,Uossob,21,customary
+8,Uossob,22,absent
+8,Uossob,23,absent
+8,Uossob,24,absent
+8,Uossob,25,absent
+8,Uossob,26,absent
+8,Uossob,27,habitual
+8,Uossob,28,absent
+8,Uossob,29,customary
+8,Uossob,30,absent
+8,Uossob,31,absent
+8,Uossob,32,absent
+8,Uossob,33,customary
+8,Uossob,34,customary
+8,Uossob,35,ecological explanation
+8,Uossob,36,absent
+8,Uossob,37,ecological explanation
+8,Uossob,38,ecological explanation
+8,Uossob,39,customary
+8,Uossob,40,absent
+8,Uossob,41,absent
+8,Uossob,42,customary
+8,Uossob,43,absent
+8,Uossob,44,ecological explanation
+8,Uossob,45,absent
+8,Uossob,46,customary
+8,Uossob,47,ecological explanation
+8,Uossob,48,absent
+8,Uossob,49,ecological explanation
+8,Uossob,50,absent
+8,Uossob,51,absent
+8,Uossob,52,ecological explanation
+8,Uossob,53,absent
+8,Uossob,54,customary
+8,Uossob,55,absent
+8,Uossob,56,absent
+8,Uossob,57,absent
+8,Uossob,58,customary
+8,Uossob,59,customary
+8,Uossob,60,absent
+8,Uossob,61,ecological explanation
+8,Uossob,62,ecological explanation
+8,Uossob,63,customary
+8,Uossob,64,customary
+8,Iat Forest,1,absent
+8,Iat Forest,2,customary
+8,Iat Forest,3,customary
+8,Iat Forest,4,customary
+8,Iat Forest,5,absent
+8,Iat Forest,6,absent
+8,Iat Forest,7,customary
+8,Iat Forest,8,absent
+8,Iat Forest,9,absent
+8,Iat Forest,10,customary
+8,Iat Forest,11,customary
+8,Iat Forest,12,absent
+8,Iat Forest,13,customary
+8,Iat Forest,14,customary
+8,Iat Forest,15,customary
+8,Iat Forest,16,absent
+8,Iat Forest,17,absent
+8,Iat Forest,18,absent
+8,Iat Forest,19,customary
+8,Iat Forest,20,absent
+8,Iat Forest,21,customary
+8,Iat Forest,22,absent
+8,Iat Forest,23,absent
+8,Iat Forest,24,absent
+8,Iat Forest,25,absent
+8,Iat Forest,26,absent
+8,Iat Forest,27,customary
+8,Iat Forest,28,absent
+8,Iat Forest,29,customary
+8,Iat Forest,30,absent
+8,Iat Forest,31,present
+8,Iat Forest,32,absent
+8,Iat Forest,33,customary
+8,Iat Forest,34,customary
+8,Iat Forest,35,absent
+8,Iat Forest,36,ecological explanation
+8,Iat Forest,37,absent
+8,Iat Forest,38,absent
+8,Iat Forest,39,customary
+8,Iat Forest,40,absent
+8,Iat Forest,41,absent
+8,Iat Forest,42,customary
+8,Iat Forest,43,habitual
+8,Iat Forest,44,absent
+8,Iat Forest,45,present
+8,Iat Forest,46,customary
+8,Iat Forest,47,absent
+8,Iat Forest,48,absent
+8,Iat Forest,49,absent
+8,Iat Forest,50,present
+8,Iat Forest,51,habitual
+8,Iat Forest,52,absent
+8,Iat Forest,53,absent
+8,Iat Forest,54,habitual
+8,Iat Forest,55,absent
+8,Iat Forest,56,ecological explanation
+8,Iat Forest,57,ecological explanation
+8,Iat Forest,58,customary
+8,Iat Forest,59,customary
+8,Iat Forest,60,absent
+8,Iat Forest,61,habitual
+8,Iat Forest,62,absent
+8,Iat Forest,63,customary
+8,Iat Forest,64,customary
+8,Ebmog,1,customary
+8,Ebmog,2,absent
+8,Ebmog,3,absent
+8,Ebmog,4,absent
+8,Ebmog,5,customary
+8,Ebmog,6,absent
+8,Ebmog,7,present
+8,Ebmog,8,customary
+8,Ebmog,9,customary
+8,Ebmog,10,absent
+8,Ebmog,11,absent
+8,Ebmog,12,present
+8,Ebmog,13,absent
+8,Ebmog,14,habitual
+8,Ebmog,15,absent
+8,Ebmog,16,customary
+8,Ebmog,17,habitual
+8,Ebmog,18,habitual
+8,Ebmog,19,absent
+8,Ebmog,20,customary
+8,Ebmog,21,absent
+8,Ebmog,22,customary
+8,Ebmog,23,customary
+8,Ebmog,24,habitual
+8,Ebmog,25,absent
+8,Ebmog,26,customary
+8,Ebmog,27,habitual
+8,Ebmog,28,customary
+8,Ebmog,29,absent
+8,Ebmog,30,habitual
+8,Ebmog,31,customary
+8,Ebmog,32,habitual
+8,Ebmog,33,habitual
+8,Ebmog,34,habitual
+8,Ebmog,35,customary
+8,Ebmog,36,absent
+8,Ebmog,37,absent
+8,Ebmog,38,present
+8,Ebmog,39,habitual
+8,Ebmog,40,customary
+8,Ebmog,41,customary
+8,Ebmog,42,absent
+8,Ebmog,43,present
+8,Ebmog,44,habitual
+8,Ebmog,45,habitual
+8,Ebmog,46,customary
+8,Ebmog,47,customary
+8,Ebmog,48,absent
+8,Ebmog,49,customary
+8,Ebmog,50,absent
+8,Ebmog,51,customary
+8,Ebmog,52,customary
+8,Ebmog,53,habitual
+8,Ebmog,54,absent
+8,Ebmog,55,customary
+8,Ebmog,56,customary
+8,Ebmog,57,present
+8,Ebmog,58,absent
+8,Ebmog,59,habitual
+8,Ebmog,60,customary
+8,Ebmog,61,absent
+8,Ebmog,62,customary
+8,Ebmog,63,absent
+8,Ebmog,64,absent
+8,Elaham,1,customary
+8,Elaham,2,absent
+8,Elaham,3,absent
+8,Elaham,4,absent
+8,Elaham,5,habitual
+8,Elaham,6,absent
+8,Elaham,7,absent
+8,Elaham,8,customary
+8,Elaham,9,customary
+8,Elaham,10,absent
+8,Elaham,11,absent
+8,Elaham,12,habitual
+8,Elaham,13,absent
+8,Elaham,14,absent
+8,Elaham,15,absent
+8,Elaham,16,customary
+8,Elaham,17,absent
+8,Elaham,18,absent
+8,Elaham,19,absent
+8,Elaham,20,customary
+8,Elaham,21,absent
+8,Elaham,22,customary
+8,Elaham,23,customary
+8,Elaham,24,habitual
+8,Elaham,25,absent
+8,Elaham,26,customary
+8,Elaham,27,customary
+8,Elaham,28,customary
+8,Elaham,29,absent
+8,Elaham,30,customary
+8,Elaham,31,customary
+8,Elaham,32,habitual
+8,Elaham,33,habitual
+8,Elaham,34,absent
+8,Elaham,35,customary
+8,Elaham,36,absent
+8,Elaham,37,absent
+8,Elaham,38,absent
+8,Elaham,39,customary
+8,Elaham,40,customary
+8,Elaham,41,ecological explanation
+8,Elaham,42,absent
+8,Elaham,43,absent
+8,Elaham,44,absent
+8,Elaham,45,present
+8,Elaham,46,customary
+8,Elaham,47,customary
+8,Elaham,48,ecological explanation
+8,Elaham,49,customary
+8,Elaham,50,ecological explanation
+8,Elaham,51,customary
+8,Elaham,52,customary
+8,Elaham,53,absent
+8,Elaham,54,absent
+8,Elaham,55,ecological explanation
+8,Elaham,56,customary
+8,Elaham,57,absent
+8,Elaham,58,ecological explanation
+8,Elaham,59,present
+8,Elaham,60,customary
+8,Elaham,61,absent
+8,Elaham,62,customary
+8,Elaham,63,ecological explanation
+8,Elaham,64,absent
+8,Elabik,1,present
+8,Elabik,2,habitual
+8,Elabik,3,absent
+8,Elabik,4,absent
+8,Elabik,5,habitual
+8,Elabik,6,customary
+8,Elabik,7,absent
+8,Elabik,8,customary
+8,Elabik,9,customary
+8,Elabik,10,present
+8,Elabik,11,absent
+8,Elabik,12,customary
+8,Elabik,13,absent
+8,Elabik,14,absent
+8,Elabik,15,absent
+8,Elabik,16,customary
+8,Elabik,17,customary
+8,Elabik,18,habitual
+8,Elabik,19,present
+8,Elabik,20,customary
+8,Elabik,21,present
+8,Elabik,22,habitual
+8,Elabik,23,customary
+8,Elabik,24,customary
+8,Elabik,25,customary
+8,Elabik,26,customary
+8,Elabik,27,absent
+8,Elabik,28,habitual
+8,Elabik,29,absent
+8,Elabik,30,habitual
+8,Elabik,31,habitual
+8,Elabik,32,habitual
+8,Elabik,33,absent
+8,Elabik,34,habitual
+8,Elabik,35,customary
+8,Elabik,36,customary
+8,Elabik,37,absent
+8,Elabik,38,absent
+8,Elabik,39,absent
+8,Elabik,40,customary
+8,Elabik,41,customary
+8,Elabik,42,absent
+8,Elabik,43,absent
+8,Elabik,44,present
+8,Elabik,45,customary
+8,Elabik,46,habitual
+8,Elabik,47,customary
+8,Elabik,48,habitual
+8,Elabik,49,customary
+8,Elabik,50,absent
+8,Elabik,51,customary
+8,Elabik,52,customary
+8,Elabik,53,habitual
+8,Elabik,54,customary
+8,Elabik,55,customary
+8,Elabik,56,customary
+8,Elabik,57,habitual
+8,Elabik,58,absent
+8,Elabik,59,absent
+8,Elabik,60,customary
+8,Elabik,61,present
+8,Elabik,62,customary
+8,Elabik,63,absent
+8,Elabik,64,absent
+8,Ognodub,1,absent
+8,Ognodub,2,absent
+8,Ognodub,3,absent
+8,Ognodub,4,absent
+8,Ognodub,5,customary
+8,Ognodub,6,customary
+8,Ognodub,7,absent
+8,Ognodub,8,habitual
+8,Ognodub,9,present
+8,Ognodub,10,absent
+8,Ognodub,11,absent
+8,Ognodub,12,customary
+8,Ognodub,13,absent
+8,Ognodub,14,absent
+8,Ognodub,15,absent
+8,Ognodub,16,absent
+8,Ognodub,17,present
+8,Ognodub,18,customary
+8,Ognodub,19,absent
+8,Ognodub,20,customary
+8,Ognodub,21,absent
+8,Ognodub,22,absent
+8,Ognodub,23,habitual
+8,Ognodub,24,customary
+8,Ognodub,25,customary
+8,Ognodub,26,customary
+8,Ognodub,27,absent
+8,Ognodub,28,customary
+8,Ognodub,29,habitual
+8,Ognodub,30,habitual
+8,Ognodub,31,absent
+8,Ognodub,32,habitual
+8,Ognodub,33,ecological explanation
+8,Ognodub,34,ecological explanation
+8,Ognodub,35,customary
+8,Ognodub,36,customary
+8,Ognodub,37,absent
+8,Ognodub,38,habitual
+8,Ognodub,39,ecological explanation
+8,Ognodub,40,ecological explanation
+8,Ognodub,41,customary
+8,Ognodub,42,ecological explanation
+8,Ognodub,43,ecological explanation
+8,Ognodub,44,absent
+8,Ognodub,45,ecological explanation
+8,Ognodub,46,ecological explanation
+8,Ognodub,47,absent
+8,Ognodub,48,customary
+8,Ognodub,49,absent
+8,Ognodub,50,absent
+8,Ognodub,51,ecological explanation
+8,Ognodub,52,customary
+8,Ognodub,53,ecological explanation
+8,Ognodub,54,ecological explanation
+8,Ognodub,55,customary
+8,Ognodub,56,customary
+8,Ognodub,57,habitual
+8,Ognodub,58,absent
+8,Ognodub,59,ecological explanation
+8,Ognodub,60,ecological explanation
+8,Ognodub,61,absent
+8,Ognodub,62,customary
+8,Ognodub,63,absent
+8,Ognodub,64,ecological explanation
+9,Uossob,1,absent
+9,Uossob,2,customary
+9,Uossob,3,absent
+9,Uossob,4,absent
+9,Uossob,5,absent
+9,Uossob,6,customary
+9,Uossob,7,habitual
+9,Uossob,8,absent
+9,Uossob,9,absent
+9,Uossob,10,absent
+9,Uossob,11,customary
+9,Uossob,12,absent
+9,Uossob,13,absent
+9,Uossob,14,absent
+9,Uossob,15,customary
+9,Uossob,16,absent
+9,Uossob,17,absent
+9,Uossob,18,absent
+9,Uossob,19,customary
+9,Uossob,20,absent
+9,Uossob,21,absent
+9,Uossob,22,habitual
+9,Uossob,23,customary
+9,Uossob,24,absent
+9,Uossob,25,absent
+9,Uossob,26,habitual
+9,Uossob,27,absent
+9,Uossob,28,habitual
+9,Uossob,29,customary
+9,Uossob,30,absent
+9,Uossob,31,absent
+9,Uossob,32,customary
+9,Uossob,33,customary
+9,Uossob,34,ecological explanation
+9,Uossob,35,absent
+9,Uossob,36,absent
+9,Uossob,37,ecological explanation
+9,Uossob,38,customary
+9,Uossob,39,ecological explanation
+9,Uossob,40,ecological explanation
+9,Uossob,41,absent
+9,Uossob,42,ecological explanation
+9,Uossob,43,ecological explanation
+9,Uossob,44,habitual
+9,Uossob,45,ecological explanation
+9,Uossob,46,customary
+9,Uossob,47,absent
+9,Uossob,48,ecological explanation
+9,Uossob,49,absent
+9,Uossob,50,ecological explanation
+9,Uossob,51,ecological explanation
+9,Uossob,52,ecological explanation
+9,Uossob,53,absent
+9,Uossob,54,customary
+9,Uossob,55,ecological explanation
+9,Uossob,56,absent
+9,Uossob,57,ecological explanation
+9,Uossob,58,customary
+9,Uossob,59,absent
+9,Uossob,60,ecological explanation
+9,Uossob,61,absent
+9,Uossob,62,ecological explanation
+9,Uossob,63,ecological explanation
+9,Uossob,64,customary
+9,Iat Forest,1,absent
+9,Iat Forest,2,customary
+9,Iat Forest,3,absent
+9,Iat Forest,4,absent
+9,Iat Forest,5,absent
+9,Iat Forest,6,customary
+9,Iat Forest,7,customary
+9,Iat Forest,8,absent
+9,Iat Forest,9,absent
+9,Iat Forest,10,absent
+9,Iat Forest,11,customary
+9,Iat Forest,12,absent
+9,Iat Forest,13,absent
+9,Iat Forest,14,absent
+9,Iat Forest,15,customary
+9,Iat Forest,16,absent
+9,Iat Forest,17,habitual
+9,Iat Forest,18,absent
+9,Iat Forest,19,habitual
+9,Iat Forest,20,absent
+9,Iat Forest,21,absent
+9,Iat Forest,22,customary
+9,Iat Forest,23,customary
+9,Iat Forest,24,absent
+9,Iat Forest,25,absent
+9,Iat Forest,26,customary
+9,Iat Forest,27,absent
+9,Iat Forest,28,customary
+9,Iat Forest,29,customary
+9,Iat Forest,30,absent
+9,Iat Forest,31,absent
+9,Iat Forest,32,customary
+9,Iat Forest,33,customary
+9,Iat Forest,34,absent
+9,Iat Forest,35,ecological explanation
+9,Iat Forest,36,customary
+9,Iat Forest,37,absent
+9,Iat Forest,38,absent
+9,Iat Forest,39,absent
+9,Iat Forest,40,present
+9,Iat Forest,41,habitual
+9,Iat Forest,42,absent
+9,Iat Forest,43,absent
+9,Iat Forest,44,ecological explanation
+9,Iat Forest,45,customary
+9,Iat Forest,46,customary
+9,Iat Forest,47,ecological explanation
+9,Iat Forest,48,customary
+9,Iat Forest,49,absent
+9,Iat Forest,50,habitual
+9,Iat Forest,51,customary
+9,Iat Forest,52,absent
+9,Iat Forest,53,absent
+9,Iat Forest,54,customary
+9,Iat Forest,55,absent
+9,Iat Forest,56,absent
+9,Iat Forest,57,absent
+9,Iat Forest,58,customary
+9,Iat Forest,59,ecological explanation
+9,Iat Forest,60,present
+9,Iat Forest,61,absent
+9,Iat Forest,62,absent
+9,Iat Forest,63,habitual
+9,Iat Forest,64,customary
+9,Ebmog,1,habitual
+9,Ebmog,2,absent
+9,Ebmog,3,customary
+9,Ebmog,4,habitual
+9,Ebmog,5,customary
+9,Ebmog,6,absent
+9,Ebmog,7,absent
+9,Ebmog,8,habitual
+9,Ebmog,9,absent
+9,Ebmog,10,customary
+9,Ebmog,11,absent
+9,Ebmog,12,customary
+9,Ebmog,13,customary
+9,Ebmog,14,customary
+9,Ebmog,15,habitual
+9,Ebmog,16,customary
+9,Ebmog,17,customary
+9,Ebmog,18,habitual
+9,Ebmog,19,absent
+9,Ebmog,20,customary
+9,Ebmog,21,absent
+9,Ebmog,22,habitual
+9,Ebmog,23,absent
+9,Ebmog,24,habitual
+9,Ebmog,25,customary
+9,Ebmog,26,absent
+9,Ebmog,27,customary
+9,Ebmog,28,absent
+9,Ebmog,29,absent
+9,Ebmog,30,absent
+9,Ebmog,31,customary
+9,Ebmog,32,absent
+9,Ebmog,33,absent
+9,Ebmog,34,customary
+9,Ebmog,35,customary
+9,Ebmog,36,absent
+9,Ebmog,37,customary
+9,Ebmog,38,absent
+9,Ebmog,39,present
+9,Ebmog,40,absent
+9,Ebmog,41,customary
+9,Ebmog,42,customary
+9,Ebmog,43,customary
+9,Ebmog,44,habitual
+9,Ebmog,45,present
+9,Ebmog,46,absent
+9,Ebmog,47,customary
+9,Ebmog,48,customary
+9,Ebmog,49,present
+9,Ebmog,50,absent
+9,Ebmog,51,customary
+9,Ebmog,52,customary
+9,Ebmog,53,absent
+9,Ebmog,54,absent
+9,Ebmog,55,customary
+9,Ebmog,56,absent
+9,Ebmog,57,customary
+9,Ebmog,58,absent
+9,Ebmog,59,customary
+9,Ebmog,60,customary
+9,Ebmog,61,habitual
+9,Ebmog,62,customary
+9,Ebmog,63,customary
+9,Ebmog,64,absent
+9,Elaham,1,habitual
+9,Elaham,2,present
+9,Elaham,3,customary
+9,Elaham,4,habitual
+9,Elaham,5,customary
+9,Elaham,6,absent
+9,Elaham,7,absent
+9,Elaham,8,absent
+9,Elaham,9,habitual
+9,Elaham,10,customary
+9,Elaham,11,absent
+9,Elaham,12,customary
+9,Elaham,13,habitual
+9,Elaham,14,habitual
+9,Elaham,15,absent
+9,Elaham,16,customary
+9,Elaham,17,customary
+9,Elaham,18,habitual
+9,Elaham,19,absent
+9,Elaham,20,habitual
+9,Elaham,21,habitual
+9,Elaham,22,customary
+9,Elaham,23,absent
+9,Elaham,24,absent
+9,Elaham,25,customary
+9,Elaham,26,absent
+9,Elaham,27,customary
+9,Elaham,28,absent
+9,Elaham,29,absent
+9,Elaham,30,present
+9,Elaham,31,customary
+9,Elaham,32,absent
+9,Elaham,33,absent
+9,Elaham,34,customary
+9,Elaham,35,customary
+9,Elaham,36,ecological explanation
+9,Elaham,37,customary
+9,Elaham,38,absent
+9,Elaham,39,absent
+9,Elaham,40,absent
+9,Elaham,41,customary
+9,Elaham,42,absent
+9,Elaham,43,customary
+9,Elaham,44,present
+9,Elaham,45,absent
+9,Elaham,46,ecological explanation
+9,Elaham,47,customary
+9,Elaham,48,customary
+9,Elaham,49,absent
+9,Elaham,50,absent
+9,Elaham,51,customary
+9,Elaham,52,customary
+9,Elaham,53,ecological explanation
+9,Elaham,54,absent
+9,Elaham,55,customary
+9,Elaham,56,ecological explanation
+9,Elaham,57,customary
+9,Elaham,58,absent
+9,Elaham,59,customary
+9,Elaham,60,customary
+9,Elaham,61,absent
+9,Elaham,62,customary
+9,Elaham,63,customary
+9,Elaham,64,ecological explanation
+9,Elabik,1,customary
+9,Elabik,2,absent
+9,Elabik,3,customary
+9,Elabik,4,habitual
+9,Elabik,5,present
+9,Elabik,6,absent
+9,Elabik,7,absent
+9,Elabik,8,habitual
+9,Elabik,9,absent
+9,Elabik,10,customary
+9,Elabik,11,absent
+9,Elabik,12,habitual
+9,Elabik,13,customary
+9,Elabik,14,customary
+9,Elabik,15,absent
+9,Elabik,16,absent
+9,Elabik,17,customary
+9,Elabik,18,habitual
+9,Elabik,19,absent
+9,Elabik,20,customary
+9,Elabik,21,habitual
+9,Elabik,22,present
+9,Elabik,23,absent
+9,Elabik,24,customary
+9,Elabik,25,habitual
+9,Elabik,26,absent
+9,Elabik,27,customary
+9,Elabik,28,habitual
+9,Elabik,29,absent
+9,Elabik,30,habitual
+9,Elabik,31,customary
+9,Elabik,32,absent
+9,Elabik,33,absent
+9,Elabik,34,customary
+9,Elabik,35,customary
+9,Elabik,36,customary
+9,Elabik,37,customary
+9,Elabik,38,absent
+9,Elabik,39,absent
+9,Elabik,40,habitual
+9,Elabik,41,customary
+9,Elabik,42,customary
+9,Elabik,43,customary
+9,Elabik,44,habitual
+9,Elabik,45,present
+9,Elabik,46,absent
+9,Elabik,47,customary
+9,Elabik,48,customary
+9,Elabik,49,habitual
+9,Elabik,50,present
+9,Elabik,51,absent
+9,Elabik,52,customary
+9,Elabik,53,habitual
+9,Elabik,54,absent
+9,Elabik,55,customary
+9,Elabik,56,habitual
+9,Elabik,57,customary
+9,Elabik,58,present
+9,Elabik,59,customary
+9,Elabik,60,customary
+9,Elabik,61,habitual
+9,Elabik,62,habitual
+9,Elabik,63,customary
+9,Elabik,64,absent
+9,Ognodub,1,customary
+9,Ognodub,2,absent
+9,Ognodub,3,habitual
+9,Ognodub,4,absent
+9,Ognodub,5,customary
+9,Ognodub,6,absent
+9,Ognodub,7,absent
+9,Ognodub,8,customary
+9,Ognodub,9,customary
+9,Ognodub,10,customary
+9,Ognodub,11,absent
+9,Ognodub,12,present
+9,Ognodub,13,habitual
+9,Ognodub,14,habitual
+9,Ognodub,15,absent
+9,Ognodub,16,customary
+9,Ognodub,17,habitual
+9,Ognodub,18,customary
+9,Ognodub,19,absent
+9,Ognodub,20,customary
+9,Ognodub,21,habitual
+9,Ognodub,22,absent
+9,Ognodub,23,absent
+9,Ognodub,24,customary
+9,Ognodub,25,habitual
+9,Ognodub,26,absent
+9,Ognodub,27,customary
+9,Ognodub,28,absent
+9,Ognodub,29,absent
+9,Ognodub,30,customary
+9,Ognodub,31,absent
+9,Ognodub,32,absent
+9,Ognodub,33,ecological explanation
+9,Ognodub,34,absent
+9,Ognodub,35,customary
+9,Ognodub,36,customary
+9,Ognodub,37,customary
+9,Ognodub,38,ecological explanation
+9,Ognodub,39,absent
+9,Ognodub,40,absent
+9,Ognodub,41,ecological explanation
+9,Ognodub,42,customary
+9,Ognodub,43,customary
+9,Ognodub,44,absent
+9,Ognodub,45,absent
+9,Ognodub,46,absent
+9,Ognodub,47,habitual
+9,Ognodub,48,absent
+9,Ognodub,49,ecological explanation
+9,Ognodub,50,absent
+9,Ognodub,51,absent
+9,Ognodub,52,customary
+9,Ognodub,53,absent
+9,Ognodub,54,ecological explanation
+9,Ognodub,55,customary
+9,Ognodub,56,customary
+9,Ognodub,57,customary
+9,Ognodub,58,ecological explanation
+9,Ognodub,59,customary
+9,Ognodub,60,absent
+9,Ognodub,61,ecological explanation
+9,Ognodub,62,absent
+9,Ognodub,63,absent
+9,Ognodub,64,absent
+10,Uossob,1,absent
+10,Uossob,2,absent
+10,Uossob,3,absent
+10,Uossob,4,customary
+10,Uossob,5,customary
+10,Uossob,6,absent
+10,Uossob,7,absent
+10,Uossob,8,absent
+10,Uossob,9,absent
+10,Uossob,10,absent
+10,Uossob,11,customary
+10,Uossob,12,absent
+10,Uossob,13,customary
+10,Uossob,14,absent
+10,Uossob,15,absent
+10,Uossob,16,absent
+10,Uossob,17,absent
+10,Uossob,18,customary
+10,Uossob,19,absent
+10,Uossob,20,absent
+10,Uossob,21,absent
+10,Uossob,22,customary
+10,Uossob,23,absent
+10,Uossob,24,absent
+10,Uossob,25,customary
+10,Uossob,26,customary
+10,Uossob,27,absent
+10,Uossob,28,habitual
+10,Uossob,29,customary
+10,Uossob,30,absent
+10,Uossob,31,habitual
+10,Uossob,32,customary
+10,Uossob,33,absent
+10,Uossob,34,absent
+10,Uossob,35,ecological explanation
+10,Uossob,36,ecological explanation
+10,Uossob,37,absent
+10,Uossob,38,customary
+10,Uossob,39,customary
+10,Uossob,40,ecological explanation
+10,Uossob,41,absent
+10,Uossob,42,ecological explanation
+10,Uossob,43,ecological explanation
+10,Uossob,44,customary
+10,Uossob,45,absent
+10,Uossob,46,ecological explanation
+10,Uossob,47,ecological explanation
+10,Uossob,48,ecological explanation
+10,Uossob,49,ecological explanation
+10,Uossob,50,ecological explanation
+10,Uossob,51,ecological explanation
+10,Uossob,52,absent
+10,Uossob,53,ecological explanation
+10,Uossob,54,customary
+10,Uossob,55,ecological explanation
+10,Uossob,56,ecological explanation
+10,Uossob,57,absent
+10,Uossob,58,customary
+10,Uossob,59,ecological explanation
+10,Uossob,60,customary
+10,Uossob,61,ecological explanation
+10,Uossob,62,ecological explanation
+10,Uossob,63,absent
+10,Uossob,64,absent
+10,Iat Forest,1,absent
+10,Iat Forest,2,absent
+10,Iat Forest,3,present
+10,Iat Forest,4,customary
+10,Iat Forest,5,customary
+10,Iat Forest,6,absent
+10,Iat Forest,7,absent
+10,Iat Forest,8,present
+10,Iat Forest,9,present
+10,Iat Forest,10,absent
+10,Iat Forest,11,customary
+10,Iat Forest,12,absent
+10,Iat Forest,13,customary
+10,Iat Forest,14,absent
+10,Iat Forest,15,absent
+10,Iat Forest,16,absent
+10,Iat Forest,17,absent
+10,Iat Forest,18,customary
+10,Iat Forest,19,absent
+10,Iat Forest,20,present
+10,Iat Forest,21,present
+10,Iat Forest,22,customary
+10,Iat Forest,23,absent
+10,Iat Forest,24,habitual
+10,Iat Forest,25,customary
+10,Iat Forest,26,customary
+10,Iat Forest,27,absent
+10,Iat Forest,28,customary
+10,Iat Forest,29,customary
+10,Iat Forest,30,absent
+10,Iat Forest,31,customary
+10,Iat Forest,32,customary
+10,Iat Forest,33,absent
+10,Iat Forest,34,absent
+10,Iat Forest,35,absent
+10,Iat Forest,36,absent
+10,Iat Forest,37,habitual
+10,Iat Forest,38,customary
+10,Iat Forest,39,customary
+10,Iat Forest,40,absent
+10,Iat Forest,41,habitual
+10,Iat Forest,42,absent
+10,Iat Forest,43,customary
+10,Iat Forest,44,customary
+10,Iat Forest,45,ecological explanation
+10,Iat Forest,46,habitual
+10,Iat Forest,47,absent
+10,Iat Forest,48,absent
+10,Iat Forest,49,absent
+10,Iat Forest,50,present
+10,Iat Forest,51,customary
+10,Iat Forest,52,customary
+10,Iat Forest,53,absent
+10,Iat Forest,54,absent
+10,Iat Forest,55,customary
+10,Iat Forest,56,habitual
+10,Iat Forest,57,present
+10,Iat Forest,58,customary
+10,Iat Forest,59,absent
+10,Iat Forest,60,customary
+10,Iat Forest,61,absent
+10,Iat Forest,62,absent
+10,Iat Forest,63,present
+10,Iat Forest,64,ecological explanation
+10,Ebmog,1,customary
+10,Ebmog,2,customary
+10,Ebmog,3,customary
+10,Ebmog,4,absent
+10,Ebmog,5,absent
+10,Ebmog,6,habitual
+10,Ebmog,7,customary
+10,Ebmog,8,customary
+10,Ebmog,9,customary
+10,Ebmog,10,customary
+10,Ebmog,11,absent
+10,Ebmog,12,habitual
+10,Ebmog,13,present
+10,Ebmog,14,customary
+10,Ebmog,15,absent
+10,Ebmog,16,customary
+10,Ebmog,17,habitual
+10,Ebmog,18,absent
+10,Ebmog,19,customary
+10,Ebmog,20,customary
+10,Ebmog,21,customary
+10,Ebmog,22,absent
+10,Ebmog,23,customary
+10,Ebmog,24,customary
+10,Ebmog,25,absent
+10,Ebmog,26,absent
+10,Ebmog,27,customary
+10,Ebmog,28,absent
+10,Ebmog,29,absent
+10,Ebmog,30,customary
+10,Ebmog,31,absent
+10,Ebmog,32,absent
+10,Ebmog,33,absent
+10,Ebmog,34,absent
+10,Ebmog,35,customary
+10,Ebmog,36,customary
+10,Ebmog,37,absent
+10,Ebmog,38,absent
+10,Ebmog,39,absent
+10,Ebmog,40,customary
+10,Ebmog,41,customary
+10,Ebmog,42,customary
+10,Ebmog,43,customary
+10,Ebmog,44,absent
+10,Ebmog,45,absent
+10,Ebmog,46,customary
+10,Ebmog,47,customary
+10,Ebmog,48,absent
+10,Ebmog,49,present
+10,Ebmog,50,absent
+10,Ebmog,51,customary
+10,Ebmog,52,absent
+10,Ebmog,53,customary
+10,Ebmog,54,absent
+10,Ebmog,55,customary
+10,Ebmog,56,habitual
+10,Ebmog,57,customary
+10,Ebmog,58,absent
+10,Ebmog,59,customary
+10,Ebmog,60,absent
+10,Ebmog,61,customary
+10,Ebmog,62,customary
+10,Ebmog,63,absent
+10,Ebmog,64,absent
+10,Elaham,1,habitual
+10,Elaham,2,habitual
+10,Elaham,3,customary
+10,Elaham,4,absent
+10,Elaham,5,habitual
+10,Elaham,6,habitual
+10,Elaham,7,customary
+10,Elaham,8,customary
+10,Elaham,9,customary
+10,Elaham,10,habitual
+10,Elaham,11,absent
+10,Elaham,12,habitual
+10,Elaham,13,absent
+10,Elaham,14,customary
+10,Elaham,15,absent
+10,Elaham,16,customary
+10,Elaham,17,habitual
+10,Elaham,18,absent
+10,Elaham,19,customary
+10,Elaham,20,customary
+10,Elaham,21,customary
+10,Elaham,22,absent
+10,Elaham,23,customary
+10,Elaham,24,customary
+10,Elaham,25,absent
+10,Elaham,26,present
+10,Elaham,27,customary
+10,Elaham,28,habitual
+10,Elaham,29,absent
+10,Elaham,30,absent
+10,Elaham,31,absent
+10,Elaham,32,absent
+10,Elaham,33,ecological explanation
+10,Elaham,34,absent
+10,Elaham,35,absent
+10,Elaham,36,customary
+10,Elaham,37,absent
+10,Elaham,38,ecological explanation
+10,Elaham,39,absent
+10,Elaham,40,customary
+10,Elaham,41,customary
+10,Elaham,42,customary
+10,Elaham,43,customary
+10,Elaham,44,absent
+10,Elaham,45,habitual
+10,Elaham,46,customary
+10,Elaham,47,customary
+10,Elaham,48,absent
+10,Elaham,49,habitual
+10,Elaham,50,absent
+10,Elaham,51,customary
+10,Elaham,52,ecological explanation
+10,Elaham,53,customary
+10,Elaham,54,ecological explanation
+10,Elaham,55,customary
+10,Elaham,56,absent
+10,Elaham,57,ecological explanation
+10,Elaham,58,ecological explanation
+10,Elaham,59,customary
+10,Elaham,60,ecological explanation
+10,Elaham,61,customary
+10,Elaham,62,customary
+10,Elaham,63,ecological explanation
+10,Elaham,64,absent
+10,Elabik,1,customary
+10,Elabik,2,habitual
+10,Elabik,3,customary
+10,Elabik,4,absent
+10,Elabik,5,absent
+10,Elabik,6,customary
+10,Elabik,7,customary
+10,Elabik,8,habitual
+10,Elabik,9,absent
+10,Elabik,10,customary
+10,Elabik,11,absent
+10,Elabik,12,habitual
+10,Elabik,13,absent
+10,Elabik,14,habitual
+10,Elabik,15,habitual
+10,Elabik,16,customary
+10,Elabik,17,habitual
+10,Elabik,18,absent
+10,Elabik,19,customary
+10,Elabik,20,customary
+10,Elabik,21,habitual
+10,Elabik,22,absent
+10,Elabik,23,customary
+10,Elabik,24,habitual
+10,Elabik,25,absent
+10,Elabik,26,absent
+10,Elabik,27,customary
+10,Elabik,28,present
+10,Elabik,29,absent
+10,Elabik,30,customary
+10,Elabik,31,present
+10,Elabik,32,absent
+10,Elabik,33,absent
+10,Elabik,34,absent
+10,Elabik,35,customary
+10,Elabik,36,customary
+10,Elabik,37,absent
+10,Elabik,38,habitual
+10,Elabik,39,absent
+10,Elabik,40,customary
+10,Elabik,41,absent
+10,Elabik,42,customary
+10,Elabik,43,present
+10,Elabik,44,absent
+10,Elabik,45,absent
+10,Elabik,46,customary
+10,Elabik,47,customary
+10,Elabik,48,absent
+10,Elabik,49,present
+10,Elabik,50,absent
+10,Elabik,51,customary
+10,Elabik,52,absent
+10,Elabik,53,customary
+10,Elabik,54,present
+10,Elabik,55,present
+10,Elabik,56,absent
+10,Elabik,57,customary
+10,Elabik,58,absent
+10,Elabik,59,customary
+10,Elabik,60,habitual
+10,Elabik,61,customary
+10,Elabik,62,customary
+10,Elabik,63,absent
+10,Elabik,64,absent
+10,Ognodub,1,customary
+10,Ognodub,2,customary
+10,Ognodub,3,customary
+10,Ognodub,4,absent
+10,Ognodub,5,absent
+10,Ognodub,6,customary
+10,Ognodub,7,customary
+10,Ognodub,8,present
+10,Ognodub,9,absent
+10,Ognodub,10,customary
+10,Ognodub,11,absent
+10,Ognodub,12,habitual
+10,Ognodub,13,absent
+10,Ognodub,14,customary
+10,Ognodub,15,customary
+10,Ognodub,16,habitual
+10,Ognodub,17,customary
+10,Ognodub,18,absent
+10,Ognodub,19,customary
+10,Ognodub,20,absent
+10,Ognodub,21,absent
+10,Ognodub,22,absent
+10,Ognodub,23,customary
+10,Ognodub,24,absent
+10,Ognodub,25,present
+10,Ognodub,26,absent
+10,Ognodub,27,customary
+10,Ognodub,28,absent
+10,Ognodub,29,absent
+10,Ognodub,30,customary
+10,Ognodub,31,absent
+10,Ognodub,32,absent
+10,Ognodub,33,absent
+10,Ognodub,34,ecological explanation
+10,Ognodub,35,customary
+10,Ognodub,36,absent
+10,Ognodub,37,ecological explanation
+10,Ognodub,38,customary
+10,Ognodub,39,ecological explanation
+10,Ognodub,40,customary
+10,Ognodub,41,ecological explanation
+10,Ognodub,42,customary
+10,Ognodub,43,absent
+10,Ognodub,44,ecological explanation
+10,Ognodub,45,absent
+10,Ognodub,46,absent
+10,Ognodub,47,customary
+10,Ognodub,48,customary
+10,Ognodub,49,absent
+10,Ognodub,50,customary
+10,Ognodub,51,absent
+10,Ognodub,52,absent
+10,Ognodub,53,customary
+10,Ognodub,54,habitual
+10,Ognodub,55,absent
+10,Ognodub,56,absent
+10,Ognodub,57,customary
+10,Ognodub,58,absent
+10,Ognodub,59,customary
+10,Ognodub,60,absent
+10,Ognodub,61,absent
+10,Ognodub,62,customary
+10,Ognodub,63,customary
+10,Ognodub,64,absent
+11,Uossob,1,absent
+11,Uossob,2,present
+11,Uossob,3,customary
+11,Uossob,4,customary
+11,Uossob,5,absent
+11,Uossob,6,absent
+11,Uossob,7,customary
+11,Uossob,8,habitual
+11,Uossob,9,absent
+11,Uossob,10,customary
+11,Uossob,11,absent
+11,Uossob,12,habitual
+11,Uossob,13,customary
+11,Uossob,14,habitual
+11,Uossob,15,absent
+11,Uossob,16,habitual
+11,Uossob,17,absent
+11,Uossob,18,absent
+11,Uossob,19,absent
+11,Uossob,20,absent
+11,Uossob,21,absent
+11,Uossob,22,customary
+11,Uossob,23,customary
+11,Uossob,24,absent
+11,Uossob,25,customary
+11,Uossob,26,customary
+11,Uossob,27,habitual
+11,Uossob,28,absent
+11,Uossob,29,absent
+11,Uossob,30,absent
+11,Uossob,31,absent
+11,Uossob,32,absent
+11,Uossob,33,absent
+11,Uossob,34,ecological explanation
+11,Uossob,35,customary
+11,Uossob,36,absent
+11,Uossob,37,customary
+11,Uossob,38,customary
+11,Uossob,39,ecological explanation
+11,Uossob,40,absent
+11,Uossob,41,ecological explanation
+11,Uossob,42,ecological explanation
+11,Uossob,43,ecological explanation
+11,Uossob,44,absent
+11,Uossob,45,ecological explanation
+11,Uossob,46,absent
+11,Uossob,47,customary
+11,Uossob,48,ecological explanation
+11,Uossob,49,ecological explanation
+11,Uossob,50,absent
+11,Uossob,51,absent
+11,Uossob,52,customary
+11,Uossob,53,customary
+11,Uossob,54,absent
+11,Uossob,55,absent
+11,Uossob,56,habitual
+11,Uossob,57,ecological explanation
+11,Uossob,58,customary
+11,Uossob,59,customary
+11,Uossob,60,ecological explanation
+11,Uossob,61,ecological explanation
+11,Uossob,62,absent
+11,Uossob,63,absent
+11,Uossob,64,absent
+11,Iat Forest,1,absent
+11,Iat Forest,2,customary
+11,Iat Forest,3,habitual
+11,Iat Forest,4,habitual
+11,Iat Forest,5,customary
+11,Iat Forest,6,customary
+11,Iat Forest,7,customary
+11,Iat Forest,8,habitual
+11,Iat Forest,9,absent
+11,Iat Forest,10,customary
+11,Iat Forest,11,absent
+11,Iat Forest,12,habitual
+11,Iat Forest,13,customary
+11,Iat Forest,14,habitual
+11,Iat Forest,15,absent
+11,Iat Forest,16,customary
+11,Iat Forest,17,customary
+11,Iat Forest,18,absent
+11,Iat Forest,19,absent
+11,Iat Forest,20,absent
+11,Iat Forest,21,absent
+11,Iat Forest,22,customary
+11,Iat Forest,23,customary
+11,Iat Forest,24,present
+11,Iat Forest,25,customary
+11,Iat Forest,26,habitual
+11,Iat Forest,27,customary
+11,Iat Forest,28,absent
+11,Iat Forest,29,absent
+11,Iat Forest,30,absent
+11,Iat Forest,31,absent
+11,Iat Forest,32,absent
+11,Iat Forest,33,absent
+11,Iat Forest,34,absent
+11,Iat Forest,35,customary
+11,Iat Forest,36,absent
+11,Iat Forest,37,customary
+11,Iat Forest,38,customary
+11,Iat Forest,39,absent
+11,Iat Forest,40,absent
+11,Iat Forest,41,present
+11,Iat Forest,42,absent
+11,Iat Forest,43,absent
+11,Iat Forest,44,absent
+11,Iat Forest,45,present
+11,Iat Forest,46,habitual
+11,Iat Forest,47,customary
+11,Iat Forest,48,absent
+11,Iat Forest,49,absent
+11,Iat Forest,50,absent
+11,Iat Forest,51,ecological explanation
+11,Iat Forest,52,customary
+11,Iat Forest,53,customary
+11,Iat Forest,54,absent
+11,Iat Forest,55,absent
+11,Iat Forest,56,absent
+11,Iat Forest,57,absent
+11,Iat Forest,58,customary
+11,Iat Forest,59,customary
+11,Iat Forest,60,absent
+11,Iat Forest,61,absent
+11,Iat Forest,62,present
+11,Iat Forest,63,absent
+11,Iat Forest,64,absent
+11,Ebmog,1,customary
+11,Ebmog,2,present
+11,Ebmog,3,absent
+11,Ebmog,4,absent
+11,Ebmog,5,habitual
+11,Ebmog,6,absent
+11,Ebmog,7,absent
+11,Ebmog,8,absent
+11,Ebmog,9,customary
+11,Ebmog,10,habitual
+11,Ebmog,11,customary
+11,Ebmog,12,absent
+11,Ebmog,13,absent
+11,Ebmog,14,absent
+11,Ebmog,15,habitual
+11,Ebmog,16,present
+11,Ebmog,17,absent
+11,Ebmog,18,customary
+11,Ebmog,19,habitual
+11,Ebmog,20,customary
+11,Ebmog,21,customary
+11,Ebmog,22,absent
+11,Ebmog,23,absent
+11,Ebmog,24,customary
+11,Ebmog,25,absent
+11,Ebmog,26,absent
+11,Ebmog,27,absent
+11,Ebmog,28,customary
+11,Ebmog,29,customary
+11,Ebmog,30,absent
+11,Ebmog,31,customary
+11,Ebmog,32,habitual
+11,Ebmog,33,customary
+11,Ebmog,34,customary
+11,Ebmog,35,absent
+11,Ebmog,36,present
+11,Ebmog,37,absent
+11,Ebmog,38,absent
+11,Ebmog,39,customary
+11,Ebmog,40,absent
+11,Ebmog,41,customary
+11,Ebmog,42,customary
+11,Ebmog,43,customary
+11,Ebmog,44,absent
+11,Ebmog,45,habitual
+11,Ebmog,46,customary
+11,Ebmog,47,absent
+11,Ebmog,48,absent
+11,Ebmog,49,customary
+11,Ebmog,50,absent
+11,Ebmog,51,customary
+11,Ebmog,52,absent
+11,Ebmog,53,absent
+11,Ebmog,54,present
+11,Ebmog,55,customary
+11,Ebmog,56,present
+11,Ebmog,57,customary
+11,Ebmog,58,absent
+11,Ebmog,59,absent
+11,Ebmog,60,absent
+11,Ebmog,61,customary
+11,Ebmog,62,customary
+11,Ebmog,63,customary
+11,Ebmog,64,absent
+11,Elaham,1,customary
+11,Elaham,2,habitual
+11,Elaham,3,absent
+11,Elaham,4,absent
+11,Elaham,5,absent
+11,Elaham,6,absent
+11,Elaham,7,absent
+11,Elaham,8,absent
+11,Elaham,9,habitual
+11,Elaham,10,habitual
+11,Elaham,11,customary
+11,Elaham,12,absent
+11,Elaham,13,absent
+11,Elaham,14,absent
+11,Elaham,15,habitual
+11,Elaham,16,absent
+11,Elaham,17,absent
+11,Elaham,18,customary
+11,Elaham,19,habitual
+11,Elaham,20,customary
+11,Elaham,21,customary
+11,Elaham,22,absent
+11,Elaham,23,absent
+11,Elaham,24,customary
+11,Elaham,25,absent
+11,Elaham,26,absent
+11,Elaham,27,absent
+11,Elaham,28,customary
+11,Elaham,29,habitual
+11,Elaham,30,absent
+11,Elaham,31,customary
+11,Elaham,32,habitual
+11,Elaham,33,customary
+11,Elaham,34,customary
+11,Elaham,35,absent
+11,Elaham,36,ecological explanation
+11,Elaham,37,absent
+11,Elaham,38,absent
+11,Elaham,39,customary
+11,Elaham,40,absent
+11,Elaham,41,customary
+11,Elaham,42,customary
+11,Elaham,43,customary
+11,Elaham,44,ecological explanation
+11,Elaham,45,customary
+11,Elaham,46,customary
+11,Elaham,47,absent
+11,Elaham,48,absent
+11,Elaham,49,customary
+11,Elaham,50,ecological explanation
+11,Elaham,51,customary
+11,Elaham,52,ecological explanation
+11,Elaham,53,absent
+11,Elaham,54,ecological explanation
+11,Elaham,55,customary
+11,Elaham,56,ecological explanation
+11,Elaham,57,customary
+11,Elaham,58,ecological explanation
+11,Elaham,59,ecological explanation
+11,Elaham,60,absent
+11,Elaham,61,customary
+11,Elaham,62,customary
+11,Elaham,63,customary
+11,Elaham,64,ecological explanation
+11,Elabik,1,customary
+11,Elabik,2,present
+11,Elabik,3,absent
+11,Elabik,4,absent
+11,Elabik,5,absent
+11,Elabik,6,absent
+11,Elabik,7,absent
+11,Elabik,8,habitual
+11,Elabik,9,customary
+11,Elabik,10,habitual
+11,Elabik,11,customary
+11,Elabik,12,absent
+11,Elabik,13,absent
+11,Elabik,14,present
+11,Elabik,15,customary
+11,Elabik,16,absent
+11,Elabik,17,absent
+11,Elabik,18,habitual
+11,Elabik,19,customary
+11,Elabik,20,customary
+11,Elabik,21,customary
+11,Elabik,22,absent
+11,Elabik,23,absent
+11,Elabik,24,customary
+11,Elabik,25,absent
+11,Elabik,26,habitual
+11,Elabik,27,habitual
+11,Elabik,28,customary
+11,Elabik,29,customary
+11,Elabik,30,customary
+11,Elabik,31,customary
+11,Elabik,32,customary
+11,Elabik,33,customary
+11,Elabik,34,customary
+11,Elabik,35,absent
+11,Elabik,36,absent
+11,Elabik,37,absent
+11,Elabik,38,absent
+11,Elabik,39,customary
+11,Elabik,40,absent
+11,Elabik,41,customary
+11,Elabik,42,customary
+11,Elabik,43,customary
+11,Elabik,44,absent
+11,Elabik,45,present
+11,Elabik,46,customary
+11,Elabik,47,present
+11,Elabik,48,customary
+11,Elabik,49,customary
+11,Elabik,50,absent
+11,Elabik,51,customary
+11,Elabik,52,absent
+11,Elabik,53,habitual
+11,Elabik,54,customary
+11,Elabik,55,habitual
+11,Elabik,56,customary
+11,Elabik,57,customary
+11,Elabik,58,present
+11,Elabik,59,absent
+11,Elabik,60,absent
+11,Elabik,61,customary
+11,Elabik,62,customary
+11,Elabik,63,customary
+11,Elabik,64,absent
+11,Ognodub,1,customary
+11,Ognodub,2,absent
+11,Ognodub,3,habitual
+11,Ognodub,4,absent
+11,Ognodub,5,absent
+11,Ognodub,6,absent
+11,Ognodub,7,absent
+11,Ognodub,8,absent
+11,Ognodub,9,customary
+11,Ognodub,10,absent
+11,Ognodub,11,customary
+11,Ognodub,12,absent
+11,Ognodub,13,present
+11,Ognodub,14,absent
+11,Ognodub,15,customary
+11,Ognodub,16,absent
+11,Ognodub,17,absent
+11,Ognodub,18,absent
+11,Ognodub,19,customary
+11,Ognodub,20,habitual
+11,Ognodub,21,customary
+11,Ognodub,22,absent
+11,Ognodub,23,absent
+11,Ognodub,24,habitual
+11,Ognodub,25,absent
+11,Ognodub,26,habitual
+11,Ognodub,27,absent
+11,Ognodub,28,customary
+11,Ognodub,29,customary
+11,Ognodub,30,customary
+11,Ognodub,31,customary
+11,Ognodub,32,customary
+11,Ognodub,33,ecological explanation
+11,Ognodub,34,customary
+11,Ognodub,35,ecological explanation
+11,Ognodub,36,absent
+11,Ognodub,37,ecological explanation
+11,Ognodub,38,ecological explanation
+11,Ognodub,39,customary
+11,Ognodub,40,ecological explanation
+11,Ognodub,41,customary
+11,Ognodub,42,customary
+11,Ognodub,43,customary
+11,Ognodub,44,absent
+11,Ognodub,45,absent
+11,Ognodub,46,ecological explanation
+11,Ognodub,47,ecological explanation
+11,Ognodub,48,customary
+11,Ognodub,49,customary
+11,Ognodub,50,customary
+11,Ognodub,51,absent
+11,Ognodub,52,absent
+11,Ognodub,53,ecological explanation
+11,Ognodub,54,habitual
+11,Ognodub,55,ecological explanation
+11,Ognodub,56,customary
+11,Ognodub,57,customary
+11,Ognodub,58,absent
+11,Ognodub,59,absent
+11,Ognodub,60,absent
+11,Ognodub,61,customary
+11,Ognodub,62,ecological explanation
+11,Ognodub,63,ecological explanation
+11,Ognodub,64,absent
+12,Uossob,1,habitual
+12,Uossob,2,habitual
+12,Uossob,3,habitual
+12,Uossob,4,customary
+12,Uossob,5,customary
+12,Uossob,6,absent
+12,Uossob,7,absent
+12,Uossob,8,absent
+12,Uossob,9,habitual
+12,Uossob,10,habitual
+12,Uossob,11,absent
+12,Uossob,12,customary
+12,Uossob,13,absent
+12,Uossob,14,habitual
+12,Uossob,15,habitual
+12,Uossob,16,absent
+12,Uossob,17,customary
+12,Uossob,18,absent
+12,Uossob,19,habitual
+12,Uossob,20,habitual
+12,Uossob,21,absent
+12,Uossob,22,customary
+12,Uossob,23,absent
+12,Uossob,24,customary
+12,Uossob,25,present
+12,Uossob,26,present
+12,Uossob,27,habitual
+12,Uossob,28,customary
+12,Uossob,29,absent
+12,Uossob,30,present
+12,Uossob,31,absent
+12,Uossob,32,absent
+12,Uossob,33,ecological explanation
+12,Uossob,34,absent
+12,Uossob,35,absent
+12,Uossob,36,customary
+12,Uossob,37,ecological explanation
+12,Uossob,38,ecological explanation
+12,Uossob,39,ecological explanation
+12,Uossob,40,ecological explanation
+12,Uossob,41,ecological explanation
+12,Uossob,42,ecological explanation
+12,Uossob,43,ecological explanation
+12,Uossob,44,ecological explanation
+12,Uossob,45,ecological explanation
+12,Uossob,46,customary
+12,Uossob,47,absent
+12,Uossob,48,ecological explanation
+12,Uossob,49,customary
+12,Uossob,50,ecological explanation
+12,Uossob,51,absent
+12,Uossob,52,ecological explanation
+12,Uossob,53,customary
+12,Uossob,54,ecological explanation
+12,Uossob,55,absent
+12,Uossob,56,ecological explanation
+12,Uossob,57,ecological explanation
+12,Uossob,58,customary
+12,Uossob,59,ecological explanation
+12,Uossob,60,ecological explanation
+12,Uossob,61,absent
+12,Uossob,62,absent
+12,Uossob,63,ecological explanation
+12,Uossob,64,absent
+12,Iat Forest,1,habitual
+12,Iat Forest,2,customary
+12,Iat Forest,3,customary
+12,Iat Forest,4,customary
+12,Iat Forest,5,habitual
+12,Iat Forest,6,absent
+12,Iat Forest,7,absent
+12,Iat Forest,8,absent
+12,Iat Forest,9,habitual
+12,Iat Forest,10,habitual
+12,Iat Forest,11,absent
+12,Iat Forest,12,customary
+12,Iat Forest,13,absent
+12,Iat Forest,14,customary
+12,Iat Forest,15,customary
+12,Iat Forest,16,absent
+12,Iat Forest,17,habitual
+12,Iat Forest,18,absent
+12,Iat Forest,19,customary
+12,Iat Forest,20,customary
+12,Iat Forest,21,absent
+12,Iat Forest,22,absent
+12,Iat Forest,23,habitual
+12,Iat Forest,24,customary
+12,Iat Forest,25,customary
+12,Iat Forest,26,customary
+12,Iat Forest,27,absent
+12,Iat Forest,28,habitual
+12,Iat Forest,29,absent
+12,Iat Forest,30,customary
+12,Iat Forest,31,habitual
+12,Iat Forest,32,absent
+12,Iat Forest,33,absent
+12,Iat Forest,34,ecological explanation
+12,Iat Forest,35,customary
+12,Iat Forest,36,customary
+12,Iat Forest,37,absent
+12,Iat Forest,38,absent
+12,Iat Forest,39,absent
+12,Iat Forest,40,absent
+12,Iat Forest,41,absent
+12,Iat Forest,42,customary
+12,Iat Forest,43,habitual
+12,Iat Forest,44,absent
+12,Iat Forest,45,habitual
+12,Iat Forest,46,customary
+12,Iat Forest,47,absent
+12,Iat Forest,48,absent
+12,Iat Forest,49,customary
+12,Iat Forest,50,customary
+12,Iat Forest,51,absent
+12,Iat Forest,52,absent
+12,Iat Forest,53,customary
+12,Iat Forest,54,absent
+12,Iat Forest,55,customary
+12,Iat Forest,56,absent
+12,Iat Forest,57,absent
+12,Iat Forest,58,customary
+12,Iat Forest,59,absent
+12,Iat Forest,60,customary
+12,Iat Forest,61,absent
+12,Iat Forest,62,absent
+12,Iat Forest,63,present
+12,Iat Forest,64,absent
+12,Ebmog,1,absent
+12,Ebmog,2,absent
+12,Ebmog,3,absent
+12,Ebmog,4,absent
+12,Ebmog,5,absent
+12,Ebmog,6,customary
+12,Ebmog,7,customary
+12,Ebmog,8,habitual
+12,Ebmog,9,customary
+12,Ebmog,10,absent
+12,Ebmog,11,habitual
+12,Ebmog,12,absent
+12,Ebmog,13,habitual
+12,Ebmog,14,absent
+12,Ebmog,15,absent
+12,Ebmog,16,customary
+12,Ebmog,17,absent
+12,Ebmog,18,customary
+12,Ebmog,19,absent
+12,Ebmog,20,absent
+12,Ebmog,21,customary
+12,Ebmog,22,absent
+12,Ebmog,23,customary
+12,Ebmog,24,absent
+12,Ebmog,25,present
+12,Ebmog,26,habitual
+12,Ebmog,27,present
+12,Ebmog,28,absent
+12,Ebmog,29,habitual
+12,Ebmog,30,absent
+12,Ebmog,31,customary
+12,Ebmog,32,customary
+12,Ebmog,33,customary
+12,Ebmog,34,customary
+12,Ebmog,35,absent
+12,Ebmog,36,absent
+12,Ebmog,37,customary
+12,Ebmog,38,customary
+12,Ebmog,39,customary
+12,Ebmog,40,customary
+12,Ebmog,41,customary
+12,Ebmog,42,customary
+12,Ebmog,43,absent
+12,Ebmog,44,customary
+12,Ebmog,45,absent
+12,Ebmog,46,absent
+12,Ebmog,47,customary
+12,Ebmog,48,customary
+12,Ebmog,49,absent
+12,Ebmog,50,absent
+12,Ebmog,51,absent
+12,Ebmog,52,habitual
+12,Ebmog,53,absent
+12,Ebmog,54,customary
+12,Ebmog,55,absent
+12,Ebmog,56,customary
+12,Ebmog,57,customary
+12,Ebmog,58,absent
+12,Ebmog,59,customary
+12,Ebmog,60,present
+12,Ebmog,61,customary
+12,Ebmog,62,present
+12,Ebmog,63,customary
+12,Ebmog,64,customary
+12,Elaham,1,absent
+12,Elaham,2,absent
+12,Elaham,3,absent
+12,Elaham,4,absent
+12,Elaham,5,absent
+12,Elaham,6,customary
+12,Elaham,7,customary
+12,Elaham,8,absent
+12,Elaham,9,customary
+12,Elaham,10,absent
+12,Elaham,11,customary
+12,Elaham,12,absent
+12,Elaham,13,habitual
+12,Elaham,14,absent
+12,Elaham,15,absent
+12,Elaham,16,customary
+12,Elaham,17,absent
+12,Elaham,18,customary
+12,Elaham,19,absent
+12,Elaham,20,absent
+12,Elaham,21,customary
+12,Elaham,22,absent
+12,Elaham,23,customary
+12,Elaham,24,absent
+12,Elaham,25,absent
+12,Elaham,26,habitual
+12,Elaham,27,absent
+12,Elaham,28,absent
+12,Elaham,29,habitual
+12,Elaham,30,habitual
+12,Elaham,31,customary
+12,Elaham,32,customary
+12,Elaham,33,customary
+12,Elaham,34,customary
+12,Elaham,35,ecological explanation
+12,Elaham,36,ecological explanation
+12,Elaham,37,customary
+12,Elaham,38,customary
+12,Elaham,39,customary
+12,Elaham,40,customary
+12,Elaham,41,customary
+12,Elaham,42,customary
+12,Elaham,43,absent
+12,Elaham,44,customary
+12,Elaham,45,absent
+12,Elaham,46,absent
+12,Elaham,47,customary
+12,Elaham,48,customary
+12,Elaham,49,ecological explanation
+12,Elaham,50,habitual
+12,Elaham,51,ecological explanation
+12,Elaham,52,absent
+12,Elaham,53,absent
+12,Elaham,54,customary
+12,Elaham,55,absent
+12,Elaham,56,absent
+12,Elaham,57,customary
+12,Elaham,58,ecological explanation
+12,Elaham,59,customary
+12,Elaham,60,present
+12,Elaham,61,customary
+12,Elaham,62,ecological explanation
+12,Elaham,63,customary
+12,Elaham,64,customary
+12,Elabik,1,absent
+12,Elabik,2,absent
+12,Elabik,3,absent
+12,Elabik,4,absent
+12,Elabik,5,absent
+12,Elabik,6,customary
+12,Elabik,7,customary
+12,Elabik,8,customary
+12,Elabik,9,habitual
+12,Elabik,10,absent
+12,Elabik,11,customary
+12,Elabik,12,absent
+12,Elabik,13,customary
+12,Elabik,14,absent
+12,Elabik,15,absent
+12,Elabik,16,customary
+12,Elabik,17,absent
+12,Elabik,18,customary
+12,Elabik,19,absent
+12,Elabik,20,absent
+12,Elabik,21,customary
+12,Elabik,22,habitual
+12,Elabik,23,absent
+12,Elabik,24,absent
+12,Elabik,25,absent
+12,Elabik,26,present
+12,Elabik,27,customary
+12,Elabik,28,absent
+12,Elabik,29,customary
+12,Elabik,30,absent
+12,Elabik,31,absent
+12,Elabik,32,customary
+12,Elabik,33,customary
+12,Elabik,34,customary
+12,Elabik,35,absent
+12,Elabik,36,absent
+12,Elabik,37,customary
+12,Elabik,38,customary
+12,Elabik,39,customary
+12,Elabik,40,customary
+12,Elabik,41,customary
+12,Elabik,42,habitual
+12,Elabik,43,absent
+12,Elabik,44,customary
+12,Elabik,45,customary
+12,Elabik,46,absent
+12,Elabik,47,customary
+12,Elabik,48,customary
+12,Elabik,49,absent
+12,Elabik,50,habitual
+12,Elabik,51,present
+12,Elabik,52,customary
+12,Elabik,53,absent
+12,Elabik,54,customary
+12,Elabik,55,present
+12,Elabik,56,customary
+12,Elabik,57,customary
+12,Elabik,58,absent
+12,Elabik,59,customary
+12,Elabik,60,absent
+12,Elabik,61,customary
+12,Elabik,62,absent
+12,Elabik,63,customary
+12,Elabik,64,customary
+12,Ognodub,1,absent
+12,Ognodub,2,absent
+12,Ognodub,3,absent
+12,Ognodub,4,absent
+12,Ognodub,5,absent
+12,Ognodub,6,habitual
+12,Ognodub,7,habitual
+12,Ognodub,8,customary
+12,Ognodub,9,absent
+12,Ognodub,10,absent
+12,Ognodub,11,customary
+12,Ognodub,12,absent
+12,Ognodub,13,customary
+12,Ognodub,14,absent
+12,Ognodub,15,absent
+12,Ognodub,16,habitual
+12,Ognodub,17,absent
+12,Ognodub,18,customary
+12,Ognodub,19,absent
+12,Ognodub,20,absent
+12,Ognodub,21,customary
+12,Ognodub,22,habitual
+12,Ognodub,23,absent
+12,Ognodub,24,absent
+12,Ognodub,25,absent
+12,Ognodub,26,absent
+12,Ognodub,27,customary
+12,Ognodub,28,absent
+12,Ognodub,29,customary
+12,Ognodub,30,absent
+12,Ognodub,31,absent
+12,Ognodub,32,habitual
+12,Ognodub,33,customary
+12,Ognodub,34,customary
+12,Ognodub,35,absent
+12,Ognodub,36,absent
+12,Ognodub,37,customary
+12,Ognodub,38,customary
+12,Ognodub,39,customary
+12,Ognodub,40,customary
+12,Ognodub,41,customary
+12,Ognodub,42,absent
+12,Ognodub,43,absent
+12,Ognodub,44,customary
+12,Ognodub,45,customary
+12,Ognodub,46,ecological explanation
+12,Ognodub,47,ecological explanation
+12,Ognodub,48,customary
+12,Ognodub,49,absent
+12,Ognodub,50,absent
+12,Ognodub,51,absent
+12,Ognodub,52,customary
+12,Ognodub,53,ecological explanation
+12,Ognodub,54,customary
+12,Ognodub,55,ecological explanation
+12,Ognodub,56,customary
+12,Ognodub,57,customary
+12,Ognodub,58,absent
+12,Ognodub,59,absent
+12,Ognodub,60,absent
+12,Ognodub,61,ecological explanation
+12,Ognodub,62,absent
+12,Ognodub,63,habitual
+12,Ognodub,64,ecological explanation
+13,Uossob,1,absent
+13,Uossob,2,absent
+13,Uossob,3,absent
+13,Uossob,4,customary
+13,Uossob,5,absent
+13,Uossob,6,absent
+13,Uossob,7,customary
+13,Uossob,8,customary
+13,Uossob,9,customary
+13,Uossob,10,absent
+13,Uossob,11,absent
+13,Uossob,12,absent
+13,Uossob,13,customary
+13,Uossob,14,customary
+13,Uossob,15,absent
+13,Uossob,16,absent
+13,Uossob,17,absent
+13,Uossob,18,customary
+13,Uossob,19,absent
+13,Uossob,20,absent
+13,Uossob,21,absent
+13,Uossob,22,absent
+13,Uossob,23,absent
+13,Uossob,24,absent
+13,Uossob,25,absent
+13,Uossob,26,absent
+13,Uossob,27,customary
+13,Uossob,28,absent
+13,Uossob,29,customary
+13,Uossob,30,absent
+13,Uossob,31,absent
+13,Uossob,32,absent
+13,Uossob,33,absent
+13,Uossob,34,absent
+13,Uossob,35,absent
+13,Uossob,36,absent
+13,Uossob,37,ecological explanation
+13,Uossob,38,customary
+13,Uossob,39,absent
+13,Uossob,40,customary
+13,Uossob,41,ecological explanation
+13,Uossob,42,ecological explanation
+13,Uossob,43,ecological explanation
+13,Uossob,44,customary
+13,Uossob,45,absent
+13,Uossob,46,ecological explanation
+13,Uossob,47,ecological explanation
+13,Uossob,48,customary
+13,Uossob,49,absent
+13,Uossob,50,ecological explanation
+13,Uossob,51,ecological explanation
+13,Uossob,52,ecological explanation
+13,Uossob,53,absent
+13,Uossob,54,customary
+13,Uossob,55,ecological explanation
+13,Uossob,56,absent
+13,Uossob,57,ecological explanation
+13,Uossob,58,ecological explanation
+13,Uossob,59,absent
+13,Uossob,60,ecological explanation
+13,Uossob,61,ecological explanation
+13,Uossob,62,absent
+13,Uossob,63,present
+13,Uossob,64,ecological explanation
+13,Iat Forest,1,absent
+13,Iat Forest,2,absent
+13,Iat Forest,3,absent
+13,Iat Forest,4,customary
+13,Iat Forest,5,absent
+13,Iat Forest,6,absent
+13,Iat Forest,7,customary
+13,Iat Forest,8,customary
+13,Iat Forest,9,customary
+13,Iat Forest,10,absent
+13,Iat Forest,11,absent
+13,Iat Forest,12,absent
+13,Iat Forest,13,customary
+13,Iat Forest,14,customary
+13,Iat Forest,15,absent
+13,Iat Forest,16,absent
+13,Iat Forest,17,absent
+13,Iat Forest,18,customary
+13,Iat Forest,19,absent
+13,Iat Forest,20,habitual
+13,Iat Forest,21,absent
+13,Iat Forest,22,absent
+13,Iat Forest,23,absent
+13,Iat Forest,24,absent
+13,Iat Forest,25,absent
+13,Iat Forest,26,customary
+13,Iat Forest,27,customary
+13,Iat Forest,28,absent
+13,Iat Forest,29,customary
+13,Iat Forest,30,absent
+13,Iat Forest,31,absent
+13,Iat Forest,32,absent
+13,Iat Forest,33,ecological explanation
+13,Iat Forest,34,customary
+13,Iat Forest,35,customary
+13,Iat Forest,36,customary
+13,Iat Forest,37,customary
+13,Iat Forest,38,customary
+13,Iat Forest,39,habitual
+13,Iat Forest,40,customary
+13,Iat Forest,41,habitual
+13,Iat Forest,42,absent
+13,Iat Forest,43,habitual
+13,Iat Forest,44,customary
+13,Iat Forest,45,absent
+13,Iat Forest,46,absent
+13,Iat Forest,47,customary
+13,Iat Forest,48,customary
+13,Iat Forest,49,absent
+13,Iat Forest,50,absent
+13,Iat Forest,51,absent
+13,Iat Forest,52,absent
+13,Iat Forest,53,present
+13,Iat Forest,54,customary
+13,Iat Forest,55,absent
+13,Iat Forest,56,customary
+13,Iat Forest,57,absent
+13,Iat Forest,58,absent
+13,Iat Forest,59,absent
+13,Iat Forest,60,absent
+13,Iat Forest,61,present
+13,Iat Forest,62,ecological explanation
+13,Iat Forest,63,absent
+13,Iat Forest,64,absent
+13,Ebmog,1,habitual
+13,Ebmog,2,customary
+13,Ebmog,3,customary
+13,Ebmog,4,absent
+13,Ebmog,5,customary
+13,Ebmog,6,customary
+13,Ebmog,7,absent
+13,Ebmog,8,absent
+13,Ebmog,9,absent
+13,Ebmog,10,customary
+13,Ebmog,11,customary
+13,Ebmog,12,customary
+13,Ebmog,13,absent
+13,Ebmog,14,absent
+13,Ebmog,15,customary
+13,Ebmog,16,customary
+13,Ebmog,17,customary
+13,Ebmog,18,absent
+13,Ebmog,19,habitual
+13,Ebmog,20,habitual
+13,Ebmog,21,absent
+13,Ebmog,22,customary
+13,Ebmog,23,present
+13,Ebmog,24,absent
+13,Ebmog,25,habitual
+13,Ebmog,26,customary
+13,Ebmog,27,absent
+13,Ebmog,28,customary
+13,Ebmog,29,absent
+13,Ebmog,30,habitual
+13,Ebmog,31,absent
+13,Ebmog,32,habitual
+13,Ebmog,33,customary
+13,Ebmog,34,absent
+13,Ebmog,35,absent
+13,Ebmog,36,present
+13,Ebmog,37,customary
+13,Ebmog,38,absent
+13,Ebmog,39,present
+13,Ebmog,40,absent
+13,Ebmog,41,customary
+13,Ebmog,42,absent
+13,Ebmog,43,customary
+13,Ebmog,44,absent
+13,Ebmog,45,present
+13,Ebmog,46,absent
+13,Ebmog,47,absent
+13,Ebmog,48,absent
+13,Ebmog,49,absent
+13,Ebmog,50,absent
+13,Ebmog,51,customary
+13,Ebmog,52,customary
+13,Ebmog,53,absent
+13,Ebmog,54,absent
+13,Ebmog,55,customary
+13,Ebmog,56,present
+13,Ebmog,57,customary
+13,Ebmog,58,customary
+13,Ebmog,59,customary
+13,Ebmog,60,customary
+13,Ebmog,61,customary
+13,Ebmog,62,habitual
+13,Ebmog,63,absent
+13,Ebmog,64,customary
+13,Elaham,1,habitual
+13,Elaham,2,customary
+13,Elaham,3,customary
+13,Elaham,4,absent
+13,Elaham,5,customary
+13,Elaham,6,customary
+13,Elaham,7,absent
+13,Elaham,8,absent
+13,Elaham,9,absent
+13,Elaham,10,customary
+13,Elaham,11,customary
+13,Elaham,12,customary
+13,Elaham,13,absent
+13,Elaham,14,absent
+13,Elaham,15,customary
+13,Elaham,16,customary
+13,Elaham,17,customary
+13,Elaham,18,present
+13,Elaham,19,habitual
+13,Elaham,20,customary
+13,Elaham,21,habitual
+13,Elaham,22,customary
+13,Elaham,23,absent
+13,Elaham,24,present
+13,Elaham,25,absent
+13,Elaham,26,customary
+13,Elaham,27,absent
+13,Elaham,28,habitual
+13,Elaham,29,absent
+13,Elaham,30,habitual
+13,Elaham,31,absent
+13,Elaham,32,habitual
+13,Elaham,33,customary
+13,Elaham,34,ecological explanation
+13,Elaham,35,ecological explanation
+13,Elaham,36,ecological explanation
+13,Elaham,37,customary
+13,Elaham,38,absent
+13,Elaham,39,ecological explanation
+13,Elaham,40,ecological explanation
+13,Elaham,41,customary
+13,Elaham,42,absent
+13,Elaham,43,customary
+13,Elaham,44,ecological explanation
+13,Elaham,45,ecological explanation
+13,Elaham,46,absent
+13,Elaham,47,absent
+13,Elaham,48,absent
+13,Elaham,49,ecological explanation
+13,Elaham,50,absent
+13,Elaham,51,customary
+13,Elaham,52,customary
+13,Elaham,53,ecological explanation
+13,Elaham,54,absent
+13,Elaham,55,customary
+13,Elaham,56,ecological explanation
+13,Elaham,57,customary
+13,Elaham,58,customary
+13,Elaham,59,customary
+13,Elaham,60,customary
+13,Elaham,61,customary
+13,Elaham,62,present
+13,Elaham,63,ecological explanation
+13,Elaham,64,customary
+13,Elabik,1,habitual
+13,Elabik,2,customary
+13,Elabik,3,habitual
+13,Elabik,4,habitual
+13,Elabik,5,habitual
+13,Elabik,6,habitual
+13,Elabik,7,absent
+13,Elabik,8,absent
+13,Elabik,9,absent
+13,Elabik,10,customary
+13,Elabik,11,customary
+13,Elabik,12,habitual
+13,Elabik,13,absent
+13,Elabik,14,habitual
+13,Elabik,15,habitual
+13,Elabik,16,customary
+13,Elabik,17,customary
+13,Elabik,18,absent
+13,Elabik,19,habitual
+13,Elabik,20,present
+13,Elabik,21,customary
+13,Elabik,22,customary
+13,Elabik,23,customary
+13,Elabik,24,customary
+13,Elabik,25,habitual
+13,Elabik,26,absent
+13,Elabik,27,absent
+13,Elabik,28,habitual
+13,Elabik,29,absent
+13,Elabik,30,customary
+13,Elabik,31,customary
+13,Elabik,32,customary
+13,Elabik,33,customary
+13,Elabik,34,absent
+13,Elabik,35,absent
+13,Elabik,36,customary
+13,Elabik,37,absent
+13,Elabik,38,absent
+13,Elabik,39,customary
+13,Elabik,40,habitual
+13,Elabik,41,customary
+13,Elabik,42,present
+13,Elabik,43,customary
+13,Elabik,44,absent
+13,Elabik,45,present
+13,Elabik,46,present
+13,Elabik,47,absent
+13,Elabik,48,absent
+13,Elabik,49,habitual
+13,Elabik,50,absent
+13,Elabik,51,customary
+13,Elabik,52,customary
+13,Elabik,53,absent
+13,Elabik,54,absent
+13,Elabik,55,customary
+13,Elabik,56,customary
+13,Elabik,57,customary
+13,Elabik,58,customary
+13,Elabik,59,customary
+13,Elabik,60,habitual
+13,Elabik,61,customary
+13,Elabik,62,customary
+13,Elabik,63,absent
+13,Elabik,64,customary
+13,Ognodub,1,customary
+13,Ognodub,2,customary
+13,Ognodub,3,habitual
+13,Ognodub,4,absent
+13,Ognodub,5,customary
+13,Ognodub,6,absent
+13,Ognodub,7,absent
+13,Ognodub,8,absent
+13,Ognodub,9,habitual
+13,Ognodub,10,habitual
+13,Ognodub,11,habitual
+13,Ognodub,12,customary
+13,Ognodub,13,absent
+13,Ognodub,14,absent
+13,Ognodub,15,customary
+13,Ognodub,16,present
+13,Ognodub,17,present
+13,Ognodub,18,absent
+13,Ognodub,19,customary
+13,Ognodub,20,absent
+13,Ognodub,21,habitual
+13,Ognodub,22,habitual
+13,Ognodub,23,customary
+13,Ognodub,24,customary
+13,Ognodub,25,customary
+13,Ognodub,26,absent
+13,Ognodub,27,absent
+13,Ognodub,28,customary
+13,Ognodub,29,absent
+13,Ognodub,30,customary
+13,Ognodub,31,customary
+13,Ognodub,32,customary
+13,Ognodub,33,customary
+13,Ognodub,34,present
+13,Ognodub,35,absent
+13,Ognodub,36,customary
+13,Ognodub,37,absent
+13,Ognodub,38,ecological explanation
+13,Ognodub,39,customary
+13,Ognodub,40,absent
+13,Ognodub,41,absent
+13,Ognodub,42,present
+13,Ognodub,43,absent
+13,Ognodub,44,present
+13,Ognodub,45,customary
+13,Ognodub,46,absent
+13,Ognodub,47,absent
+13,Ognodub,48,ecological explanation
+13,Ognodub,49,habitual
+13,Ognodub,50,absent
+13,Ognodub,51,customary
+13,Ognodub,52,customary
+13,Ognodub,53,customary
+13,Ognodub,54,ecological explanation
+13,Ognodub,55,customary
+13,Ognodub,56,customary
+13,Ognodub,57,customary
+13,Ognodub,58,customary
+13,Ognodub,59,ecological explanation
+13,Ognodub,60,absent
+13,Ognodub,61,absent
+13,Ognodub,62,absent
+13,Ognodub,63,habitual
+13,Ognodub,64,customary
+14,Uossob,1,customary
+14,Uossob,2,absent
+14,Uossob,3,absent
+14,Uossob,4,customary
+14,Uossob,5,customary
+14,Uossob,6,customary
+14,Uossob,7,absent
+14,Uossob,8,absent
+14,Uossob,9,customary
+14,Uossob,10,customary
+14,Uossob,11,absent
+14,Uossob,12,absent
+14,Uossob,13,absent
+14,Uossob,14,absent
+14,Uossob,15,absent
+14,Uossob,16,customary
+14,Uossob,17,customary
+14,Uossob,18,absent
+14,Uossob,19,customary
+14,Uossob,20,absent
+14,Uossob,21,habitual
+14,Uossob,22,habitual
+14,Uossob,23,customary
+14,Uossob,24,absent
+14,Uossob,25,customary
+14,Uossob,26,absent
+14,Uossob,27,absent
+14,Uossob,28,present
+14,Uossob,29,habitual
+14,Uossob,30,absent
+14,Uossob,31,absent
+14,Uossob,32,customary
+14,Uossob,33,absent
+14,Uossob,34,ecological explanation
+14,Uossob,35,absent
+14,Uossob,36,customary
+14,Uossob,37,ecological explanation
+14,Uossob,38,ecological explanation
+14,Uossob,39,customary
+14,Uossob,40,absent
+14,Uossob,41,ecological explanation
+14,Uossob,42,ecological explanation
+14,Uossob,43,absent
+14,Uossob,44,ecological explanation
+14,Uossob,45,absent
+14,Uossob,46,customary
+14,Uossob,47,customary
+14,Uossob,48,absent
+14,Uossob,49,ecological explanation
+14,Uossob,50,absent
+14,Uossob,51,customary
+14,Uossob,52,ecological explanation
+14,Uossob,53,ecological explanation
+14,Uossob,54,ecological explanation
+14,Uossob,55,ecological explanation
+14,Uossob,56,customary
+14,Uossob,57,absent
+14,Uossob,58,absent
+14,Uossob,59,ecological explanation
+14,Uossob,60,customary
+14,Uossob,61,absent
+14,Uossob,62,ecological explanation
+14,Uossob,63,absent
+14,Uossob,64,ecological explanation
+14,Iat Forest,1,habitual
+14,Iat Forest,2,customary
+14,Iat Forest,3,absent
+14,Iat Forest,4,customary
+14,Iat Forest,5,customary
+14,Iat Forest,6,customary
+14,Iat Forest,7,absent
+14,Iat Forest,8,absent
+14,Iat Forest,9,customary
+14,Iat Forest,10,customary
+14,Iat Forest,11,absent
+14,Iat Forest,12,absent
+14,Iat Forest,13,absent
+14,Iat Forest,14,habitual
+14,Iat Forest,15,absent
+14,Iat Forest,16,habitual
+14,Iat Forest,17,customary
+14,Iat Forest,18,absent
+14,Iat Forest,19,habitual
+14,Iat Forest,20,customary
+14,Iat Forest,21,habitual
+14,Iat Forest,22,absent
+14,Iat Forest,23,customary
+14,Iat Forest,24,absent
+14,Iat Forest,25,habitual
+14,Iat Forest,26,customary
+14,Iat Forest,27,absent
+14,Iat Forest,28,habitual
+14,Iat Forest,29,customary
+14,Iat Forest,30,absent
+14,Iat Forest,31,absent
+14,Iat Forest,32,customary
+14,Iat Forest,33,habitual
+14,Iat Forest,34,absent
+14,Iat Forest,35,customary
+14,Iat Forest,36,customary
+14,Iat Forest,37,absent
+14,Iat Forest,38,absent
+14,Iat Forest,39,absent
+14,Iat Forest,40,ecological explanation
+14,Iat Forest,41,customary
+14,Iat Forest,42,absent
+14,Iat Forest,43,habitual
+14,Iat Forest,44,absent
+14,Iat Forest,45,present
+14,Iat Forest,46,customary
+14,Iat Forest,47,customary
+14,Iat Forest,48,absent
+14,Iat Forest,49,absent
+14,Iat Forest,50,ecological explanation
+14,Iat Forest,51,customary
+14,Iat Forest,52,present
+14,Iat Forest,53,absent
+14,Iat Forest,54,habitual
+14,Iat Forest,55,absent
+14,Iat Forest,56,customary
+14,Iat Forest,57,habitual
+14,Iat Forest,58,absent
+14,Iat Forest,59,present
+14,Iat Forest,60,customary
+14,Iat Forest,61,habitual
+14,Iat Forest,62,absent
+14,Iat Forest,63,ecological explanation
+14,Iat Forest,64,absent
+14,Ebmog,1,absent
+14,Ebmog,2,absent
+14,Ebmog,3,customary
+14,Ebmog,4,absent
+14,Ebmog,5,absent
+14,Ebmog,6,habitual
+14,Ebmog,7,absent
+14,Ebmog,8,customary
+14,Ebmog,9,absent
+14,Ebmog,10,absent
+14,Ebmog,11,customary
+14,Ebmog,12,customary
+14,Ebmog,13,customary
+14,Ebmog,14,customary
+14,Ebmog,15,habitual
+14,Ebmog,16,absent
+14,Ebmog,17,habitual
+14,Ebmog,18,customary
+14,Ebmog,19,absent
+14,Ebmog,20,habitual
+14,Ebmog,21,absent
+14,Ebmog,22,present
+14,Ebmog,23,absent
+14,Ebmog,24,absent
+14,Ebmog,25,absent
+14,Ebmog,26,customary
+14,Ebmog,27,customary
+14,Ebmog,28,customary
+14,Ebmog,29,absent
+14,Ebmog,30,customary
+14,Ebmog,31,habitual
+14,Ebmog,32,absent
+14,Ebmog,33,present
+14,Ebmog,34,customary
+14,Ebmog,35,absent
+14,Ebmog,36,present
+14,Ebmog,37,customary
+14,Ebmog,38,customary
+14,Ebmog,39,absent
+14,Ebmog,40,customary
+14,Ebmog,41,customary
+14,Ebmog,42,customary
+14,Ebmog,43,absent
+14,Ebmog,44,customary
+14,Ebmog,45,customary
+14,Ebmog,46,absent
+14,Ebmog,47,absent
+14,Ebmog,48,customary
+14,Ebmog,49,customary
+14,Ebmog,50,absent
+14,Ebmog,51,absent
+14,Ebmog,52,customary
+14,Ebmog,53,customary
+14,Ebmog,54,present
+14,Ebmog,55,absent
+14,Ebmog,56,absent
+14,Ebmog,57,customary
+14,Ebmog,58,absent
+14,Ebmog,59,absent
+14,Ebmog,60,absent
+14,Ebmog,61,absent
+14,Ebmog,62,customary
+14,Ebmog,63,customary
+14,Ebmog,64,customary
+14,Elaham,1,absent
+14,Elaham,2,absent
+14,Elaham,3,customary
+14,Elaham,4,absent
+14,Elaham,5,absent
+14,Elaham,6,habitual
+14,Elaham,7,customary
+14,Elaham,8,customary
+14,Elaham,9,absent
+14,Elaham,10,absent
+14,Elaham,11,customary
+14,Elaham,12,customary
+14,Elaham,13,habitual
+14,Elaham,14,customary
+14,Elaham,15,habitual
+14,Elaham,16,absent
+14,Elaham,17,habitual
+14,Elaham,18,customary
+14,Elaham,19,absent
+14,Elaham,20,habitual
+14,Elaham,21,absent
+14,Elaham,22,absent
+14,Elaham,23,absent
+14,Elaham,24,present
+14,Elaham,25,absent
+14,Elaham,26,customary
+14,Elaham,27,customary
+14,Elaham,28,customary
+14,Elaham,29,habitual
+14,Elaham,30,customary
+14,Elaham,31,absent
+14,Elaham,32,present
+14,Elaham,33,ecological explanation
+14,Elaham,34,customary
+14,Elaham,35,ecological explanation
+14,Elaham,36,present
+14,Elaham,37,customary
+14,Elaham,38,customary
+14,Elaham,39,absent
+14,Elaham,40,customary
+14,Elaham,41,habitual
+14,Elaham,42,customary
+14,Elaham,43,absent
+14,Elaham,44,customary
+14,Elaham,45,customary
+14,Elaham,46,absent
+14,Elaham,47,absent
+14,Elaham,48,customary
+14,Elaham,49,customary
+14,Elaham,50,absent
+14,Elaham,51,absent
+14,Elaham,52,customary
+14,Elaham,53,customary
+14,Elaham,54,absent
+14,Elaham,55,absent
+14,Elaham,56,absent
+14,Elaham,57,customary
+14,Elaham,58,habitual
+14,Elaham,59,absent
+14,Elaham,60,absent
+14,Elaham,61,ecological explanation
+14,Elaham,62,customary
+14,Elaham,63,customary
+14,Elaham,64,customary
+14,Elabik,1,absent
+14,Elabik,2,absent
+14,Elabik,3,absent
+14,Elabik,4,absent
+14,Elabik,5,present
+14,Elabik,6,absent
+14,Elabik,7,customary
+14,Elabik,8,customary
+14,Elabik,9,absent
+14,Elabik,10,absent
+14,Elabik,11,customary
+14,Elabik,12,customary
+14,Elabik,13,customary
+14,Elabik,14,customary
+14,Elabik,15,customary
+14,Elabik,16,absent
+14,Elabik,17,absent
+14,Elabik,18,habitual
+14,Elabik,19,absent
+14,Elabik,20,absent
+14,Elabik,21,absent
+14,Elabik,22,customary
+14,Elabik,23,absent
+14,Elabik,24,customary
+14,Elabik,25,absent
+14,Elabik,26,habitual
+14,Elabik,27,customary
+14,Elabik,28,habitual
+14,Elabik,29,present
+14,Elabik,30,customary
+14,Elabik,31,habitual
+14,Elabik,32,absent
+14,Elabik,33,customary
+14,Elabik,34,customary
+14,Elabik,35,absent
+14,Elabik,36,absent
+14,Elabik,37,customary
+14,Elabik,38,customary
+14,Elabik,39,habitual
+14,Elabik,40,customary
+14,Elabik,41,habitual
+14,Elabik,42,customary
+14,Elabik,43,absent
+14,Elabik,44,customary
+14,Elabik,45,customary
+14,Elabik,46,absent
+14,Elabik,47,absent
+14,Elabik,48,customary
+14,Elabik,49,customary
+14,Elabik,50,absent
+14,Elabik,51,absent
+14,Elabik,52,customary
+14,Elabik,53,customary
+14,Elabik,54,absent
+14,Elabik,55,customary
+14,Elabik,56,absent
+14,Elabik,57,absent
+14,Elabik,58,absent
+14,Elabik,59,absent
+14,Elabik,60,absent
+14,Elabik,61,present
+14,Elabik,62,customary
+14,Elabik,63,customary
+14,Elabik,64,customary
+14,Ognodub,1,absent
+14,Ognodub,2,absent
+14,Ognodub,3,present
+14,Ognodub,4,absent
+14,Ognodub,5,absent
+14,Ognodub,6,absent
+14,Ognodub,7,customary
+14,Ognodub,8,customary
+14,Ognodub,9,absent
+14,Ognodub,10,absent
+14,Ognodub,11,customary
+14,Ognodub,12,customary
+14,Ognodub,13,habitual
+14,Ognodub,14,habitual
+14,Ognodub,15,customary
+14,Ognodub,16,absent
+14,Ognodub,17,absent
+14,Ognodub,18,absent
+14,Ognodub,19,absent
+14,Ognodub,20,absent
+14,Ognodub,21,absent
+14,Ognodub,22,customary
+14,Ognodub,23,present
+14,Ognodub,24,customary
+14,Ognodub,25,absent
+14,Ognodub,26,absent
+14,Ognodub,27,present
+14,Ognodub,28,absent
+14,Ognodub,29,absent
+14,Ognodub,30,customary
+14,Ognodub,31,customary
+14,Ognodub,32,absent
+14,Ognodub,33,customary
+14,Ognodub,34,customary
+14,Ognodub,35,absent
+14,Ognodub,36,ecological explanation
+14,Ognodub,37,customary
+14,Ognodub,38,customary
+14,Ognodub,39,ecological explanation
+14,Ognodub,40,customary
+14,Ognodub,41,absent
+14,Ognodub,42,customary
+14,Ognodub,43,ecological explanation
+14,Ognodub,44,absent
+14,Ognodub,45,ecological explanation
+14,Ognodub,46,ecological explanation
+14,Ognodub,47,ecological explanation
+14,Ognodub,48,ecological explanation
+14,Ognodub,49,absent
+14,Ognodub,50,absent
+14,Ognodub,51,ecological explanation
+14,Ognodub,52,absent
+14,Ognodub,53,customary
+14,Ognodub,54,habitual
+14,Ognodub,55,customary
+14,Ognodub,56,ecological explanation
+14,Ognodub,57,ecological explanation
+14,Ognodub,58,ecological explanation
+14,Ognodub,59,absent
+14,Ognodub,60,ecological explanation
+14,Ognodub,61,present
+14,Ognodub,62,customary
+14,Ognodub,63,customary
+14,Ognodub,64,customary
+15,Uossob,1,customary
+15,Uossob,2,customary
+15,Uossob,3,absent
+15,Uossob,4,absent
+15,Uossob,5,customary
+15,Uossob,6,absent
+15,Uossob,7,absent
+15,Uossob,8,absent
+15,Uossob,9,absent
+15,Uossob,10,absent
+15,Uossob,11,habitual
+15,Uossob,12,customary
+15,Uossob,13,absent
+15,Uossob,14,absent
+15,Uossob,15,absent
+15,Uossob,16,customary
+15,Uossob,17,absent
+15,Uossob,18,customary
+15,Uossob,19,habitual
+15,Uossob,20,habitual
+15,Uossob,21,customary
+15,Uossob,22,absent
+15,Uossob,23,customary
+15,Uossob,24,customary
+15,Uossob,25,absent
+15,Uossob,26,absent
+15,Uossob,27,absent
+15,Uossob,28,absent
+15,Uossob,29,absent
+15,Uossob,30,present
+15,Uossob,31,absent
+15,Uossob,32,customary
+15,Uossob,33,absent
+15,Uossob,34,absent
+15,Uossob,35,ecological explanation
+15,Uossob,36,ecological explanation
+15,Uossob,37,absent
+15,Uossob,38,absent
+15,Uossob,39,absent
+15,Uossob,40,absent
+15,Uossob,41,absent
+15,Uossob,42,ecological explanation
+15,Uossob,43,customary
+15,Uossob,44,absent
+15,Uossob,45,absent
+15,Uossob,46,ecological explanation
+15,Uossob,47,ecological explanation
+15,Uossob,48,ecological explanation
+15,Uossob,49,absent
+15,Uossob,50,customary
+15,Uossob,51,ecological explanation
+15,Uossob,52,absent
+15,Uossob,53,customary
+15,Uossob,54,ecological explanation
+15,Uossob,55,ecological explanation
+15,Uossob,56,ecological explanation
+15,Uossob,57,customary
+15,Uossob,58,customary
+15,Uossob,59,absent
+15,Uossob,60,ecological explanation
+15,Uossob,61,absent
+15,Uossob,62,ecological explanation
+15,Uossob,63,customary
+15,Uossob,64,ecological explanation
+15,Iat Forest,1,customary
+15,Iat Forest,2,customary
+15,Iat Forest,3,absent
+15,Iat Forest,4,absent
+15,Iat Forest,5,habitual
+15,Iat Forest,6,absent
+15,Iat Forest,7,absent
+15,Iat Forest,8,absent
+15,Iat Forest,9,customary
+15,Iat Forest,10,absent
+15,Iat Forest,11,customary
+15,Iat Forest,12,habitual
+15,Iat Forest,13,absent
+15,Iat Forest,14,absent
+15,Iat Forest,15,absent
+15,Iat Forest,16,customary
+15,Iat Forest,17,absent
+15,Iat Forest,18,customary
+15,Iat Forest,19,customary
+15,Iat Forest,20,customary
+15,Iat Forest,21,customary
+15,Iat Forest,22,absent
+15,Iat Forest,23,customary
+15,Iat Forest,24,habitual
+15,Iat Forest,25,absent
+15,Iat Forest,26,absent
+15,Iat Forest,27,absent
+15,Iat Forest,28,absent
+15,Iat Forest,29,absent
+15,Iat Forest,30,customary
+15,Iat Forest,31,absent
+15,Iat Forest,32,customary
+15,Iat Forest,33,absent
+15,Iat Forest,34,customary
+15,Iat Forest,35,absent
+15,Iat Forest,36,absent
+15,Iat Forest,37,present
+15,Iat Forest,38,habitual
+15,Iat Forest,39,absent
+15,Iat Forest,40,habitual
+15,Iat Forest,41,absent
+15,Iat Forest,42,absent
+15,Iat Forest,43,customary
+15,Iat Forest,44,customary
+15,Iat Forest,45,ecological explanation
+15,Iat Forest,46,absent
+15,Iat Forest,47,customary
+15,Iat Forest,48,customary
+15,Iat Forest,49,absent
+15,Iat Forest,50,customary
+15,Iat Forest,51,absent
+15,Iat Forest,52,absent
+15,Iat Forest,53,customary
+15,Iat Forest,54,absent
+15,Iat Forest,55,absent
+15,Iat Forest,56,absent
+15,Iat Forest,57,customary
+15,Iat Forest,58,customary
+15,Iat Forest,59,absent
+15,Iat Forest,60,absent
+15,Iat Forest,61,ecological explanation
+15,Iat Forest,62,customary
+15,Iat Forest,63,customary
+15,Iat Forest,64,absent
+15,Ebmog,1,absent
+15,Ebmog,2,absent
+15,Ebmog,3,habitual
+15,Ebmog,4,customary
+15,Ebmog,5,absent
+15,Ebmog,6,absent
+15,Ebmog,7,habitual
+15,Ebmog,8,customary
+15,Ebmog,9,present
+15,Ebmog,10,absent
+15,Ebmog,11,absent
+15,Ebmog,12,absent
+15,Ebmog,13,customary
+15,Ebmog,14,customary
+15,Ebmog,15,habitual
+15,Ebmog,16,present
+15,Ebmog,17,customary
+15,Ebmog,18,absent
+15,Ebmog,19,absent
+15,Ebmog,20,habitual
+15,Ebmog,21,present
+15,Ebmog,22,customary
+15,Ebmog,23,absent
+15,Ebmog,24,absent
+15,Ebmog,25,habitual
+15,Ebmog,26,habitual
+15,Ebmog,27,customary
+15,Ebmog,28,habitual
+15,Ebmog,29,customary
+15,Ebmog,30,present
+15,Ebmog,31,customary
+15,Ebmog,32,absent
+15,Ebmog,33,habitual
+15,Ebmog,34,absent
+15,Ebmog,35,habitual
+15,Ebmog,36,customary
+15,Ebmog,37,absent
+15,Ebmog,38,customary
+15,Ebmog,39,habitual
+15,Ebmog,40,absent
+15,Ebmog,41,customary
+15,Ebmog,42,absent
+15,Ebmog,43,absent
+15,Ebmog,44,absent
+15,Ebmog,45,customary
+15,Ebmog,46,customary
+15,Ebmog,47,customary
+15,Ebmog,48,customary
+15,Ebmog,49,absent
+15,Ebmog,50,absent
+15,Ebmog,51,customary
+15,Ebmog,52,absent
+15,Ebmog,53,absent
+15,Ebmog,54,customary
+15,Ebmog,55,customary
+15,Ebmog,56,customary
+15,Ebmog,57,habitual
+15,Ebmog,58,absent
+15,Ebmog,59,absent
+15,Ebmog,60,customary
+15,Ebmog,61,customary
+15,Ebmog,62,absent
+15,Ebmog,63,absent
+15,Ebmog,64,customary
+15,Elaham,1,absent
+15,Elaham,2,absent
+15,Elaham,3,customary
+15,Elaham,4,customary
+15,Elaham,5,present
+15,Elaham,6,present
+15,Elaham,7,habitual
+15,Elaham,8,habitual
+15,Elaham,9,absent
+15,Elaham,10,absent
+15,Elaham,11,absent
+15,Elaham,12,absent
+15,Elaham,13,customary
+15,Elaham,14,customary
+15,Elaham,15,habitual
+15,Elaham,16,absent
+15,Elaham,17,customary
+15,Elaham,18,present
+15,Elaham,19,absent
+15,Elaham,20,habitual
+15,Elaham,21,absent
+15,Elaham,22,habitual
+15,Elaham,23,habitual
+15,Elaham,24,absent
+15,Elaham,25,customary
+15,Elaham,26,customary
+15,Elaham,27,customary
+15,Elaham,28,habitual
+15,Elaham,29,customary
+15,Elaham,30,habitual
+15,Elaham,31,customary
+15,Elaham,32,absent
+15,Elaham,33,absent
+15,Elaham,34,ecological explanation
+15,Elaham,35,habitual
+15,Elaham,36,customary
+15,Elaham,37,ecological explanation
+15,Elaham,38,customary
+15,Elaham,39,absent
+15,Elaham,40,ecological explanation
+15,Elaham,41,customary
+15,Elaham,42,absent
+15,Elaham,43,absent
+15,Elaham,44,absent
+15,Elaham,45,customary
+15,Elaham,46,customary
+15,Elaham,47,customary
+15,Elaham,48,customary
+15,Elaham,49,absent
+15,Elaham,50,absent
+15,Elaham,51,customary
+15,Elaham,52,absent
+15,Elaham,53,ecological explanation
+15,Elaham,54,customary
+15,Elaham,55,customary
+15,Elaham,56,customary
+15,Elaham,57,absent
+15,Elaham,58,ecological explanation
+15,Elaham,59,ecological explanation
+15,Elaham,60,customary
+15,Elaham,61,customary
+15,Elaham,62,absent
+15,Elaham,63,absent
+15,Elaham,64,customary
+15,Elabik,1,present
+15,Elabik,2,absent
+15,Elabik,3,habitual
+15,Elabik,4,customary
+15,Elabik,5,habitual
+15,Elabik,6,customary
+15,Elabik,7,customary
+15,Elabik,8,customary
+15,Elabik,9,absent
+15,Elabik,10,customary
+15,Elabik,11,customary
+15,Elabik,12,absent
+15,Elabik,13,habitual
+15,Elabik,14,customary
+15,Elabik,15,customary
+15,Elabik,16,absent
+15,Elabik,17,habitual
+15,Elabik,18,absent
+15,Elabik,19,absent
+15,Elabik,20,absent
+15,Elabik,21,absent
+15,Elabik,22,customary
+15,Elabik,23,absent
+15,Elabik,24,habitual
+15,Elabik,25,habitual
+15,Elabik,26,customary
+15,Elabik,27,customary
+15,Elabik,28,customary
+15,Elabik,29,customary
+15,Elabik,30,absent
+15,Elabik,31,present
+15,Elabik,32,absent
+15,Elabik,33,habitual
+15,Elabik,34,absent
+15,Elabik,35,habitual
+15,Elabik,36,customary
+15,Elabik,37,present
+15,Elabik,38,customary
+15,Elabik,39,habitual
+15,Elabik,40,absent
+15,Elabik,41,customary
+15,Elabik,42,customary
+15,Elabik,43,absent
+15,Elabik,44,absent
+15,Elabik,45,customary
+15,Elabik,46,customary
+15,Elabik,47,present
+15,Elabik,48,habitual
+15,Elabik,49,absent
+15,Elabik,50,absent
+15,Elabik,51,customary
+15,Elabik,52,absent
+15,Elabik,53,absent
+15,Elabik,54,customary
+15,Elabik,55,customary
+15,Elabik,56,customary
+15,Elabik,57,present
+15,Elabik,58,absent
+15,Elabik,59,absent
+15,Elabik,60,customary
+15,Elabik,61,customary
+15,Elabik,62,present
+15,Elabik,63,absent
+15,Elabik,64,customary
+15,Ognodub,1,absent
+15,Ognodub,2,absent
+15,Ognodub,3,customary
+15,Ognodub,4,customary
+15,Ognodub,5,absent
+15,Ognodub,6,customary
+15,Ognodub,7,customary
+15,Ognodub,8,absent
+15,Ognodub,9,absent
+15,Ognodub,10,customary
+15,Ognodub,11,customary
+15,Ognodub,12,absent
+15,Ognodub,13,habitual
+15,Ognodub,14,customary
+15,Ognodub,15,habitual
+15,Ognodub,16,absent
+15,Ognodub,17,absent
+15,Ognodub,18,absent
+15,Ognodub,19,absent
+15,Ognodub,20,absent
+15,Ognodub,21,absent
+15,Ognodub,22,customary
+15,Ognodub,23,absent
+15,Ognodub,24,customary
+15,Ognodub,25,customary
+15,Ognodub,26,customary
+15,Ognodub,27,customary
+15,Ognodub,28,customary
+15,Ognodub,29,absent
+15,Ognodub,30,absent
+15,Ognodub,31,absent
+15,Ognodub,32,absent
+15,Ognodub,33,ecological explanation
+15,Ognodub,34,absent
+15,Ognodub,35,absent
+15,Ognodub,36,customary
+15,Ognodub,37,customary
+15,Ognodub,38,ecological explanation
+15,Ognodub,39,ecological explanation
+15,Ognodub,40,absent
+15,Ognodub,41,ecological explanation
+15,Ognodub,42,customary
+15,Ognodub,43,ecological explanation
+15,Ognodub,44,ecological explanation
+15,Ognodub,45,customary
+15,Ognodub,46,absent
+15,Ognodub,47,absent
+15,Ognodub,48,absent
+15,Ognodub,49,ecological explanation
+15,Ognodub,50,ecological explanation
+15,Ognodub,51,absent
+15,Ognodub,52,ecological explanation
+15,Ognodub,53,absent
+15,Ognodub,54,customary
+15,Ognodub,55,customary
+15,Ognodub,56,absent
+15,Ognodub,57,ecological explanation
+15,Ognodub,58,absent
+15,Ognodub,59,absent
+15,Ognodub,60,customary
+15,Ognodub,61,absent
+15,Ognodub,62,present
+15,Ognodub,63,ecological explanation
+15,Ognodub,64,customary
+16,Uossob,1,absent
+16,Uossob,2,habitual
+16,Uossob,3,customary
+16,Uossob,4,customary
+16,Uossob,5,customary
+16,Uossob,6,absent
+16,Uossob,7,absent
+16,Uossob,8,absent
+16,Uossob,9,absent
+16,Uossob,10,absent
+16,Uossob,11,customary
+16,Uossob,12,absent
+16,Uossob,13,customary
+16,Uossob,14,customary
+16,Uossob,15,customary
+16,Uossob,16,customary
+16,Uossob,17,absent
+16,Uossob,18,customary
+16,Uossob,19,habitual
+16,Uossob,20,absent
+16,Uossob,21,present
+16,Uossob,22,habitual
+16,Uossob,23,habitual
+16,Uossob,24,absent
+16,Uossob,25,absent
+16,Uossob,26,habitual
+16,Uossob,27,absent
+16,Uossob,28,absent
+16,Uossob,29,customary
+16,Uossob,30,absent
+16,Uossob,31,absent
+16,Uossob,32,absent
+16,Uossob,33,absent
+16,Uossob,34,ecological explanation
+16,Uossob,35,ecological explanation
+16,Uossob,36,absent
+16,Uossob,37,ecological explanation
+16,Uossob,38,absent
+16,Uossob,39,absent
+16,Uossob,40,absent
+16,Uossob,41,ecological explanation
+16,Uossob,42,customary
+16,Uossob,43,absent
+16,Uossob,44,ecological explanation
+16,Uossob,45,customary
+16,Uossob,46,customary
+16,Uossob,47,absent
+16,Uossob,48,customary
+16,Uossob,49,ecological explanation
+16,Uossob,50,customary
+16,Uossob,51,ecological explanation
+16,Uossob,52,absent
+16,Uossob,53,absent
+16,Uossob,54,ecological explanation
+16,Uossob,55,absent
+16,Uossob,56,ecological explanation
+16,Uossob,57,absent
+16,Uossob,58,ecological explanation
+16,Uossob,59,ecological explanation
+16,Uossob,60,ecological explanation
+16,Uossob,61,customary
+16,Uossob,62,ecological explanation
+16,Uossob,63,absent
+16,Uossob,64,ecological explanation
+16,Iat Forest,1,absent
+16,Iat Forest,2,habitual
+16,Iat Forest,3,customary
+16,Iat Forest,4,customary
+16,Iat Forest,5,customary
+16,Iat Forest,6,absent
+16,Iat Forest,7,absent
+16,Iat Forest,8,absent
+16,Iat Forest,9,absent
+16,Iat Forest,10,absent
+16,Iat Forest,11,habitual
+16,Iat Forest,12,absent
+16,Iat Forest,13,customary
+16,Iat Forest,14,habitual
+16,Iat Forest,15,habitual
+16,Iat Forest,16,habitual
+16,Iat Forest,17,customary
+16,Iat Forest,18,customary
+16,Iat Forest,19,habitual
+16,Iat Forest,20,absent
+16,Iat Forest,21,customary
+16,Iat Forest,22,customary
+16,Iat Forest,23,customary
+16,Iat Forest,24,absent
+16,Iat Forest,25,absent
+16,Iat Forest,26,customary
+16,Iat Forest,27,absent
+16,Iat Forest,28,absent
+16,Iat Forest,29,customary
+16,Iat Forest,30,absent
+16,Iat Forest,31,absent
+16,Iat Forest,32,absent
+16,Iat Forest,33,absent
+16,Iat Forest,34,absent
+16,Iat Forest,35,absent
+16,Iat Forest,36,customary
+16,Iat Forest,37,absent
+16,Iat Forest,38,customary
+16,Iat Forest,39,ecological explanation
+16,Iat Forest,40,present
+16,Iat Forest,41,absent
+16,Iat Forest,42,customary
+16,Iat Forest,43,customary
+16,Iat Forest,44,absent
+16,Iat Forest,45,customary
+16,Iat Forest,46,customary
+16,Iat Forest,47,habitual
+16,Iat Forest,48,customary
+16,Iat Forest,49,absent
+16,Iat Forest,50,customary
+16,Iat Forest,51,absent
+16,Iat Forest,52,customary
+16,Iat Forest,53,customary
+16,Iat Forest,54,customary
+16,Iat Forest,55,absent
+16,Iat Forest,56,absent
+16,Iat Forest,57,absent
+16,Iat Forest,58,absent
+16,Iat Forest,59,present
+16,Iat Forest,60,absent
+16,Iat Forest,61,customary
+16,Iat Forest,62,absent
+16,Iat Forest,63,habitual
+16,Iat Forest,64,absent
+16,Ebmog,1,customary
+16,Ebmog,2,absent
+16,Ebmog,3,absent
+16,Ebmog,4,absent
+16,Ebmog,5,absent
+16,Ebmog,6,customary
+16,Ebmog,7,customary
+16,Ebmog,8,habitual
+16,Ebmog,9,habitual
+16,Ebmog,10,customary
+16,Ebmog,11,absent
+16,Ebmog,12,habitual
+16,Ebmog,13,absent
+16,Ebmog,14,present
+16,Ebmog,15,present
+16,Ebmog,16,absent
+16,Ebmog,17,absent
+16,Ebmog,18,absent
+16,Ebmog,19,customary
+16,Ebmog,20,customary
+16,Ebmog,21,absent
+16,Ebmog,22,habitual
+16,Ebmog,23,absent
+16,Ebmog,24,habitual
+16,Ebmog,25,customary
+16,Ebmog,26,absent
+16,Ebmog,27,customary
+16,Ebmog,28,absent
+16,Ebmog,29,absent
+16,Ebmog,30,customary
+16,Ebmog,31,customary
+16,Ebmog,32,customary
+16,Ebmog,33,customary
+16,Ebmog,34,present
+16,Ebmog,35,absent
+16,Ebmog,36,customary
+16,Ebmog,37,absent
+16,Ebmog,38,present
+16,Ebmog,39,customary
+16,Ebmog,40,customary
+16,Ebmog,41,customary
+16,Ebmog,42,absent
+16,Ebmog,43,absent
+16,Ebmog,44,customary
+16,Ebmog,45,absent
+16,Ebmog,46,absent
+16,Ebmog,47,customary
+16,Ebmog,48,absent
+16,Ebmog,49,absent
+16,Ebmog,50,habitual
+16,Ebmog,51,customary
+16,Ebmog,52,customary
+16,Ebmog,53,absent
+16,Ebmog,54,absent
+16,Ebmog,55,absent
+16,Ebmog,56,absent
+16,Ebmog,57,absent
+16,Ebmog,58,customary
+16,Ebmog,59,customary
+16,Ebmog,60,absent
+16,Ebmog,61,absent
+16,Ebmog,62,customary
+16,Ebmog,63,habitual
+16,Ebmog,64,customary
+16,Elaham,1,customary
+16,Elaham,2,absent
+16,Elaham,3,absent
+16,Elaham,4,absent
+16,Elaham,5,absent
+16,Elaham,6,customary
+16,Elaham,7,customary
+16,Elaham,8,absent
+16,Elaham,9,habitual
+16,Elaham,10,customary
+16,Elaham,11,absent
+16,Elaham,12,habitual
+16,Elaham,13,habitual
+16,Elaham,14,absent
+16,Elaham,15,absent
+16,Elaham,16,absent
+16,Elaham,17,present
+16,Elaham,18,absent
+16,Elaham,19,customary
+16,Elaham,20,customary
+16,Elaham,21,absent
+16,Elaham,22,customary
+16,Elaham,23,absent
+16,Elaham,24,habitual
+16,Elaham,25,habitual
+16,Elaham,26,habitual
+16,Elaham,27,customary
+16,Elaham,28,present
+16,Elaham,29,absent
+16,Elaham,30,customary
+16,Elaham,31,customary
+16,Elaham,32,customary
+16,Elaham,33,customary
+16,Elaham,34,absent
+16,Elaham,35,absent
+16,Elaham,36,customary
+16,Elaham,37,absent
+16,Elaham,38,absent
+16,Elaham,39,customary
+16,Elaham,40,customary
+16,Elaham,41,customary
+16,Elaham,42,absent
+16,Elaham,43,present
+16,Elaham,44,customary
+16,Elaham,45,ecological explanation
+16,Elaham,46,absent
+16,Elaham,47,customary
+16,Elaham,48,ecological explanation
+16,Elaham,49,absent
+16,Elaham,50,habitual
+16,Elaham,51,customary
+16,Elaham,52,customary
+16,Elaham,53,ecological explanation
+16,Elaham,54,absent
+16,Elaham,55,ecological explanation
+16,Elaham,56,absent
+16,Elaham,57,ecological explanation
+16,Elaham,58,customary
+16,Elaham,59,customary
+16,Elaham,60,absent
+16,Elaham,61,ecological explanation
+16,Elaham,62,customary
+16,Elaham,63,absent
+16,Elaham,64,customary
+16,Elabik,1,customary
+16,Elabik,2,absent
+16,Elabik,3,absent
+16,Elabik,4,absent
+16,Elabik,5,absent
+16,Elabik,6,customary
+16,Elabik,7,habitual
+16,Elabik,8,customary
+16,Elabik,9,customary
+16,Elabik,10,customary
+16,Elabik,11,absent
+16,Elabik,12,customary
+16,Elabik,13,absent
+16,Elabik,14,absent
+16,Elabik,15,absent
+16,Elabik,16,absent
+16,Elabik,17,absent
+16,Elabik,18,absent
+16,Elabik,19,habitual
+16,Elabik,20,customary
+16,Elabik,21,absent
+16,Elabik,22,absent
+16,Elabik,23,absent
+16,Elabik,24,customary
+16,Elabik,25,customary
+16,Elabik,26,absent
+16,Elabik,27,customary
+16,Elabik,28,habitual
+16,Elabik,29,absent
+16,Elabik,30,habitual
+16,Elabik,31,customary
+16,Elabik,32,customary
+16,Elabik,33,customary
+16,Elabik,34,habitual
+16,Elabik,35,customary
+16,Elabik,36,customary
+16,Elabik,37,customary
+16,Elabik,38,absent
+16,Elabik,39,customary
+16,Elabik,40,customary
+16,Elabik,41,habitual
+16,Elabik,42,absent
+16,Elabik,43,absent
+16,Elabik,44,customary
+16,Elabik,45,absent
+16,Elabik,46,absent
+16,Elabik,47,habitual
+16,Elabik,48,absent
+16,Elabik,49,present
+16,Elabik,50,absent
+16,Elabik,51,customary
+16,Elabik,52,present
+16,Elabik,53,present
+16,Elabik,54,absent
+16,Elabik,55,customary
+16,Elabik,56,absent
+16,Elabik,57,customary
+16,Elabik,58,customary
+16,Elabik,59,customary
+16,Elabik,60,absent
+16,Elabik,61,absent
+16,Elabik,62,customary
+16,Elabik,63,absent
+16,Elabik,64,customary
+16,Ognodub,1,customary
+16,Ognodub,2,absent
+16,Ognodub,3,absent
+16,Ognodub,4,absent
+16,Ognodub,5,absent
+16,Ognodub,6,habitual
+16,Ognodub,7,habitual
+16,Ognodub,8,customary
+16,Ognodub,9,customary
+16,Ognodub,10,customary
+16,Ognodub,11,present
+16,Ognodub,12,customary
+16,Ognodub,13,absent
+16,Ognodub,14,absent
+16,Ognodub,15,habitual
+16,Ognodub,16,absent
+16,Ognodub,17,absent
+16,Ognodub,18,absent
+16,Ognodub,19,absent
+16,Ognodub,20,habitual
+16,Ognodub,21,absent
+16,Ognodub,22,absent
+16,Ognodub,23,absent
+16,Ognodub,24,customary
+16,Ognodub,25,customary
+16,Ognodub,26,absent
+16,Ognodub,27,customary
+16,Ognodub,28,customary
+16,Ognodub,29,absent
+16,Ognodub,30,present
+16,Ognodub,31,habitual
+16,Ognodub,32,customary
+16,Ognodub,33,ecological explanation
+16,Ognodub,34,customary
+16,Ognodub,35,customary
+16,Ognodub,36,ecological explanation
+16,Ognodub,37,customary
+16,Ognodub,38,ecological explanation
+16,Ognodub,39,customary
+16,Ognodub,40,ecological explanation
+16,Ognodub,41,absent
+16,Ognodub,42,ecological explanation
+16,Ognodub,43,ecological explanation
+16,Ognodub,44,customary
+16,Ognodub,45,absent
+16,Ognodub,46,ecological explanation
+16,Ognodub,47,ecological explanation
+16,Ognodub,48,absent
+16,Ognodub,49,absent
+16,Ognodub,50,ecological explanation
+16,Ognodub,51,customary
+16,Ognodub,52,ecological explanation
+16,Ognodub,53,absent
+16,Ognodub,54,absent
+16,Ognodub,55,customary
+16,Ognodub,56,absent
+16,Ognodub,57,customary
+16,Ognodub,58,customary
+16,Ognodub,59,customary
+16,Ognodub,60,present
+16,Ognodub,61,absent
+16,Ognodub,62,absent
+16,Ognodub,63,ecological explanation
+16,Ognodub,64,customary
+17,Uossob,1,absent
+17,Uossob,2,absent
+17,Uossob,3,customary
+17,Uossob,4,absent
+17,Uossob,5,absent
+17,Uossob,6,customary
+17,Uossob,7,absent
+17,Uossob,8,absent
+17,Uossob,9,absent
+17,Uossob,10,customary
+17,Uossob,11,customary
+17,Uossob,12,customary
+17,Uossob,13,absent
+17,Uossob,14,absent
+17,Uossob,15,absent
+17,Uossob,16,customary
+17,Uossob,17,customary
+17,Uossob,18,absent
+17,Uossob,19,absent
+17,Uossob,20,habitual
+17,Uossob,21,absent
+17,Uossob,22,absent
+17,Uossob,23,absent
+17,Uossob,24,absent
+17,Uossob,25,customary
+17,Uossob,26,absent
+17,Uossob,27,absent
+17,Uossob,28,habitual
+17,Uossob,29,customary
+17,Uossob,30,customary
+17,Uossob,31,customary
+17,Uossob,32,absent
+17,Uossob,33,absent
+17,Uossob,34,absent
+17,Uossob,35,customary
+17,Uossob,36,customary
+17,Uossob,37,customary
+17,Uossob,38,absent
+17,Uossob,39,customary
+17,Uossob,40,ecological explanation
+17,Uossob,41,customary
+17,Uossob,42,absent
+17,Uossob,43,absent
+17,Uossob,44,ecological explanation
+17,Uossob,45,absent
+17,Uossob,46,customary
+17,Uossob,47,ecological explanation
+17,Uossob,48,customary
+17,Uossob,49,absent
+17,Uossob,50,customary
+17,Uossob,51,customary
+17,Uossob,52,habitual
+17,Uossob,53,absent
+17,Uossob,54,customary
+17,Uossob,55,ecological explanation
+17,Uossob,56,customary
+17,Uossob,57,absent
+17,Uossob,58,customary
+17,Uossob,59,ecological explanation
+17,Uossob,60,absent
+17,Uossob,61,absent
+17,Uossob,62,ecological explanation
+17,Uossob,63,absent
+17,Uossob,64,customary
+17,Iat Forest,1,absent
+17,Iat Forest,2,customary
+17,Iat Forest,3,customary
+17,Iat Forest,4,absent
+17,Iat Forest,5,absent
+17,Iat Forest,6,habitual
+17,Iat Forest,7,customary
+17,Iat Forest,8,absent
+17,Iat Forest,9,absent
+17,Iat Forest,10,habitual
+17,Iat Forest,11,customary
+17,Iat Forest,12,customary
+17,Iat Forest,13,absent
+17,Iat Forest,14,absent
+17,Iat Forest,15,absent
+17,Iat Forest,16,customary
+17,Iat Forest,17,customary
+17,Iat Forest,18,habitual
+17,Iat Forest,19,absent
+17,Iat Forest,20,customary
+17,Iat Forest,21,absent
+17,Iat Forest,22,absent
+17,Iat Forest,23,habitual
+17,Iat Forest,24,absent
+17,Iat Forest,25,habitual
+17,Iat Forest,26,absent
+17,Iat Forest,27,customary
+17,Iat Forest,28,customary
+17,Iat Forest,29,customary
+17,Iat Forest,30,habitual
+17,Iat Forest,31,customary
+17,Iat Forest,32,absent
+17,Iat Forest,33,absent
+17,Iat Forest,34,ecological explanation
+17,Iat Forest,35,customary
+17,Iat Forest,36,customary
+17,Iat Forest,37,customary
+17,Iat Forest,38,ecological explanation
+17,Iat Forest,39,absent
+17,Iat Forest,40,absent
+17,Iat Forest,41,customary
+17,Iat Forest,42,ecological explanation
+17,Iat Forest,43,customary
+17,Iat Forest,44,absent
+17,Iat Forest,45,absent
+17,Iat Forest,46,customary
+17,Iat Forest,47,absent
+17,Iat Forest,48,customary
+17,Iat Forest,49,absent
+17,Iat Forest,50,customary
+17,Iat Forest,51,customary
+17,Iat Forest,52,absent
+17,Iat Forest,53,absent
+17,Iat Forest,54,customary
+17,Iat Forest,55,absent
+17,Iat Forest,56,customary
+17,Iat Forest,57,ecological explanation
+17,Iat Forest,58,customary
+17,Iat Forest,59,customary
+17,Iat Forest,60,ecological explanation
+17,Iat Forest,61,ecological explanation
+17,Iat Forest,62,absent
+17,Iat Forest,63,customary
+17,Iat Forest,64,ecological explanation
+17,Ebmog,1,customary
+17,Ebmog,2,present
+17,Ebmog,3,absent
+17,Ebmog,4,absent
+17,Ebmog,5,habitual
+17,Ebmog,6,absent
+17,Ebmog,7,habitual
+17,Ebmog,8,customary
+17,Ebmog,9,customary
+17,Ebmog,10,absent
+17,Ebmog,11,absent
+17,Ebmog,12,absent
+17,Ebmog,13,customary
+17,Ebmog,14,customary
+17,Ebmog,15,customary
+17,Ebmog,16,absent
+17,Ebmog,17,absent
+17,Ebmog,18,absent
+17,Ebmog,19,habitual
+17,Ebmog,20,absent
+17,Ebmog,21,customary
+17,Ebmog,22,customary
+17,Ebmog,23,customary
+17,Ebmog,24,habitual
+17,Ebmog,25,absent
+17,Ebmog,26,customary
+17,Ebmog,27,absent
+17,Ebmog,28,absent
+17,Ebmog,29,absent
+17,Ebmog,30,absent
+17,Ebmog,31,present
+17,Ebmog,32,customary
+17,Ebmog,33,absent
+17,Ebmog,34,customary
+17,Ebmog,35,absent
+17,Ebmog,36,absent
+17,Ebmog,37,absent
+17,Ebmog,38,present
+17,Ebmog,39,absent
+17,Ebmog,40,absent
+17,Ebmog,41,absent
+17,Ebmog,42,customary
+17,Ebmog,43,habitual
+17,Ebmog,44,customary
+17,Ebmog,45,customary
+17,Ebmog,46,absent
+17,Ebmog,47,habitual
+17,Ebmog,48,absent
+17,Ebmog,49,customary
+17,Ebmog,50,absent
+17,Ebmog,51,absent
+17,Ebmog,52,absent
+17,Ebmog,53,customary
+17,Ebmog,54,absent
+17,Ebmog,55,customary
+17,Ebmog,56,absent
+17,Ebmog,57,present
+17,Ebmog,58,absent
+17,Ebmog,59,customary
+17,Ebmog,60,customary
+17,Ebmog,61,customary
+17,Ebmog,62,customary
+17,Ebmog,63,absent
+17,Ebmog,64,absent
+17,Elaham,1,customary
+17,Elaham,2,absent
+17,Elaham,3,absent
+17,Elaham,4,absent
+17,Elaham,5,habitual
+17,Elaham,6,absent
+17,Elaham,7,customary
+17,Elaham,8,customary
+17,Elaham,9,customary
+17,Elaham,10,absent
+17,Elaham,11,absent
+17,Elaham,12,absent
+17,Elaham,13,customary
+17,Elaham,14,customary
+17,Elaham,15,customary
+17,Elaham,16,absent
+17,Elaham,17,absent
+17,Elaham,18,absent
+17,Elaham,19,habitual
+17,Elaham,20,absent
+17,Elaham,21,customary
+17,Elaham,22,customary
+17,Elaham,23,customary
+17,Elaham,24,customary
+17,Elaham,25,absent
+17,Elaham,26,habitual
+17,Elaham,27,present
+17,Elaham,28,habitual
+17,Elaham,29,absent
+17,Elaham,30,absent
+17,Elaham,31,absent
+17,Elaham,32,customary
+17,Elaham,33,ecological explanation
+17,Elaham,34,customary
+17,Elaham,35,ecological explanation
+17,Elaham,36,ecological explanation
+17,Elaham,37,absent
+17,Elaham,38,habitual
+17,Elaham,39,absent
+17,Elaham,40,absent
+17,Elaham,41,absent
+17,Elaham,42,customary
+17,Elaham,43,ecological explanation
+17,Elaham,44,customary
+17,Elaham,45,customary
+17,Elaham,46,absent
+17,Elaham,47,absent
+17,Elaham,48,absent
+17,Elaham,49,habitual
+17,Elaham,50,absent
+17,Elaham,51,absent
+17,Elaham,52,ecological explanation
+17,Elaham,53,customary
+17,Elaham,54,ecological explanation
+17,Elaham,55,customary
+17,Elaham,56,absent
+17,Elaham,57,absent
+17,Elaham,58,absent
+17,Elaham,59,customary
+17,Elaham,60,customary
+17,Elaham,61,habitual
+17,Elaham,62,customary
+17,Elaham,63,ecological explanation
+17,Elaham,64,absent
+17,Elabik,1,customary
+17,Elabik,2,absent
+17,Elabik,3,absent
+17,Elabik,4,customary
+17,Elabik,5,customary
+17,Elabik,6,absent
+17,Elabik,7,absent
+17,Elabik,8,habitual
+17,Elabik,9,customary
+17,Elabik,10,absent
+17,Elabik,11,absent
+17,Elabik,12,absent
+17,Elabik,13,customary
+17,Elabik,14,absent
+17,Elabik,15,customary
+17,Elabik,16,absent
+17,Elabik,17,present
+17,Elabik,18,customary
+17,Elabik,19,customary
+17,Elabik,20,absent
+17,Elabik,21,customary
+17,Elabik,22,customary
+17,Elabik,23,customary
+17,Elabik,24,habitual
+17,Elabik,25,absent
+17,Elabik,26,customary
+17,Elabik,27,absent
+17,Elabik,28,absent
+17,Elabik,29,absent
+17,Elabik,30,present
+17,Elabik,31,absent
+17,Elabik,32,customary
+17,Elabik,33,habitual
+17,Elabik,34,customary
+17,Elabik,35,absent
+17,Elabik,36,absent
+17,Elabik,37,absent
+17,Elabik,38,absent
+17,Elabik,39,habitual
+17,Elabik,40,customary
+17,Elabik,41,present
+17,Elabik,42,customary
+17,Elabik,43,customary
+17,Elabik,44,customary
+17,Elabik,45,customary
+17,Elabik,46,present
+17,Elabik,47,customary
+17,Elabik,48,present
+17,Elabik,49,customary
+17,Elabik,50,absent
+17,Elabik,51,absent
+17,Elabik,52,present
+17,Elabik,53,absent
+17,Elabik,54,absent
+17,Elabik,55,habitual
+17,Elabik,56,absent
+17,Elabik,57,absent
+17,Elabik,58,absent
+17,Elabik,59,customary
+17,Elabik,60,customary
+17,Elabik,61,customary
+17,Elabik,62,customary
+17,Elabik,63,customary
+17,Elabik,64,customary
+17,Ognodub,1,present
+17,Ognodub,2,absent
+17,Ognodub,3,absent
+17,Ognodub,4,customary
+17,Ognodub,5,customary
+17,Ognodub,6,absent
+17,Ognodub,7,absent
+17,Ognodub,8,customary
+17,Ognodub,9,customary
+17,Ognodub,10,absent
+17,Ognodub,11,absent
+17,Ognodub,12,absent
+17,Ognodub,13,customary
+17,Ognodub,14,absent
+17,Ognodub,15,habitual
+17,Ognodub,16,absent
+17,Ognodub,17,absent
+17,Ognodub,18,customary
+17,Ognodub,19,customary
+17,Ognodub,20,present
+17,Ognodub,21,habitual
+17,Ognodub,22,customary
+17,Ognodub,23,absent
+17,Ognodub,24,habitual
+17,Ognodub,25,absent
+17,Ognodub,26,customary
+17,Ognodub,27,absent
+17,Ognodub,28,absent
+17,Ognodub,29,absent
+17,Ognodub,30,absent
+17,Ognodub,31,absent
+17,Ognodub,32,customary
+17,Ognodub,33,absent
+17,Ognodub,34,customary
+17,Ognodub,35,absent
+17,Ognodub,36,absent
+17,Ognodub,37,ecological explanation
+17,Ognodub,38,absent
+17,Ognodub,39,ecological explanation
+17,Ognodub,40,customary
+17,Ognodub,41,ecological explanation
+17,Ognodub,42,customary
+17,Ognodub,43,absent
+17,Ognodub,44,customary
+17,Ognodub,45,ecological explanation
+17,Ognodub,46,ecological explanation
+17,Ognodub,47,customary
+17,Ognodub,48,ecological explanation
+17,Ognodub,49,ecological explanation
+17,Ognodub,50,ecological explanation
+17,Ognodub,51,ecological explanation
+17,Ognodub,52,absent
+17,Ognodub,53,ecological explanation
+17,Ognodub,54,habitual
+17,Ognodub,55,absent
+17,Ognodub,56,ecological explanation
+17,Ognodub,57,absent
+17,Ognodub,58,ecological explanation
+17,Ognodub,59,absent
+17,Ognodub,60,customary
+17,Ognodub,61,customary
+17,Ognodub,62,absent
+17,Ognodub,63,customary
+17,Ognodub,64,customary
+18,Uossob,1,absent
+18,Uossob,2,habitual
+18,Uossob,3,habitual
+18,Uossob,4,customary
+18,Uossob,5,customary
+18,Uossob,6,present
+18,Uossob,7,habitual
+18,Uossob,8,absent
+18,Uossob,9,present
+18,Uossob,10,absent
+18,Uossob,11,customary
+18,Uossob,12,absent
+18,Uossob,13,absent
+18,Uossob,14,absent
+18,Uossob,15,customary
+18,Uossob,16,customary
+18,Uossob,17,customary
+18,Uossob,18,absent
+18,Uossob,19,habitual
+18,Uossob,20,absent
+18,Uossob,21,absent
+18,Uossob,22,absent
+18,Uossob,23,customary
+18,Uossob,24,habitual
+18,Uossob,25,habitual
+18,Uossob,26,customary
+18,Uossob,27,absent
+18,Uossob,28,present
+18,Uossob,29,absent
+18,Uossob,30,absent
+18,Uossob,31,customary
+18,Uossob,32,absent
+18,Uossob,33,absent
+18,Uossob,34,customary
+18,Uossob,35,absent
+18,Uossob,36,absent
+18,Uossob,37,absent
+18,Uossob,38,ecological explanation
+18,Uossob,39,ecological explanation
+18,Uossob,40,ecological explanation
+18,Uossob,41,absent
+18,Uossob,42,absent
+18,Uossob,43,absent
+18,Uossob,44,customary
+18,Uossob,45,ecological explanation
+18,Uossob,46,ecological explanation
+18,Uossob,47,ecological explanation
+18,Uossob,48,ecological explanation
+18,Uossob,49,customary
+18,Uossob,50,customary
+18,Uossob,51,present
+18,Uossob,52,customary
+18,Uossob,53,ecological explanation
+18,Uossob,54,ecological explanation
+18,Uossob,55,ecological explanation
+18,Uossob,56,ecological explanation
+18,Uossob,57,ecological explanation
+18,Uossob,58,ecological explanation
+18,Uossob,59,ecological explanation
+18,Uossob,60,absent
+18,Uossob,61,customary
+18,Uossob,62,ecological explanation
+18,Uossob,63,absent
+18,Uossob,64,ecological explanation
+18,Iat Forest,1,absent
+18,Iat Forest,2,customary
+18,Iat Forest,3,customary
+18,Iat Forest,4,customary
+18,Iat Forest,5,customary
+18,Iat Forest,6,absent
+18,Iat Forest,7,habitual
+18,Iat Forest,8,absent
+18,Iat Forest,9,customary
+18,Iat Forest,10,absent
+18,Iat Forest,11,habitual
+18,Iat Forest,12,absent
+18,Iat Forest,13,absent
+18,Iat Forest,14,absent
+18,Iat Forest,15,customary
+18,Iat Forest,16,customary
+18,Iat Forest,17,habitual
+18,Iat Forest,18,absent
+18,Iat Forest,19,customary
+18,Iat Forest,20,absent
+18,Iat Forest,21,absent
+18,Iat Forest,22,absent
+18,Iat Forest,23,customary
+18,Iat Forest,24,customary
+18,Iat Forest,25,customary
+18,Iat Forest,26,customary
+18,Iat Forest,27,absent
+18,Iat Forest,28,customary
+18,Iat Forest,29,present
+18,Iat Forest,30,absent
+18,Iat Forest,31,customary
+18,Iat Forest,32,absent
+18,Iat Forest,33,ecological explanation
+18,Iat Forest,34,customary
+18,Iat Forest,35,absent
+18,Iat Forest,36,ecological explanation
+18,Iat Forest,37,absent
+18,Iat Forest,38,absent
+18,Iat Forest,39,absent
+18,Iat Forest,40,absent
+18,Iat Forest,41,customary
+18,Iat Forest,42,customary
+18,Iat Forest,43,absent
+18,Iat Forest,44,customary
+18,Iat Forest,45,absent
+18,Iat Forest,46,present
+18,Iat Forest,47,absent
+18,Iat Forest,48,absent
+18,Iat Forest,49,customary
+18,Iat Forest,50,customary
+18,Iat Forest,51,ecological explanation
+18,Iat Forest,52,customary
+18,Iat Forest,53,absent
+18,Iat Forest,54,absent
+18,Iat Forest,55,absent
+18,Iat Forest,56,absent
+18,Iat Forest,57,absent
+18,Iat Forest,58,customary
+18,Iat Forest,59,absent
+18,Iat Forest,60,ecological explanation
+18,Iat Forest,61,customary
+18,Iat Forest,62,absent
+18,Iat Forest,63,customary
+18,Iat Forest,64,customary
+18,Ebmog,1,customary
+18,Ebmog,2,absent
+18,Ebmog,3,present
+18,Ebmog,4,absent
+18,Ebmog,5,absent
+18,Ebmog,6,absent
+18,Ebmog,7,absent
+18,Ebmog,8,absent
+18,Ebmog,9,absent
+18,Ebmog,10,customary
+18,Ebmog,11,absent
+18,Ebmog,12,present
+18,Ebmog,13,customary
+18,Ebmog,14,customary
+18,Ebmog,15,absent
+18,Ebmog,16,absent
+18,Ebmog,17,absent
+18,Ebmog,18,absent
+18,Ebmog,19,absent
+18,Ebmog,20,customary
+18,Ebmog,21,customary
+18,Ebmog,22,customary
+18,Ebmog,23,absent
+18,Ebmog,24,absent
+18,Ebmog,25,present
+18,Ebmog,26,absent
+18,Ebmog,27,customary
+18,Ebmog,28,absent
+18,Ebmog,29,customary
+18,Ebmog,30,customary
+18,Ebmog,31,absent
+18,Ebmog,32,customary
+18,Ebmog,33,customary
+18,Ebmog,34,absent
+18,Ebmog,35,absent
+18,Ebmog,36,customary
+18,Ebmog,37,absent
+18,Ebmog,38,customary
+18,Ebmog,39,customary
+18,Ebmog,40,customary
+18,Ebmog,41,present
+18,Ebmog,42,absent
+18,Ebmog,43,absent
+18,Ebmog,44,absent
+18,Ebmog,45,customary
+18,Ebmog,46,absent
+18,Ebmog,47,customary
+18,Ebmog,48,customary
+18,Ebmog,49,absent
+18,Ebmog,50,absent
+18,Ebmog,51,habitual
+18,Ebmog,52,absent
+18,Ebmog,53,customary
+18,Ebmog,54,customary
+18,Ebmog,55,customary
+18,Ebmog,56,customary
+18,Ebmog,57,customary
+18,Ebmog,58,absent
+18,Ebmog,59,customary
+18,Ebmog,60,present
+18,Ebmog,61,absent
+18,Ebmog,62,customary
+18,Ebmog,63,customary
+18,Ebmog,64,customary
+18,Elaham,1,customary
+18,Elaham,2,absent
+18,Elaham,3,present
+18,Elaham,4,absent
+18,Elaham,5,absent
+18,Elaham,6,absent
+18,Elaham,7,absent
+18,Elaham,8,absent
+18,Elaham,9,absent
+18,Elaham,10,customary
+18,Elaham,11,absent
+18,Elaham,12,habitual
+18,Elaham,13,customary
+18,Elaham,14,customary
+18,Elaham,15,absent
+18,Elaham,16,absent
+18,Elaham,17,absent
+18,Elaham,18,present
+18,Elaham,19,absent
+18,Elaham,20,customary
+18,Elaham,21,absent
+18,Elaham,22,customary
+18,Elaham,23,absent
+18,Elaham,24,absent
+18,Elaham,25,absent
+18,Elaham,26,absent
+18,Elaham,27,customary
+18,Elaham,28,absent
+18,Elaham,29,customary
+18,Elaham,30,customary
+18,Elaham,31,absent
+18,Elaham,32,customary
+18,Elaham,33,customary
+18,Elaham,34,ecological explanation
+18,Elaham,35,habitual
+18,Elaham,36,absent
+18,Elaham,37,ecological explanation
+18,Elaham,38,customary
+18,Elaham,39,customary
+18,Elaham,40,customary
+18,Elaham,41,absent
+18,Elaham,42,habitual
+18,Elaham,43,ecological explanation
+18,Elaham,44,absent
+18,Elaham,45,customary
+18,Elaham,46,absent
+18,Elaham,47,customary
+18,Elaham,48,customary
+18,Elaham,49,ecological explanation
+18,Elaham,50,absent
+18,Elaham,51,absent
+18,Elaham,52,absent
+18,Elaham,53,customary
+18,Elaham,54,customary
+18,Elaham,55,customary
+18,Elaham,56,customary
+18,Elaham,57,customary
+18,Elaham,58,absent
+18,Elaham,59,customary
+18,Elaham,60,absent
+18,Elaham,61,present
+18,Elaham,62,customary
+18,Elaham,63,customary
+18,Elaham,64,customary
+18,Elabik,1,customary
+18,Elabik,2,absent
+18,Elabik,3,absent
+18,Elabik,4,absent
+18,Elabik,5,absent
+18,Elabik,6,habitual
+18,Elabik,7,absent
+18,Elabik,8,customary
+18,Elabik,9,absent
+18,Elabik,10,habitual
+18,Elabik,11,absent
+18,Elabik,12,customary
+18,Elabik,13,customary
+18,Elabik,14,habitual
+18,Elabik,15,absent
+18,Elabik,16,absent
+18,Elabik,17,present
+18,Elabik,18,customary
+18,Elabik,19,absent
+18,Elabik,20,customary
+18,Elabik,21,habitual
+18,Elabik,22,customary
+18,Elabik,23,absent
+18,Elabik,24,absent
+18,Elabik,25,absent
+18,Elabik,26,absent
+18,Elabik,27,habitual
+18,Elabik,28,absent
+18,Elabik,29,customary
+18,Elabik,30,customary
+18,Elabik,31,absent
+18,Elabik,32,customary
+18,Elabik,33,customary
+18,Elabik,34,absent
+18,Elabik,35,habitual
+18,Elabik,36,customary
+18,Elabik,37,customary
+18,Elabik,38,customary
+18,Elabik,39,customary
+18,Elabik,40,customary
+18,Elabik,41,absent
+18,Elabik,42,absent
+18,Elabik,43,habitual
+18,Elabik,44,absent
+18,Elabik,45,customary
+18,Elabik,46,absent
+18,Elabik,47,customary
+18,Elabik,48,customary
+18,Elabik,49,present
+18,Elabik,50,absent
+18,Elabik,51,habitual
+18,Elabik,52,absent
+18,Elabik,53,customary
+18,Elabik,54,customary
+18,Elabik,55,customary
+18,Elabik,56,customary
+18,Elabik,57,customary
+18,Elabik,58,absent
+18,Elabik,59,customary
+18,Elabik,60,habitual
+18,Elabik,61,habitual
+18,Elabik,62,customary
+18,Elabik,63,habitual
+18,Elabik,64,customary
+18,Ognodub,1,customary
+18,Ognodub,2,absent
+18,Ognodub,3,absent
+18,Ognodub,4,absent
+18,Ognodub,5,absent
+18,Ognodub,6,customary
+18,Ognodub,7,absent
+18,Ognodub,8,customary
+18,Ognodub,9,absent
+18,Ognodub,10,habitual
+18,Ognodub,11,habitual
+18,Ognodub,12,customary
+18,Ognodub,13,customary
+18,Ognodub,14,habitual
+18,Ognodub,15,absent
+18,Ognodub,16,habitual
+18,Ognodub,17,absent
+18,Ognodub,18,customary
+18,Ognodub,19,absent
+18,Ognodub,20,customary
+18,Ognodub,21,customary
+18,Ognodub,22,customary
+18,Ognodub,23,absent
+18,Ognodub,24,absent
+18,Ognodub,25,absent
+18,Ognodub,26,absent
+18,Ognodub,27,habitual
+18,Ognodub,28,absent
+18,Ognodub,29,present
+18,Ognodub,30,customary
+18,Ognodub,31,absent
+18,Ognodub,32,customary
+18,Ognodub,33,customary
+18,Ognodub,34,absent
+18,Ognodub,35,ecological explanation
+18,Ognodub,36,customary
+18,Ognodub,37,customary
+18,Ognodub,38,absent
+18,Ognodub,39,customary
+18,Ognodub,40,customary
+18,Ognodub,41,ecological explanation
+18,Ognodub,42,ecological explanation
+18,Ognodub,43,absent
+18,Ognodub,44,ecological explanation
+18,Ognodub,45,customary
+18,Ognodub,46,habitual
+18,Ognodub,47,absent
+18,Ognodub,48,customary
+18,Ognodub,49,absent
+18,Ognodub,50,ecological explanation
+18,Ognodub,51,absent
+18,Ognodub,52,ecological explanation
+18,Ognodub,53,customary
+18,Ognodub,54,customary
+18,Ognodub,55,customary
+18,Ognodub,56,customary
+18,Ognodub,57,customary
+18,Ognodub,58,absent
+18,Ognodub,59,customary
+18,Ognodub,60,absent
+18,Ognodub,61,ecological explanation
+18,Ognodub,62,customary
+18,Ognodub,63,ecological explanation
+18,Ognodub,64,absent
+19,Uossob,1,customary
+19,Uossob,2,absent
+19,Uossob,3,absent
+19,Uossob,4,absent
+19,Uossob,5,absent
+19,Uossob,6,absent
+19,Uossob,7,customary
+19,Uossob,8,customary
+19,Uossob,9,absent
+19,Uossob,10,customary
+19,Uossob,11,customary
+19,Uossob,12,customary
+19,Uossob,13,absent
+19,Uossob,14,absent
+19,Uossob,15,absent
+19,Uossob,16,absent
+19,Uossob,17,absent
+19,Uossob,18,habitual
+19,Uossob,19,customary
+19,Uossob,20,absent
+19,Uossob,21,absent
+19,Uossob,22,absent
+19,Uossob,23,absent
+19,Uossob,24,absent
+19,Uossob,25,absent
+19,Uossob,26,absent
+19,Uossob,27,customary
+19,Uossob,28,customary
+19,Uossob,29,customary
+19,Uossob,30,absent
+19,Uossob,31,customary
+19,Uossob,32,absent
+19,Uossob,33,absent
+19,Uossob,34,customary
+19,Uossob,35,absent
+19,Uossob,36,absent
+19,Uossob,37,absent
+19,Uossob,38,absent
+19,Uossob,39,customary
+19,Uossob,40,absent
+19,Uossob,41,customary
+19,Uossob,42,absent
+19,Uossob,43,ecological explanation
+19,Uossob,44,absent
+19,Uossob,45,ecological explanation
+19,Uossob,46,absent
+19,Uossob,47,absent
+19,Uossob,48,customary
+19,Uossob,49,ecological explanation
+19,Uossob,50,absent
+19,Uossob,51,ecological explanation
+19,Uossob,52,habitual
+19,Uossob,53,absent
+19,Uossob,54,ecological explanation
+19,Uossob,55,absent
+19,Uossob,56,ecological explanation
+19,Uossob,57,absent
+19,Uossob,58,ecological explanation
+19,Uossob,59,customary
+19,Uossob,60,absent
+19,Uossob,61,ecological explanation
+19,Uossob,62,ecological explanation
+19,Uossob,63,ecological explanation
+19,Uossob,64,ecological explanation
+19,Iat Forest,1,customary
+19,Iat Forest,2,absent
+19,Iat Forest,3,absent
+19,Iat Forest,4,absent
+19,Iat Forest,5,absent
+19,Iat Forest,6,absent
+19,Iat Forest,7,customary
+19,Iat Forest,8,habitual
+19,Iat Forest,9,absent
+19,Iat Forest,10,customary
+19,Iat Forest,11,customary
+19,Iat Forest,12,customary
+19,Iat Forest,13,absent
+19,Iat Forest,14,absent
+19,Iat Forest,15,absent
+19,Iat Forest,16,absent
+19,Iat Forest,17,absent
+19,Iat Forest,18,absent
+19,Iat Forest,19,customary
+19,Iat Forest,20,absent
+19,Iat Forest,21,present
+19,Iat Forest,22,absent
+19,Iat Forest,23,absent
+19,Iat Forest,24,absent
+19,Iat Forest,25,absent
+19,Iat Forest,26,present
+19,Iat Forest,27,customary
+19,Iat Forest,28,customary
+19,Iat Forest,29,customary
+19,Iat Forest,30,absent
+19,Iat Forest,31,customary
+19,Iat Forest,32,absent
+19,Iat Forest,33,customary
+19,Iat Forest,34,customary
+19,Iat Forest,35,absent
+19,Iat Forest,36,customary
+19,Iat Forest,37,absent
+19,Iat Forest,38,ecological explanation
+19,Iat Forest,39,customary
+19,Iat Forest,40,habitual
+19,Iat Forest,41,customary
+19,Iat Forest,42,ecological explanation
+19,Iat Forest,43,absent
+19,Iat Forest,44,ecological explanation
+19,Iat Forest,45,present
+19,Iat Forest,46,ecological explanation
+19,Iat Forest,47,customary
+19,Iat Forest,48,customary
+19,Iat Forest,49,absent
+19,Iat Forest,50,ecological explanation
+19,Iat Forest,51,absent
+19,Iat Forest,52,absent
+19,Iat Forest,53,customary
+19,Iat Forest,54,absent
+19,Iat Forest,55,customary
+19,Iat Forest,56,absent
+19,Iat Forest,57,absent
+19,Iat Forest,58,customary
+19,Iat Forest,59,habitual
+19,Iat Forest,60,ecological explanation
+19,Iat Forest,61,absent
+19,Iat Forest,62,customary
+19,Iat Forest,63,present
+19,Iat Forest,64,absent
+19,Ebmog,1,absent
+19,Ebmog,2,habitual
+19,Ebmog,3,customary
+19,Ebmog,4,customary
+19,Ebmog,5,customary
+19,Ebmog,6,customary
+19,Ebmog,7,absent
+19,Ebmog,8,absent
+19,Ebmog,9,customary
+19,Ebmog,10,absent
+19,Ebmog,11,absent
+19,Ebmog,12,absent
+19,Ebmog,13,habitual
+19,Ebmog,14,habitual
+19,Ebmog,15,customary
+19,Ebmog,16,customary
+19,Ebmog,17,customary
+19,Ebmog,18,absent
+19,Ebmog,19,absent
+19,Ebmog,20,absent
+19,Ebmog,21,customary
+19,Ebmog,22,absent
+19,Ebmog,23,customary
+19,Ebmog,24,habitual
+19,Ebmog,25,customary
+19,Ebmog,26,customary
+19,Ebmog,27,present
+19,Ebmog,28,present
+19,Ebmog,29,absent
+19,Ebmog,30,customary
+19,Ebmog,31,absent
+19,Ebmog,32,present
+19,Ebmog,33,absent
+19,Ebmog,34,absent
+19,Ebmog,35,absent
+19,Ebmog,36,customary
+19,Ebmog,37,customary
+19,Ebmog,38,customary
+19,Ebmog,39,absent
+19,Ebmog,40,customary
+19,Ebmog,41,absent
+19,Ebmog,42,customary
+19,Ebmog,43,absent
+19,Ebmog,44,absent
+19,Ebmog,45,customary
+19,Ebmog,46,customary
+19,Ebmog,47,present
+19,Ebmog,48,absent
+19,Ebmog,49,customary
+19,Ebmog,50,absent
+19,Ebmog,51,customary
+19,Ebmog,52,absent
+19,Ebmog,53,absent
+19,Ebmog,54,customary
+19,Ebmog,55,habitual
+19,Ebmog,56,customary
+19,Ebmog,57,habitual
+19,Ebmog,58,customary
+19,Ebmog,59,absent
+19,Ebmog,60,absent
+19,Ebmog,61,customary
+19,Ebmog,62,absent
+19,Ebmog,63,customary
+19,Ebmog,64,absent
+19,Elaham,1,absent
+19,Elaham,2,absent
+19,Elaham,3,customary
+19,Elaham,4,customary
+19,Elaham,5,habitual
+19,Elaham,6,habitual
+19,Elaham,7,absent
+19,Elaham,8,absent
+19,Elaham,9,habitual
+19,Elaham,10,absent
+19,Elaham,11,absent
+19,Elaham,12,absent
+19,Elaham,13,customary
+19,Elaham,14,habitual
+19,Elaham,15,customary
+19,Elaham,16,customary
+19,Elaham,17,customary
+19,Elaham,18,absent
+19,Elaham,19,absent
+19,Elaham,20,absent
+19,Elaham,21,customary
+19,Elaham,22,absent
+19,Elaham,23,customary
+19,Elaham,24,habitual
+19,Elaham,25,customary
+19,Elaham,26,customary
+19,Elaham,27,absent
+19,Elaham,28,absent
+19,Elaham,29,absent
+19,Elaham,30,customary
+19,Elaham,31,present
+19,Elaham,32,absent
+19,Elaham,33,ecological explanation
+19,Elaham,34,absent
+19,Elaham,35,ecological explanation
+19,Elaham,36,customary
+19,Elaham,37,present
+19,Elaham,38,customary
+19,Elaham,39,ecological explanation
+19,Elaham,40,customary
+19,Elaham,41,absent
+19,Elaham,42,customary
+19,Elaham,43,absent
+19,Elaham,44,absent
+19,Elaham,45,customary
+19,Elaham,46,customary
+19,Elaham,47,ecological explanation
+19,Elaham,48,ecological explanation
+19,Elaham,49,customary
+19,Elaham,50,absent
+19,Elaham,51,customary
+19,Elaham,52,ecological explanation
+19,Elaham,53,absent
+19,Elaham,54,customary
+19,Elaham,55,customary
+19,Elaham,56,customary
+19,Elaham,57,ecological explanation
+19,Elaham,58,customary
+19,Elaham,59,ecological explanation
+19,Elaham,60,absent
+19,Elaham,61,customary
+19,Elaham,62,absent
+19,Elaham,63,customary
+19,Elaham,64,absent
+19,Elabik,1,absent
+19,Elabik,2,customary
+19,Elabik,3,customary
+19,Elabik,4,customary
+19,Elabik,5,customary
+19,Elabik,6,customary
+19,Elabik,7,present
+19,Elabik,8,absent
+19,Elabik,9,customary
+19,Elabik,10,present
+19,Elabik,11,absent
+19,Elabik,12,absent
+19,Elabik,13,absent
+19,Elabik,14,customary
+19,Elabik,15,habitual
+19,Elabik,16,customary
+19,Elabik,17,absent
+19,Elabik,18,habitual
+19,Elabik,19,absent
+19,Elabik,20,habitual
+19,Elabik,21,habitual
+19,Elabik,22,habitual
+19,Elabik,23,habitual
+19,Elabik,24,customary
+19,Elabik,25,customary
+19,Elabik,26,customary
+19,Elabik,27,absent
+19,Elabik,28,absent
+19,Elabik,29,absent
+19,Elabik,30,customary
+19,Elabik,31,absent
+19,Elabik,32,habitual
+19,Elabik,33,habitual
+19,Elabik,34,absent
+19,Elabik,35,customary
+19,Elabik,36,customary
+19,Elabik,37,habitual
+19,Elabik,38,customary
+19,Elabik,39,absent
+19,Elabik,40,customary
+19,Elabik,41,absent
+19,Elabik,42,customary
+19,Elabik,43,absent
+19,Elabik,44,absent
+19,Elabik,45,customary
+19,Elabik,46,customary
+19,Elabik,47,absent
+19,Elabik,48,absent
+19,Elabik,49,customary
+19,Elabik,50,present
+19,Elabik,51,customary
+19,Elabik,52,absent
+19,Elabik,53,absent
+19,Elabik,54,customary
+19,Elabik,55,absent
+19,Elabik,56,customary
+19,Elabik,57,customary
+19,Elabik,58,habitual
+19,Elabik,59,absent
+19,Elabik,60,absent
+19,Elabik,61,customary
+19,Elabik,62,present
+19,Elabik,63,customary
+19,Elabik,64,absent
+19,Ognodub,1,absent
+19,Ognodub,2,customary
+19,Ognodub,3,habitual
+19,Ognodub,4,habitual
+19,Ognodub,5,customary
+19,Ognodub,6,customary
+19,Ognodub,7,absent
+19,Ognodub,8,absent
+19,Ognodub,9,customary
+19,Ognodub,10,absent
+19,Ognodub,11,absent
+19,Ognodub,12,absent
+19,Ognodub,13,absent
+19,Ognodub,14,customary
+19,Ognodub,15,habitual
+19,Ognodub,16,customary
+19,Ognodub,17,absent
+19,Ognodub,18,customary
+19,Ognodub,19,absent
+19,Ognodub,20,habitual
+19,Ognodub,21,absent
+19,Ognodub,22,customary
+19,Ognodub,23,customary
+19,Ognodub,24,customary
+19,Ognodub,25,habitual
+19,Ognodub,26,absent
+19,Ognodub,27,absent
+19,Ognodub,28,absent
+19,Ognodub,29,absent
+19,Ognodub,30,habitual
+19,Ognodub,31,absent
+19,Ognodub,32,customary
+19,Ognodub,33,habitual
+19,Ognodub,34,ecological explanation
+19,Ognodub,35,customary
+19,Ognodub,36,ecological explanation
+19,Ognodub,37,ecological explanation
+19,Ognodub,38,customary
+19,Ognodub,39,absent
+19,Ognodub,40,ecological explanation
+19,Ognodub,41,ecological explanation
+19,Ognodub,42,customary
+19,Ognodub,43,absent
+19,Ognodub,44,absent
+19,Ognodub,45,customary
+19,Ognodub,46,customary
+19,Ognodub,47,present
+19,Ognodub,48,absent
+19,Ognodub,49,absent
+19,Ognodub,50,absent
+19,Ognodub,51,customary
+19,Ognodub,52,absent
+19,Ognodub,53,ecological explanation
+19,Ognodub,54,customary
+19,Ognodub,55,ecological explanation
+19,Ognodub,56,habitual
+19,Ognodub,57,customary
+19,Ognodub,58,absent
+19,Ognodub,59,customary
+19,Ognodub,60,habitual
+19,Ognodub,61,customary
+19,Ognodub,62,absent
+19,Ognodub,63,customary
+19,Ognodub,64,absent
+20,Uossob,1,customary
+20,Uossob,2,customary
+20,Uossob,3,absent
+20,Uossob,4,customary
+20,Uossob,5,absent
+20,Uossob,6,absent
+20,Uossob,7,absent
+20,Uossob,8,absent
+20,Uossob,9,habitual
+20,Uossob,10,absent
+20,Uossob,11,absent
+20,Uossob,12,customary
+20,Uossob,13,customary
+20,Uossob,14,absent
+20,Uossob,15,absent
+20,Uossob,16,absent
+20,Uossob,17,absent
+20,Uossob,18,habitual
+20,Uossob,19,absent
+20,Uossob,20,customary
+20,Uossob,21,customary
+20,Uossob,22,absent
+20,Uossob,23,absent
+20,Uossob,24,absent
+20,Uossob,25,absent
+20,Uossob,26,absent
+20,Uossob,27,customary
+20,Uossob,28,customary
+20,Uossob,29,habitual
+20,Uossob,30,present
+20,Uossob,31,absent
+20,Uossob,32,absent
+20,Uossob,33,ecological explanation
+20,Uossob,34,ecological explanation
+20,Uossob,35,ecological explanation
+20,Uossob,36,absent
+20,Uossob,37,customary
+20,Uossob,38,ecological explanation
+20,Uossob,39,ecological explanation
+20,Uossob,40,customary
+20,Uossob,41,absent
+20,Uossob,42,ecological explanation
+20,Uossob,43,customary
+20,Uossob,44,absent
+20,Uossob,45,customary
+20,Uossob,46,ecological explanation
+20,Uossob,47,ecological explanation
+20,Uossob,48,ecological explanation
+20,Uossob,49,customary
+20,Uossob,50,habitual
+20,Uossob,51,ecological explanation
+20,Uossob,52,ecological explanation
+20,Uossob,53,absent
+20,Uossob,54,absent
+20,Uossob,55,absent
+20,Uossob,56,ecological explanation
+20,Uossob,57,customary
+20,Uossob,58,ecological explanation
+20,Uossob,59,ecological explanation
+20,Uossob,60,customary
+20,Uossob,61,ecological explanation
+20,Uossob,62,ecological explanation
+20,Uossob,63,ecological explanation
+20,Uossob,64,customary
+20,Iat Forest,1,customary
+20,Iat Forest,2,customary
+20,Iat Forest,3,absent
+20,Iat Forest,4,customary
+20,Iat Forest,5,absent
+20,Iat Forest,6,absent
+20,Iat Forest,7,absent
+20,Iat Forest,8,absent
+20,Iat Forest,9,customary
+20,Iat Forest,10,absent
+20,Iat Forest,11,absent
+20,Iat Forest,12,customary
+20,Iat Forest,13,customary
+20,Iat Forest,14,absent
+20,Iat Forest,15,absent
+20,Iat Forest,16,absent
+20,Iat Forest,17,absent
+20,Iat Forest,18,customary
+20,Iat Forest,19,absent
+20,Iat Forest,20,customary
+20,Iat Forest,21,customary
+20,Iat Forest,22,habitual
+20,Iat Forest,23,absent
+20,Iat Forest,24,absent
+20,Iat Forest,25,absent
+20,Iat Forest,26,absent
+20,Iat Forest,27,customary
+20,Iat Forest,28,customary
+20,Iat Forest,29,customary
+20,Iat Forest,30,habitual
+20,Iat Forest,31,absent
+20,Iat Forest,32,absent
+20,Iat Forest,33,habitual
+20,Iat Forest,34,absent
+20,Iat Forest,35,absent
+20,Iat Forest,36,ecological explanation
+20,Iat Forest,37,customary
+20,Iat Forest,38,absent
+20,Iat Forest,39,present
+20,Iat Forest,40,customary
+20,Iat Forest,41,absent
+20,Iat Forest,42,absent
+20,Iat Forest,43,customary
+20,Iat Forest,44,ecological explanation
+20,Iat Forest,45,customary
+20,Iat Forest,46,absent
+20,Iat Forest,47,absent
+20,Iat Forest,48,absent
+20,Iat Forest,49,customary
+20,Iat Forest,50,absent
+20,Iat Forest,51,customary
+20,Iat Forest,52,present
+20,Iat Forest,53,ecological explanation
+20,Iat Forest,54,absent
+20,Iat Forest,55,present
+20,Iat Forest,56,absent
+20,Iat Forest,57,customary
+20,Iat Forest,58,absent
+20,Iat Forest,59,absent
+20,Iat Forest,60,customary
+20,Iat Forest,61,absent
+20,Iat Forest,62,absent
+20,Iat Forest,63,absent
+20,Iat Forest,64,customary
+20,Ebmog,1,absent
+20,Ebmog,2,absent
+20,Ebmog,3,absent
+20,Ebmog,4,absent
+20,Ebmog,5,habitual
+20,Ebmog,6,habitual
+20,Ebmog,7,present
+20,Ebmog,8,customary
+20,Ebmog,9,absent
+20,Ebmog,10,habitual
+20,Ebmog,11,customary
+20,Ebmog,12,absent
+20,Ebmog,13,absent
+20,Ebmog,14,absent
+20,Ebmog,15,customary
+20,Ebmog,16,customary
+20,Ebmog,17,habitual
+20,Ebmog,18,absent
+20,Ebmog,19,habitual
+20,Ebmog,20,absent
+20,Ebmog,21,absent
+20,Ebmog,22,customary
+20,Ebmog,23,customary
+20,Ebmog,24,customary
+20,Ebmog,25,absent
+20,Ebmog,26,customary
+20,Ebmog,27,absent
+20,Ebmog,28,absent
+20,Ebmog,29,absent
+20,Ebmog,30,habitual
+20,Ebmog,31,customary
+20,Ebmog,32,customary
+20,Ebmog,33,absent
+20,Ebmog,34,absent
+20,Ebmog,35,customary
+20,Ebmog,36,customary
+20,Ebmog,37,absent
+20,Ebmog,38,customary
+20,Ebmog,39,absent
+20,Ebmog,40,absent
+20,Ebmog,41,absent
+20,Ebmog,42,customary
+20,Ebmog,43,absent
+20,Ebmog,44,absent
+20,Ebmog,45,absent
+20,Ebmog,46,absent
+20,Ebmog,47,absent
+20,Ebmog,48,customary
+20,Ebmog,49,absent
+20,Ebmog,50,absent
+20,Ebmog,51,customary
+20,Ebmog,52,absent
+20,Ebmog,53,present
+20,Ebmog,54,customary
+20,Ebmog,55,absent
+20,Ebmog,56,customary
+20,Ebmog,57,absent
+20,Ebmog,58,customary
+20,Ebmog,59,customary
+20,Ebmog,60,habitual
+20,Ebmog,61,customary
+20,Ebmog,62,customary
+20,Ebmog,63,customary
+20,Ebmog,64,absent
+20,Elaham,1,absent
+20,Elaham,2,absent
+20,Elaham,3,absent
+20,Elaham,4,absent
+20,Elaham,5,customary
+20,Elaham,6,absent
+20,Elaham,7,habitual
+20,Elaham,8,customary
+20,Elaham,9,absent
+20,Elaham,10,customary
+20,Elaham,11,customary
+20,Elaham,12,absent
+20,Elaham,13,absent
+20,Elaham,14,habitual
+20,Elaham,15,customary
+20,Elaham,16,habitual
+20,Elaham,17,customary
+20,Elaham,18,absent
+20,Elaham,19,habitual
+20,Elaham,20,absent
+20,Elaham,21,absent
+20,Elaham,22,customary
+20,Elaham,23,customary
+20,Elaham,24,customary
+20,Elaham,25,absent
+20,Elaham,26,customary
+20,Elaham,27,absent
+20,Elaham,28,absent
+20,Elaham,29,absent
+20,Elaham,30,customary
+20,Elaham,31,customary
+20,Elaham,32,customary
+20,Elaham,33,absent
+20,Elaham,34,absent
+20,Elaham,35,customary
+20,Elaham,36,customary
+20,Elaham,37,absent
+20,Elaham,38,customary
+20,Elaham,39,absent
+20,Elaham,40,absent
+20,Elaham,41,absent
+20,Elaham,42,customary
+20,Elaham,43,present
+20,Elaham,44,absent
+20,Elaham,45,present
+20,Elaham,46,present
+20,Elaham,47,absent
+20,Elaham,48,customary
+20,Elaham,49,ecological explanation
+20,Elaham,50,absent
+20,Elaham,51,customary
+20,Elaham,52,absent
+20,Elaham,53,present
+20,Elaham,54,customary
+20,Elaham,55,ecological explanation
+20,Elaham,56,customary
+20,Elaham,57,absent
+20,Elaham,58,customary
+20,Elaham,59,habitual
+20,Elaham,60,customary
+20,Elaham,61,customary
+20,Elaham,62,customary
+20,Elaham,63,customary
+20,Elaham,64,ecological explanation
+20,Elabik,1,absent
+20,Elabik,2,absent
+20,Elabik,3,customary
+20,Elabik,4,absent
+20,Elabik,5,habitual
+20,Elabik,6,customary
+20,Elabik,7,customary
+20,Elabik,8,customary
+20,Elabik,9,absent
+20,Elabik,10,customary
+20,Elabik,11,customary
+20,Elabik,12,absent
+20,Elabik,13,absent
+20,Elabik,14,habitual
+20,Elabik,15,present
+20,Elabik,16,customary
+20,Elabik,17,habitual
+20,Elabik,18,absent
+20,Elabik,19,customary
+20,Elabik,20,absent
+20,Elabik,21,absent
+20,Elabik,22,absent
+20,Elabik,23,customary
+20,Elabik,24,absent
+20,Elabik,25,customary
+20,Elabik,26,habitual
+20,Elabik,27,absent
+20,Elabik,28,absent
+20,Elabik,29,absent
+20,Elabik,30,absent
+20,Elabik,31,absent
+20,Elabik,32,customary
+20,Elabik,33,habitual
+20,Elabik,34,absent
+20,Elabik,35,customary
+20,Elabik,36,customary
+20,Elabik,37,absent
+20,Elabik,38,customary
+20,Elabik,39,absent
+20,Elabik,40,absent
+20,Elabik,41,absent
+20,Elabik,42,customary
+20,Elabik,43,absent
+20,Elabik,44,absent
+20,Elabik,45,absent
+20,Elabik,46,present
+20,Elabik,47,customary
+20,Elabik,48,customary
+20,Elabik,49,absent
+20,Elabik,50,absent
+20,Elabik,51,customary
+20,Elabik,52,absent
+20,Elabik,53,customary
+20,Elabik,54,customary
+20,Elabik,55,absent
+20,Elabik,56,customary
+20,Elabik,57,absent
+20,Elabik,58,customary
+20,Elabik,59,customary
+20,Elabik,60,absent
+20,Elabik,61,customary
+20,Elabik,62,customary
+20,Elabik,63,customary
+20,Elabik,64,absent
+20,Ognodub,1,absent
+20,Ognodub,2,absent
+20,Ognodub,3,customary
+20,Ognodub,4,absent
+20,Ognodub,5,customary
+20,Ognodub,6,customary
+20,Ognodub,7,customary
+20,Ognodub,8,customary
+20,Ognodub,9,absent
+20,Ognodub,10,customary
+20,Ognodub,11,customary
+20,Ognodub,12,absent
+20,Ognodub,13,habitual
+20,Ognodub,14,customary
+20,Ognodub,15,absent
+20,Ognodub,16,habitual
+20,Ognodub,17,habitual
+20,Ognodub,18,absent
+20,Ognodub,19,customary
+20,Ognodub,20,absent
+20,Ognodub,21,absent
+20,Ognodub,22,absent
+20,Ognodub,23,customary
+20,Ognodub,24,absent
+20,Ognodub,25,customary
+20,Ognodub,26,absent
+20,Ognodub,27,absent
+20,Ognodub,28,absent
+20,Ognodub,29,absent
+20,Ognodub,30,absent
+20,Ognodub,31,absent
+20,Ognodub,32,customary
+20,Ognodub,33,absent
+20,Ognodub,34,absent
+20,Ognodub,35,customary
+20,Ognodub,36,customary
+20,Ognodub,37,ecological explanation
+20,Ognodub,38,customary
+20,Ognodub,39,habitual
+20,Ognodub,40,ecological explanation
+20,Ognodub,41,ecological explanation
+20,Ognodub,42,customary
+20,Ognodub,43,ecological explanation
+20,Ognodub,44,habitual
+20,Ognodub,45,ecological explanation
+20,Ognodub,46,absent
+20,Ognodub,47,customary
+20,Ognodub,48,customary
+20,Ognodub,49,absent
+20,Ognodub,50,ecological explanation
+20,Ognodub,51,absent
+20,Ognodub,52,absent
+20,Ognodub,53,customary
+20,Ognodub,54,ecological explanation
+20,Ognodub,55,customary
+20,Ognodub,56,customary
+20,Ognodub,57,ecological explanation
+20,Ognodub,58,customary
+20,Ognodub,59,customary
+20,Ognodub,60,ecological explanation
+20,Ognodub,61,customary
+20,Ognodub,62,absent
+20,Ognodub,63,customary
+20,Ognodub,64,absent
