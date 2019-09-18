@@ -4,18 +4,35 @@ library(tictoc)
 source("main.R")
 
 # function for test
-analyse_table <- function(my_test){
-  output <- my_test %>%
+analyse_patterns <- function(my_test){
+  output <- tibble(pattern = rep(c("A", "B", "C", "D"), each = max(my_test$run)), 
+                   proportion = rep(NA, max(my_test$run) * 4))
+  process <- my_test %>%
     group_by(behaviour, run) %>%
     summarise(A = !("absent" %in% code) && !("ecological explanation" %in% code), 
               B = !("habitual" %in% code) && !("customary" %in% code),
               C = !("absent" %in% code) && ("ecological explanation" %in% code)) %>%
     ungroup() %>%
     mutate (D = !(A | B | C)) %>%
-    group_by(run) %>%
-    count(D) %>%
-    filter(D == TRUE) 
-  output <- output$n/38
+    group_by(run)
+  
+  temp <- count(process, A) %>%
+    filter(A == FALSE)
+  output[output$pattern=="A",]$proportion <- (38 - temp$n) / 38
+  
+  temp <- count(process, B) %>%
+    filter(B == FALSE)
+  output[output$pattern=="B",]$proportion <- (38 - temp$n) / 38
+  
+  temp <- count(process, C) %>%
+    filter(C == FALSE)
+  output[output$pattern=="C",]$proportion <- (38 - temp$n) / 38
+  
+  temp <- count(process, D) %>%
+    filter(D == FALSE)
+  output[output$pattern=="D",]$proportion <- (38 - temp$n) / 38
+  
+  output
 }
 
 # TESTS HERE:
@@ -50,6 +67,10 @@ test_0.1_0.7 <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.7, init_world
 toc()
 write_csv(test_0.1_0.7, "output_test/test_0.1_0.7.csv")
 
+
+#
+# TO DO
+#
 # PLOT SUMMARY:
 
 test_0_05 <-analyse_table(read_csv("output_test/test_0_0.5.csv"))
