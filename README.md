@@ -4,15 +4,15 @@ This repository contains the code and it documents the development of the the or
 
 The material is organised as follows:
 
-* [01-oranzees.Rmd](01-oranzees.Rmd) to [07-oranzees.Rmd](07-oranzees.Rmd): R Markdown files documenting the development of the model, mainly for "internal" use.
+* [01-oranzees.Rmd](01-oranzees.Rmd) to [07-oranzees.Rmd](07-oranzees.Rmd): R Markdown files documenting the model implementation details, mainly for "internal" use.
 
-* [model-description.Rmd](model-description.Rmd): a description of the model after the first stage of the development (see also the output [model-description.pdf](model-description.pdf))
+* [model-description.Rmd](model-description.Rmd): a shorter description of the model (see also the output [model-description.pdf](model-description.pdf))
 
 * [main.R](main.R): code to run the model
 
 * [test.R](test.R): code to run tests
 
-* [test-results.Rmd](test-results.Rmd): results of test and modifications of the code after first stage of development
+* [test-results.Rmd](test-results.Rmd): results of test after first stage of development
 
 Plus three folders:
 
