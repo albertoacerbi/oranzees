@@ -22,23 +22,42 @@ Whiten et al., 1999 extract the above patterns from their data:
 
 * *D*: patterns customary or habitual at some sites yet absent at others, with no ecological explanation, i.e. the "cultural" behaviours.
 
-We thus need to write a further function, `analyse_table()`, in [test.R](test.R), that takes as input the output of `run_oranzees()`, and produces the proportion of "cultural" behaviours in each run:
+We thus need to write a further function, `analyse_patterns()`, in [test.R](test.R), that takes as input the output of `run_oranzees()`, and produces the proportion of the four patterns of behaviours in each run:
 
 ```{r}
-analyse_table <- function(my_test){
-  output <- my_test %>%
+analyse_patterns <- function(my_test){
+  output <- tibble(pattern = rep(c("A", "B", "C", "D"), each = max(my_test$run)), 
+                   proportion = rep(NA, max(my_test$run) * 4))
+  process <- my_test %>%
     group_by(behaviour, run) %>%
     summarise(A = !("absent" %in% code) && !("ecological explanation" %in% code), 
               B = !("habitual" %in% code) && !("customary" %in% code),
               C = !("absent" %in% code) && ("ecological explanation" %in% code)) %>%
     ungroup() %>%
     mutate (D = !(A | B | C)) %>%
-    group_by(run) %>%
-    count(D) %>%
-    filter(D == TRUE) 
-  output <- output$n/38
+    group_by(run)
+  
+  temp <- count(process, A) %>%
+    filter(A == FALSE) 
+  output[output$pattern=="A",]$proportion <- (38 - temp$n) / 38
+  
+  temp <- count(process, B) %>%
+    filter(B == FALSE)
+  output[output$pattern=="B",]$proportion <- (38 - temp$n) / 38
+  
+  temp <- count(process, C) %>%
+    filter(C == FALSE)
+  output[output$pattern=="C",]$proportion <- (38 - temp$n) / 38
+  
+  temp <- count(process, D) %>%
+    filter(D == FALSE)
+  output[output$pattern=="D",]$proportion <- (38 - temp$n) / 38
+  
+  output
 }
 ```
+
+Notice the instruction `filter(A == FALSE)`: we record the number of non-A (and non-B, etc.) and then subtract it to the total number of behaviours with `(38 - temp$n)`. This avoids an error when no behaviours correspond to a specific pattern, so that `filter(A == TRUE)` would produce an empty tibble.   
 
 ### Running the tests
 
@@ -72,12 +91,12 @@ write_csv(test_0.5_0, "output_test/test_0.5_0.csv")
 We run seprately the simulations (see [test.R](test.R)), and simply load here the results:
 
 ```{r message=FALSE}
-test_0_05 <-analyse_table(read_csv("output_test/test_0_0.5.csv"))
-test_0_06 <-analyse_table(read_csv("output_test/test_0_0.6.csv"))
-test_0_07 <-analyse_table(read_csv("output_test/test_0_0.7.csv"))
-test_01_05 <-analyse_table(read_csv("output_test/test_0.1_0.5.csv"))
-test_01_06 <-analyse_table(read_csv("output_test/test_0.1_0.6.csv"))
-test_01_07 <-analyse_table(read_csv("output_test/test_0.1_0.7.csv"))
+test_0_05 <-analyse_patterns(read_csv("output_test/test_0_0.5.csv"))
+test_0_06 <-analyse_patterns(read_csv("output_test/test_0_0.6.csv"))
+test_0_07 <-analyse_patterns(read_csv("output_test/test_0_0.7.csv"))
+test_01_05 <-analyse_patterns(read_csv("output_test/test_0.1_0.5.csv"))
+test_01_06 <-analyse_patterns(read_csv("output_test/test_0.1_0.6.csv"))
+test_01_07 <-analyse_patterns(read_csv("output_test/test_0.1_0.7.csv"))
 ```
 
 We can now plot the proportion of traits considered "cultural", according to the patterns in Whiten et al., 1999 in each condition:
@@ -85,7 +104,12 @@ We can now plot the proportion of traits considered "cultural", according to the
 ```{r}
 tibble(opt = rep(c("0", "0.1"), each = 60), 
        alpha_g = rep(c("0.5", "0.6", "0.7", "0.5", "0.6", "0.7"), each = 20),
-      behaviours = c(test_0_05, test_0_06, test_0_07, test_01_05, test_01_06, test_01_07)) %>%
+      behaviours = c(test_0_05[test_0_05$pattern=="D",]$proportion, 
+                     test_0_06[test_0_06$pattern=="D",]$proportion,
+                     test_0_07[test_0_07$pattern=="D",]$proportion,
+                     test_01_05[test_01_05$pattern=="D",]$proportion,
+                     test_01_06[test_01_06$pattern=="D",]$proportion,
+                     test_01_07[test_01_07$pattern=="D",]$proportion)) %>%
   ggplot(aes( x = opt, y = behaviours, fill = alpha_g)) +
     geom_boxplot(outlier.shape = NA) +
     geom_point(pch = 21, position = position_jitterdodge(jitter.width = 0.1)) +
@@ -94,21 +118,35 @@ tibble(opt = rep(c("0", "0.1"), each = 60),
     labs(y = "proportion of traits considered 'cultural'") 
 ```
 
-Whiten et al. 1999 found 38 "cultural" behaviour out of a total of 65 considered, i.e. a proportion of around $0.58$. This is close to our conditions with no optimisation and absent or low genetic influence. It is useful to look more in details to these conditions to have a clearer picture of how the results look like. 
+Whiten et al., 1999 found 38 "cultural" behaviour out of a total of 65 considered, i.e. a proportion of around $0.58$. This is close to our conditions with no optimisation and absent or low genetic influence. It is useful to look more in details to these conditions to have a clearer picture of how the results look like. 
 
-First, we can use the `plot_oranzees()` function to plot the distribution of behaviours in single runs:
+For example, what about the other patterns? We can plot all the patterns proportions in the conditions we are interested, and compare them directly with the results of Whiten et al., 1999.
 
-```{r message = FALSE}
-test_0_0.5 <- read_csv("output_test/test_0_0.5.csv")
+```{r}
+whiten <- tibble(pattern = 1:4, 
+                 proportion = c(7/65, 16/65, 3/65, 38/65), 
+                 data = rep("Whiten", 4)) 
+ggplot(data = test_0_05, aes(x = pattern, y = proportion)) +
+    geom_boxplot(outlier.shape = NA) +
+    geom_jitter(width=0.05, alpha=0.5) +
+    theme_bw() +
+    geom_line(data = whiten, colour="red") +
+    geom_point(data = whiten, colour="red") 
 ```
 
-```{r fig.height = 7}
-plot_oranzees(filter(test_0_0.5, run == 1), social=TRUE)
+```{r}
+whiten <- tibble(pattern = 1:4, 
+                 proportion = c(7/65, 16/65, 3/65, 38/65), 
+                 data = rep("Whiten", 4)) 
+ggplot(data = test_0_06, aes(x = pattern, y = proportion)) +
+    geom_boxplot(outlier.shape = NA) +
+    geom_jitter(width=0.05, alpha=0.5) +
+    theme_bw() +
+    geom_line(data = whiten, colour="red") +
+    geom_point(data = whiten, colour="red") 
 ```
 
-```{r fig.height = 9}
-plot_oranzees(filter(test_0_0.5, run == 1), social=FALSE)
-```
+The two conditions that produce a better match for the pattern "D", also produce a good match for pattern "C" (absence explained by ecological factors), but less for pattern "A" (patterns absent at no site) and, esepcially "B" (patterns not achieving habitual frequencies at any site), which in the simulations are generally equal to zero.
 
 ***
 ### Code modification 1:
