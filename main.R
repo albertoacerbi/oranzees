@@ -21,21 +21,21 @@ set_oranzees_world <- function(alpha_g, alpha_e) {
     p_g = rep(NA, 38 * 6),
     p_e = rep(NA, 38 * 6)
   )
-  
+
   env_or_x <- c(220, 230, 700, 705, 710, 750)
   env_or_y <- c(660, 610, 450, 430, 510, 550)
-  
+
   # genetic predispositions:
   x_g <- sample(1:1000, 38)
   y_g <- sample(1:1000, 38)
-  
+
   # ecological availability:
   x_e <- sample(1:1000, 38)
   y_e <- sample(1:1000, 38)
-  
+
   for(behav in 1:38){
     output[output$behaviour == behav,]$p_g <- 1 - rescale(sqrt((x_g[behav] - env_or_x)^2 + (y_g[behav] - env_or_y)^2), to = c(1 - alpha_g, alpha_g))
-    
+
     if(behav > 16){
       output[output$behaviour == behav,]$p_e <- 1 - rescale(sqrt((x_e[behav] - env_or_x)^2 + (y_e[behav] - env_or_y)^2), to = c(1 - alpha_e, alpha_e))
     }
@@ -171,7 +171,7 @@ run_oranzees <- function(t_max, opt, alpha_g, init_world, n_run) {
 
       customary_adults <- rep(FALSE, 38)
       if(sum(adults) >= 3){
-        customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
+        customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2) 
       }
       customary_subadults <- rep(FALSE, 38)
       if(sum(subadults) >= 3){
@@ -179,7 +179,7 @@ run_oranzees <- function(t_max, opt, alpha_g, init_world, n_run) {
       }
       customary_juveniles <- rep(FALSE, 38)
       if(sum(juveniles) >= 3){
-        customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
+        customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2) 
       }
       customary <- customary_adults | customary_subadults | customary_juveniles
       output[output$population==current_world$population & output$run == run & customary==TRUE,4] <- "customary"
@@ -189,7 +189,7 @@ run_oranzees <- function(t_max, opt, alpha_g, init_world, n_run) {
       output[output$population==current_world$population & output$run == run & habitual==TRUE,4] <- "habitual"
       
       # present:
-      present <- colSums(pop[,1:38])==1
+     present <- colSums(pop[,1:38])==1
       output[output$population==current_world$population & output$run == run & present==TRUE,4] <- "present"
       
       # absent or ecological explanation:
@@ -206,113 +206,113 @@ run_oranzees <- function(t_max, opt, alpha_g, init_world, n_run) {
 # `test_oranzees_1()` runs the simulation only on one population, and produces a richer output, 
 # consisting in the frequencies of all behaviours at each time step when `n_run=1`, 
 # and in the final frequencie of all behaviours when `n_run>1`.
-test_oranzees_1 <- function(t_max, opt, alpha_g, init_world, n_run) {
-  
-  N <- 100
-  
-  if(n_run == 1){
-    output <- matrix(nrow = t_max, ncol = 38)
-  }
-  else{
-    output <- matrix(nrow = n_run, ncol = 38)
-  }
-  
-  oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
-  test_world <- oranzees_world %>%
-    filter(population == "Uossob")
-  
-  for(run in 1:n_run){
-    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
-    if (init_world) {
-      oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
-      test_world <- oranzees_world %>%
-        filter(population == "Uossob")
-    }
-    # start simulation here:
-    for (t in 1:t_max) {
-      if(n_run == 1){
-        output[t,] <- colSums(pop[, 1:38])
-      }
-      pop <- update_demography(pop)
-      pop <- update_social_behaviours(pop, test_world)
-      pop <- update_food_behaviours(pop, test_world)
-      if(opt)
-        pop <- use_behaviour(pop, opt)
-    }
-    if( n_run > 1){
-      output[run, ] <- colSums(pop[, 1:38])
-    }  
-  }
-  output
-}
+# test_oranzees_1 <- function(t_max, opt, alpha_g, init_world, n_run) {
+#   
+#   N <- 100
+#   
+#   if(n_run == 1){
+#     output <- matrix(nrow = t_max, ncol = 38)
+#   }
+#   else{
+#     output <- matrix(nrow = n_run, ncol = 38)
+#   }
+#   
+#   oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
+#   test_world <- oranzees_world %>%
+#     filter(population == "Uossob")
+#   
+#   for(run in 1:n_run){
+#     pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+#     if (init_world) {
+#       oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
+#       test_world <- oranzees_world %>%
+#         filter(population == "Uossob")
+#     }
+#     # start simulation here:
+#     for (t in 1:t_max) {
+#       if(n_run == 1){
+#         output[t,] <- colSums(pop[, 1:38])
+#       }
+#       pop <- update_demography(pop)
+#       pop <- update_social_behaviours(pop, test_world)
+#       pop <- update_food_behaviours(pop, test_world)
+#       if(opt)
+#         pop <- use_behaviour(pop, opt)
+#     }
+#     if( n_run > 1){
+#       output[run, ] <- colSums(pop[, 1:38])
+#     }  
+#   }
+#   output
+# }
 
 # `test_oranzees_2()` also runs the simulation on one population, but gives as output 
 # the behavioural codes as described in Whiten et al., 1999
-test_oranzees_2 <- function(t_max, opt, alpha_g, init_world, n_run) {
-  
-  N <- 100
-  
-  output <- matrix(nrow = n_run, ncol = 5)
-  
-  oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
-  test_world <- oranzees_world %>%
-    filter(population == "Uossob")
-  
-  for(run in 1:n_run){
-    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
-    if (init_world) {
-      oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
-      test_world <- oranzees_world %>%
-        filter(population == "Uossob")
-    }
-    # start simulation here:
-    for (t in 1:t_max) {
-      pop <- update_demography(pop)
-      pop <- update_social_behaviours(pop, test_world)
-      pop <- update_food_behaviours(pop, test_world)
-      if(opt)
-        pop <- use_behaviour(pop, opt)
-    }
-    # calculate codes values:
-    
-    # age classes:
-    adults = pop[,39]/12 > 16
-    subadults = pop[,39]/12 > 8 & pop[,39]/12 <= 16
-    juveniles = pop[,39]/12 <= 8
-    
-    # customary:
-    customary_adults <- rep(FALSE, 38)
-    if(sum(adults) >= 3){
-      customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
-    }
-    customary_subadults <- rep(FALSE, 38)
-    if(sum(subadults) >= 3){
-      customary_subadults <- colSums(pop[subadults,1:38])>(sum(subadults)/2)
-    }
-    customary_juveniles <- rep(FALSE, 38)
-    if(sum(juveniles) >= 3){
-      customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
-    }
-    customary <- customary_adults | customary_subadults | customary_juveniles
-    output[run, 1] <- sum(customary)
-    
-    # habitual:
-    habitual <- colSums(pop[,1:38])>=2 & !customary
-    output[run, 2] <- sum(habitual)
-    
-    # present:
-    present <- colSums(pop[,1:38])==1
-    output[run, 3] <- sum(present)
-    
-    # absent or ecological explanation:
-    all_absent <- !(customary | habitual | present)
-    absent <- all_absent & (test_world$p_e > 0 | test_world$type == "social") 
-    output[run, 4] <- sum(absent)
-    ecological_explanation <- all_absent & (test_world$p_e == 0 & test_world$type == "food-related" ) 
-    output[run, 5] <- sum(ecological_explanation)
-  }
-  output
-}
+# test_oranzees_2 <- function(t_max, opt, alpha_g, init_world, n_run) {
+#   
+#   N <- 100
+#   
+#   output <- matrix(nrow = n_run, ncol = 5)
+#   
+#   oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
+#   test_world <- oranzees_world %>%
+#     filter(population == "Uossob")
+#   
+#   for(run in 1:n_run){
+#     pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+#     if (init_world) {
+#       oranzees_world <- set_oranzees_world(alpha_g, alpha_e = 1)
+#       test_world <- oranzees_world %>%
+#         filter(population == "Uossob")
+#     }
+#     # start simulation here:
+#     for (t in 1:t_max) {
+#       pop <- update_demography(pop)
+#       pop <- update_social_behaviours(pop, test_world)
+#       pop <- update_food_behaviours(pop, test_world)
+#       if(opt)
+#         pop <- use_behaviour(pop, opt)
+#     }
+#     # calculate codes values:
+#     
+#     # age classes:
+#     adults = pop[,39]/12 > 16
+#     subadults = pop[,39]/12 > 8 & pop[,39]/12 <= 16
+#     juveniles = pop[,39]/12 <= 8
+#     
+#     # customary:
+#     customary_adults <- rep(FALSE, 38)
+#     if(sum(adults) >= 3){
+#       customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
+#     }
+#     customary_subadults <- rep(FALSE, 38)
+#     if(sum(subadults) >= 3){
+#       customary_subadults <- colSums(pop[subadults,1:38])>(sum(subadults)/2)
+#     }
+#     customary_juveniles <- rep(FALSE, 38)
+#     if(sum(juveniles) >= 3){
+#       customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
+#     }
+#     customary <- customary_adults | customary_subadults | customary_juveniles
+#     output[run, 1] <- sum(customary)
+#     
+#     # habitual:
+#     habitual <- colSums(pop[,1:38])>=2 & !customary
+#     output[run, 2] <- sum(habitual)
+#     
+#     # present:
+#     present <- colSums(pop[,1:38])==1
+#     output[run, 3] <- sum(present)
+#     
+#     # absent or ecological explanation:
+#     all_absent <- !(customary | habitual | present)
+#     absent <- all_absent & (test_world$p_e > 0 | test_world$type == "social") 
+#     output[run, 4] <- sum(absent)
+#     ecological_explanation <- all_absent & (test_world$p_e == 0 & test_world$type == "food-related" ) 
+#     output[run, 5] <- sum(ecological_explanation)
+#   }
+#   output
+# }
 
 
 #######################

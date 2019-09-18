@@ -106,7 +106,7 @@ A parameter of the model, $opt$, determines the probability that each individual
 
 # Output of the model
 
-The main output we are interested is the number of behaviour that would be considered "cultural" in the populations of oranzees according to the coding of @whiten_cultures_1999. We run simulation for $t_\text{max}=12000$ (corresponding to 100 years of oranzee-time). We then classify each behaviour in each population as:
+The main output we are interested is the number of behaviour that would be considered "cultural" in the populations of oranzees according to the coding of @whiten_cultures_1999. We run simulation for $t_\text{max}=12000$ (corresponding to 1,000 years of oranzee-time). We then classify each behaviour in each population as:
 
 * *customary*: a behaviour observed in over 50% of individuals in at least one age class.
 

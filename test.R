@@ -38,64 +38,52 @@ analyse_patterns <- function(my_test){
 # TESTS HERE:
 
 tic()
-test_0_0.5 <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.5, init_world = 1, n_run = 20)
+test <- run_oranzees(t_max = 6000, opt = 0, alpha_g = 0.5, init_world = 1, n_run = 5)
 toc()
-write_csv(test_0_0.5, "output_test/test_0_0.5.csv")
+
+data_to_plot <- analyse_patterns(test)
+whiten <- tibble(pattern = 1:4, 
+                 proportion = c(7/65, 16/65, 3/65, 38/65), 
+                 data = rep("Whiten", 4)) 
+ggplot(data = data_to_plot, aes(x = pattern, y = proportion)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width=0.05, alpha=0.5) +
+  theme_bw() +
+  geom_line(data = whiten, colour="red") +
+  geom_point(data = whiten, colour="red") 
+
+
+####
+# initial tests:
 
 tic()
-test_0_0.6 <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.6, init_world = 1, n_run = 20)
+test_0_05 <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.5, init_world = 1, n_run = 20)
 toc()
-write_csv(test_0_0.6, "output_test/test_0_0.6.csv")
+write_csv(test_0_05, "output_test/test_0_0.5.csv")
 
 tic()
-test_0_0.7 <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.7, init_world = 1, n_run = 20)
+test_0_06 <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.6, init_world = 1, n_run = 20)
 toc()
-write_csv(test_0_0.7, "output_test/test_0_0.7.csv")
+write_csv(test_0_06, "output_test/test_0_0.6.csv")
 
 tic()
-test_0.1_0.5 <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.5, init_world = 1, n_run = 20)
+test_0_07 <- run_oranzees(t_max = 12000, opt = 0, alpha_g = 0.7, init_world = 1, n_run = 20)
 toc()
-write_csv(test_0.1_0.5, "output_test/test_0.1_0.5.csv")
+write_csv(test_0_07, "output_test/test_0_0.7.csv")
 
 tic()
-test_0.1_0.6 <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.6, init_world = 1, n_run = 20)
+test_01_05 <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.5, init_world = 1, n_run = 20)
 toc()
-write_csv(test_0.1_0.6, "output_test/test_0.1_0.6.csv")
+write_csv(test_01_05, "output_test/test_0.1_0.5.csv")
 
 tic()
-test_0.1_0.7 <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.7, init_world = 1, n_run = 20)
+test_01_06 <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.6, init_world = 1, n_run = 20)
 toc()
-write_csv(test_0.1_0.7, "output_test/test_0.1_0.7.csv")
+write_csv(test_01_06, "output_test/test_0.1_0.6.csv")
 
-
-#
-# TO DO
-#
-# PLOT SUMMARY:
-
-test_0_05 <-analyse_table(read_csv("output_test/test_0_0.5.csv"))
-test_0_06 <-analyse_table(read_csv("output_test/test_0_0.6.csv"))
-test_0_07 <-analyse_table(read_csv("output_test/test_0_0.7.csv"))
-test_01_05 <-analyse_table(read_csv("output_test/test_0.1_0.5.csv"))
-test_01_06 <-analyse_table(read_csv("output_test/test_0.1_0.6.csv"))
-test_01_07 <-analyse_table(read_csv("output_test/test_0.1_0.7.csv"))
-
-palette_1 <- c("#FFDB6D", "#F4EDCA", "#C4961A",
-               "#D16103", "#C3D7A4", "#52854C", "#4E84C4", "#293352")
-
-tibble(opt = rep(c("0", "0.1"), each = 60), 
-       alpha_g = rep(c("0.5", "0.6", "0.7", "0.5", "0.6", "0.7"), each = 20),
-      behaviours = c(test_0_05, test_0_06, test_0_07, test_01_05, test_01_06, test_01_07)) %>%
-  ggplot(aes( x = opt, y = behaviours, fill = alpha_g)) +
-    geom_boxplot() +
-    geom_point(pch=21, position=position_jitterdodge(jitter.width=0.1)) +
-  scale_fill_manual(values = c("#FFDB6D", "#F4EDCA", "#D16103")) +
-    theme_bw() +
-    labs(y = "proportion of traits considered 'cultural'") 
-    
-
-
-
-
+tic()
+test_01_07 <- run_oranzees(t_max = 12000, opt = 0.1, alpha_g = 0.7, init_world = 1, n_run = 20)
+toc()
+write_csv(test_01_07, "output_test/test_0.1_0.7.csv")
 
 
