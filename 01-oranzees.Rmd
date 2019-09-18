@@ -86,11 +86,13 @@ grid()
 
 ## The behaviours
 
-Following again Whiten et al., 1999, we consider 38 possible behaviours. We distinguish among 16 'social' and 22 'food-related' behaviours.
+Following again Whiten et al., 1999, we consider 64 possible behaviours (instead of the 65 in the original). We distinguish among 32 'social' and 32'food-related' behaviours.
 
 ### Genetic propensity
 
 We first implement the idea that the probability to acquire any of these behaviours depends (among other things) by what we call 'genetic propensity', and we model as a probability $p_g(0,1)$.
+
+**TO DO**
 
 These probability is assigned randomly and independently to each behaviours. To assign it to the different populations we use a geographical gradient. For each behaviour, a random point is chosen in the Cartesian space and its distance to each population is calculated. 
 
