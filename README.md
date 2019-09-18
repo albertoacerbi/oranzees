@@ -1,6 +1,6 @@
 # Oranzees model
 
-This repository contains the code and it documents the development of the the oranzees model (more information to follow as the project develops).
+This repository contains the code and it documents the development of the the oranzees model.
 
 The material is organised as follows:
 
