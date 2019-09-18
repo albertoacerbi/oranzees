@@ -1,7 +1,7 @@
 library(tictoc)
 
 # USE FUNCTIONS IN main.R
-source("main.R")
+source("main_W.R")
 
 # function for test
 analyse_patterns <- function(my_test){
@@ -18,19 +18,19 @@ analyse_patterns <- function(my_test){
   
   temp <- count(process, A) %>%
     filter(A == FALSE)
-  output[output$pattern=="A",]$proportion <- (38 - temp$n) / 38
+  output[output$pattern=="A",]$proportion <- (64 - temp$n) / 64
   
   temp <- count(process, B) %>%
     filter(B == FALSE)
-  output[output$pattern=="B",]$proportion <- (38 - temp$n) / 38
+  output[output$pattern=="B",]$proportion <- (64 - temp$n) / 64
   
   temp <- count(process, C) %>%
     filter(C == FALSE)
-  output[output$pattern=="C",]$proportion <- (38 - temp$n) / 38
+  output[output$pattern=="C",]$proportion <- (64 - temp$n) / 64
   
   temp <- count(process, D) %>%
     filter(D == FALSE)
-  output[output$pattern=="D",]$proportion <- (38 - temp$n) / 38
+  output[output$pattern=="D",]$proportion <- (64 - temp$n) / 64
   
   output
 }
@@ -38,7 +38,7 @@ analyse_patterns <- function(my_test){
 # TESTS HERE:
 
 tic()
-test <- run_oranzees(t_max = 6000, opt = 0, alpha_g = 0.5, init_world = 1, n_run = 5)
+test <- run_oranzees(t_max = 6000, alpha_e = 1, alpha_g = 0, init_world = 1, n_run = 5)
 toc()
 
 data_to_plot <- analyse_patterns(test)
@@ -52,6 +52,12 @@ ggplot(data = data_to_plot, aes(x = pattern, y = proportion)) +
   geom_line(data = whiten, colour="red") +
   geom_point(data = whiten, colour="red") 
 
+test <- test_oranzees_1(t_max = 6000, alpha_e = 1, alpha_g = 0, init_world = 1, n_run = 1)
+plot_one_run(test)
+test <- test_oranzees_1(t_max = 6000, alpha_e = 1, alpha_g = 0, init_world = 1, n_run = 3)
+plot_multiple_runs(test)
+test <- test_oranzees_2(t_max = 6000, alpha_e = 1, alpha_g = 0, init_world = 1, n_run = 3)
+plot_codes_distribution(test)
 
 ####
 # initial tests:
