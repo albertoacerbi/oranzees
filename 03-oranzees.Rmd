@@ -26,39 +26,53 @@ library(scales)
 set_oranzees_world <- function(alpha_g, alpha_e) {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
   output <- tibble(
-    population = rep(list_pop, each = 38),
-    behaviour = as.factor(rep(1:38, 6)),
-    type = rep(c(rep("social", 16), rep("food-related", 22)), 6),
+    population = rep(list_pop, each = 64),
+    behaviour = as.factor(rep(1:64, 6)),
+    type = rep(c(rep("social", 32), rep("food-related", 32)), 6),
     category = rep(c(
-      rep("play", 4), rep("display", 4), rep("groom", 4), rep("courthsip", 4),
-      "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C", "D", "D", "D", "E", "E", "F", "F", "G", "H", "I", "J"
+      rep("play", 8), rep("display", 8), rep("groom", 8), rep("courthsip", 8),
+      "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "B", "B","C", "C", "C", "C", "D", "D", "D", "D", "E", "E", "F", "F", "G", "H", "I", "J"
     ), 6),
-    nutrient = rep(c(rep(NA, 16), "Y", "Y", "Y", "Y", "Z", "Z", "Z", "Z", "Y", "Y", "Y", "Z", "Z", "Z", "Y", "Y", "Z", "Z", "Y", "Z", "Y", "Z"), 6),
-    p_g = rep(NA, 38 * 6),
-    p_e = rep(NA, 38 * 6)
+    nutrient = rep(c(rep(NA, 32), "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Z", "Z", "Z", "Z", "Z", "Z", "Z", "Z", "Y", "Y", "Y", "Y", "Z", "Z", "Z", "Z", "Y", "Y", "Z", "Z", "Y", "Z", "Y", "Z"), 6),
+    p_g = rep(NA, 64 * 6),
+    p_e = rep(NA, 64 * 6)
   )
 
   env_or_x <- c(220, 230, 700, 705, 710, 750)
   env_or_y <- c(660, 610, 450, 430, 510, 550)
 
   # genetic predispositions:
-  x_g <- sample(1:1000, 38)
-  y_g <- sample(1:1000, 38)
+  p_g <- runif(64)
+  x_g <- sample(1:1000, 64)
+  y_g <- sample(1:1000, 64)
+  
 
   # ecological availability:
-  x_e <- sample(1:1000, 38)
-  y_e <- sample(1:1000, 38)
+  p_e <- runif(64)
+  x_e <- sample(1:1000, 64)
+  y_e <- sample(1:1000, 64)
   
-  for(behav in 1:38){
-    output[output$behaviour == behav,]$p_g <- 1 - rescale(sqrt((x_g[behav] - env_or_x)^2 + (y_g[behav] - env_or_y)^2), to = c(1 - alpha_g, alpha_g))
-    
-    if(behav > 16){
-          output[output$behaviour == behav,]$p_e <- 1 - rescale(sqrt((x_e[behav] - env_or_x)^2 + (y_e[behav] - env_or_y)^2), to = c(1 - alpha_e, alpha_e))
+
+  for(behav in 1:64){
+    if(runif(1) < alpha_g){
+      output[output$behaviour == behav,]$p_g <- 1 - rescale(sqrt((x_g[behav] - env_or_x)^2 + (y_g[behav] - env_or_y)^2))
+    }
+    else{
+      output[output$behaviour == behav,]$p_g <- p_g[behav]
+    }
+    if(behav > 32){
+      if(runif(1) < alpha_e){
+        output[output$behaviour == behav,]$p_e <- 1 - rescale(sqrt((x_e[behav] - env_or_x)^2 + (y_e[behav] - env_or_y)^2))
+      }
+      else{
+        output[output$behaviour == behav,]$p_e <- p_e[behav]
+      }
     }
   }
   # return the tibble:
   output
 }
+
 
 test_oranzees1 <- function(t_max, alpha_g, alpha_e) {
   oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
@@ -67,26 +81,26 @@ test_oranzees1 <- function(t_max, alpha_g, alpha_e) {
 
   N <- 100
 
-  pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+  pop <- matrix(c(rep(0, 64 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
 
-  output <- matrix(nrow = t_max, ncol = 16)
+  output <- matrix(nrow = t_max, ncol = 32)
 
   for (t in 1:t_max) {
-    output[t, ] <- colSums(pop[, 1:16])
+    output[t, ] <- colSums(pop[, 1:32])
     # demographic bit:
-    pop[, 39] <- pop[, 39] + 1
-    pop[pop[, 39] >= 720, ] <- 0
-    old <- which(pop[, 39] > 300)
+    pop[, 65] <- pop[, 65] + 1
+    pop[pop[, 65] >= 720, ] <- 0
+    old <- which(pop[, 65] > 300)
     dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
     pop[old[dead], ] <- 0
     # innovation bit:
     for (i in 1:N) {
-      state <- ((sum(pop[i, 1:4]) >= 1) + (sum(pop[i, 5:8]) >= 1) + (sum(pop[i, 9:12]) >= 1) + (sum(pop[i, 13:16]) >= 1)) / 4
+      state <- ((sum(pop[i, 1:8]) >= 1) + (sum(pop[i, 9:16]) >= 1) + (sum(pop[i, 17:24]) >= 1) + (sum(pop[i, 25:32]) >= 1)) / 4
       p_state <- rnorm(1, mean = 1 - state, sd = 0.05)
       if (runif(1) < p_state) {
-        p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
+        p_peering <- rnorm(32, mean = colSums(pop[, 1:32]), sd = 1)
         p_peering[p_peering < 0] <- 0
-        innovation_i <- sample(1:16, 1, prob = p_peering)
+        innovation_i <- sample(1:32, 1, prob = p_peering)
         if (runif(1) < test_world$p_g[innovation_i]) {
           pop[i, innovation_i] <- 1
         }
@@ -101,25 +115,25 @@ We can now call the function. To have an idea of how efficient is the code, we c
 
 ```{r}
 library(tictoc)
-t_max <- 12000
-alpha_g <- 0.7
+t_max <- 6000
+alpha_g <- 0.1
 alpha_e <- 0.9
 tic()
 my_test <- test_oranzees1(t_max, alpha_g, alpha_e)
 toc()
 ```
 
-On my laptop, the execution time is around 11 seconds. Of course, this can vary according to different hardware, what is important is not the absolute time, but the ratio between this time and the vectorised code. To vectorise the code, we need to replace most of what is iterated in the `for (i in 1:N)` cycle, applying it directly to the `pop` matrix. Let's initalise again a population, outside of the pre-written function.
+On my laptop, the execution time is around 9 seconds. Of course, this can vary according to different hardware, what is important is not the absolute time, but the ratio between this time and the vectorised code. To vectorise the code, we need to replace most of what is iterated in the `for (i in 1:N)` cycle, applying it directly to the `pop` matrix. Let's initalise again a population, outside of the pre-written function.
 
 ```{r}
 N <- 100
-pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+pop <- matrix(c(rep(0, 64 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
 ```
 
 The $state$ values can be calculated for all oranzees as:
 
 ```{r}
-state <- ((rowSums(pop[, 1:4]) >= 1) + (rowSums(pop[, 5:8]) >= 1) + (rowSums(pop[, 9:12]) >= 1) + (rowSums(pop[, 13:16]) >= 1)) / 4
+state <- ((rowSums(pop[, 1:8]) >= 1) + (rowSums(pop[, 9:16]) >= 1) + (rowSums(pop[, 17:24]) >= 1) + (rowSums(pop[, 25:32]) >= 1)) / 4
 p_state <- rnorm(N, mean = 1 - state, sd = 0.05)
 ```
 
@@ -132,9 +146,9 @@ p_state <- runif(N) < p_state
 Now the innovation. We need to change only the calculation of `innovation_i`:
 
 ```{r}
-p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
+p_peering <- rnorm(32, mean = colSums(pop[, 1:32]), sd = 1)
 p_peering[p_peering < 0] <- 0
-innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
+innovation_i <- sample(1:32, N, prob = p_peering, replace = TRUE)
 ```
 
 And, calculate the probability to actually innovate a behaviour (given by its genetic propensity) we first need to recreate the environment: 
@@ -162,24 +176,24 @@ test_oranzees1_better <- function(t_max, alpha_g, alpha_e) {
 
   N <- 100
 
-  pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+  pop <- matrix(c(rep(0, 64 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
 
-  output <- matrix(nrow = t_max, ncol = 16)
+  output <- matrix(nrow = t_max, ncol = 32)
 
   for (t in 1:t_max) {
-    output[t, ] <- colSums(pop[, 1:16])
+    output[t, ] <- colSums(pop[, 1:32])
     # demographic bit:
-    pop[, 39] <- pop[, 39] + 1
-    pop[pop[, 39] >= 720, ] <- 0
-    old <- which(pop[, 39] > 300)
+    pop[, 65] <- pop[, 65] + 1
+    pop[pop[, 65] >= 720, ] <- 0
+    old <- which(pop[, 65] > 300)
     dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
     pop[old[dead], ] <- 0
     # innovation bit:
-    state <- ((rowSums(pop[, 1:4]) >= 1) + (rowSums(pop[, 5:8]) >= 1) + (rowSums(pop[, 9:12]) >= 1) + (rowSums(pop[, 13:16]) >= 1)) / 4
+    state <- ((rowSums(pop[, 1:8]) >= 1) + (rowSums(pop[, 9:16]) >= 1) + (rowSums(pop[, 17:24]) >= 1) + (rowSums(pop[, 25:32]) >= 1)) / 4
     p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
-    p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
+    p_peering <- rnorm(32, mean = colSums(pop[, 1:32]), sd = 1)
     p_peering[p_peering < 0] <- 0
-    innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
+    innovation_i <- sample(1:32, N, prob = p_peering, replace = TRUE)
     p_innovate <- runif(N) < test_world$p_g[innovation_i] * p_state
     for (i in (1:N)[p_innovate]) {
       pop[i, innovation_i[i]] <- 1
@@ -194,7 +208,7 @@ test_oranzees1_better <- function(t_max, alpha_g, alpha_e) {
 Let's test the running time, in the same way that before:
 
 ```{r}
-t_max <- 12000
+t_max <- 6000
 tic()
 my_test <- test_oranzees1_better(t_max, alpha_g, alpha_e)
 toc()
@@ -214,28 +228,28 @@ test_oranzees3 <- function(t_max, alpha_g, alpha_e) {
 
   N <- 100
 
-  pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+  pop <- matrix(c(rep(0, 64 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
 
-  output <- matrix(nrow = t_max, ncol = 22)
+  output <- matrix(nrow = t_max, ncol = 32)
 
   for (t in 1:t_max) {
-    output[t, ] <- colSums(pop[, 17:38])
+    output[t, ] <- colSums(pop[, 33:64])
     # demographic bit:
-    pop[, 39] <- pop[, 39] + 1
-    pop[pop[, 39] >= 720, ] <- 0
-    old <- which(pop[, 39] > 300)
+    pop[, 65] <- pop[, 65] + 1
+    pop[pop[, 65] >= 720, ] <- 0
+    old <- which(pop[, 65] > 300)
     dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
     pop[old[dead], ] <- 0
     # innovation bit:
     for (i in 1:N) {
-      nut_y <- (sum(pop[1, 17:20])>=1) + (sum(pop[1, 25:27])>=1) + (sum(pop[1, 31:32])>=1) + pop[1, 35] + pop[1, 37]
-      nut_z <- (sum(pop[1, 21:24])>=1) + (sum(pop[1, 28:30])>=1) + (sum(pop[1, 33:34])>=1) + pop[1, 36] + pop[1, 38]
+      nut_y <- (sum(pop[1, 33:40])>=1) + (sum(pop[1, 49:52])>=1) + (sum(pop[1, 57:58])>=1) + pop[1, 61] + pop[1, 63]
+      nut_z <- (sum(pop[1, 41:48])>=1) + (sum(pop[1, 53:56])>=1) + (sum(pop[1, 59:60])>=1) + pop[1, 62] + pop[1, 64]
       state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10
       p_state <- rnorm(1, mean = 1 - state, sd = .05)
       if (runif(1) < p_state) {
-        p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
+        p_peering <- rnorm(32, mean = colSums(pop[, 33:64]), sd = 1)
         p_peering[p_peering < 0] <- 0
-        innovation_i <- sample(17:38, 1, prob = p_peering)
+        innovation_i <- sample(33:64, 1, prob = p_peering)
         if (runif(1) < (test_world$p_g[innovation_i] * test_world$p_e[innovation_i])) {
           pop[i, innovation_i] <- 1
         }
@@ -249,7 +263,7 @@ test_oranzees3 <- function(t_max, alpha_g, alpha_e) {
 Here is the running time:
 
 ```{r}
-t_max <- 12000
+t_max <- 6000
 tic()
 my_test <- test_oranzees3(t_max, alpha_g, alpha_e)
 toc()
@@ -265,26 +279,26 @@ test_oranzees3_better <- function(t_max, alpha_g, alpha_e) {
 
   N <- 100
 
-  pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+  pop <- matrix(c(rep(0, 65 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
 
-  output <- matrix(nrow = t_max, ncol = 22)
+  output <- matrix(nrow = t_max, ncol = 32)
 
   for (t in 1:t_max) {
-    output[t, ] <- colSums(pop[, 17:38])
+    output[t, ] <- colSums(pop[, 33:64])
     # demographic bit:
-    pop[, 39] <- pop[, 39] + 1
-    pop[pop[, 39] >= 720, ] <- 0
-    old <- which(pop[, 39] > 300)
+    pop[, 65] <- pop[, 65] + 1
+    pop[pop[, 65] >= 720, ] <- 0
+    old <- which(pop[, 65] > 300)
     dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
     pop[old[dead], ] <- 0
     # innovation bit:
-    nut_y <- (rowSums(pop[, 17:20]) >= 1) + (rowSums(pop[, 25:27]) >= 1) + (rowSums(pop[, 31:32]) >= 1) + pop[, 35] + pop[, 37]
-    nut_z <- (rowSums(pop[, 21:24]) >= 1) + (rowSums(pop[, 28:30]) >= 1) + (rowSums(pop[, 33:34]) >= 1) + pop[, 36] + pop[, 38]
+    nut_y <- (rowSums(pop[, 33:40])>=1) + (rowSums(pop[, 49:52])>=1) + (rowSums(pop[, 57:58])>=1) + pop[, 61] + pop[, 64]
+    nut_z <- (rowSums(pop[, 41:48])>=1) + (rowSums(pop[, 53:56])>=1) + (rowSums(pop[, 59:60])>=1) + pop[, 62] + pop[, 63]
     state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10
     p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
-    p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
+    p_peering <- rnorm(32, mean = colSums(pop[, 33:64]), sd = 1)
     p_peering[p_peering < 0] <- 0
-    innovation_i <- sample(17:38, N, prob = p_peering, replace = TRUE)
+    innovation_i <- sample(33:64, N, prob = p_peering, replace = TRUE)
     p_innovate <- runif(N) < test_world$p_g[innovation_i] * test_world$p_e[innovation_i] * p_state
     for (i in (1:N)[p_innovate]) {
       pop[i, innovation_i[i]] <- 1
@@ -297,13 +311,13 @@ test_oranzees3_better <- function(t_max, alpha_g, alpha_e) {
 We can test the running time:
 
 ```{r}
-t_max <- 12000
+t_max <- 6000
 tic()
 my_test <- test_oranzees3_better(t_max, alpha_g, alpha_e)
 toc()
 ```
 
-This is usually between 10 and 20 times faster! 
+This is usually between 20 and 30 times faster! 
 
 ***
 
@@ -315,8 +329,8 @@ It is finally time to put all together, for a simulation running single runs of 
 mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world) {
   # initalise everything:
   N <- 100
-  pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
-  output <- matrix(nrow = t_max, ncol = 38)
+  pop <- matrix(c(rep(0, 64 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+  output <- matrix(nrow = t_max, ncol = 64)
   if (init_world) {
     oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
     test_world <- oranzees_world %>%
@@ -324,7 +338,7 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world) {
   }
   # start simulation here:
   for (t in 1:t_max) {
-    output[t,] <- colSums(pop[, 1:38])
+    output[t,] <- colSums(pop[, 1:64])
     pop <- update_demography(pop)
     pop <- update_social_behaviours(pop, test_world)
     pop <- update_food_behaviours(pop, test_world)
@@ -336,11 +350,12 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world) {
 Something like that should do what we want. Notice that we still need to write the appropriate functions, and notice also the new parameter `init_world`. We will pass `TRUE` (or $1$) if we want the environment to be initialised each time we run the function, and `FALSE` (or $0$) if we want to use an environment created separately. This is helpful to run multiple tests with the same or different environments (before we were using two different functions).
 
 Let's write here the three new functions we need:
+
 ```{r}
 update_demography <- function(pop) {
-  pop[, 39] <- pop[, 39] + 1
-  pop[pop[, 39] >= 720, ] <- 0
-  old <- which(pop[, 39] > 300)
+  pop[, 65] <- pop[, 65] + 1
+  pop[pop[, 65] >= 720, ] <- 0
+  old <- which(pop[, 65] > 300)
   dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
   pop[old[dead], ] <- 0
   pop
@@ -348,11 +363,11 @@ update_demography <- function(pop) {
 
 update_social_behaviours <- function(pop, test_world) {
   N <- dim(pop)[1]
-  state <- ((rowSums(pop[, 1:4]) >= 1) + (rowSums(pop[, 5:8]) >= 1) + (rowSums(pop[, 9:12]) >= 1) + (rowSums(pop[, 13:16]) >= 1)) / 4
+  state <- ((rowSums(pop[, 1:8]) >= 1) + (rowSums(pop[, 9:16]) >= 1) + (rowSums(pop[, 17:24]) >= 1) + (rowSums(pop[, 25:32]) >= 1)) / 4
   p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
-  p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
+  p_peering <- rnorm(32, mean = colSums(pop[, 1:32]), sd = 1)
   p_peering[p_peering < 0] <- 0
-  innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
+  innovation_i <- sample(1:32, N, prob = p_peering, replace = TRUE)
   p_innovate <- runif(N) < test_world$p_g[innovation_i]  * p_state
   for (i in (1:N)[p_innovate]) {
     pop[i, innovation_i[i]] <- 1
@@ -362,13 +377,13 @@ update_social_behaviours <- function(pop, test_world) {
 
 update_food_behaviours <- function(pop, test_world) {
   N <- dim(pop)[1]
-  nut_y <- (rowSums(pop[, 17:20])>=1) + (rowSums(pop[, 25:27])>=1) + (rowSums(pop[, 31:32])>=1) + pop[, 35] + pop[, 37]
-  nut_z <- (rowSums(pop[, 21:24])>=1) + (rowSums(pop[, 28:30])>=1) + (rowSums(pop[, 33:34])>=1) + pop[, 36] + pop[, 38]
+  nut_y <- (rowSums(pop[, 33:40])>=1) + (rowSums(pop[, 49:52])>=1) + (rowSums(pop[, 57:58])>=1) + pop[, 61] + pop[, 64]
+  nut_z <- (rowSums(pop[, 41:48])>=1) + (rowSums(pop[, 53:56])>=1) + (rowSums(pop[, 59:60])>=1) + pop[, 62] + pop[, 63]
   state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10 
   p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
-  p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
+  p_peering <- rnorm(32, mean = colSums(pop[, 33:64]), sd = 1)
   p_peering[p_peering < 0] <- 0
-  innovation_i <- sample(17:38, N, prob = p_peering, replace = TRUE)
+  innovation_i <- sample(33:64, N, prob = p_peering, replace = TRUE)
   p_innovate <- runif(N) < test_world$p_g[innovation_i] * test_world$p_e[innovation_i] * p_state
   for (i in (1:N)[p_innovate]) {
     pop[i, innovation_i[i]] <- 1
@@ -380,21 +395,21 @@ update_food_behaviours <- function(pop, test_world) {
 We can try and run it now:
 
 ```{r}
-t_max <- 12000
+t_max <- 6000
 my_test <- mockup_oranzees(t_max, alpha_g, alpha_e, TRUE)
 ```
 
 And visualise the results:
 
 ```{r warning = FALSE}
-my_test <- gather(as_tibble(my_test), 1:38, key = "behaviour", value = "frequency")
+my_test <- gather(as_tibble(my_test), 1:64, key = "behaviour", value = "frequency")
 data_to_plot <- tibble(
   behaviour = my_test$behaviour,
   frequency = my_test$frequency,
-  time = rep(1:t_max, 38),
+  time = rep(1:t_max, 64),
   category = as_factor(c(
-    rep("play", t_max * 4), rep("display", t_max * 4), rep("groom", t_max * 4), rep("courthsip", t_max * 4),
-    rep("A", t_max * 4), rep("B", t_max * 4), rep("C", t_max * 3), rep("D", t_max * 3),
+    rep("play", t_max * 8), rep("display", t_max * 8), rep("groom", t_max * 8), rep("courthsip", t_max * 8),
+    rep("A", t_max * 8), rep("B", t_max * 8), rep("C", t_max * 4), rep("D", t_max * 4),
     rep("E", t_max * 2), rep("F", t_max * 2), rep("G", t_max), rep("H", t_max),
     rep("I", t_max), rep("J", t_max)
   ))
@@ -415,10 +430,10 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
   N <- 100
   
   if(n_run == 1){
-    output <- matrix(nrow = t_max, ncol = 38)
+    output <- matrix(nrow = t_max, ncol = 64)
   }
   else{
-    output <- matrix(nrow = n_run, ncol = 38)
+    output <- matrix(nrow = n_run, ncol = 64)
   }
   
   oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
@@ -426,7 +441,7 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
     filter(population == "Uossob")
   
   for(run in 1:n_run){
-    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+    pop <- matrix(c(rep(0, 64 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
     if (init_world) {
       oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
       test_world <- oranzees_world %>%
@@ -435,14 +450,14 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
     # start simulation here:
     for (t in 1:t_max) {
       if(n_run == 1){
-        output[t,] <- colSums(pop[, 1:38])
+        output[t,] <- colSums(pop[, 1:64])
       }
       pop <- update_demography(pop)
       pop <- update_social_behaviours(pop, test_world)
       pop <- update_food_behaviours(pop, test_world)
     }
     if( n_run > 1){
-      output[run, ] <- colSums(pop[, 1:38])
+      output[run, ] <- colSums(pop[, 1:64])
     }  
   }
   output
@@ -452,18 +467,18 @@ mockup_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
 It is now easy to run the simulation online. To repeat the same test, we simply need to call:
 
 ```{r}
-my_test <- mockup_oranzees(t_max = 12000, alpha_g = 0.7, alpha_e = 0.9, init_world = FALSE, n_run = 10)
+my_test <- mockup_oranzees(t_max = 6000, alpha_g = 0.1, alpha_e = 0.9, init_world = FALSE, n_run = 10)
 ```
 
 And plot:
 
-```{r message=FALSE}
+```{r message=FALSE, fig.height = 7}
 library(reshape2)
 as_tibble(melt(my_test, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
   mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
   add_column(category = as_factor(c(
-    rep("play", 40), rep("display", 40), rep("groom", 40), rep("courthsip", 40),
-    rep("A", 40), rep("B", 40), rep("C", 30), rep("D", 30),
+    rep("play", 80), rep("display", 80), rep("groom", 80), rep("courthsip", 80),
+    rep("A", 80), rep("B", 80), rep("C", 40), rep("D", 40),
     rep("E", 20), rep("F", 20), rep("G", 10), rep("H", 10),
     rep("I", 10), rep("J", 10)
   ))) %>%
