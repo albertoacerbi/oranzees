@@ -17,15 +17,14 @@ Now that we had implemented the social behaviours, we can work on the food-relat
 
 ```{r}
 N <- 100
-pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+pop <- matrix(c(rep(0, 64 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
 ```
 
 We first rebuild our basic population, and then we use a similar strategy that we used for the social behavior. In the previous case the optimal state was to have at least one behaviour in all categories, now is to have the same amount of behaviours in the two nutrients. Thus, for the individual $1$ in the population:
 
 ```{r}
-nut_y <- (sum(pop[1, 17:20])>=1) + (sum(pop[1, 25:27])>=1) + (sum(pop[1, 31:32])>=1) + pop[1, 35] + pop[1, 37]
-nut_z <- (sum(pop[1, 21:24])>=1) + (sum(pop[1, 28:30])>=1) + (sum(pop[1, 33:34])>=1) + pop[1, 36] + pop[1, 38]
-
+nut_y <- (sum(pop[1, 33:40])>=1) + (sum(pop[1, 49:52])>=1) + (sum(pop[1, 57:58])>=1) + pop[1, 61] + pop[1, 63]
+nut_z <- (sum(pop[1, 41:48])>=1) + (sum(pop[1, 53:56])>=1) + (sum(pop[1, 59:60])>=1) + pop[1, 62] + pop[1, 64]
 state <- 1 - abs(nut_y - nut_z) / 5
 ```
 
@@ -39,8 +38,6 @@ state
 Beside balancing nutrients, however, oranzees need to eat something. We can add in the $state$ calculation a part that rewards oranzees for having more food.
 
 ```{r}
-nut_y <- (sum(pop[1, 17:20])>=1) + (sum(pop[1, 25:27])>=1) + (sum(pop[1, 31:32])>=1) + pop[1, 35] + pop[1, 37]
-nut_z <- (sum(pop[1, 21:24])>=1) + (sum(pop[1, 28:30])>=1) + (sum(pop[1, 33:34])>=1) + pop[1, 36] + pop[1, 38]
 state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10
 ```
 
@@ -65,34 +62,47 @@ library(scales)
 set_oranzees_world <- function(alpha_g, alpha_e) {
   list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
   output <- tibble(
-    population = rep(list_pop, each = 38),
-    behaviour = as.factor(rep(1:38, 6)),
-    type = rep(c(rep("social", 16), rep("food-related", 22)), 6),
+    population = rep(list_pop, each = 64),
+    behaviour = as.factor(rep(1:64, 6)),
+    type = rep(c(rep("social", 32), rep("food-related", 32)), 6),
     category = rep(c(
-      rep("play", 4), rep("display", 4), rep("groom", 4), rep("courthsip", 4),
-      "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C", "D", "D", "D", "E", "E", "F", "F", "G", "H", "I", "J"
+      rep("play", 8), rep("display", 8), rep("groom", 8), rep("courthsip", 8),
+      "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "B", "B","C", "C", "C", "C", "D", "D", "D", "D", "E", "E", "F", "F", "G", "H", "I", "J"
     ), 6),
-    nutrient = rep(c(rep(NA, 16), "Y", "Y", "Y", "Y", "Z", "Z", "Z", "Z", "Y", "Y", "Y", "Z", "Z", "Z", "Y", "Y", "Z", "Z", "Y", "Z", "Y", "Z"), 6),
-    p_g = rep(NA, 38 * 6),
-    p_e = rep(NA, 38 * 6)
+    nutrient = rep(c(rep(NA, 32), "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Z", "Z", "Z", "Z", "Z", "Z", "Z", "Z", "Y", "Y", "Y", "Y", "Z", "Z", "Z", "Z", "Y", "Y", "Z", "Z", "Y", "Z", "Y", "Z"), 6),
+    p_g = rep(NA, 64 * 6),
+    p_e = rep(NA, 64 * 6)
   )
 
   env_or_x <- c(220, 230, 700, 705, 710, 750)
   env_or_y <- c(660, 610, 450, 430, 510, 550)
 
   # genetic predispositions:
-  x_g <- sample(1:1000, 38)
-  y_g <- sample(1:1000, 38)
+  p_g <- runif(64)
+  x_g <- sample(1:1000, 64)
+  y_g <- sample(1:1000, 64)
+  
 
   # ecological availability:
-  x_e <- sample(1:1000, 38)
-  y_e <- sample(1:1000, 38)
+  p_e <- runif(64)
+  x_e <- sample(1:1000, 64)
+  y_e <- sample(1:1000, 64)
   
-  for(behav in 1:38){
-    output[output$behaviour == behav,]$p_g <- 1 - rescale(sqrt((x_g[behav] - env_or_x)^2 + (y_g[behav] - env_or_y)^2), to = c(1 - alpha_g, alpha_g))
-    
-    if(behav > 16){
-          output[output$behaviour == behav,]$p_e <- 1 - rescale(sqrt((x_e[behav] - env_or_x)^2 + (y_e[behav] - env_or_y)^2), to = c(1 - alpha_e, alpha_e))
+
+  for(behav in 1:64){
+    if(runif(1) < alpha_g){
+      output[output$behaviour == behav,]$p_g <- 1 - rescale(sqrt((x_g[behav] - env_or_x)^2 + (y_g[behav] - env_or_y)^2))
+    }
+    else{
+      output[output$behaviour == behav,]$p_g <- p_g[behav]
+    }
+    if(behav > 32){
+      if(runif(1) < alpha_e){
+        output[output$behaviour == behav,]$p_e <- 1 - rescale(sqrt((x_e[behav] - env_or_x)^2 + (y_e[behav] - env_or_y)^2))
+      }
+      else{
+        output[output$behaviour == behav,]$p_e <- p_e[behav]
+      }
     }
   }
   # return the tibble:
@@ -101,7 +111,7 @@ set_oranzees_world <- function(alpha_g, alpha_e) {
 ```
 
 ```{r}
-alpha_g = 0.7
+alpha_g = 0.1
 alpha_e = 0.9
 oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
 test_world <- oranzees_world %>%
@@ -111,9 +121,9 @@ test_world <- oranzees_world %>%
 At this point, innovations can be made as they were done for social behaviours, with a further difference. In the calculation for social behaviour, the possible behaviour drawn with  $p_{peering}$ was then actually innovated according to its genetic propensity, $p_g$. Now we add to this $p_e$, i.e. its the ecological availability. The simplest way to do it is to multiply one for the other. 
 
 ```{r}
-p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = 1)
+p_peering <- rnorm(32, mean = colSums(pop[, 33:64]), sd = 1)
 p_peering[p_peering < 0] <- 0
-innovation_i <- sample(1:16, 1, prob = p_peering)
+innovation_i <- sample(33:64, 1, prob = p_peering)
 p_innovate <- test_world$p_g[innovation_i] * test_world$p_e[innovation_i]
 ```
 
@@ -127,28 +137,28 @@ test_oranzees3 <- function(t_max, alpha_g, alpha_e) {
 
   N <- 100
 
-  pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+  pop <- matrix(c(rep(0, 64 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
 
-  output <- matrix(nrow = t_max, ncol = 22)
+  output <- matrix(nrow = t_max, ncol = 32)
 
   for (t in 1:t_max) {
-    output[t, ] <- colSums(pop[, 17:38])
+    output[t, ] <- colSums(pop[, 33:64])
     # demographic bit:
-    pop[, 39] <- pop[, 39] + 1
-    pop[pop[, 39] >= 720, ] <- 0
-    old <- which(pop[, 39] > 300)
+    pop[, 65] <- pop[, 65] + 1
+    pop[pop[, 65] >= 720, ] <- 0
+    old <- which(pop[, 65] > 300)
     dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
     pop[old[dead], ] <- 0
     # innovation bit:
     for (i in 1:N) {
-      nut_y <- (sum(pop[1, 17:20])>=1) + (sum(pop[1, 25:27])>=1) + (sum(pop[1, 31:32])>=1) + pop[1, 35] + pop[1, 37]
-      nut_z <- (sum(pop[1, 21:24])>=1) + (sum(pop[1, 28:30])>=1) + (sum(pop[1, 33:34])>=1) + pop[1, 36] + pop[1, 38]
+      nut_y <- (sum(pop[1, 33:40])>=1) + (sum(pop[1, 49:52])>=1) + (sum(pop[1, 57:58])>=1) + pop[1, 61] + pop[1, 63]
+      nut_z <- (sum(pop[1, 41:48])>=1) + (sum(pop[1, 53:56])>=1) + (sum(pop[1, 59:60])>=1) + pop[1, 62] + pop[1, 64]
       state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10
       p_state <- rnorm(1, mean = 1 - state, sd = .05)
       if (runif(1) < p_state) {
-        p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
+        p_peering <- rnorm(32, mean = colSums(pop[, 33:64]), sd = 1)
         p_peering[p_peering < 0] <- 0
-        innovation_i <- sample(17:38, 1, prob = p_peering)
+        innovation_i <- sample(33:64, 1, prob = p_peering)
         if (runif(1) < (test_world$p_g[innovation_i] * test_world$p_e[innovation_i])) {
           pop[i, innovation_i] <- 1
         }
@@ -161,20 +171,20 @@ test_oranzees3 <- function(t_max, alpha_g, alpha_e) {
 
 Here, to run:
 ```{r}
-t_max <- 12000
+t_max <- 6000
 my_test <- test_oranzees3(t_max, alpha_g, alpha_e)
 ```
 
 And to plot the results:
 
 ```{r warning=FALSE}
-my_test <- gather(as_tibble(my_test), 1:22, key = "behaviour", value = "frequency")
+my_test <- gather(as_tibble(my_test), 1:32, key = "behaviour", value = "frequency")
 data_to_plot <- tibble(
   behaviour = my_test$behaviour,
   frequency = my_test$frequency,
-  time = rep(1:t_max, 22),
+  time = rep(1:t_max, 32),
   category = as_factor(c(
-    rep("A", t_max * 4), rep("B", t_max * 4), rep("C", t_max * 3), rep("D", t_max * 3),
+    rep("A", t_max * 8), rep("B", t_max * 8), rep("C", t_max * 4), rep("D", t_max * 4),
     rep("E", t_max * 2), rep("F", t_max * 2), rep("G", t_max), rep("H", t_max),
     rep("I", t_max), rep("J", t_max)
   ))
@@ -197,32 +207,32 @@ As we did for social behaviours, we can run the simulations several times, with 
 test_oranzees4 <- function(t_max) {
   N <- 100
 
-  pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
+  pop <- matrix(c(rep(0, 64 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
 
   for (t in 1:t_max) {
     # demographic bit:
-    pop[, 39] <- pop[, 39] + 1
-    pop[pop[, 39] >= 720, ] <- 0
-    old <- which(pop[, 39] > 300)
+    pop[, 65] <- pop[, 65] + 1
+    pop[pop[, 65] >= 720, ] <- 0
+    old <- which(pop[, 65] > 300)
     dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
     pop[old[dead], ] <- 0
     # innovation bit:
     for (i in 1:N) {
-      nut_y <- (sum(pop[1, 17:20])>=1) + (sum(pop[1, 25:27])>=1) + (sum(pop[1, 31:32])>=1) + pop[1, 35] + pop[1, 37]
-      nut_z <- (sum(pop[1, 21:24])>=1) + (sum(pop[1, 28:30])>=1) + (sum(pop[1, 33:34])>=1) + pop[1, 36] + pop[1, 38]
+      nut_y <- (sum(pop[1, 33:40])>=1) + (sum(pop[1, 49:52])>=1) + (sum(pop[1, 57:58])>=1) + pop[1, 61] + pop[1, 63]
+      nut_z <- (sum(pop[1, 41:48])>=1) + (sum(pop[1, 53:56])>=1) + (sum(pop[1, 59:60])>=1) + pop[1, 62] + pop[1, 64]
       state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10
       p_state <- rnorm(1, mean = 1 - state, sd = .05)
       if (runif(1) < p_state) {
-        p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = 1)
+        p_peering <- rnorm(32, mean = colSums(pop[, 33:64]), sd = 1)
         p_peering[p_peering < 0] <- 0
-        innovation_i <- sample(17:38, 1, prob = p_peering)
+        innovation_i <- sample(33:64, 1, prob = p_peering)
         if (runif(1) < (test_world$p_g[innovation_i] * test_world$p_e[innovation_i])) {
           pop[i, innovation_i] <- 1
         }
       }
     }
   }
-  output <- colSums(pop[, 17:38])
+  output <- colSums(pop[, 33:64])
 }
 ```
 
@@ -234,15 +244,15 @@ test_world <- oranzees_world %>%
   filter(population == "Uossob")
 
 n_run <- 10
-t_max <- 12000
-food_test1 <- matrix(nrow = n_run, ncol = 22)
+t_max <- 6000
+food_test1 <- matrix(nrow = n_run, ncol = 32)
 for (run in 1:n_run) {
   food_test1[run, ] <- test_oranzees4(t_max)
   print(run)
 }
-write(t(food_test1), file = "output/food_test.csv", ncolumns = 22)
-write(test_world$p_g[17:38], file = "output/food_test_p_g.csv", ncolumns = 1)
-write(test_world$p_e[17:38], file = "output/food_test_p_e.csv", ncolumns = 1)
+write(t(food_test1), file = "output/food_test.csv", ncolumns = 32)
+write(test_world$p_g[33:64], file = "output/food_test_p_g.csv", ncolumns = 1)
+write(test_world$p_e[33:64], file = "output/food_test_p_e.csv", ncolumns = 1)
 ```
 
 We can then print the results:
@@ -250,12 +260,12 @@ We can then print the results:
 ```{r message=FALSE}
 library(reshape2)
 results <- as.matrix(read.table("output/food_test.csv"))
-colnames(results) <- 17:38
+colnames(results) <- 33:64
 
 as_tibble(melt(results, varnames = c("run", "behaviour"), value.name = "frequency")) %>%
   mutate(run = as_factor(run), behaviour = as_factor(behaviour)) %>%
   add_column(category = as_factor(c(
-    rep("A", 40), rep("B", 40), rep("C", 30), rep("D", 30),
+    rep("A", 80), rep("B", 80), rep("C", 40), rep("D", 40),
     rep("E", 20), rep("F", 20), rep("G", 10), rep("H", 10),
     rep("I", 10), rep("J", 10)
   ))) %>%
@@ -273,7 +283,7 @@ genes <- read.table("output/food_test_p_g.csv")
 tibble(
   p_g = genes$V1, total = colSums(results),
   category = as_factor(c(
-    rep("A", 4), rep("B", 4), rep("C", 3), rep("D", 3),
+    rep("A", 8), rep("B", 8), rep("C", 4), rep("D", 4),
     rep("E", 2), rep("F", 2), "G", "H", "I", "J"
   ))
 ) %>%
@@ -290,7 +300,7 @@ eco <- read.table("output/food_test_p_e.csv")
 tibble(
   p_e = eco$V1, total = colSums(results),
   category = as_factor(c(
-    rep("A", 4), rep("B", 4), rep("C", 3), rep("D", 3),
+    rep("A", 8), rep("B", 8), rep("C", 4), rep("D", 4),
     rep("E", 2), rep("F", 2), "G", "H", "I", "J"
   ))
 ) %>%
@@ -306,7 +316,7 @@ In fact, the main effect could be their combination, i.e. $p_e*p_g$:
 tibble(
   p_e = eco$V1, p_g = genes$V1, total = colSums(results),
   category = as_factor(c(
-    rep("A", 4), rep("B", 4), rep("C", 3), rep("D", 3),
+    rep("A", 8), rep("B", 8), rep("C", 4), rep("D", 4),
     rep("E", 2), rep("F", 2), "G", "H", "I", "J"
   ))
 ) %>%
