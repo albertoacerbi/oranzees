@@ -26,28 +26,30 @@ set_oranzees_world <- function(alpha_g, alpha_e) {
   env_or_y <- c(660, 610, 450, 430, 510, 550)
 
   # genetic predispositions:
+  p_g <- runif(64)
   x_g <- sample(1:1000, 64)
   y_g <- sample(1:1000, 64)
-  g_g <- runif(64)
+  
 
   # ecological availability:
+  p_e <- runif(64)
   x_e <- sample(1:1000, 64)
   y_e <- sample(1:1000, 64)
-  e_e <- runif(64)
+  
 
   for(behav in 1:64){
     if(runif(1) < alpha_g){
       output[output$behaviour == behav,]$p_g <- 1 - rescale(sqrt((x_g[behav] - env_or_x)^2 + (y_g[behav] - env_or_y)^2))
     }
     else{
-      output[output$behaviour == behav,]$p_g <- g_g[behav]
+      output[output$behaviour == behav,]$p_g <- p_g[behav]
     }
     if(behav > 32){
       if(runif(1) < alpha_e){
         output[output$behaviour == behav,]$p_e <- 1 - rescale(sqrt((x_e[behav] - env_or_x)^2 + (y_e[behav] - env_or_y)^2))
       }
       else{
-        output[output$behaviour == behav,]$p_e <- e_e[behav]
+        output[output$behaviour == behav,]$p_e <- p_e[behav]
       }
     }
   }
