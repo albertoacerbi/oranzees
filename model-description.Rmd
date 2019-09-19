@@ -13,7 +13,7 @@ bibliography: biblio.bib
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This document provides a general description of the "oranzees" model. The code to run and test the model can be found in the scripts [main.R](main.R) and [test.R](test.R). The consecutively numbered R markdown documents ([01-oranzees.Rmd](01-oranzees.Rmd) to [07-oranzees.Rmd](07-oranzees.Rmd)) document the full development of the model.
+This document provides a general description of the "oranzees" model. The code to run and test the model can be found in the scripts [main.R](main.R) and [test.R](test.R). The consecutively numbered R markdown documents ([01-oranzees.Rmd](01-oranzees.Rmd) to [06-oranzees.Rmd](06-oranzees.Rmd)) document the full development of the model.
 
 # The oranzees world
  
@@ -36,19 +36,24 @@ The probability of expressing a behaviour depends, among other things, by its as
 
  ![Location of the six populations of oranzees in Pongogea. \label{fig1}](material/pongogea_model_description.png) 
 
-## Ecological availability
-
-Ecological availability has influence only on food-related behaviours. Ecological availability can be thought as a probability $p_e(0,1)$ that represents the likelihood of finding a resource, or its nutritional value, in each site. This probability is assigned randomly and independently to each behaviour. A parameter of the model, $\alpha_e$, determines the probability that the ecological availability of each behaviour is equal for all the six populations, or if it is different. 
-
-If it is different we assign it using a geographical gradient. For each behaviour, we choose a random point and calculate its distance to each population. Distances are then transformed to $p_e$ by rescaling them between 0 and 1, so that for the farther population $p_e=0$ i.e. the associated behaviour will be absent with an "ecological explanation" (according to the coding in @whiten_cultures_1999)  
-
-In the example in \autoref{fig2} a particular behavior will have $p_e=1$ in the Ognodub site, $p_e=0$ in Iat Forest and Uossob, and intermediate values in the other sites.
-
-![Example of calcualtion of $p_e$. The red points represent the oranzee populations. \label{fig2} ](material/eco_gradient_model_description.png){width=50%}
-
 ## Genetic propensity
 
-In addition, each behaviour has an associated $p_g(0,1)$, that stands for the genetic propensity to express this behaviour. $p_g$ is assigned to *all* behaviours, both in the social and in the food-related category, and it is calcualted in the same way of $p_e$, using the parameter $\alpha_g$ to determine the probability of genetic propensity being different. Notice that $\alpha_g=0$ does not mean that there are not genetic influences on the behaviours, but that there are no *differences* between the populations with this respect.
+Genetic propensity is a probability $p_g(0,1)$, assigned to each behaviour, that stands for the genetic propensity to express this behaviour. 
+This probability is assigned randomly and independently to each behaviour. A parameter of the model, $\alpha_g$, determines the probability that the genetic propensity of each behaviour is equal for all the six populations, or if it is different. 
+
+If it is different, we assign it using a geographical gradient. For each behaviour, we choose a random point and calculate its distance to each population. Distances are then transformed to $p_g$ by rescaling them between 0 and 1, so that for the farther population $p_g=0$ i.e. the associated behaviour will be impossible to express.
+
+In the example in \autoref{fig2} a particular behavior will have $p_g=1$ in the Ognodub site, $p_g=0$ in Iat Forest and Uossob, and intermediate values in the other sites.
+
+Notice that $\alpha_g=0$ does not mean that there are not genetic influences on the behaviours, but that there are no *differences* between the populations with this respect.
+
+![Example of calcualtion of $p_g$. The red points represent the oranzee populations. \label{fig2} ](material/g_gradient_model_description.png){width=50%}
+
+## Ecological availability
+
+Ecological availability can be thought as a probability $p_e(0,1)$ that represents the likelihood of finding a resource, or its nutritional value, in each site. Ecological availability is assigned only to food-related behaviours, and it is calcualted in the same way of $p_g$, using the parameter $\alpha_e$ to determine the probability of ecological availability being different in the six populations.
+
+When $p_e=0$, the associated behaviour will be absent with an "ecological explanation" (according to the coding in @whiten_cultures_1999)  
 
 # The life of oranzees
 
