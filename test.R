@@ -52,7 +52,7 @@ analyse_patterns <- function(my_test){
 }
 
 
-# TESTS HERE:
+# TEST 1
 
 tic()
 test <- run_oranzees(t_max = 6000, alpha_e = 0, alpha_g = 0, init_world = TRUE, n_run = 20)
@@ -98,4 +98,25 @@ tic()
 test <- run_oranzees(t_max = 6000, alpha_e = 1, alpha_g = 1, init_world = TRUE, n_run = 20)
 toc()
 write_csv(test, "output_test/test_1_1.csv")
+
+
+# TEST 2
+
+alpha_e_test = seq(0.5, 1, by = 0.1)
+alpha_g_test = seq(0, 0.5, by = 0.1)
+
+output <- tibble(alpha_e = rep(alpha_e_test, each = 30), 
+                 alpha_g = rep(rep(alpha_g_test, each = 5), 6),
+                 n = rep(NA, 180))
+
+for(e in alpha_e_test){
+  for(g in alpha_g_test) {
+    test <- run_oranzees(t_max = 6000, alpha_e = e, alpha_g = g, init_world = TRUE, n_run = 5)
+    out <- analyse_patterns(test)
+    output[output$alpha_e == e & output$alpha_g == g, ]$n <- out$n[16:20]
+    print(e)
+  }
+}
+write_csv(output, "output_test/test_many.csv")
+
 
