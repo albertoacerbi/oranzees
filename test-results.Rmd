@@ -101,7 +101,7 @@ The code, for example for the first combination, is:
 
 ```{r eval=FALSE}
 tic()
-test <- run_oranzees(t_max = 6000, alpha_e = 0, alpha_g = 0, init_world = 1, n_run = 20)
+test <- run_oranzees(t_max = 6000, alpha_e = 0, alpha_g = 0, init_world = TRUE, n_run = 20)
 toc()
 write_csv(test, "output_test/test_0_0.csv")
 ```

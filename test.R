@@ -55,47 +55,47 @@ analyse_patterns <- function(my_test){
 # TESTS HERE:
 
 tic()
-test <- run_oranzees(t_max = 6000, alpha_e = 0, alpha_g = 0, init_world = 1, n_run = 20)
+test <- run_oranzees(t_max = 6000, alpha_e = 0, alpha_g = 0, init_world = TRUE, n_run = 20)
 toc()
 write_csv(test, "output_test/test_0_0.csv")
 
 tic()
-test <- run_oranzees(t_max = 6000, alpha_e = 0, alpha_g = 0.5, init_world = 1, n_run = 20)
+test <- run_oranzees(t_max = 6000, alpha_e = 0, alpha_g = 0.5, init_world = TRUE, n_run = 20)
 toc()
 write_csv(test, "output_test/test_0_05.csv")
 
 tic()
-test <- run_oranzees(t_max = 6000, alpha_e = 0, alpha_g = 1, init_world = 1, n_run = 20)
+test <- run_oranzees(t_max = 6000, alpha_e = 0, alpha_g = 1, init_world = TRUE, n_run = 20)
 toc()
 write_csv(test, "output_test/test_0_1.csv")
 
 tic()
-test <- run_oranzees(t_max = 6000, alpha_e = 0.5, alpha_g = 0, init_world = 1, n_run = 20)
+test <- run_oranzees(t_max = 6000, alpha_e = 0.5, alpha_g = 0, init_world = TRUE, n_run = 20)
 toc()
 write_csv(test, "output_test/test_05_0.csv")
 
 tic()
-test <- run_oranzees(t_max = 6000, alpha_e = 0.5, alpha_g = 0.5, init_world = 1, n_run = 20)
+test <- run_oranzees(t_max = 6000, alpha_e = 0.5, alpha_g = 0.5, init_world = TRUE, n_run = 20)
 toc()
 write_csv(test, "output_test/test_05_05.csv")
 
 tic()
-test <- run_oranzees(t_max = 6000, alpha_e = 0.5, alpha_g = 1, init_world = 1, n_run = 20)
+test <- run_oranzees(t_max = 6000, alpha_e = 0.5, alpha_g = 1, init_world = TRUE, n_run = 20)
 toc()
 write_csv(test, "output_test/test_05_1.csv")
 
 tic()
-test <- run_oranzees(t_max = 6000, alpha_e = 1, alpha_g = 0, init_world = 1, n_run = 20)
+test <- run_oranzees(t_max = 6000, alpha_e = 1, alpha_g = 0, init_world = TRUE, n_run = 20)
 toc()
 write_csv(test, "output_test/test_1_0.csv")
 
 tic()
-test <- run_oranzees(t_max = 6000, alpha_e = 1, alpha_g = 0.5, init_world = 1, n_run = 20)
+test <- run_oranzees(t_max = 6000, alpha_e = 1, alpha_g = 0.5, init_world = TRUE, n_run = 20)
 toc()
 write_csv(test, "output_test/test_1_05.csv")
 
 tic()
-test <- run_oranzees(t_max = 6000, alpha_e = 1, alpha_g = 1, init_world = 1, n_run = 20)
+test <- run_oranzees(t_max = 6000, alpha_e = 1, alpha_g = 1, init_world = TRUE, n_run = 20)
 toc()
 write_csv(test, "output_test/test_1_1.csv")
 

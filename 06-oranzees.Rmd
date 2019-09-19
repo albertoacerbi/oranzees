@@ -9,484 +9,86 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This R markdown file documents the development of the Oranzees model (it continues from [05-oranzees.html](05-oranzees.html)). The code-only version to run the model is in the file [main.R](main.R) in the same repository.
+This R markdown file documents the development of the Oranzees model (it continues from [05-oranzees.html](56-oranzees.html)). The code-only version to run the model is in the file [main.R](main.R) in the same repository.
 
-### Whiten et al. codes for behaviours
+### Consolidating main.R
 
-In [04-oranzees.html](04-oranzees.html), we tested the model using a provisional definition for the codes of Whiten et al., 1999 (‘customary’, ‘habitual’, ‘present’, or ‘absent’). We now elaborate on these codes, in order to have a closer match with the original paper. In the Whiten et al. paper there are not clear quantitative definitions, but we can test the codes as follow:
+At this point, we have enough material to begin to run some extensive tests of the simulations. Before starting, however, it is useful to consolidate the code present in [main.R](main.R). We will reuse the functions that we have already written, with few small differences, i.e. slight improvments in the implementation (e.g. we wrote all the plotting routines as functions, etc.), or change of names
 
-* *customary* is a behaviour observed in over 50% of individuals in at least one age class.
+We can call all the functions with a direct call to [main.R](main.R):
 
-* *habitual* is a behaviour observed in at least two individuals over all the population (CT suggest 'observed more than once', but we do not have actual performance of the behaviours in the model).
+```{r message=FALSE}
+source('main.R')
+```
 
-* *present* is a behaviour observed in at least one individual over all the population.
+Here a quick description of the **MAIN FUNCTIONS** and their associated **PLOTTING FUNCTIONS** in [main.R](main.R) (**COMMON FUNCTIONS** have been described at lenght in the previous documents):
 
-* *absent* is a behviour never observed.
+#### `test_oranzees_1()`
 
-* *ecological explanations* is a behaviour that is absent because of local ecological features.
+`test_oranzees_1()` runs the simulation only on one population, and produces a richer output, consisting in the frequencies of all behaviours at each time step when `n_run=1`, and in the final frequencie of all behaviours when `n_run>1`. We can test that everything works by running and plotting the first case (single run, using `plot_one_run()`):
 
-Notice the last category in Whiten et al., 1999 (*unknown*, i.e. "the behaviour has not been recorded, but this may be due to inadequacy of relevant observational opportunities") does not apply in our case.
+```{r message=FALSE, warning=FALSE}
+my_test <- test_oranzees_1(t_max = 6000, alpha_g = 0.1, alpha_e = 0.9, init_world = TRUE, n_run = 1)
+plot_one_run(my_test)
+```
 
-To use these codes with our simulations we need to modify again the function `mockup_oranzees()`, as we need a richer output. We not only need the number of behaviours, but we need to know which individual was performing them (so to have its age), as well as the values of $p_e$ (ecological availability) for the food behaviours, so to determine if an *ecological explanation* applies. In fact, the best way of proceeding is to write a further function so that it gives directly as output the codes we need. Let's call the new function `mockup_oranzees_codes()`:
+And in the second case (multiple runs, `using plot_multiple_runs()`):
+
+```{r message=FALSE, warning=FALSE}
+my_test <- test_oranzees_1(t_max = 6000, alpha_g = 0.1, alpha_e = 0.9, init_world = TRUE, n_run = 5)
+plot_multiple_runs(my_test)
+```
+
+#### `test_oranzees_2()`
+
+`test_oranzees_2()` also runs the simulation on one population, but gives as output the behavioural codes as described in Whiten et al., 1999. Here an example, using the associated plotting function `plot_codes_distribution()`:
+
+```{r message=FALSE, warning=FALSE}
+my_test <- test_oranzees_2(t_max = 6000, alpha_g = 0.1, alpha_e = 0.9, init_world = TRUE, n_run = 5)
+plot_codes_distribution(my_test)
+```
+
+#### `run_oranzees()`
+
+Finally, `run_oranzees()` runs the simulation on the six oranzees populations, and produces as output the code for each behaviour in each population. While it works with several run, the only possible visualisation, for the time being, concerns a single run, as illustrated below. Notice the associated plotting function `plot_oranzees()` has a further parameter `social`. When `social=TRUE`, social behaviours are visualised, when `social=FALSE`, it visualises food-related behaviours.
+
+```{r message=FALSE, warning=FALSE}
+my_test <- run_oranzees(t_max = 6000, alpha_g = 0.1, alpha_e = 0.9, init_world = TRUE, n_run = 1)
+```
+
+```{r message = FALSE, fig.height = 14}
+plot_oranzees(my_test, social = TRUE)
+```
+
+```{r message = FALSE, fig.height = 14}
+plot_oranzees(my_test, social = FALSE)
+```
+
+### Estimating oranzees population sizes
+
+So far, we tested `run_oranzees()` with arbitrary values for population sizes (`N <- c(50, 100, 150, 50, 100, 150)`). Before starting the actual complete tests, we need to estabilish population sizes that are consistent with the data in Whiten et al., 1999.
+
+According to the paper, the six groups used in Figure 1 are Bossou, Kibale, Budongo, Taï, Gombe, and Mahale (M-group). No information on population sizes are, however, reported there. 
+
+Lind and Lindenfors, 2010, tested the correlation between the number of cultural traits in the seven communities of Whiten et al. (including also Mahale K-group, in which we are not interested) and their population size. They report that data from community sizes were from Wrangham, 2000. We use the same data (from table 21.1 in Wrangham, 2000), rounding them to the highest integer:
+
+Group     |  Population size  
+--------- |----
+Bossou    | 20
+Kibale    | 42
+Budongo   | 49
+Taï       | 76  
+Gombe     | 50
+Mahale(M) | 95
+
+According to the order in which our oranzees community are listed in the code ("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub"), this translated in:
 
 ```{r}
-mockup_oranzees_codes <- function(t_max, alpha_g, alpha_e, sd_peering, init_world, n_run) {
-  
-  N <- 100
-  
-  output <- matrix(nrow = n_run, ncol = 5)
-
-  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
-  test_world <- oranzees_world %>%
-    filter(population == "Uossob")
-  
-  for(run in 1:n_run){
-    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
-    if (init_world) {
-      oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
-      test_world <- oranzees_world %>%
-        filter(population == "Uossob")
-    }
-    # start simulation here:
-    for (t in 1:t_max) {
-      pop <- update_demography(pop)
-      pop <- update_social_behaviours(pop, test_world, sd_peering)
-      pop <- update_food_behaviours(pop, test_world, sd_peering)
-    }
-    # calculate codes values:
-    
-    # age classes:
-    adults = pop[,39]/12 > 16
-    subadults = pop[,39]/12 > 8 & pop[,39]/12 <= 16
-    juveniles = pop[,39]/12 <= 8
-    
-    # customary:
-    customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
-    customary_subadults <- colSums(pop[subadults,1:38])>(sum(subadults)/2)
-    customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
-    customary <- customary_adults | customary_subadults | customary_juveniles
-    output[run, 1] <- sum(customary)
-    
-    # habitual:
-    habitual <- colSums(pop[,1:38])>=2 & !customary
-    output[run, 2] <- sum(habitual)
-    
-    # present:
-    present <- colSums(pop[,1:38])==1
-    output[run, 3] <- sum(present)
-    
-    # absent or ecological explanation:
-    all_absent <- !(customary | habitual | present)
-    absent <- all_absent & (test_world$p_e > 0 | test_world$type == "social") 
-    output[run, 4] <- sum(absent)
-    ecological_explanation <- all_absent & (test_world$p_e == 0 & test_world$type == "food-related" ) 
-    output[run, 5] <- sum(ecological_explanation)
-  }
-  output
-}
+N <- c(20, 76, 50, 95, 42, 49)
 ```
 
-The novel part follows the comment `# calculate codes values`. First, we divide the population in three age classes (*adults* are more than 16 year old, *subadults* between 8 and 16, and *juveniles* less than 8 year old). We can then calcualte the actual codes.
-
-Let's run 10 simulations in a "standard" situation, with a somehwat stronger effect of ecological availability with respect to genetic propensity ($\alpha_g=0.7$ and $\alpha_e=0.9$) and with `sd_peering = 1`, that is, the customary 'precision' of social influence. We first need to call all the functions we already wrote, except the original `mockup_oranzees()` and the two functions for plotting, that used the original output (code not shown). 
-
-```{r echo=FALSE, message=FALSE}
-library(tidyverse)
-library(scales)
-library(tictoc)
-library(reshape2)
-
-set_oranzees_world <- function(alpha_g, alpha_e) {
-  list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
-  output <- tibble(
-    population = rep(list_pop, each = 38),
-    behaviour = as.factor(rep(1:38, 6)),
-    type = rep(c(rep("social", 16), rep("food-related", 22)), 6),
-    category = rep(c(
-      rep("play", 4), rep("display", 4), rep("groom", 4), rep("courthsip", 4),
-      "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C", "D", "D", "D", "E", "E", "F", "F", "G", "H", "I", "J"
-    ), 6),
-    nutrient = rep(c(rep(NA, 16), "Y", "Y", "Y", "Y", "Z", "Z", "Z", "Z", "Y", "Y", "Y", "Z", "Z", "Z", "Y", "Y", "Z", "Z", "Y", "Z", "Y", "Z"), 6),
-    p_g = rep(NA, 38 * 6),
-    p_e = rep(NA, 38 * 6)
-  )
-  
-  env_or_x <- c(220, 230, 700, 705, 710, 750)
-  env_or_y <- c(660, 610, 450, 430, 510, 550)
-  
-  # genetic predispositions:
-  x_g <- sample(1:1000, 38)
-  y_g <- sample(1:1000, 38)
-  
-  # ecological availability:
-  x_e <- sample(1:1000, 38)
-  y_e <- sample(1:1000, 38)
-  
-  for(behav in 1:38){
-    output[output$behaviour == behav,]$p_g <- 1 - rescale(sqrt((x_g[behav] - env_or_x)^2 + (y_g[behav] - env_or_y)^2), to = c(1 - alpha_g, alpha_g))
-    
-    if(behav > 16){
-      output[output$behaviour == behav,]$p_e <- 1 - rescale(sqrt((x_e[behav] - env_or_x)^2 + (y_e[behav] - env_or_y)^2), to = c(1 - alpha_e, alpha_e))
-    }
-  }
-  # return the tibble:
-  output
-}
-
-update_demography <- function(pop) {
-  pop[, 39] <- pop[, 39] + 1
-  pop[pop[, 39] >= 720, ] <- 0
-  old <- which(pop[, 39] > 300)
-  dead <- sample(c(TRUE, FALSE), length(old), prob = c(.01, .99), replace = TRUE)
-  pop[old[dead], ] <- 0
-  pop
-}
-
-update_social_behaviours <- function(pop, test_world, sd_peering) {
-  N <- dim(pop)[1]
-  state <- ((rowSums(pop[, 1:4]) >= 1) + (rowSums(pop[, 5:8]) >= 1) + (rowSums(pop[, 9:12]) >= 1) + (rowSums(pop[, 13:16]) >= 1)) / 4
-  p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
-  p_peering <- rnorm(16, mean = colSums(pop[, 1:16]), sd = sd_peering)
-  p_peering[p_peering < 0] <- 0
-  innovation_i <- sample(1:16, N, prob = p_peering, replace = TRUE)
-  p_innovate <- runif(N) < test_world$p_g[innovation_i]  * p_state
-  for (i in (1:N)[p_innovate]) {
-    pop[i, innovation_i[i]] <- 1
-  }
-  pop
-}  
-
-update_food_behaviours <- function(pop, test_world, sd_peering) {
-  N <- dim(pop)[1]
-  nut_y <- (rowSums(pop[, 17:20])>=1) + (rowSums(pop[, 25:27])>=1) + (rowSums(pop[, 31:32])>=1) + pop[, 35] + pop[, 37]
-  nut_z <- (rowSums(pop[, 21:24])>=1) + (rowSums(pop[, 28:30])>=1) + (rowSums(pop[, 33:34])>=1) + pop[, 36] + pop[, 38]
-  state <- (nut_y + nut_z - abs(nut_y - nut_z)) / 10 
-  p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
-  p_peering <- rnorm(22, mean = colSums(pop[, 17:38]), sd = sd_peering)
-  p_peering[p_peering < 0] <- 0
-  innovation_i <- sample(17:38, N, prob = p_peering, replace = TRUE)
-  p_innovate <- runif(N) < test_world$p_g[innovation_i] * test_world$p_e[innovation_i] * p_state
-  for (i in (1:N)[p_innovate]) {
-    pop[i, innovation_i[i]] <- 1
-  }
-  pop
-}
-```
-
-We then call the new `mockup_oranzees_codes()`:
-
-```{r}
-my_test <- mockup_oranzees_codes(t_max = 6000, alpha_g = 0.7, alpha_e = 0.9, sd_peering = 1, init_world = TRUE, n_run = 10)
-```
-
-Let's plot the results:
-
-```{r}
-tibble(code = as_factor(rep(c("customary", "habitual", "present", "absent", "ecological"), each=10)),
-       behaviours = as.vector(my_test)) %>%
-  ggplot(aes( x = code, y = behaviours, fill = code)) +
-    geom_boxplot() +
-    geom_jitter(width=0.05, alpha=0.5) +
-    theme_bw()
-```
-
-Not surpising, the values for the code *ecological availability* are all 0s. This is due to the fact that with $\alpha_e=0.9$, we rescale the output between 0.1 and 0.9. To have behaviours that are *impossible* to be innovated, we need to set $\alpha_e=1$. We can try with this new value:
-
-```{r}
-my_test <- mockup_oranzees_codes(t_max = 6000, alpha_g = 0.7, alpha_e = 1, sd_peering = 1, init_world = TRUE, n_run = 10)
-
-tibble(code = as_factor(rep(c("customary", "habitual", "present", "absent", "ecological"), each=10)),
-       behaviours = as.vector(my_test)) %>%
-  ggplot(aes( x = code, y = behaviours, fill = code)) +
-    geom_boxplot() +
-    geom_jitter(width=0.05, alpha=0.5) +
-    theme_bw()
-```
-
-As expected. As a further test, we can also relax ($\alpha_g=0.5$), or increase the strength ($\alpha_g=1$), of genetic constraints. Here te two simulations, for $\alpha_g=0.5$:
-
-```{r}
-my_test <- mockup_oranzees_codes(t_max = 6000, alpha_g = 0.5, alpha_e = 1, sd_peering = 1, init_world = TRUE, n_run = 10)
-
-tibble(code = as_factor(rep(c("customary", "habitual", "present", "absent", "ecological"), each=10)),
-       behaviours = as.vector(my_test)) %>%
-  ggplot(aes( x = code, y = behaviours, fill = code)) +
-    geom_boxplot() +
-    geom_jitter(width=0.05, alpha=0.5) +
-    theme_bw()
-```
-
-And for $\alpha_g=1$:
-
-```{r}
-my_test <- mockup_oranzees_codes(t_max = 6000, alpha_g = 1, alpha_e = 1, sd_peering = 1, init_world = TRUE, n_run = 10)
-
-tibble(code = as_factor(rep(c("customary", "habitual", "present", "absent", "ecological"), each=10)),
-       behaviours = as.vector(my_test)) %>%
-  ggplot(aes( x = code, y = behaviours, fill = code)) +
-    geom_boxplot() +
-    geom_jitter(width=0.05, alpha=0.5) +
-    theme_bw()
-```
-
-### Optimising the behaviour
-
-In the example condition with strong ecological constraints ($\alpha_e=0.1$) and relatively low genetic ones ($\alpha_g=0.7$), there are around 15-20 customary behaviours, ~5 habitual, 0-5 present, ~5 absent and ~10 absent due to local ecological features. With a cursory comparision with the distributions in Whiten et al., 1999, it appears that in the model we have *more* customary behaviours, and *less* absent behaviours. This may be due to the fact that in our model there is not the possibility of discarding behaviours once they have been innovated. A more realistic implementation should allows for this. 
-
-We can write, to this end, a new function: `use_behaviour()`. The idea is that, at each time step, oranzees may choose which behaviours to perform, among the ones they have in their repertorire. Behaviours that are not performed are excluded from their repertorire (but they can be re-innovated and included again). To decide which behaviour to perform (and, consequently, which to discard), oranzees optimise their internal state, as done to determine whether they innovate or not. If more than one behaviour is fulfilling a specific goal, one behaviour in the 'goal-group', chosen at random, can be discarded. Another parameter of the model, that we call $optimisation$, determine the probability that each individual will optimise its reperotire or not, at each time step. With $optimisation=1$ all individuals go, each time, through the process, whereas with $optimisation=0$ none does.  (I WILL NEED TO OPTIMISE THE CODE OF THIS FUNCTION IN CASE WE WILL USE IT.)    
-
-```{r}
-use_behaviour <- function(pop, optimisation){
-  N <- dim(pop)[1]
-  optimise <- sample( c(TRUE, FALSE), N , prob = c(optimisation, 1-optimisation), replace = TRUE)
-  for( i in (1:N)[optimise]){
-    if(sum(pop[i, 1 : 4]) > 1){
-      pop[i, sample(which(pop[i, 1 : 4] == 1), 1)] = 0
-    }
-    if(sum(pop[i, 5 : 8]) > 1){
-      pop[i, sample(which(pop[i, 5 : 8] == 1), 1)+4] = 0
-    }
-    if(sum(pop[i, 9 : 12]) > 1){
-      pop[i, sample(which(pop[i, 9 : 12] == 1), 1)+8] = 0
-    }
-    if(sum(pop[i, 13 : 16]) > 1){
-      pop[i, sample(which(pop[i, 13 : 16] == 1), 1)+12] = 0
-    }
-    if(sum(pop[i, 17 : 20]) > 1){
-      pop[i, sample(which(pop[i, 17 : 20] == 1), 1)+16] = 0
-    }
-    if(sum(pop[i, 21 : 24]) > 1){
-      pop[i, sample(which(pop[i, 21 : 24] == 1), 1)+20] = 0
-    }
-    if(sum(pop[i, 25 : 27]) > 1){
-      pop[i, sample(which(pop[i, 25 : 27] == 1), 1)+24] = 0
-    }
-    if(sum(pop[i, 28 : 30]) > 1){
-      pop[i, sample(which(pop[i, 28 : 30] == 1), 1)+27] = 0
-    }
-    if(sum(pop[i, 31 : 32]) > 1){
-      pop[i, sample(which(pop[i, 31 : 32] == 1), 1)+30] = 0
-    }
-    if(sum(pop[i, 33 : 34]) > 1){
-      pop[i, sample(which(pop[i, 33 : 34] == 1), 1)+32] = 0
-    }
-  }
-  pop
-}
-
-```
-
-We now need to rewrite `mockup_oranzees_codes()` to add the function above, and with a parameter for $optimisation$ in the call.
-
-```{r}
-mockup_oranzees_codes <- function(t_max, optimisation, alpha_g, alpha_e, sd_peering, init_world, n_run) {
-  
-  N <- 100
-  
-  output <- matrix(nrow = n_run, ncol = 5)
-  
-  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
-  test_world <- oranzees_world %>%
-    filter(population == "Uossob")
-  
-  for(run in 1:n_run){
-    pop <- matrix(c(rep(0, 38 * N), sample(1:300, N, replace = TRUE)), nrow = N, byrow = FALSE)
-    if (init_world) {
-      oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
-      test_world <- oranzees_world %>%
-        filter(population == "Uossob")
-    }
-    # start simulation here:
-    for (t in 1:t_max) {
-      pop <- update_demography(pop)
-      pop <- update_social_behaviours(pop, test_world, sd_peering)
-      pop <- update_food_behaviours(pop, test_world, sd_peering)
-      if(optimisation)
-        pop <- use_behaviour(pop, optimisation)
-    }
-    # calculate codes values:
-    
-    # age classes:
-    adults = pop[,39]/12 > 16
-    subadults = pop[,39]/12 > 8 & pop[,39]/12 <= 16
-    juveniles = pop[,39]/12 <= 8
-    
-    # customary:
-    customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
-    customary_subadults <- colSums(pop[subadults,1:38])>(sum(subadults)/2)
-    customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
-    customary <- customary_adults | customary_subadults | customary_juveniles
-    output[run, 1] <- sum(customary)
-    
-    # habitual:
-    habitual <- colSums(pop[,1:38])>=2 & !customary
-    output[run, 2] <- sum(habitual)
-    
-    # present:
-    present <- colSums(pop[,1:38])==1
-    output[run, 3] <- sum(present)
-    
-    # absent or ecological explanation:
-    all_absent <- !(customary | habitual | present)
-    absent <- all_absent & (test_world$p_e > 0 | test_world$type == "social") 
-    output[run, 4] <- sum(absent)
-    ecological_explanation <- all_absent & (test_world$p_e == 0 & test_world$type == "food-related" ) 
-    output[run, 5] <- sum(ecological_explanation)
-  }
-  output
-}
-```
-
-Let's see now how the behaviours are distributed in this new version
-
-```{r}
-my_test <- mockup_oranzees_codes(t_max = 6000, optimisation = 1, alpha_g = 0.7, alpha_e = 1, sd_peering = 1, init_world = TRUE, n_run = 10)
-
-tibble(code = as_factor(rep(c("customary", "habitual", "present", "absent", "ecological"), each=10)),
-       behaviours = as.vector(my_test)) %>%
-  ggplot(aes( x = code, y = behaviours, fill = code)) +
-    geom_boxplot() +
-    geom_jitter(width=0.05, alpha=0.5) +
-    theme_bw()
-```
-
-And, relaxing now the genetic constraints ($\alpha_g=0.5$):
-
-```{r}
-my_test <- mockup_oranzees_codes(t_max = 6000, optimisation = 1, alpha_g = 0.5, alpha_e = 1, sd_peering = 1, init_world = TRUE, n_run = 10)
-
-tibble(code = as_factor(rep(c("customary", "habitual", "present", "absent", "ecological"), each=10)),
-       behaviours = as.vector(my_test)) %>%
-  ggplot(aes( x = code, y = behaviours, fill = code)) +
-    geom_boxplot() +
-    geom_jitter(width=0.05, alpha=0.5) +
-    theme_bw()
-```
-
-### The six populations
-
-Up until now, we worked on a sinlge population to test the model. The ultimate goal of the model is, however, to compare the "cultures" in the six populations of oranzees (remember the function `set_oranzees_world()`). 
-
-We should now write a new function `run_oranzees()` that iterates the simulation on the six populations and outputs the results we are interested in. For now, we use the various implementation choices made above, and we set six custom population sizes.
-
-```{r}
-run_oranzees <- function(t_max, optimisation, alpha_g, alpha_e, sd_peering, init_world, n_run) {
-  
-  N <- c(50, 100, 150, 50, 100, 150)
-  
-  oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
-  
-  output <- tibble(run = rep(1:n_run, each= 38 * 6),
-                    population = rep(oranzees_world$population, n_run),
-                   behaviour = rep(1:38, 6 * n_run),
-                    code = rep("NA", 38 * 6 * n_run))
-  
-  for(run in 1:n_run){
-    
-    if (init_world) {
-      oranzees_world <- set_oranzees_world(alpha_g, alpha_e)
-    }
-    
-    for(current_population in 1:6){ 
-      pop <- matrix(c(rep(0, 38 * N[current_population]), 
-                      sample(1:300, N[current_population], replace = TRUE)), 
-                    nrow = N[current_population], byrow = FALSE)
-      current_world <- oranzees_world %>%
-        filter(population == unique(oranzees_world$population)[current_population])
-      # start simulation here:
-      for (t in 1:t_max) {
-        pop <- update_demography(pop)
-        pop <- update_social_behaviours(pop, current_world, sd_peering)
-        pop <- update_food_behaviours(pop, current_world, sd_peering)
-        if(optimisation)
-          pop <- use_behaviour(pop, optimisation)
-      }
-      
-      # calculate output:
-    
-      # age classes:
-      adults = pop[,39]/12 > 16
-      subadults = pop[,39]/12 > 8 & pop[,39]/12 <= 16
-      juveniles = pop[,39]/12 <= 8
-    
-      # customary:
-      customary_adults <- colSums(pop[adults,1:38])>(sum(adults)/2)
-      customary_subadults <- colSums(pop[subadults,1:38])>(sum(subadults)/2)
-      customary_juveniles <- colSums(pop[juveniles,1:38])>(sum(juveniles)/2)
-      customary <- customary_adults | customary_subadults | customary_juveniles
-      output[output$population==current_world$population & output$run == run & customary==TRUE,4] <- "customary"
-    
-      # habitual:
-      habitual <- colSums(pop[,1:38])>=2 & !customary
-      output[output$population==current_world$population & output$run == run & habitual==TRUE,4] <- "habitual"
-      
-      # present:
-      present <- colSums(pop[,1:38])==1
-      output[output$population==current_world$population & output$run == run & present==TRUE,4] <- "present"
-      
-      # absent or ecological explanation:
-      all_absent <- !(customary | habitual | present)
-      absent <- all_absent & (current_world$type == "social" | current_world$p_e > 0)
-      output[output$population==current_world$population & output$run == run & absent==TRUE,4] <- "absent"
-      ecological_explanation <- all_absent & (current_world$type == "food-related" & current_world$p_e == 0)
-      output[output$population==current_world$population & output$run == run & ecological_explanation==TRUE,4] <- "ecological explanation"
-    }
-  }
-  output
-}
-```
-
-The function is similar to the previous `mockup_oranzees_codes()` with few key differences:
-
-* we set *N* for the six populations, with: `N <- c(50, 100, 150, 50, 100, 150)` 
-
-* the `output` is different (we will explore it later)
-
-* the simulation is run six times, one for each population.
-
-We can now run it, with $\alpha_e=1$ (so we should have some behaviours that are absent because of ecology), and with the usual, intermediate, $\alpha_g=0.7$:
-
-```{r}
-my_test <- run_oranzees(t_max = 6000, optimisation = 1, alpha_g = 0.7, alpha_e = 1, sd_peering = 1, init_world = TRUE, n_run = 1)
-```
-
-Let's have a look at the output:
-
-```{r}
-my_test
-```
-
-Each line represents a behaviour, in each population, in each run. Now we have only one run, and we can visualise the results. We divide the behaviour in "social" and "food-related" in two different plots so they are easier to read. Notice the first two lines of the code: they are needed to position the populations in the "right" order (otherwise `ggplot` would position them in alphabetical order). Let's plot the social behaviours first:
-
-```{r message = FALSE, fig.height = 7}
-library(viridis)
-my_test$population <- as.factor(my_test$population)
-levels(my_test$population) <- unique(my_test$population) 
-# social behaviour
-my_test %>%
-  filter(behaviour <= 16) %>%
-  ggplot( aes(x = population, y = behaviour, colour = code)) +
-  geom_point(size = 10) +
-  scale_color_viridis(discrete = TRUE, option = "D") +
-  ggtitle("Social behaviours") +
-  theme_bw()
-```
-
-And the food-related behaviours:
-
-```{r, fig.height = 9}
-my_test %>%
-  filter(behaviour > 16) %>%
-  ggplot( aes(x = population, y = behaviour, colour = code)) +
-  geom_point(size = 10) +
-  scale_color_viridis(discrete = TRUE, option = "D") +
-  ggtitle("Food-related behaviours") +
-  theme_bw()
-```
+which we can now include in the function `run_oranzees()` in [main.R](main.R).
 
 ***
-
-The documentation continues in [07-oranzees.html](07-oranzees.html) 
-
 
 

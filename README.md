@@ -1,10 +1,10 @@
 # Oranzees model
 
-This repository contains the code and it documents the development of the the oranzees model.
+This repository contains the code and documents the development of the the oranzees model.
 
 The material is organised as follows:
 
-* [01-oranzees.Rmd](01-oranzees.Rmd) to [07-oranzees.Rmd](07-oranzees.Rmd): R Markdown files documenting the model implementation details, mainly for "internal" use.
+* [01-oranzees.Rmd](01-oranzees.Rmd) to [06-oranzees.Rmd](06-oranzees.Rmd): R Markdown files documenting the model implementation details, mainly for "internal" use
 
 * [model-description.Rmd](model-description.Rmd): a shorter description of the model (see also the output [model-description.pdf](model-description.pdf))
 
@@ -16,7 +16,7 @@ The material is organised as follows:
 
 Plus three folders:
 
-* [material/](material): folder with media used in the Rmd files.
+* [material/](material): folder with media
 
 * [output/](output): folder with outputs from simulations used in the process of development
 
