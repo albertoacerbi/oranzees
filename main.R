@@ -66,13 +66,16 @@ update_demography <- function(pop) {
   pop
 }
 
-update_social_behaviours <- function(pop, test_world) {
+update_social_behaviours <- function(pop, test_world, S) {
   N <- dim(pop)[1]
   state <- ((rowSums(pop[, 1:8]) >= 1) + (rowSums(pop[, 9:16]) >= 1) + (rowSums(pop[, 17:24]) >= 1) + (rowSums(pop[, 25:32]) >= 1)) / 4
   p_state <- runif(N) < rnorm(N, mean = 1 - state, sd = 0.05)
   p_peering <- rnorm(32, mean = colSums(pop[, 1:32]), sd = 1)
   p_peering[p_peering < 0] <- 0
   innovation_i <- sample(1:32, N, prob = p_peering, replace = TRUE)
+  innovation_random <- sample(1:32, N, replace = TRUE)
+  which_is_random <- runif(N) > S
+  innovation_i[which_is_random] <- innovation_random[which_is_random]
   p_innovate <- runif(N) < test_world$p_g[innovation_i]  * p_state
   for (i in (1:N)[p_innovate]) {
     pop[i, innovation_i[i]] <- 1
@@ -80,7 +83,7 @@ update_social_behaviours <- function(pop, test_world) {
   pop
 }  
 
-update_food_behaviours <- function(pop, test_world) {
+update_food_behaviours <- function(pop, test_world, S) {
   N <- dim(pop)[1]
   nut_y <- (rowSums(pop[, 33:40])>=1) + (rowSums(pop[, 49:52])>=1) + (rowSums(pop[, 57:58])>=1) + pop[, 61] + pop[, 64]
   nut_z <- (rowSums(pop[, 41:48])>=1) + (rowSums(pop[, 53:56])>=1) + (rowSums(pop[, 59:60])>=1) + pop[, 62] + pop[, 63]
@@ -89,6 +92,9 @@ update_food_behaviours <- function(pop, test_world) {
   p_peering <- rnorm(32, mean = colSums(pop[, 33:64]), sd = 1)
   p_peering[p_peering < 0] <- 0
   innovation_i <- sample(33:64, N, prob = p_peering, replace = TRUE)
+  innovation_random <- sample(33:64, N, replace = TRUE)
+  which_is_random <- runif(N) > S
+  innovation_i[which_is_random] <- innovation_random[which_is_random]
   p_innovate <- runif(N) < test_world$p_g[innovation_i] * test_world$p_e[innovation_i] * p_state
   for (i in (1:N)[p_innovate]) {
     pop[i, innovation_i[i]] <- 1
@@ -101,7 +107,7 @@ update_food_behaviours <- function(pop, test_world) {
 ###########################
 # `run_oranzees()` runs the simulation on the six oranzees populations, 
 # and produces as output the code for each behaviour in each population
-run_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
+run_oranzees <- function(t_max, alpha_g, alpha_e, S, init_world, n_run) {
   
   N <- c(20, 76, 50, 95, 42, 49)
   
@@ -127,8 +133,8 @@ run_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
       # start simulation here:
       for (t in 1:t_max) {
         pop <- update_demography(pop)
-        pop <- update_social_behaviours(pop, current_world)
-        pop <- update_food_behaviours(pop, current_world)
+        pop <- update_social_behaviours(pop, current_world, S)
+        pop <- update_food_behaviours(pop, current_world, S)
       }
       
       # calculate output:
@@ -177,7 +183,7 @@ run_oranzees <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
 # `test_oranzees_1()` runs the simulation only on one population, and produces a richer output, 
 # consisting in the frequencies of all behaviours at each time step when `n_run=1`, 
 # and in the final frequencie of all behaviours when `n_run>1`.
-test_oranzees_1 <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
+test_oranzees_1 <- function(t_max, alpha_g, alpha_e, S, init_world, n_run) {
 
   N <- 100
 
@@ -205,8 +211,8 @@ test_oranzees_1 <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
         output[t,] <- colSums(pop[, 1:64])
       }
       pop <- update_demography(pop)
-      pop <- update_social_behaviours(pop, test_world)
-      pop <- update_food_behaviours(pop, test_world)
+      pop <- update_social_behaviours(pop, test_world, S)
+      pop <- update_food_behaviours(pop, test_world, S)
     }
     if( n_run > 1){
       output[run, ] <- colSums(pop[, 1:64])
@@ -217,7 +223,7 @@ test_oranzees_1 <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
 
 # `test_oranzees_2()` also runs the simulation on one population, but gives as output 
 # the behavioural codes as described in Whiten et al., 1999
-test_oranzees_2 <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
+test_oranzees_2 <- function(t_max, alpha_g, alpha_e, S, init_world, n_run) {
 
   N <- 100
 
@@ -237,8 +243,8 @@ test_oranzees_2 <- function(t_max, alpha_g, alpha_e, init_world, n_run) {
     # start simulation here:
     for (t in 1:t_max) {
       pop <- update_demography(pop)
-      pop <- update_social_behaviours(pop, test_world)
-      pop <- update_food_behaviours(pop, test_world)
+      pop <- update_social_behaviours(pop, test_world, S)
+      pop <- update_food_behaviours(pop, test_world, S)
     }
     # calculate codes values:
 

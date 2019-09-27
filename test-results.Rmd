@@ -206,4 +206,47 @@ ggplot(data=test_many) +
   theme_bw()
 ```
 
+### The importance of "socially-mediated innovation"
+
+Many combinations of values for $\alpha_g$ and $\alpha_e$ seem to produce results that are similar to what found in Whiten et al., 1999, including "realistic" combinations, with low values of $\alpha_g$ and high values of $\alpha_e$ (i.e. genetic differences are not particularly important, whereas ecological ones are). In the manuscript, we will present in details an analysis of the $\alpha_g$ \ $\alpha_e$ parameter space in this respect.
+
+Another intersting question concerns the importance of "socially-mediated innovation": how important it is? In other words, do "cultural" traits emerge because of it, or because of the other constraints, such as ecology, physiology, genetic, etc.?  
+
+To test this, we need to add a last parameter to our model - let's call it $S$ - which gives the probability that each innovation is socially-mediated (i.e. its probability is a function of the frequency of the behaviour in the population), or random. In order to this, we need to add three lines to the functions updating the behaviour. Here is what we do in `update_social_behaviours()`:
+
+```{r eval=FALSE}
+  innovation_random <- sample(1:32, N, replace = TRUE)
+  which_is_random <- runif(N) > S
+  innovation_i[which_is_random] <- innovation_random[which_is_random]
+```
+
+The same must be done for `update_social_behaviours()`, and we need to add the parameter $S$ in the pertinent function calls. We can now re-source [main.R](main.R). 
+
+```{r message=FALSE}
+source("main.R")
+```
+
+And call the new function. We can first test $S=1$ (so this should produce the same results we already have) with the "relasitic" value of $\alpha_g$ and $\alpha_e$ we know produce a result in line with Whiten et al., 1999.
+
+```{r}
+test <- run_oranzees(t_max = 6000, alpha_e = 0.8, alpha_g = 0.2, S = 1, init_world = TRUE, n_run = 5)
+out <- analyse_patterns(test)
+out$n[16:20]
+```
+
+Let's see what happens with $S=0.5$ and $S=0$:
+
+```{r}
+test <- run_oranzees(t_max = 6000, alpha_e = 0.8, alpha_g = 0.2, S = 0.5, init_world = TRUE, n_run = 5)
+out <- analyse_patterns(test)
+out$n[16:20]
+
+test <- run_oranzees(t_max = 6000, alpha_e = 0.8, alpha_g = 0.2, S = 0, init_world = TRUE, n_run = 5)
+out <- analyse_patterns(test)
+out$n[16:20]
+```
+
+As expected, the number of cultural behaviours decreased (apparently of a similar amount, with both values of $S$). We can decide whether we want to study the effect of this parameters in the final analysis.
+
+***
 
