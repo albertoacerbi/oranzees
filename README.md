@@ -14,6 +14,8 @@ The material is organised as follows:
 
 * [test-results.Rmd](test-results.Rmd): results of test after first stage of development
 
+* [sims-for-ms.Rms](sims-for-ms.Rmd): simulations (and visualisations) used for the manuscript
+
 Plus three folders:
 
 * [material/](material): folder with media

@@ -119,3 +119,26 @@ for(e in alpha_e_test){
 }
 write_csv(output, "output_test/test_many.csv")
 
+
+# TWO POSSIBLE VISUALISATIONS:
+# MATRIX:
+test_many <- read_csv("output_test/test_many.csv") %>%
+  group_by(alpha_g, alpha_e) %>%
+  summarise( cultural = mean(n))
+ggplot(data=test_many) +
+    geom_raster(aes(x = alpha_g, y = alpha_e, fill = cultural)) +
+    scale_fill_gradientn(colors=c("red","white","blue")) +
+    geom_text(aes(x = alpha_g, y = alpha_e, label = cultural))+
+    theme_bw()
+
+# HISTOGRAMS:
+test_many <- read_csv("output_test/test_many.csv") %>%
+  group_by(alpha_g, alpha_e) 
+ggplot(data=test_many) + 
+    geom_histogram(aes(x=n)) +
+    facet_wrap(alpha_e ~ alpha_g) +
+    theme_bw()
+
+tic()
+test <- run_oranzees(t_max = 6000, alpha_e = 1, alpha_g = 1, S = 1, init_world = TRUE, n_run = 1)
+toc()
