@@ -9,7 +9,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-All codes are in [test.R](test.R)
+All codes are also in [test.R](test.R). We need to load the usual functions in [main.R](main.R).
 
 ```{r message=FALSE}
 source("main.R")
@@ -37,10 +37,11 @@ whiten <- tibble(pattern = 1:4,
 figure_2 <- analyse_patterns(read_csv("sims_for_ms/data/figure_2.csv"))
 ggplot(data = figure_2, aes(x = pattern, y = n)) +
     geom_boxplot(outlier.shape = NA) +
-    geom_jitter(width=0.05, alpha=0.5) +
+    geom_jitter(width = 0.05, alpha = 0.5) +
     theme_bw() +
     geom_line(data = whiten, colour="red") +
     geom_point(data = whiten, colour="red") +
+    labs(y = "Number of 'cultural' traits") +
     ggsave("sims_for_ms/figures/figure_2.pdf")
 ```
 
@@ -71,7 +72,7 @@ c <- read_csv("sims_for_ms/data/figure_3_c.csv")
 
 figure_3 <- tibble(S = as.factor(c(a$S, b$S, c$S)), n = c(a$n, b$n, c$n), 
        alpha_g = rep(c(0, 0.2, 0.5), each = 110), 
-        alpha_e = rep(c(0.5, 0.8, 1), each=110)) 
+        alpha_e = rep(c(0.5, 0.8, 1), each = 110)) 
 
 figure_3_mean <- figure_3 %>%
   group_by(S, alpha_g, alpha_e) %>%
@@ -80,11 +81,14 @@ figure_3_mean <- figure_3 %>%
 figure_3 <- figure_3 %>%
   full_join(figure_3_mean)
 
-ggplot(data = figure_3, aes(y=n, x=S)) +
-  geom_boxplot(outlier.shape = NA, aes(fill=cultural)) +
+ggplot(data = figure_3, aes(y = n, x = S)) +
+  geom_boxplot(outlier.shape = NA, aes(fill = cultural)) +
   geom_point(pch = 21, position = position_jitterdodge(jitter.width = 0.1), aes(fill=cultural)) +
-  facet_wrap(alpha_e ~ alpha_g, labeller=label_both) +
-  scale_fill_gradientn(colors=c("blue","blue","white","red"), name="Number of\n'cultural' traits") +
+  facet_wrap(alpha_e ~ alpha_g, labeller = label_both) +
+  scale_fill_gradientn(colors = c("blue", "blue", "white","red"), name = "Number of\n'cultural' traits") +
   theme_bw() +
+  labs(x = "S (probability of socially-mediated innovation)", y = "Number of 'cultural' traits") +
   ggsave("sims_for_ms/figures/figure_3.pdf", width = 12)
 ```
+
+
