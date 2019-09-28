@@ -3,9 +3,9 @@ title: "Oranzees model description"
 author: "Alberto Acerbi"
 link-citations: yes
 output:
-  html_document: 
   pdf_document: 
     fig_caption: yes
+  html_document: 
 bibliography: biblio.bib
 ---
 
@@ -101,7 +101,7 @@ The state, for food-related behaviours, depends on the total amount of food *and
 
 ## Innovation
 
-While the probability of innovation depends on $p_\text{state}$ as described above, what behaviour an oranzee will innovate depends both on the frequency of the behaviours already present in the population, and on the ecological availability and genetic propensity associated to the behaviour. Each behaviour has a probability to be innovated drawn from a normal distribution with mean equals to its total instances in the population. (The normal distribution is useful because allows for absent behaviours to be anyway possible to be innovated, with low probability). Only one behaviour per category can be innovated at each time step.  
+While the probability of innovation depends on $p_\text{state}$ as described above, what behaviour an oranzee will innovate depends both on the frequency of the behaviours already present in the population, and on the ecological availability and genetic propensity associated to the behaviour. A further parameter of the model, $S$, controls the probability that each innovation is socially-mediated. When an innovation is socially-mediated, each behaviour has a probability to be innovated drawn from a normal distribution with mean equals to its total instances in the population. (The normal distribution is useful because allows for absent behaviours to be anyway possible to be innovated, with low probability). When the innovation is not socially-mediated, the probability of innovating each behaviour is random. Only one behaviour per category can be innovated at each time step. 
 
 After that, the behaviour chosen in the previous step is actually innovated with probability depending on its genetic propensity (or on a combination of its genetic propensity and ecological availability in case of food-related behaviours).
 

@@ -9,4 +9,82 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-TO DO
+All codes are in [test.R](test.R)
+
+```{r message=FALSE}
+source("main.R")
+```
+
+### Figure 1 
+
+Data from AWS
+
+### Figure 2
+
+How all patterns ("A", "B", "C", "D") corresponds to the ones found in Whiten et al., 1999, in a condition for which we have a good match for "cultural" behaviours (pattern "D"). As above the code is not run, but the data are loaded. 
+
+```{r eval=FALSE}
+tic()
+test <- run_oranzees(t_max = 6000, alpha_e = 0.8, alpha_g = 0.2, S = 1, init_world = TRUE, n_run = 20)
+toc()
+write_csv(test, "sims_for_ms/data/figure_2.csv")
+```
+
+```{r message=FALSE}
+whiten <- tibble(pattern = 1:4, 
+                 n = c(7, 16, 3, 38), 
+                 data = rep("Whiten", 4)) 
+figure_2 <- analyse_patterns(read_csv("sims_for_ms/data/figure_2.csv"))
+ggplot(data = figure_2, aes(x = pattern, y = n)) +
+    geom_boxplot(outlier.shape = NA) +
+    geom_jitter(width=0.05, alpha=0.5) +
+    theme_bw() +
+    geom_line(data = whiten, colour="red") +
+    geom_point(data = whiten, colour="red") +
+    ggsave("sims_for_ms/figures/figure_2.pdf")
+```
+
+### Figure 3
+
+The effect of $S$, in three conditions: (a) no genetic differences and intermediate ecological differences (high-left angle of figure 1, produces too few "cultural" traits), (b) good match with Whiten, and (c) intermediate genetic differnces and high ecological differences (low-right angle of figure 1, produces too many "cultural" traits).
+
+Below the example code for condition (a).
+
+```{r eval=FALSE}
+tic()
+S = seq(0, 1, by = 0.1)
+output <- tibble(S = rep(S, each = 10), n = NA)
+ for(s in S){
+  test <- run_oranzees(t_max = 6000, alpha_e = 0.5, alpha_g = 0, S = s, init_world = TRUE, n_run = 10)
+  out <- analyse_patterns(test)
+  output[output$S == s, ]$n <- out$n[31:40]
+  print(s)
+}
+toc()
+write_csv(test, "sims_for_ms/data/figure_3_a.csv")
+```
+
+```{r message=FALSE, fig.width=10}
+a <- read_csv("sims_for_ms/data/figure_3_a.csv")
+b <- read_csv("sims_for_ms/data/figure_3_b.csv")
+c <- read_csv("sims_for_ms/data/figure_3_c.csv")
+
+figure_3 <- tibble(S = as.factor(c(a$S, b$S, c$S)), n = c(a$n, b$n, c$n), 
+       alpha_g = rep(c(0, 0.2, 0.5), each = 110), 
+        alpha_e = rep(c(0.5, 0.8, 1), each=110)) 
+
+figure_3_mean <- figure_3 %>%
+  group_by(S, alpha_g, alpha_e) %>%
+  summarise(cultural = mean(n))
+
+figure_3 <- figure_3 %>%
+  full_join(figure_3_mean)
+
+ggplot(data = figure_3, aes(y=n, x=S)) +
+  geom_boxplot(outlier.shape = NA, aes(fill=cultural)) +
+  geom_point(pch = 21, position = position_jitterdodge(jitter.width = 0.1), aes(fill=cultural)) +
+  facet_wrap(alpha_e ~ alpha_g, labeller=label_both) +
+  scale_fill_gradientn(colors=c("blue","blue","white","red"), name="Number of\n'cultural' traits") +
+  theme_bw() +
+  ggsave("sims_for_ms/figures/figure_3.pdf", width = 12)
+```

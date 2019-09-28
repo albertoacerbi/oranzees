@@ -368,3 +368,51 @@ plot_oranzees <- function(my_test, social) {
   }
 }
 
+# function to extract Whiten et al., 1999 four patterns:
+
+analyse_patterns <- function(my_test){
+  output <- tibble(pattern = rep(c("A", "B", "C", "D"), each = max(my_test$run)), 
+                   n = rep(NA, max(my_test$run) * 4))
+  process <- my_test %>%
+    group_by(behaviour, run) %>%
+    summarise(A = !("absent" %in% code) && !("ecological explanation" %in% code), 
+              B = !("habitual" %in% code) && !("customary" %in% code),
+              C = !("absent" %in% code) && ("ecological explanation" %in% code)) %>%
+    ungroup() %>%
+    mutate (D = !(A | B | C)) %>%
+    group_by(run)
+  
+  temp <- count(process, A) %>%
+    filter(A == TRUE)
+  out <- temp$n
+  if(length(temp$n) < max(my_test$run)){
+    out <- c(temp$n, rep(0, max(my_test$run)-length(temp$n)))
+  }
+  output[output$pattern=="A",]$n <- out  
+  
+  temp <- count(process, B) %>%
+    filter(B == TRUE)
+  out <- temp$n
+  if(length(temp$n) < max(my_test$run)){
+    out <- c(temp$n, rep(0, max(my_test$run)-length(temp$n)))
+  }
+  output[output$pattern=="B",]$n <- out  
+  
+  temp <- count(process, C) %>%
+    filter(C == TRUE)
+  out <- temp$n
+  if(length(temp$n) < max(my_test$run)){
+    out <- c(temp$n, rep(0, max(my_test$run)-length(temp$n)))
+  }
+  output[output$pattern=="C",]$n <- out 
+  
+  temp <- count(process, D) %>%
+    filter(D == TRUE)
+  out <- temp$n
+  if(length(temp$n) < max(my_test$run)){
+    out <- c(temp$n, rep(0, max(my_test$run)-length(temp$n)))
+  }
+  output[output$pattern=="D",]$n <- out 
+  
+  output
+}
