@@ -17,7 +17,75 @@ source("main.R")
 
 ### Figure 1 
 
-Data from AWS
+We first check the number of "cultural" behaviours for all the *interesting* combinations of the parameter $\alpha_e$ and $\alpha_g$, i.e. moderate to high environmental variability ($\alpha_e=(0.5,1)$) and zero to moderate genetic difference ($\alpha_g=(0,0.5)$). We run 20 simulations for each combination (20*36 runs, code is not run here).
+
+```{r eval=FALSE}
+alpha_e_test = seq(0.5, 1, by = 0.1)
+alpha_g_test = seq(0, 0.5, by = 0.1)
+
+output <- tibble(alpha_e = rep(alpha_e_test, each = 120), 
+                 alpha_g = rep(rep(alpha_g_test, each = 20), 6),
+                 n = NA)
+
+for(e in alpha_e_test){
+  for(g in alpha_g_test) {
+    test <- run_oranzees(t_max = 6000, alpha_e = e, alpha_g = g, S = 1, init_world = TRUE, n_run = 20)
+    out <- analyse_patterns(test)
+    output[output$alpha_e == e & output$alpha_g == g, ]$n <- out$n[61:80]
+    print(e)
+  }
+}
+write_csv(output, "sims_for_ms/data/figure_1.csv")
+```
+
+##### Visualisation 1 (matrix)
+
+```{r  message=FALSE}
+figure_1 <- read_csv("sims_for_ms/data/figure_1.csv") %>%
+  group_by(alpha_g, alpha_e) %>%
+  summarise( cultural = mean(n))
+ggplot(data=figure_1) +
+  geom_raster(aes(x = alpha_g, y = alpha_e, fill = cultural)) +
+  scale_fill_gradientn(colors=c("red","white","blue")) +
+  geom_text(aes(x = alpha_g, y = alpha_e, label = cultural))+
+  theme_bw()
+```
+
+##### Visualisation 2 (histogram)
+
+```{r message=FALSE, fig.width=10, fig.height=7}
+figure_1_mean <- read_csv("sims_for_ms/data/figure_1.csv") %>%
+  group_by(alpha_g, alpha_e) %>%
+  summarise( cultural = mean(n))
+figure_1 <- read_csv("sims_for_ms/data/figure_1.csv") %>%
+  full_join(figure_1_mean)
+ggplot(data = figure_1) + 
+  geom_histogram(aes(x = n, fill=cultural), color="black", bins=10) +
+  geom_vline(xintercept = 39, linetype="dashed") +
+  scale_fill_gradientn(colors=c("blue","white","red"), name="Number of\n'cultural' traits") +
+  facet_grid(alpha_e ~ alpha_g, labeller=label_both) +
+  theme_bw() +
+  ggsave("sims_for_ms/figures/figure_1.pdf", height=7, width = 10)
+
+```
+
+##### Visualisation 3 (density)
+
+```{r message=FALSE, fig.width=10, fig.height=7}
+figure_1_mean <- read_csv("sims_for_ms/data/figure_1.csv") %>%
+  group_by(alpha_g, alpha_e) %>%
+  summarise( cultural = mean(n))
+figure_1 <- read_csv("sims_for_ms/data/figure_1.csv") %>%
+  full_join(figure_1_mean)
+ggplot(data = figure_1) + 
+  geom_density(aes(x = n, fill=cultural)) +
+  geom_vline(xintercept = 39, linetype="dashed") +
+  scale_fill_gradientn(colors=c("blue","white","red"), name="Number of\n'cultural' traits") +
+  facet_grid(alpha_e ~ alpha_g, labeller=label_both) +
+  theme_bw()
+```
+
+***
 
 ### Figure 2
 
@@ -41,9 +109,11 @@ ggplot(data = figure_2, aes(x = pattern, y = n)) +
     theme_bw() +
     geom_line(data = whiten, colour="red") +
     geom_point(data = whiten, colour="red") +
-    labs(y = "Number of 'cultural' traits") +
+    labs(y = "Number of traits") +
     ggsave("sims_for_ms/figures/figure_2.pdf")
 ```
+
+***
 
 ### Figure 3
 

@@ -23,3 +23,5 @@ Plus three folders:
 * [output/](output): folder with outputs from simulations used in the process of development
 
 * [output_test/](output_test): folder with outputs from simulations used in the tests
+
+* [sims_for_ms](sims_for_ms): folder with outputs used in the manuscript

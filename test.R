@@ -155,10 +155,10 @@ ggplot(data=test_many) +
   theme_bw()
 
 # HISTOGRAMS:
-test_mean <- read_csv("output_test/test_many.csv") %>%
+test_mean <- read_csv("sims_for_ms/data/figure_1.csv") %>%
   group_by(alpha_g, alpha_e) %>%
   summarise( cultural = mean(n))
-test_many <- read_csv("output_test/test_many.csv") %>%
+test_many <- read_csv("sims_for_ms/data/figure_1.csv") %>%
   full_join(test_mean)
 ggplot(data=test_many) + 
   # geom_histogram(aes(x = n, fill=cultural), color="black") +
