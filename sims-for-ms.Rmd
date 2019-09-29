@@ -65,6 +65,7 @@ ggplot(data = figure_1) +
   scale_fill_gradientn(colors=c("blue","white","red"), name="Number of\n'cultural' traits") +
   facet_grid(alpha_e ~ alpha_g, labeller=label_both) +
   theme_bw() +
+  labs(y = "Number of runs", x = "Number of 'cultural' traits") +
   ggsave("sims_for_ms/figures/figure_1.pdf", height=7, width = 10)
 
 ```
