@@ -23,19 +23,23 @@ source('main.R')
 
 Here a quick description of the **MAIN FUNCTIONS** and their associated **PLOTTING FUNCTIONS** in [main.R](main.R) (**COMMON FUNCTIONS** have been described at lenght in the previous documents):
 
+<div class="alert alert-warning">
+  <strong>Warning!</strong> The functions in **main.R** have been further changed after the post-model development tests to include a further parameter, *S*, which regulates the probability that each innovation is socially-mediated. The description of the functioning and implementation if this parameter is at the end of the document [test-results.Rmd](test-results.Rmd). In what follows, function calls include `S=1`, meaning that all innovations are socially mediated, which is our baseline.
+</div>
+
 #### `test_oranzees_1()`
 
 `test_oranzees_1()` runs the simulation only on one population, and produces a richer output, consisting in the frequencies of all behaviours at each time step when `n_run=1`, and in the final frequencie of all behaviours when `n_run>1`. We can test that everything works by running and plotting the first case (single run, using `plot_one_run()`):
 
 ```{r message=FALSE, warning=FALSE}
-my_test <- test_oranzees_1(t_max = 6000, alpha_g = 0.1, alpha_e = 0.9, init_world = TRUE, n_run = 1)
+my_test <- test_oranzees_1(t_max = 6000, alpha_g = 0.1, alpha_e = 0.9, S = 1, init_world = TRUE, n_run = 1)
 plot_one_run(my_test)
 ```
 
 And in the second case (multiple runs, `using plot_multiple_runs()`):
 
 ```{r message=FALSE, warning=FALSE}
-my_test <- test_oranzees_1(t_max = 6000, alpha_g = 0.1, alpha_e = 0.9, init_world = TRUE, n_run = 5)
+my_test <- test_oranzees_1(t_max = 6000, alpha_g = 0.1, alpha_e = 0.9, S = 1, init_world = TRUE, n_run = 5)
 plot_multiple_runs(my_test)
 ```
 
@@ -44,7 +48,7 @@ plot_multiple_runs(my_test)
 `test_oranzees_2()` also runs the simulation on one population, but gives as output the behavioural codes as described in Whiten et al., 1999. Here an example, using the associated plotting function `plot_codes_distribution()`:
 
 ```{r message=FALSE, warning=FALSE}
-my_test <- test_oranzees_2(t_max = 6000, alpha_g = 0.1, alpha_e = 0.9, init_world = TRUE, n_run = 5)
+my_test <- test_oranzees_2(t_max = 6000, alpha_g = 0.1, alpha_e = 0.9, S = 1, init_world = TRUE, n_run = 5)
 plot_codes_distribution(my_test)
 ```
 
@@ -53,7 +57,7 @@ plot_codes_distribution(my_test)
 Finally, `run_oranzees()` runs the simulation on the six oranzees populations, and produces as output the code for each behaviour in each population. While it works with several run, the only possible visualisation, for the time being, concerns a single run, as illustrated below. Notice the associated plotting function `plot_oranzees()` has a further parameter `social`. When `social=TRUE`, social behaviours are visualised, when `social=FALSE`, it visualises food-related behaviours.
 
 ```{r message=FALSE, warning=FALSE}
-my_test <- run_oranzees(t_max = 6000, alpha_g = 0.1, alpha_e = 0.9, init_world = TRUE, n_run = 1)
+my_test <- run_oranzees(t_max = 6000, alpha_g = 0.1, alpha_e = 0.9, S = 1, init_world = TRUE, n_run = 1)
 ```
 
 ```{r message = FALSE, fig.height = 14}
