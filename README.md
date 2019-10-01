@@ -1,6 +1,6 @@
 # Oranzees model
 
-This repository contains the code and documents the development of the the oranzees model.
+This repository contains the code and documents the development of the the oranzees model. [model-description.pdf](model-description.pdf) is a good place to start, providing a short description of the model. 
 
 The material is organised as follows:
 
@@ -14,9 +14,9 @@ The material is organised as follows:
 
 * [test-results.Rmd](test-results.Rmd): results of test after first stage of development
 
-* [sims-for-ms.Rms](sims-for-ms.Rmd): simulations (and visualisations) used for the manuscript
+* [sims-for-ms.Rms](sims-for-ms.Rmd): simulations (and visualisations) to use in the manuscript
 
-Plus three folders:
+Plus four folders:
 
 * [material/](material): folder with media
 
