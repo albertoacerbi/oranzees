@@ -3,9 +3,9 @@ title: "Oranzees model description"
 author: "Alberto Acerbi"
 link-citations: yes
 output:
+  html_document: 
   pdf_document: 
     fig_caption: yes
-  html_document: 
 bibliography: biblio.bib
 ---
 
@@ -139,6 +139,19 @@ Finally, we use the coding to calculate the "patterns" described in @whiten_cult
 
 * *D*: patterns customary or habitual at some sites yet absent at others, with no ecological explanation, i.e. the "cultural" behaviours.
 
+# Main results
+
+We first check the number of "cultural" behaviours (pattern *D* in @whiten_cultures_1999) for all the *interesting* combinations of the parameters $\alpha_e$ and $\alpha_g$, i.e. moderate to high environmental variability ($\alpha_e=(0.5,1)$) and zero to moderate genetic difference ($\alpha_g=(0,0.5)$). We run 20 simulations for each combination. The results show that in many conditions a number of "cultural" behaviours consistent with @whiten_cultures_1999 would be found, in absence of any explicit copying mechanism implemented, see \autoref{fig3}. 
+
+!["Cultural" behaviours in oranzees, varying ecologial and genetic diversity. Red colour indicates more "cultural" behaviours with respect of @whiten_cultures_1999; blue colour indicated less.\label{fig3} ](sims_for_ms/figures/figure_1.pdf){width=100%}
+
+Second, we check how well all patterns ("A", "B", "C", "D") corresponds to the patterns found in @whiten_cultures_1999, in one of the conditions for which we have a good match for "cultural" behaviours ($\alpha_e=0.8;\alpha_g=0.2$). We find a good match, see \autoref{fig4}.
+
+![Traits for each of the four patterns (see above). The values in red are the values found in @whiten_cultures_1999.\label{fig4} ](sims_for_ms/figures/figure_2.pdf){width=80%}
+
+Finally, we study the effect of the parameter *S* (proportion of socially-mediated innovations), in three conditions: (a) no genetic differences and intermediate ecological differences (high-left angle of  \autoref{fig3}, produces too few "cultural" traits), (b) good match with @whiten_cultures_1999, and (c) intermediate genetic differnces and high ecological differences (low-right angle of  \autoref{fig3}, produces too many "cultural" traits). As expeceted, decreasing *S* lower the number of "cultural" traits, so that conditions where with $S=1$ there were more "cultural" traits than in @whiten_cultures_1999 could still produce analogous results, if less innovations are socially mediated, (e.g. left side of the right panel in \autoref{fig5}).
+
+!["Cultural" behaviours in oranzees, varying the probability of socially-mediated innovations.\label{fig5} ](sims_for_ms/figures/figure_3.pdf){width=100%}
 
 
 ## References
