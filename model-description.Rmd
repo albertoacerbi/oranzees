@@ -75,7 +75,7 @@ display       | 9  | 10 | 11 | 12 | 13 | 14 | 15 | 16
 groom         | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24
 courtship     | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32
 
-We assume that the state is based on how many of the four goals are fulfilled. A goal is considered fulfilled if an oranzee has at least one behaviour out of the four in the sub-category. An oranzee has a state value of $0.25$ if, for example, has at least one behaviour among behaviours 1 to 8, and none of the others, and a state value of $1$ if there is at least one behaviour in each sub-category. 
+We assume that the state is based on how many of the four goals are fulfilled. A goal is considered fulfilled if an oranzee has at least one behaviour out of the eight in the sub-category. An oranzee has a state value of $0.25$ if, for example, has at least one behaviour among behaviours 1 to 8, and none of the others, and a state value of $1$ if there is at least one behaviour in each sub-category. 
 
 $p_\text{state}$, the probability to innovate a social behaviour, is drawn from a normal distribution with mean equal to $1-state$ (this means that even when all goals are fulfilled, that is the mean is zero, there is still some probability to innovate). 
 
