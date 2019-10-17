@@ -3,9 +3,9 @@ title: "Oranzees model description"
 author: "Alberto Acerbi"
 link-citations: yes
 output:
-  html_document: 
   pdf_document: 
     fig_caption: yes
+  html_document: 
 bibliography: biblio.bib
 ---
 
@@ -153,5 +153,12 @@ Finally, we study the effect of the parameter *S* (proportion of socially-mediat
 
 !["Cultural" behaviours in oranzees, varying the probability of socially-mediated innovations.\label{fig5} ](sims_for_ms/figures/figure_3.pdf){width=100%}
 
+***
+
+# Additional result
+
+A further intersting result is that the model reproduces the correlation between population size and number of behavioural traits that was found, for females, in chimpanzee populations (@lind_number_2010).  
+
+![Correlation between population size and number of traits.\label{fig6} ](sims_for_ms/figures/figure_2_extra.pdf){width=60%}
 
 ## References
