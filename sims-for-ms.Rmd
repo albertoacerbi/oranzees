@@ -114,7 +114,11 @@ ggplot(data = figure_2, aes(x = pattern, y = n)) +
     ggsave("sims_for_ms/figures/figure_2.pdf")
 ```
 
-We also use the same data to calcualte the correlation between population size and number of traits (habitual + customary + present).
+We also use the same data to calculate the correlation between population size and number of traits (habitual + customary + present). 
+
+We found a correlation (but check that it holds for "cultural" traits).
+
+Notice that becuase we know the capacities of the oranzees do not change, we do not need to hypothesise an effect of "cultural intelligence" (an onthogentic rising of innovating capabilities due to previous cultural effects) to explain the correlation, but simply that, with bigger populations, there are more innovations. 
 
 ```{r message=FALSE, fig.width=5}
 data <- read_csv("sims_for_ms/data/figure_2.csv")
