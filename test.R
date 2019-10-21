@@ -216,4 +216,12 @@ toc()
 write_csv(output, "sims_for_ms/data/figure_3_c.csv")
 
 
+########################################################
+########################################################
+
+# EXTRA RESULTS:
+tic()
+test <- run_oranzees(t_max = 6000, alpha_e = 0.8, alpha_g = 0.2, S = 1, init_world = TRUE, n_run = 100)
+toc()
+write_csv(test, "extra_results/data/pop_complexity.csv")
 

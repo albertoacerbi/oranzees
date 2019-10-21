@@ -14,7 +14,9 @@ The material is organised as follows:
 
 * [test-results.Rmd](test-results.Rmd): results of test after first stage of development
 
-* [sims-for-ms.Rms](sims-for-ms.Rmd): simulations (and visualisations) to use in the manuscript
+* [extra-results.Rmd](extra-results.Rmd): possible extension of the main results
+
+* [ex]
 
 Plus four folders:
 
@@ -25,3 +27,5 @@ Plus four folders:
 * [output_test/](output_test): folder with outputs from simulations used in the tests
 
 * [sims_for_ms](sims_for_ms): folder with outputs used in the manuscript
+
+* [extra_results](extra_results): folder with output for possible extensions of the main results
