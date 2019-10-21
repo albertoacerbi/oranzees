@@ -164,3 +164,40 @@ ggplot(data = figure_3, aes(y = n, x = S)) +
 ```
 
 
+***
+
+We also need an example population to use to reproduce the iconic figure in Whiten et al., 1999. In order to do this, we use the same data used for Figure 2 (as we have a good match for the number of cultural behaviours), but we specifically select a population with exactly 38 of them.
+
+```{r, message=FALSE}
+data <- read_csv("sims_for_ms/data/figure_2.csv")
+patterns <- analyse_patterns(data) %>%
+  filter(pattern=="D")
+patterns
+```
+
+Both the run 10 and the run 16 would work. Let's take run 10.
+
+```{r}
+data <- data %>%
+  filter(run==10)
+```
+
+We first need to check what are the cultural behaviours, and keep only those. We can reuse part of the code from the function `analyse_patterns()` to find the cultural behaviours, and then select them in the original data.
+
+```{r}
+process <- data %>%
+  group_by(behaviour) %>%
+  summarise(A = !("absent" %in% code) && !("ecological explanation" %in% code), 
+            B = !("habitual" %in% code) && !("customary" %in% code),
+            C = !("absent" %in% code) && ("ecological explanation" %in% code)) %>%
+  transmute (D = !(A | B | C))
+
+cultural_behaviours <- (1:64)[process$D]
+
+data <- data %>%
+  filter(behaviour %in% cultural_behaviours)
+
+write_csv(data, "sims_for_ms/data/example_pop.csv")
+```
+
+***
