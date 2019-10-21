@@ -42,8 +42,7 @@ ggplot(data = figure_2_extra, aes(x=pop_size, y=behaviours)) +
   geom_jitter(width = 0.05, alpha = 0.5) +
   theme_bw() +
   stat_smooth(method = lm)  +
-  labs(x="Population size", y="Number of traits") +
-  ggsave("extra_results/figures/figure_1.pdf", width = 5)
+  labs(x="Population size", y="Number of traits")
 ```
 
 We found a correlation but we need to check that it holds for "cultural" traits:
@@ -79,17 +78,89 @@ ggplot(data = figure_2_extra_b, aes(x=pop_size, y=behaviours)) +
   geom_jitter(width = 0.05, alpha = 0.5) +
   theme_bw() +
   stat_smooth(method = lm)  +
-  labs(x="Population size", y="Number of cultural traits") +
-  ggsave("extra_results/figures/figure_1b.pdf", width = 5)
+  labs(x="Population size", y="Number of cultural traits")
 ```
 
 As the data are unclear, it is worth to run more simulations to understand better the relationship between population size and complexity. Let's explore the same condition, but for 100 runs (as usual, the simulatons are run only once, and the data loaded here).
 
-```{r eval=FALSE}
+```{r, eval=FALSE}
 tic()
 test <- run_oranzees(t_max = 6000, alpha_e = 0.8, alpha_g = 0.2, S = 1, init_world = TRUE, n_run = 100)
 toc()
 write_csv(test, "extra_results/data/pop_complexity.csv")
+```
+
+Let's plot, with the same code used before, the correlation for all behaviours:
+
+```{r, echo=FALSE, message=FALSE, fig.width=5}
+data <- read_csv("extra_results/data/pop_complexity.csv")
+pop_sizes <- c(20, 76, 50, 95, 42, 49)
+list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
+
+customary <- c()
+habitual <- c()
+present <- c()
+
+for( r in 1:100){
+  for(pop in list_pop){
+    customary <- c(customary, dim(data[data$run==r & data$population==pop & data$code=="customary",])[1])
+    habitual <- c(habitual, dim(data[data$run==r & data$population==pop & data$code=="habitual",])[1])
+    present <- c(present, dim(data[data$run==r & data$population==pop & data$code=="present",])[1])
+  }
+}
+out <- tibble(behaviours = customary + present + habitual, 
+              pop_size = rep(pop_sizes, 100))
+ggplot(data = out, aes(x=pop_size, y=behaviours)) +
+  geom_jitter(width = 0.05, alpha = 0.5) +
+  theme_bw() +
+  stat_smooth(method = lm)  +
+  labs(x="Population size", y="Number of traits") +
+  ggsave("extra_results/figures/figure_1.pdf", width = 5)
+```
+
+And, now, for cultural behaviours:
+
+```{r, echo=FALSE, message=FALSE, fig.width=5}
+
+process <- data %>%
+  group_by(behaviour, run) %>%
+  summarise(A = !("absent" %in% code) && !("ecological explanation" %in% code), 
+            B = !("habitual" %in% code) && !("customary" %in% code),
+            C = !("absent" %in% code) && ("ecological explanation" %in% code)) %>%
+  ungroup() %>%
+  mutate (D = !(A | B | C)) %>%
+  group_by(run)
+
+pop_sizes <- c(20, 76, 50, 95, 42, 49)
+list_pop <- c("Uossob", "Iat Forest", "Ebmog", "Elaham", "Elabik", "Ognodub")
+
+customary <- c()
+habitual <- c()
+present <- c()
+
+for(r in 1:100){
+  cultural_behaviours <- process[process$run==r & process$D=="TRUE",]$behaviour
+  for(pop in list_pop){
+    customary <- c(customary, sum(data[data$run==r & data$population==pop & data$code=="customary",]$behaviour %in% cultural_behaviours))
+    habitual <- c(habitual, sum(data[data$run==r & data$population==pop & data$code=="habitual",]$behaviour %in% cultural_behaviours))
+    present <- c(present, sum(data[data$run==r & data$population==pop & data$code=="present",]$behaviour %in% cultural_behaviours))
+  }
+}
+out <- tibble(behaviours = customary + present + habitual, 
+              pop_size = rep(pop_sizes, 100))
+ggplot(data = out, aes(x=pop_size, y=behaviours)) +
+  geom_jitter(width = 0.05, alpha = 0.5) +
+  theme_bw() +
+  stat_smooth(method = lm)  +
+  labs(x="Population size", y="Number of cultural traits") +
+  ggsave("extra_results/figures/figure_1b.pdf", width = 5)
+```
+
+We can quickly check the actual correlation value:
+
+```{r, message=FALSE}
+library(Hmisc)
+rcorr(out$pop_size, out$behaviours, type="spearman")
 ```
 
 ***
