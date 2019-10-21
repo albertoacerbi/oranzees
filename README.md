@@ -16,8 +16,6 @@ The material is organised as follows:
 
 * [extra-results.Rmd](extra-results.Rmd): possible extension of the main results
 
-* [ex]
-
 Plus four folders:
 
 * [material/](material): folder with media
