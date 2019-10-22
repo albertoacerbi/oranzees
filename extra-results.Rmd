@@ -163,5 +163,7 @@ library(Hmisc)
 rcorr(out$pop_size, out$behaviours, type="spearman")
 ```
 
+There is a weak ($r=0.2$), but significant ($p=0.0000003271925$) positive correlation.
+
 ***
 
