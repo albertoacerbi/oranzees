@@ -15,14 +15,17 @@
 
 \templatetype{pnasresearcharticle}  % Choose template
 
-\title{Culture in oranzees (or something else)}
+\title{Culture in oranzees}
 
-\author[a,b,1]{Alberto Acerbi}
-\author[a]{William Snyder}
-\author[a]{Claudio Tennie}
+\author[a,1]{Alberto Acerbi}
+\author[b]{William Snyder}
+\author[b]{Claudio Tennie}
 
-  \affil[a]{Faculty of Science, Department for early prehistory and quaternary
-ecology, University of Tübingen, Germany}
+  \affil[a]{Centre for Culture and Evolution, Department of Life Sciences, Brunel
+University London, Uxbridge, UB8 3PH, United Kingdom}
+  \affil[b]{Faculty of Science, Department for early prehistory and quaternary
+ecology, University of Tübingen, Schloß Hohentuebingen, Burgsteige 11,
+72070, Tübingen, Germany}
 
 
 % Please give the surname of the lead author for the running footer
@@ -74,237 +77,259 @@ in full within the abstract itself and cited in the text.
 Please do not include any acknowledgments in the Supporting Information,
 or anywhere else in the manuscript.}
 
-This PNAS journal template is provided to help you write your work in
-the correct journal format. Instructions for use are provided below.
+Intro here
 
-Note: please start your introduction without including the word
-``Introduction'' as a section heading (except for math articles in the
-Physical Sciences section); this heading is implied in the first
-paragraphs.
+\section*{Materials and methods}\label{materials-and-methods}
+\addcontentsline{toc}{section}{Materials and methods}
 
-\section*{Guide to using this
-template}\label{guide-to-using-this-template}
-\addcontentsline{toc}{section}{Guide to using this template}
+We built an individual-based model that reproduces a world inhabited by
+six populations of ``oranzees'', an hypothetical ape species. The model
+is space-explicit: the oranzees populations are located at relative
+positions analogous to the six chimpanzees sites in (1). This is
+important to determine the genetic predispositions and ecological
+availabilities associated to their behaviours (see below). Population
+sizes are also taken from the sites in (1). Following (2), we use data
+from (3), and we define population sizes as \(N=\{20;42;49;76;50;95\}\).
 
-Please note that whilst this template provides a preview of the typeset
-manuscript for submission, to help in this preparation, it will not
-necessarily be the final publication layout. For more detailed
-information please see the
-\href{http://www.pnas.org/site/authors/format.xhtml}{PNAS Information
-for Authors}.
+Oranzees are subject to an age-dependent birth/death process. A time
+step \(t\) of the simulation represents a month in oranzees' life. From
+when they are 25 years old (\(t=300\)), there is a 1\% probability an
+oranzee will die each month, or they die when they are 60 years old
+(\(t=720\)). The number of individuals in the population is fixed, so
+each time an oranzee dies is replaced by a newborn.
 
-\subsection*{Author Affiliations}\label{author-affiliations}
-\addcontentsline{toc}{subsection}{Author Affiliations}
+A newborn oranzee does not have any behaviour. Behaviours can be
+innovated at each time step. The process of innovation is influenced by:
+(i) the oranzees `state', which depends from the behaviours an
+individual already possesses, (ii) the frequency of the behaviours
+already present in the population (``socially-mediated innovation''),
+and (iii) the genetic propensity and ecological availability associated
+to the behaviour. At the beginning of the simulations, the populations
+are randomly initialised with individuals between 0 and 25 years old.
 
-Include department, institution, and complete address, with the
-ZIP/postal code, for each author. Use lower case letters to match
-authors with institutions, as shown in the example. Authors with an
-ORCID ID may supply this information at submission.
+\subsection*{State}\label{format}
+\addcontentsline{toc}{subsection}{State}
 
-\subsection*{Submitting Manuscripts}\label{submitting-manuscripts}
-\addcontentsline{toc}{subsection}{Submitting Manuscripts}
+In the oranzees world, 64 behaviours are possible. Behaviours are
+divided in two categories, namely 32 social and 32 food-related
+behaviours.
 
-All authors must submit their articles at
-\href{http://www.pnascentral.org/cgi-bin/main.plex}{PNAScentral}. If you
-are using Overleaf to write your article, you can use the ``Submit to
-PNAS'' option in the top bar of the editor window.
+In the case of social behaviours, we assume four sub-categories of
+behaviours, each with eight possible different behaviours, that serve
+the same goal. Oranzees' state is based on how many of the four goals
+are fulfilled. A goal is considered fulfilled if an oranzee has at least
+one behaviour out of the eight in the sub-category. An oranzee has a
+state value of \(0.25\) if, for example, has at least one behaviour
+among the first eight behaviour, and none of the others, and a state
+value of \(1\) if there is at least one behaviour in each sub-category.
+\(p_\text{state}\), the probability to innovate a social behaviour, is
+drawn from a normal distribution with mean equal to \(1-state\).
 
-\subsection*{Format}\label{format}
-\addcontentsline{toc}{subsection}{Format}
+Food-related behaviours are also divided in sub-categories, with the
+differences that there is a variable number of behaviours in each
+sub-category, and that sub-categories are associated to two different
+`nutrients'. The idea is that individuals need to balance their
+nutritional intake, so that their optimal diet consist in a roughly
+equal number of foodstuff for one and the other nutrient. The state, for
+food-related behaviours, depends on the total amount of food \emph{and}
+on the balance between nutrients, and it is calculated as the sum of
+each sub-category fulfilled (as above, for this there needs to be at
+least one behaviour) minus the difference between the number of
+sub-categories providing nutrient Y and the number of sub-categories
+providing nutrient Z. As above, all is normalised between \(0\) and
+\(1\), and \(p_\text{state}\) is then calculated (more details in SI).
 
-Many authors find it useful to organize their manuscripts with the
-following order of sections; Title, Author Affiliation, Keywords,
-Abstract, Significance Statement, Results, Discussion, Materials and
-methods, Acknowledgments, and References. Other orders and headings are
-permitted.
+\subsection*{Socially-mediated innovation}\label{format}
+\addcontentsline{toc}{subsection}{Socially-mediated innovation}
 
-\subsection*{Manuscript Length}\label{manuscript-length}
-\addcontentsline{toc}{subsection}{Manuscript Length}
+At each time step, any oranzees has a probability of innovation for
+social and food-related behaviours equal to \(p_\text{state}\) as
+described above. The specific behaviour an oranzee will innovate depends
+both on the frequency of the behaviours already present in the
+population, and on the ecological availability and genetic propensity
+associated to the behaviour. A further parameter of the model, \(S\),
+controls the probability that each innovation is socially-mediated. When
+an innovation is socially-mediated, each behaviour has a probability to
+be innovated drawn from a normal distribution with mean equals to its
+total instances in the population. When the innovation is not
+socially-mediated, the probability of innovating each behaviour is
+random. Only one behaviour per category can be innovated at each time
+step.
 
-PNAS generally uses a two-column format averaging 67 characters,
-including spaces, per line. The maximum length of a Direct Submission
-research article is six pages and a PNAS PLUS research article is ten
-pages including all text, spaces, and the number of characters displaced
-by figures, tables, and equations. When submitting tables, figures,
-and/or equations in addition to text, keep the text for your manuscript
-under 39,000 characters (including spaces) for Direct Submissions and
-72,000 characters (including spaces) for PNAS PLUS.
+\subsection*{Genetic propensity and ecological
+availability}\label{format}
+\addcontentsline{toc}{subsection}{Genetic propensity and ecological
+availability}
 
-\subsection*{References}\label{references}
-\addcontentsline{toc}{subsection}{References}
+The behaviour selected in the previous step is actually innovated
+according to its genetic propensity and, in case of food-related
+beahviours, ecological availability.
 
-References should be cited in numerical order as they appear in text;
-this will be done automatically via bibtex, e.g. (1) and (2, 3). All
-references, including for the SI, should be included in the main
-manuscript file. References appearing in both sections should not be
-duplicated. SI references included in tables should be included with the
-main reference section.
+Genetic propensity is a probability \(p_g(0,1)\), assigned independently
+to each of the 64 behaviours. A parameter of the model, \(\alpha_g\),
+determines the probability that the genetic propensity of each behaviour
+is equal for all the six populations or is different.
 
-\subsection*{Data Archival}\label{data-archival}
-\addcontentsline{toc}{subsection}{Data Archival}
+If is equal, \(p_g\) is randomly drawn. If different, we assign it using
+a geographical gradient. For each behaviour, we choose a random point
+and calculate its distance to each population. Distances are then
+transformed to \(p_g\) by rescaling them between 0 and 1, so that for
+the farther population \(p_g=0\) i.e.~the associated behaviour will be
+impossible to express (see SI). Notice that \(\alpha_g=0\) does not mean
+that there are not genetic influences on the behaviours, but that there
+are no \emph{differences} between the populations with this respect.
 
-PNAS must be able to archive the data essential to a published article.
-Where such archiving is not possible, deposition of data in public
-databases, such as GenBank, ArrayExpress, Protein Data Bank, Unidata,
-and others outlined in the Information for Authors, is acceptable.
+Ecological availability is a probability \(p_e(0,1)\) that represents
+the likelihood of finding a resource, or its nutritional value, in each
+site. Ecological availability is assigned only to food-related
+behaviours, and it is calculated in the same way of \(p_g\), using the
+parameter \(\alpha_e\) to determine the probability of ecological
+availability being different in the six populations.
 
-\subsection*{Language-Editing Services}\label{language-editing-services}
-\addcontentsline{toc}{subsection}{Language-Editing Services}
+\subsection*{Model's output}\label{format}
+\addcontentsline{toc}{subsection}{Model's output}
 
-Prior to submission, authors who believe their manuscripts would benefit
-from professional editing are encouraged to use a language-editing
-service (see list at www.pnas.org/site/authors/language-editing.xhtml).
-PNAS does not take responsibility for or endorse these services, and
-their use has no bearing on acceptance of a manuscript for publication.
+We run simulation for \(t_\text{max}=6000\) (corresponding to 500 years
+of oranzee-time). For each simulation, following (1), we classify each
+behaviour, in each population, as:
 
-\begin{figure}
-\centering
-\includegraphics{frog.png}
-\caption{Placeholder image of a frog with a long example caption to show
-justification setting.{}}
-\end{figure}
+\begin{itemize}
+\item
+  \emph{customary}: a behaviour observed in over 50\% of individuals in
+  at least one age class (see SI).
+\item
+  \emph{habitual}: a behaviour observed in at least two individuals over
+  all the population.
+\item
+  \emph{present}: a behaviour observed in at least one individual over
+  all the population.
+\item
+  \emph{absent}: a behaviour never observed.
+\item
+  \emph{ecological explanations} is a behaviour that is absent because
+  of local ecological features (i.e., in our model, associated to
+  \(p_e=0\)).
+\end{itemize}
 
-\subsection*{Digital Figures}\label{sec:figures}
-\addcontentsline{toc}{subsection}{Digital Figures}
+Notice the last category in (1) (\emph{unknown}, i.e. ``the behaviour
+has not been recorded, but this may be due to inadequacy of relevant
+observational opportunities'') does not apply in our case.
 
-Only TIFF, EPS, and high-resolution PDF for Mac or PC are allowed for
-figures that will appear in the main text, and images must be final
-size. Authors may submit U3D or PRC files for 3D images; these must be
-accompanied by 2D representations in TIFF, EPS, or high-resolution PDF
-format. Color images must be in RGB (red, green, blue) mode. Include the
-font files for any text.
+Finally, we calculate the same ``patterns'' described in (1):
 
-Figures and Tables should be labelled and referenced in the standard way
-using the \texttt{\textbackslash{}label\{\}} and
-\texttt{\textbackslash{}ref\{\}} commands.
+\begin{itemize}
+\item
+  \emph{A}: patterns absent at no site.
+\item
+  \emph{B}: patterns not achieving habitual frequencies at any site.
+\item
+  \emph{C}: patterns for which any absence can be explained by local
+  ecological factors.
+\item
+  \emph{D}: patterns customary or habitual at some sites yet absent at
+  others, with no ecological explanation, i.e.~the behaviours defined as
+  ``cultural''.
+\end{itemize}
 
-Figure \[fig:frog\] shows an example of how to insert a column-wide
-figure. To insert a figure wider than one column, please use the
-\texttt{\textbackslash{}begin\{figure*\}...\textbackslash{}end\{figure*\}}
-environment. Figures wider than one column should be sized to 11.4 cm or
-17.8 cm wide.
+\section*{Results}\label{results}
+\addcontentsline{toc}{section}{Results}
 
-\subsection*{Single column equations}\label{single-column-equations}
-\addcontentsline{toc}{subsection}{Single column equations}
+We are particularly interested in the realistic parameter conditions of
+moderate to high environmental variability (\(\alpha_e=(0.5,1)\)) and
+zero to moderate genetic difference (\(\alpha_g=(0,0.5)\)). We run 20
+simulations for each combination (for all, innovation is
+socially-mediated, i.e. \(S=1\)). The results show that various
+combinations of parameters produces a number of ``cultural'' behaviours
+(pattern \emph{D}) consistent with the 38 found in (1), in absence of
+any explicit copying mechanism implemented (see Figure \ref{Figure1}).
 
-Authors may use 1- or 2-column equations in their article, according to
-their preference.
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=17.8cm]{figures/figure_1.pdf}
+\caption{Cultural behaviours in oranzees, varying ecological and genetic diversity. Red colour indicates simulation runs that produced more than 38 cultural behaviours; blue colour indicates simulation runs that produces less than 38 cultural behaviours.}
+\label{Figure1}
+\end{center}
+\end{figure*}
 
-To allow an equation to span both columns, options are to use the
-\texttt{\textbackslash{}begin\{figure*\}...\textbackslash{}end\{figure*\}}
-environment mentioned above for figures, or to use the
-\texttt{\textbackslash{}begin\{widetext\}...\textbackslash{}end\{widetext\}}
-environment as shown in equation \[eqn:example\] below.
+We also analyse the effect of the parameter \(S\) (proportion of
+socially-mediated innovations), in three conditions (see Figure
+\ref{Figure2}: (a) no genetic differences and intermediate ecological
+differences (compare to the high-left angle of Figure \ref{Figure1},
+where with \(S=1\) simulations produce less than 38 cultural
+behaviours), (b) good match with (1), and (c) intermediate genetic
+differences and high ecological differences (compare to the low-right
+angle of Figure \ref{Figure1}, where with \(S=1\) simulations produce
+more than 38 cultural behaviours). As expected, decreasing \emph{S},
+decreases the number of cultural behaviours, so that conditions where
+with \(S=1\) there were more than 38 cultural behaviours could still
+produce results analogous to (1), if not all innovations are socially
+mediated.
 
-Please note that this option may run into problems with floats and
-footnotes, as mentioned in the \href{http://texdoc.net/pkg/cuted}{cuted
-package documentation}. In the case of problems with footnotes, it may
-be possible to correct the situation using commands
-\texttt{\textbackslash{}footnotemark} and
-\texttt{\textbackslash{}footnotetext}.
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=17.8cm]{figures/figure_2.pdf}
+\caption{Cultural behaviours in oranzees, varying the probability of socially-mediated innovations. Red colour indicates simulation runs that produced more than 38 cultural behaviours; blue colour indicates simulation runs that produces less than 38 cultural behaviours.}
+\label{Figure2}
+\end{center}
+\end{figure*}
 
-\[\begin{aligned}
-(x+y)^3&=(x+y)(x+y)^2\\
-       &=(x+y)(x^2+2xy+y^2) \label{eqn:example} \\
-       &=x^3+3x^2y+3xy^3+x^3. 
-\end{aligned}\]
+Our results show that our model not only reproduces the number of
+cultural behaviours (pattern \emph{D}), but also the other three
+patterns (\emph{A}, \emph{B}, \emph{C}) found in (1). Figure
+\ref{Figure3} show the four patterns produced in one of the conditions
+for which we have a good match for cultural behaviours
+(\(\alpha_e=0.8;\alpha_g=0.2, S=1\)).
 
-\subsection*{Supporting Information
-(SI)}\label{supporting-information-si}
-\addcontentsline{toc}{subsection}{Supporting Information (SI)}
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=11.4cm]{figures/figure_3.pdf}
+\caption{Number of behaviours for each of the four patterns (*A*, *B*, *C*, *D*) for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The red values are the values described for real chimpanzees populations.}
+\label{Figure3}
+\end{center}
+\end{figure*}
 
-The main text of the paper must stand on its own without the SI. Refer
-to SI in the manuscript at an appropriate point in the text. Number
-supporting figures and tables starting with S1, S2, etc. Authors are
-limited to no more than 10 SI files, not including movie files. Authors
-who place detailed materials and methods in SI must provide sufficient
-detail in the main text methods to enable a reader to follow the logic
-of the procedures and results and also must reference the online
-methods. If a paper is fundamentally a study of a new method or
-technique, then the methods must be described completely in the main
-text. Because PNAS edits SI and composes it into a single PDF, authors
-must provide the following file formats only.
+Finally, we run 100 simulations for the same condition where we have a
+good match for cultural behaviours with (1)
+(\(\alpha_e=0.8;\alpha_g=0.2, S=1\)). In each simulation, we recorded,
+for each population, the number of behaviours (habitual + customary +
+present) that are also classified as cultural (see Figure
+\ref{Figure4}). We find a weak but significant correlation b between
+population size and number of cultural traits
+(\(p<0.00001,\rho=0.2,N=600\)).
 
-\subsubsection*{SI Text}\label{si-text}
-\addcontentsline{toc}{subsubsection}{SI Text}
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=11.4cm]{figures/figure_4.pdf}
+\caption{Number of cultural behaviours for each population for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The blue line is a linear fit of the data.}
+\label{Figure4}
+\end{center}
+\end{figure*}
 
-Supply Word, RTF, or LaTeX files (LaTeX files must be accompanied by a
-PDF with the same file name for visual reference).
+\section*{Discussion}\label{discussion}
+\addcontentsline{toc}{section}{Discussion}
 
-\subsubsection*{SI Figures}\label{si-figures}
-\addcontentsline{toc}{subsubsection}{SI Figures}
-
-Provide a brief legend for each supporting figure after the supporting
-text. Provide figure images in TIFF, EPS, high-resolution PDF, JPEG, or
-GIF format; figures may not be embedded in manuscript text. When saving
-TIFF files, use only LZW compression; do not use JPEG compression. Do
-not save figure numbers, legends, or author names as part of the image.
-Composite figures must be pre-assembled.
-
-\subsubsection*{3D Figures}\label{d-figures}
-\addcontentsline{toc}{subsubsection}{3D Figures}
-
-Supply a composable U3D or PRC file so that it may be edited and
-composed. Authors may submit a PDF file but please note it will be
-published in raw format and will not be edited or composed.
-
-\subsubsection*{SI Tables}\label{si-tables}
-\addcontentsline{toc}{subsubsection}{SI Tables}
-
-Supply Word, RTF, or LaTeX files (LaTeX files must be accompanied by a
-PDF with the same file name for visual reference); include only one
-table per file. Do not use tabs or spaces to separate columns in Word
-tables.
-
-\subsubsection*{SI Datasets}\label{si-datasets}
-\addcontentsline{toc}{subsubsection}{SI Datasets}
-
-Supply Excel (.xls), RTF, or PDF files. This file type will be published
-in raw format and will not be edited or composed.
-
-\subsubsection*{SI Movies}\label{si-movies}
-\addcontentsline{toc}{subsubsection}{SI Movies}
-
-Supply Audio Video Interleave (avi), Quicktime (mov), Windows Media
-(wmv), animated GIF (gif), or MPEG files and submit a brief legend for
-each movie in a Word or RTF file. All movies should be submitted at the
-desired reproduction size and length. Movies should be no more than 10
-MB in size.
-
-\subsubsection*{Still images}\label{still-images}
-\addcontentsline{toc}{subsubsection}{Still images}
-
-Authors must provide a still image from each video file. Supply TIFF,
-EPS, high-resolution PDF, JPEG, or GIF files.
-
-\subsubsection*{Appendices}\label{appendices}
-\addcontentsline{toc}{subsubsection}{Appendices}
-
-PNAS prefers that authors submit individual source files to ensure
-readability. If this is not possible, supply a single PDF file that
-contains all of the SI associated with the paper. This file type will be
-published in raw format and will not be edited or composed.
+TO DO
 
 \showmatmethods
 \showacknow
 \pnasbreak
 
 \hypertarget{refs}{}
-\hypertarget{ref-belkin2002using}{}
-1. Belkin M, Niyogi P (2002) Using manifold stucture for partially
-labeled classification. \emph{Advances in Neural Information Processing
-Systems}, pp 929--936.
+\hypertarget{ref-whiten_cultures_1999}{}
+1. Whiten A, et al. (1999) Cultures in chimpanzees. \emph{Nature}
+399(6737):682--685.
 
-\hypertarget{ref-berard1994embedding}{}
-2. Bérard P, Besson G, Gallot S (1994) Embedding riemannian manifolds by
-their heat kernel. \emph{Geometric \& Functional Analysis GAFA}
-4(4):373--398.
+\hypertarget{ref-lind_number_2010}{}
+2. Lind J, Lindenfors P (2010) The Number of Cultural Traits Is
+Correlated with Female Group Size but Not with Male Group Size in
+Chimpanzee Communities. \emph{PLoS ONE} 5(3).
+doi:\href{https://doi.org/10.1371/journal.pone.0009241}{10.1371/journal.pone.0009241}.
 
-\hypertarget{ref-coifman2005geometric}{}
-3. Coifman RR, et al. (2005) Geometric diffusions as a tool for harmonic
-analysis and structure definition of data: Diffusion maps.
-\emph{Proceedings of the National Academy of Sciences of the United
-States of America} 102(21):7426--7431.
+\hypertarget{ref-wrangham_why_2000}{}
+3. Wrangham RW (2000) Why are male chimpanzees more gregarious than
+mothers? A scramble competition hypothesis. \emph{Primate Males: Causes
+and Consequences of Variation in Group Composition} (Cambridge
+University Press, Cambridge), pp 248--258.
 
 
 

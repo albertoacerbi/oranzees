@@ -1,19 +1,20 @@
 ---
-title: Culture in oranzees (or something else)
+title: Culture in oranzees
 
 # Use letters for affiliations, numbers to show equal authorship (if applicable) and to indicate the corresponding author
 author:
   - name: Alberto Acerbi
-    affiliation: a,b,1
+    affiliation: a,1
   - name: William Snyder
-    affiliation: a
+    affiliation: b
   - name: Claudio Tennie
-    affiliation: a
+    affiliation: b
 address:
   - code: a
-    address: Faculty of Science, Department for early prehistory and quaternary ecology, University of Tübingen, Germany
-#  - code: b
-#    address: Centre for Culture and Evolution, Deparment of Psychology, Brunel University London, UK
+    address: Centre for Culture and Evolution, Department of Life Sciences, Brunel University London, Uxbridge, UB8 3PH, United Kingdom
+  - code: b
+    address: Faculty of Science, Department for early prehistory and quaternary ecology, University of Tübingen, Schloß Hohentuebingen, Burgsteige 11, 72070, Tübingen, Germany
+
 
 corresponding_author:
   - code: 1
@@ -55,7 +56,7 @@ keywords:
 ## must be one of: pnasresearcharticle (usual two-column layout), pnasmathematics (one column layout), or pnasinvited (invited submissions only)
 pnas_type: pnasresearcharticle
 
-bibliography: pnas-sample.bib
+bibliography: biblio.bib
 csl: pnas.csl
 
 ## change to true to add optional line numbering
@@ -65,40 +66,119 @@ output: rticles::pnas_article
 ---
 
 
-This PNAS journal template is provided to help you write your work in the
-correct journal format. Instructions for use are provided below.
+Intro here
 
-Note: please start your introduction without including the word
-"Introduction" as a section heading (except for math articles in the
-Physical Sciences section); this heading is implied in the first
-paragraphs.
-
-Guide to using this template {.unnumbered}
+Materials and methods {.unnumbered}
 ========================================
 
-Please note that whilst this template provides a preview of the typeset
-manuscript for submission, to help in this preparation, it will not
-necessarily be the final publication layout. For more detailed
-information please see the [PNAS Information for
-Authors](http://www.pnas.org/site/authors/format.xhtml).
+We built an individual-based model that reproduces a world inhabited by six populations of "oranzees", an hypothetical ape species. The model is space-explicit: the oranzees populations are located at relative positions analogous to the six chimpanzees sites in @whiten_cultures_1999. This is important to determine the genetic predispositions and ecological availabilities associated to their behaviours (see below). Population sizes are also taken from the sites in @whiten_cultures_1999. Following @lind_number_2010, we use data from @wrangham_why_2000, and we define population sizes as $N=\{20;42;49;76;50;95\}$.
+
+Oranzees are subject to an age-dependent birth/death process. A time step $t$ of the simulation represents a month in oranzees' life. From when they are 25 years old ($t=300$), there is a 1% probability an oranzee will die each month, or they die when they are 60 years old ($t=720$). The number of individuals in the population is fixed, so each time an oranzee dies is replaced by a newborn. 
+
+A newborn oranzee does not have any behaviour. Behaviours can be innovated at each time step. The process of innovation is influenced by: (i) the oranzees ‘state’, which depends from the behaviours an individual already possesses, (ii) the frequency of the behaviours already present in the population ("socially-mediated innovation"), and (iii) the genetic propensity and ecological availability associated to the behaviour. At the beginning of the simulations, the populations are randomly initialised with individuals between 0 and 25 years old.
+
+State {#format .unnumbered}
+------
+
+In the oranzees world, 64 behaviours are possible. Behaviours are divided in two categories, namely 32 social and 32 food-related behaviours.  
+
+In the case of social behaviours, we assume four sub-categories of behaviours, each with eight possible different behaviours, that serve the same goal. Oranzees' state is based on how many of the four goals are fulfilled. A goal is considered fulfilled if an oranzee has at least one behaviour out of the eight in the sub-category. An oranzee has a state value of $0.25$ if, for example, has at least one behaviour among the first eight behaviour, and none of the others, and a state value of $1$ if there is at least one behaviour in each sub-category. $p_\text{state}$, the probability to innovate a social behaviour, is drawn from a normal distribution with mean equal to $1-state$. 
+
+Food-related behaviours are also divided in sub-categories, with the differences that there is a variable number of behaviours in each sub-category, and that sub-categories are associated to two different 'nutrients'. The idea is that individuals need to balance their nutritional intake, so that their optimal diet consist in a roughly equal number of foodstuff for one and the other nutrient. The state, for food-related behaviours, depends on the total amount of food *and* on the balance between nutrients, and it is calculated as the sum of each sub-category fulfilled (as above, for this there needs to be at least one behaviour) minus the difference between the number of sub-categories providing nutrient Y and the number of sub-categories providing nutrient Z. As above, all is normalised between $0$ and $1$, and $p_\text{state}$ is then calculated (more details in SI). 
+
+Socially-mediated innovation {#format .unnumbered}
+------
+
+At each time step, any oranzees has a probability of innovation for social and food-related behaviours equal to $p_\text{state}$ as described above. The specific behaviour an oranzee will innovate depends both on the frequency of the behaviours already present in the population, and on the ecological availability and genetic propensity associated to the behaviour. A further parameter of the model, $S$, controls the probability that each innovation is socially-mediated. When an innovation is socially-mediated, each behaviour has a probability to be innovated drawn from a normal distribution with mean equals to its total instances in the population. When the innovation is not socially-mediated, the probability of innovating each behaviour is random. Only one behaviour per category can be innovated at each time step. 
+
+Genetic propensity and ecological availability {#format .unnumbered}
+------
+
+The behaviour selected in the previous step is actually innovated according to its genetic propensity and, in case of food-related beahviours, ecological availability. 
+
+Genetic propensity is a probability $p_g(0,1)$, assigned independently to each of the 64 behaviours. A parameter of the model, $\alpha_g$, determines the probability that the genetic propensity of each behaviour is equal for all the six populations or is different. 
+
+If is equal, $p_g$ is randomly drawn. If different, we assign it using a geographical gradient. For each behaviour, we choose a random point and calculate its distance to each population. Distances are then transformed to $p_g$ by rescaling them between 0 and 1, so that for the farther population $p_g=0$ i.e. the associated behaviour will be impossible to express (see SI). Notice that $\alpha_g=0$ does not mean that there are not genetic influences on the behaviours, but that there are no *differences* between the populations with this respect.
+
+Ecological availability is a probability $p_e(0,1)$ that represents the likelihood of finding a resource, or its nutritional value, in each site. Ecological availability is assigned only to food-related behaviours, and it is calculated in the same way of $p_g$, using the parameter $\alpha_e$ to determine the probability of ecological availability being different in the six populations.
+
+Model's output {#format .unnumbered}
+------
+
+We run simulation for $t_\text{max}=6000$ (corresponding to 500 years of oranzee-time). For each simulation, following @whiten_cultures_1999, we classify each behaviour, in each population, as:
+
+* *customary*: a behaviour observed in over 50% of individuals in at least one age class (see SI).
+
+* *habitual*: a behaviour observed in at least two individuals over all the population.
+
+* *present*: a behaviour observed in at least one individual over all the population.
+
+* *absent*: a behaviour never observed.
+
+* *ecological explanations* is a behaviour that is absent because of local ecological features (i.e., in our model,  associated to $p_e=0$).
+
+Notice the last category in @whiten_cultures_1999 (*unknown*, i.e. "the behaviour has not been recorded, but this may be due to inadequacy of relevant observational opportunities") does not apply in our case.
+
+Finally, we calculate the same "patterns" described in @whiten_cultures_1999:
+
+* *A*: patterns absent at no site.
+
+* *B*: patterns not achieving habitual frequencies at any site.
+
+* *C*: patterns for which any absence can be explained by local ecological factors.
+
+* *D*: patterns customary or habitual at some sites yet absent at others, with no ecological explanation, i.e. the behaviours defined as "cultural".
 
 
-Author Affiliations {#author-affiliations .unnumbered}
--------------------
+Results {.unnumbered}
+========================================
 
-Include department, institution, and complete address, with the
-ZIP/postal code, for each author. Use lower case letters to match
-authors with institutions, as shown in the example. Authors with an
-ORCID ID may supply this information at submission.
+We are particularly interested in the realistic parameter conditions of moderate to high environmental variability ($\alpha_e=(0.5,1)$) and zero to moderate genetic difference ($\alpha_g=(0,0.5)$). We run 20 simulations for each combination (for all, innovation is socially-mediated, i.e. $S=1$). The results show that various combinations of parameters produces a number of "cultural" behaviours (pattern *D*) consistent with the 38 found in @whiten_cultures_1999, in absence of any explicit copying mechanism implemented (see Figure \ref{Figure1}).
 
-Submitting Manuscripts {#submitting-manuscripts .unnumbered}
-----------------------
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=17.8cm]{figures/figure_1.pdf}
+\caption{Cultural behaviours in oranzees, varying ecological and genetic diversity. Red colour indicates simulation runs that produced more than 38 cultural behaviours; blue colour indicates simulation runs that produces less than 38 cultural behaviours.}
+\label{Figure1}
+\end{center}
+\end{figure*}
 
-All authors must submit their articles at
-[PNAScentral](http://www.pnascentral.org/cgi-bin/main.plex). If you are
-using Overleaf to write your article, you can use the "Submit to PNAS"
-option in the top bar of the editor window.
+We also analyse the effect of the parameter $S$ (proportion of socially-mediated innovations), in three conditions (see Figure \ref{Figure2}: (a) no genetic differences and intermediate ecological differences (compare to the high-left angle of Figure \ref{Figure1}, where with $S=1$ simulations produce less than 38 cultural behaviours), (b) good match with @whiten_cultures_1999, and (c) intermediate genetic differences and high ecological differences (compare to the low-right angle of Figure \ref{Figure1}, where with $S=1$ simulations produce more than 38 cultural behaviours). As expected, decreasing *S*, decreases the number of cultural behaviours, so that conditions where with $S=1$ there were more than 38 cultural behaviours could still produce results analogous to @whiten_cultures_1999, if not all innovations are socially mediated.
 
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=17.8cm]{figures/figure_2.pdf}
+\caption{Cultural behaviours in oranzees, varying the probability of socially-mediated innovations. Red colour indicates simulation runs that produced more than 38 cultural behaviours; blue colour indicates simulation runs that produces less than 38 cultural behaviours.}
+\label{Figure2}
+\end{center}
+\end{figure*}
+
+Our results show that our model not only reproduces the number of cultural behaviours (pattern *D*), but also the other three patterns (*A*, *B*, *C*) found in @whiten_cultures_1999. Figure \ref{Figure3} show the four patterns produced in one of the conditions for which we have a good match for cultural behaviours ($\alpha_e=0.8;\alpha_g=0.2, S=1$).
+
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=11.4cm]{figures/figure_3.pdf}
+\caption{Number of behaviours for each of the four patterns (*A*, *B*, *C*, *D*) for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The red values are the values described for real chimpanzees populations.}
+\label{Figure3}
+\end{center}
+\end{figure*}
+
+Finally, we run 100 simulations for the same condition where we have a good match for cultural behaviours with @whiten_cultures_1999 ($\alpha_e=0.8;\alpha_g=0.2, S=1$). In each simulation, we recorded, for each population, the number of behaviours (habitual + customary + present) that are also classified as cultural (see Figure \ref{Figure4}). We find a weak but significant correlation b between population size and number of cultural traits ($p<0.00001,\rho=0.2,N=600$).
+
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=11.4cm]{figures/figure_4.pdf}
+\caption{Number of cultural behaviours for each population for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The blue line is a linear fit of the data.}
+\label{Figure4}
+\end{center}
+\end{figure*}
+
+
+Discussion {.unnumbered}
+========================================
+
+TO DO
+<!--
 Format {#format .unnumbered}
 ------
 
@@ -120,15 +200,6 @@ and/or equations in addition to text, keep the text for your manuscript
 under 39,000 characters (including spaces) for Direct Submissions and
 72,000 characters (including spaces) for PNAS PLUS.
 
-References {#references .unnumbered}
-----------
-
-References should be cited in numerical order as they appear in text;
-this will be done automatically via bibtex, e.g. @belkin2002using and
-@berard1994embedding [@coifman2005geometric]. All references, including
-for the SI, should be included in the main manuscript file. References
-appearing in both sections should not be duplicated. SI references
-included in tables should be included with the main reference section.
 
 Data Archival {#data-archival .unnumbered}
 -------------
@@ -194,19 +265,6 @@ $$\begin{aligned}
 \end{aligned}$$
 
 
-
-<!-- pandoc writes all tables using longtable, which fails in 2-column mode
-
-  Species                    CBS     CV     G3
-  ----------------------- ------ ------ ------
-  1\. Acetaldehyde           0.0    0.0    0.0
-  2\. Vinyl alcohol          9.1    9.6   13.5
-  3\. Hydroxyethylidene     50.8   51.2   54.0
-
-  : Comparison of the fitted potential energy surfaces and ab initio
-  benchmark electronic energy calculations
-
--->
 
 Supporting Information (SI) {#supporting-information-si .unnumbered}
 ---------------------------
@@ -275,7 +333,7 @@ PNAS prefers that authors submit individual source files to ensure
 readability. If this is not possible, supply a single PDF file that
 contains all of the SI associated with the paper. This file type will be
 published in raw format and will not be edited or composed.
-
+-->
 
 <!-- Leave these lines as they are at the end of your .Rmd file to ensure placement of methods & acknowledgements sections before the references-->
 \showmatmethods
