@@ -20,6 +20,8 @@ The material is organised as follows:
 
 Plus four folders:
 
+* [draft/](draft): folder with material for the manuscript (written with R Markdown)
+
 * [material/](material): folder with media
 
 * [output/](output): folder with outputs from simulations used in the process of development
