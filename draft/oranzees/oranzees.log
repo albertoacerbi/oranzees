@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  2 DEC 2019 14:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  2 DEC 2019 15:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1799,12 +1799,32 @@ Underfull \vbox (badness 4242) has occurred while \output is active []
 Underfull \vbox (badness 4242) has occurred while \output is active []
 
 [4 <./figures/figure_2.pdf> <./figures/figure_3.pdf>]
-Extra height:0.0pt when 66.92181pt
-(2)Left:66.92181pt Right:65.85864pt Output:66.92181pt
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:10.0pt when 94.29681pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:10.0pt when 95.29681pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:10.0pt when 96.29681pt
+Extra height:0.0pt when 97.29681pt
+(2)Left:97.29681pt Right:87.75864pt Output:97.29681pt
 - LAST -
-Left:66.92181pt
-Right:65.85864pt
-Output:66.92181pt
+Left:97.29681pt
+Right:87.75864pt
+Output:97.29681pt
 
 Package caption Warning: Unused \captionsetup[table] on input line 166.
 See the caption package documentation for explanation.
@@ -1812,7 +1832,7 @@ See the caption package documentation for explanation.
 
 AED: lastpage setting LastPage
 
-Overfull \vbox (156.44743pt too high) has occurred while \output is active []
+Overfull \vbox (183.82243pt too high) has occurred while \output is active []
 
 - LAST -
 Extra skip:11.0pt
@@ -1820,7 +1840,7 @@ Left:189.0pt/2.0pt
 Right:180.0pt/0.0pt
 Output:189.5pt
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 510.
+(Font)              <8> on input line 512.
 [5 <./figures/figure_4.pdf>]
 
 Package catoptions Warning: Undefined options 
@@ -1828,24 +1848,24 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 510.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 510.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 512.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 512.
 (./oranzees.xwm) (./oranzees.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 510.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 510.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 512.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 512.
 Package rerunfilecheck Info: File `oranzees.out' has not changed.
 (rerunfilecheck)             Checksum: 8CBB33FFF132DEE107EA135F4E0746E2;483.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 510.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 512.
  ) 
 Here is how much of TeX's memory you used:
- 33899 strings out of 493089
- 633474 string characters out of 6134841
+ 33901 strings out of 493089
+ 633496 string characters out of 6134841
  776062 words of memory out of 5000000
  36565 multiletter control sequences out of 15000+600000
- 96873 words of font info for 170 fonts, out of 8000000 for 9000
+ 96962 words of font info for 171 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,14n,73p,10398b,1033s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
@@ -1868,7 +1888,7 @@ e1/public/lm/lmssbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
 c/lm/lmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhv
 b8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on oranzees.pdf (5 pages, 341052 bytes).
+Output written on oranzees.pdf (5 pages, 341327 bytes).
 PDF statistics:
  214 PDF objects out of 1000 (max. 8388607)
  178 compressed objects within 2 object streams
