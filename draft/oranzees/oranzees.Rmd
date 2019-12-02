@@ -172,7 +172,7 @@ Our results show that our model not only easily reproduces the number of cultura
 \end{center}
 \end{figure*}
 
-Finally, we run 100 simulations for the same condition where we have a good match for cultural behaviours with @whiten_cultures_1999 ($\alpha_e=0.8;\alpha_g=0.2, S=1$). In each simulation, we recorded, for each population, the number of behaviours (habitual + customary + present) that are also classified as cultural (see Figure \ref{Figure4}). We find a small, but significant, correlation between population size and number of cultural traits ($p<0.00001,\rho=0.2,N=600$). In other words, our model reproduces the effect of cultural accumulation relative to population size found in real populations [@whiten_evolution_2007; @lind_number_2010; @kuhl_human_2019].
+Finally, we run 100 simulations for the same condition where we have a good match for cultural behaviours with @whiten_cultures_1999 ($\alpha_e=0.8;\alpha_g=0.2, S=1$). In each simulation, we recorded, for each population, the number of behaviours (habitual + customary + present) that are also classified as cultural (see Figure \ref{Figure4}). We find a small, but significant, correlation between population size and number of cultural traits ($p<0.00001,\rho=0.2,N=600$). In other words, our model reproduces the effect of cultural accumulation relative to population size possibly found in real populations [@whiten_evolution_2007; @lind_number_2010; @kuhl_human_2019].
 
 \begin{figure*}[h!]
 \begin{center}
@@ -186,9 +186,20 @@ Finally, we run 100 simulations for the same condition where we have a good matc
 Discussion {.unnumbered}
 ========================================
 
+We developed an individual-based model to examine under which conditions a distribution of behavioural traits analogous to the distribution reported in @whiten_cultures_1999 in chimpanzees could emerge, crucially without the exitence of copying mechanisms. We implemented several details of the original study, including realstic demographic and spatial features, as well as effects of genetic propensity and ecological availability on the behaviours.
+
+Our main result is that we can reproduce the same pattern under realistic values of the parameters of genetic propensity and ecological availability, namely null to medium importance of genetic variation, and medium to high importance of ecological variation. While we can not precisely pinpoint the exact values that these parameters should have to reproduce real population of chimpanzees, we are confident that the range of values explored, and the relative facility by which patterns of cultural behaviours similar to @whiten_cultures_1999 can be produced in the model, strongly suggest that copying is not required for those patterns to emerge. In addition, and as a futher support to our results, our model not only reprouduces the "cultural" behaviours pattern, but also the proportions among the other patterns, i.e. absent behaviours, behaviours not achieving habitual frequencies at any site, and behaviours absent because of ecological factors.   
+
+In our model, we focused on the mechanism of socially mediated reinnovation, that is, we assumed that members of our hypothetical species, oranzees, had a probability to reinnovate a specific behaviour stocastically linked to how many other oranzees in the population were already showing this behaviour. While this is a realistic assumption [REF] and it produces in our model the real chimpanzees cultural pattern in realistic conditions, our results show that it is not necessary. Given other combinations of parameters, such as higher genetic and ecological diversities, the cultural pattern can be obtained even when reinnovation is not socially mediated, and oranzees are not influenced by the behaviours of the other individuals.
+
+Finally, our model reproduces a correlation between population size and number of cultural traits in the six populations. The magnitude of the effect is small, which is to be expected, given that the presence of this correlation in real popualtions of apes is somehow debated. Again, and importantly, this correlation is brought about without copying, so that we do not need to invoke specific "cultural" reasons (e.g. @henrich_demography_2004) to explain it.
+
+then go into equifinality [@acerbi_conformity_2016; @barrett_equifinality_2019], 
+
+Plus, we should go systematically through te various types of evidence you list so nicely in th introduction - i.e. accumaltion yes, but not th other two types.
+
 Reformulate: This provides an answer to the puzzling question we presented above: copying is necessary and leads to cumulative culture, but ape cultures are not based on it.
 
-TO DO
 <!--
 Format {#format .unnumbered}
 ------
