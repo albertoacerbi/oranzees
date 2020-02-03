@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  3 FEB 2020 11:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  3 FEB 2020 11:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1701,30 +1701,30 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <8> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 72.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 7.59998pt on input line 72.
-Package mdframed Info: mdframed works in twoside mode on input line 124.
+Package mdframed Info: mdframed works in twoside mode on input line 127.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 124.
+(Font)              scaled to size 9.49997pt on input line 127.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 124.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 127.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 9.49997pt on input line 124.
+(Font)              scaled to size 9.49997pt on input line 127.
 Package mdframed Info: mdframed inside float 
- mdframed uses option nobreak mdframed on input line 124.
+ mdframed uses option nobreak mdframed on input line 127.
 Package mdframed Info: mdframed inside minipage 
- mdframed uses option nobreak mdframed on input line 124.
+ mdframed uses option nobreak mdframed on input line 127.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 124.
+ mdframed uses option nobreak mdframed on input line 127.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 5.69998pt on input line 124.
+(Font)              scaled to size 5.69998pt on input line 127.
 
 Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 163.
+(hyperref)                be the same. Added a new anchor on input line 166.
 
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 169.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 172.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 6.64998pt on input line 169.
-LaTeX Font Info:    Try loading font information for T1+bch on input line 169.
+(Font)              scaled to size 6.64998pt on input line 172.
+LaTeX Font Info:    Try loading font information for T1+bch on input line 172.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1bch.fd
 File: t1bch.fd 2004/10/18 font definitions for T1/bch.
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/microtype/mt-bch.cfg
@@ -1734,22 +1734,22 @@ File: mt-bch.cfg 2007/03/03 v1.5 microtype config. file: Bitstream Charter (RS)
 
 
 ]
-Underfull \hbox (badness 3942) in paragraph at lines 201--212
+Underfull \hbox (badness 3942) in paragraph at lines 204--215
 [] []\T1/phv/b/n/9 So-cial-ly--me-di-ated rein-no-va-tion.[] \T1/lmr/m/n/9 (+20
 ) At each time step, all
  []
 
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 256.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 259.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) <figures/figure_1.pdf, id=55, 722.7pt x 505.89pt>
 File: figures/figure_1.pdf Graphic file (type pdf)
 <use figures/figure_1.pdf>
-Package pdftex.def Info: figures/figure_1.pdf used on input line 310.
+Package pdftex.def Info: figures/figure_1.pdf used on input line 313.
 (pdftex.def)             Requested size: 506.45914pt x 354.52197pt.
 
-Overfull \hbox (0.7654pt too wide) in paragraph at lines 310--311
+Overfull \hbox (0.7654pt too wide) in paragraph at lines 313--314
  [] 
  []
 
@@ -1757,16 +1757,16 @@ Overfull \hbox (0.7654pt too wide) in paragraph at lines 310--311
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 329.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 332.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 6.64998pt on input line 329.
+(Font)              scaled to size 6.64998pt on input line 332.
 [2] <figures/figure_2.pdf, id=68, 867.24pt x 360.34625pt>
 File: figures/figure_2.pdf Graphic file (type pdf)
 <use figures/figure_2.pdf>
-Package pdftex.def Info: figures/figure_2.pdf used on input line 332.
+Package pdftex.def Info: figures/figure_2.pdf used on input line 335.
 (pdftex.def)             Requested size: 506.45914pt x 210.44156pt.
 
-Overfull \hbox (0.7654pt too wide) in paragraph at lines 332--333
+Overfull \hbox (0.7654pt too wide) in paragraph at lines 335--336
  [] 
  []
 
@@ -1776,7 +1776,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <figures/figure_3.pdf, id=70, 504.88625pt x 360.34625pt>
 File: figures/figure_3.pdf Graphic file (type pdf)
 <use figures/figure_3.pdf>
-Package pdftex.def Info: figures/figure_3.pdf used on input line 347.
+Package pdftex.def Info: figures/figure_3.pdf used on input line 350.
 (pdftex.def)             Requested size: 324.36124pt x 231.50606pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1787,7 +1787,7 @@ Underfull \vbox (badness 5288) has occurred while \output is active []
 <figures/figure_4.pdf, id=72, 361.35pt x 360.34625pt>
 File: figures/figure_4.pdf Graphic file (type pdf)
 <use figures/figure_4.pdf>
-Package pdftex.def Info: figures/figure_4.pdf used on input line 366.
+Package pdftex.def Info: figures/figure_4.pdf used on input line 369.
 (pdftex.def)             Requested size: 324.36124pt x 323.46187pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1799,12 +1799,27 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 4242) has occurred while \output is active []
 
 [4 <./figures/figure_2.pdf> <./figures/figure_3.pdf>]
-Extra height:0.0pt when 142.86432pt
-(2)Left:142.86432pt Right:141.09366pt Output:142.86432pt
+Extra height:10.0pt when 165.33931pt
+Extra height:10.0pt when 166.33931pt
+
+Underfull \vbox (badness 1596) has occurred while \output is active []
+
+Extra height:0.0pt when 167.33931pt
+
+Underfull \vbox (badness 1596) has occurred while \output is active []
+
+(2)Left:167.33931pt Right:167.42868pt Output:167.33931pt
+
+Underfull \vbox (badness 1681) has occurred while \output is active []
+
+(2)Left:167.42868pt Right:167.42868pt Output:167.42868pt
 - LAST -
-Left:142.86432pt
-Right:141.09366pt
-Output:142.86432pt
+Left:167.42868pt
+Right:167.42868pt
+Output:167.42868pt
+
+Underfull \vbox (badness 1681) has occurred while \output is active []
+
 
 Package caption Warning: Unused \captionsetup[table] on input line 166.
 See the caption package documentation for explanation.
@@ -1812,15 +1827,15 @@ See the caption package documentation for explanation.
 
 AED: lastpage setting LastPage
 
-Overfull \vbox (286.38994pt too high) has occurred while \output is active []
+Overfull \vbox (344.86493pt too high) has occurred while \output is active []
 
 - LAST -
-Extra skip:10.55556pt
-Left:216.0pt/1.55556pt
-Right:207.0pt/0.0pt
-Output:216.5pt
+Extra skip:29.0pt
+Left:243.0pt/2.0pt
+Right:216.0pt/0.0pt
+Output:243.5pt
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 528.
+(Font)              <8> on input line 540.
 [5 <./figures/figure_4.pdf>]
 
 Package catoptions Warning: Undefined options 
@@ -1828,31 +1843,31 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 528.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 528.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 540.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 540.
 (./oranzees.xwm) (./oranzees.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 528.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 528.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 540.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 540.
 Package rerunfilecheck Info: File `oranzees.out' has not changed.
 (rerunfilecheck)             Checksum: 8CBB33FFF132DEE107EA135F4E0746E2;483.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 528.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 540.
  ) 
 Here is how much of TeX's memory you used:
- 33917 strings out of 493089
- 633688 string characters out of 6134841
- 778079 words of memory out of 5000000
- 36565 multiletter control sequences out of 15000+600000
- 97579 words of font info for 178 fonts, out of 8000000 for 9000
+ 33926 strings out of 493089
+ 633810 string characters out of 6134841
+ 780087 words of memory out of 5000000
+ 36568 multiletter control sequences out of 15000+600000
+ 98124 words of font info for 181 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,14n,73p,10398b,1033s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
-texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/20
-15/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2015/texmf-dist/
-fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips
-/lm/lm-ts1.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathsy
+texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2015/
+texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2015/texmf-dist
+/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvi
+ps/base/8r.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathsy
 .enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pf
 b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/
@@ -1868,10 +1883,10 @@ e1/public/lm/lmssbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
 c/lm/lmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhv
 b8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on oranzees.pdf (5 pages, 342370 bytes).
+Output written on oranzees.pdf (5 pages, 343616 bytes).
 PDF statistics:
- 218 PDF objects out of 1000 (max. 8388607)
- 182 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 40545 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 221 PDF objects out of 1000 (max. 8388607)
+ 185 compressed objects within 2 object streams
+ 32 named destinations out of 1000 (max. 500000)
+ 41057 words of extra memory for PDF output out of 42996 (max. 10000000)
 
