@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  6 MAR 2020 14:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  6 MAR 2020 15:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1791,18 +1791,23 @@ Package pdftex.def Info: figures/figure_4.pdf used on input line 375.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-Extra height:10.0pt when 661.88914pt
-Extra height:0.0pt when 662.88914pt
-(2)Left:662.88914pt Right:656.27855pt Output:662.88914pt
+Extra height:19.0pt when 667.36414pt
+Extra height:19.0pt when 668.36414pt
+Extra height:19.0pt when 669.36414pt
+Extra height:10.0pt when 670.36414pt
+Extra height:10.0pt when 671.36414pt
+Extra height:10.0pt when 672.36414pt
+Extra height:0.0pt when 673.36414pt
+(2)Left:673.36414pt Right:665.27855pt Output:673.36414pt
 - LAST -
-Left:662.88914pt
-Right:656.27855pt
-Output:662.88914pt
+Left:673.36414pt
+Right:665.27855pt
+Output:673.36414pt
 
-Overfull \vbox (9.9529pt too high) has occurred while \output is active []
+Overfull \vbox (15.42789pt too high) has occurred while \output is active []
 
 
-Overfull \vbox (9.9529pt too high) has occurred while \output is active []
+Overfull \vbox (15.42789pt too high) has occurred while \output is active []
 
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 456.
@@ -1840,10 +1845,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 553.
  ) 
 Here is how much of TeX's memory you used:
  33943 strings out of 493089
- 633966 string characters out of 6134841
- 799715 words of memory out of 5000000
+ 633970 string characters out of 6134841
+ 801033 words of memory out of 5000000
  36569 multiletter control sequences out of 15000+600000
- 98776 words of font info for 190 fonts, out of 8000000 for 9000
+ 98820 words of font info for 190 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  70i,14n,73p,10398b,1033s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
@@ -1866,7 +1871,7 @@ e1/public/lm/lmssbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
 c/lm/lmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhv
 b8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on oranzees.pdf (6 pages, 2802690 bytes).
+Output written on oranzees.pdf (6 pages, 2802794 bytes).
 PDF statistics:
  243 PDF objects out of 1000 (max. 8388607)
  196 compressed objects within 2 object streams

@@ -161,7 +161,7 @@ We are particularly interested in the realistic parameter conditions of moderate
 \end{center}
 \end{figure*}
 
-We also analysed the effect of the parameter $S$ (proportion of socially-mediated reinnovations), in three conditions (see Figure \ref{Figure3}): (a) no genetic differences and intermediate ecological differences (compare to the high-left corner of Figure \ref{Figure1}, where with $S=1$ simulations produce less than 38 cultural behaviours), (b) good match with @whiten_cultures_1999, namely $\alpha_e=0.8$ and $\alpha_g=0.2$, and (c) intermediate genetic differences and high ecological differences (compare to the low-right corner of Figure \ref{Figure1}, where with $S=1$ simulations produce more than 38 cultural behaviours). As expected, decreasing *S*, decreases the number of cultural behaviours. Conditions where, with $S=1$, there were more than 38 cultural behaviours could still produce results analogous to @whiten_cultures_1999, given that not all reinnovations are socially mediated.
+We also analysed the effect of the parameter $S$ (proportion of socially-mediated reinnovations), in three conditions (see Figure \ref{Figure3}): (a) no genetic differences and intermediate ecological differences (compare to the high-left corner of Figure \ref{Figure1}, where with $S=1$ simulations produce less than 38 cultural behaviours), (b) one of the conditions that produce good match with @whiten_cultures_1999, namely $\alpha_e=0.8$ and $\alpha_g=0.2$, and (c) intermediate genetic differences and high ecological differences (compare to the low-right corner of Figure \ref{Figure1}, where with $S=1$ simulations produce more than 38 cultural behaviours). As expected, decreasing *S*, decreases the number of cultural behaviours. Conditions where, with $S=1$, there were more than 38 cultural behaviours could still produce results analogous to @whiten_cultures_1999, given that not all reinnovations are socially mediated.
 
 \begin{figure*}[h!]
 \begin{center}
@@ -181,7 +181,7 @@ Our results show that our model not only accurately reproduces the number of cul
 \end{center}
 \end{figure*}
 
-Finally, we ran 100 simulations for the same condition where we have a good match for cultural behaviours with @whiten_cultures_1999 ($\alpha_e=0.8;\alpha_g=0.2, S=1$). In each simulation, we recorded, for each population, the number of behaviours (habitual + customary + present) that are also classified as cultural (see Figure S5). We find a small, but significant, correlation between population size and number of cultural traits ($p<0.00001,\rho=0.2,N=600$). In other words, our model reproduces the effect of cultural accumulation relative to population size possibly found in real populations - see [@whiten_evolution_2007; @lind_number_2010; @kuhl_human_2019].
+Finally, we ran 100 simulations for one of the conditions where we have a good match for cultural behaviours with @whiten_cultures_1999 ($\alpha_e=0.8;\alpha_g=0.2, S=1$). In each simulation, we recorded, for each population, the number of behaviours (habitual + customary + present) that are also classified as cultural (see Figure S4). We find a small, but significant, correlation between population size and number of cultural traits ($p<0.00001,\rho=0.2,N=600$). In other words, our model reproduces the effect of cultural accumulation relative to population size possibly found in real populations - see [@whiten_evolution_2007; @lind_number_2010; @kuhl_human_2019].
 
 
 Discussion {.unnumbered}

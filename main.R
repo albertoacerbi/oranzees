@@ -301,10 +301,11 @@ plot_one_run <- function(my_test) {
     frequency = my_test$frequency,
     time = rep(1:t_max, 64),
     category = as_factor(c(
-      rep("play", t_max * 8), rep("display", t_max * 8), rep("groom", t_max * 8), rep("courthsip", t_max * 8),
-      rep("A", t_max * 8), rep("B", t_max * 8), rep("C", t_max * 4), rep("D", t_max * 4),
-      rep("E", t_max * 2), rep("F", t_max * 2), rep("G", t_max), rep("H", t_max),
-      rep("I", t_max), rep("J", t_max)
+      rep("Play", t_max * 8), rep("Display", t_max * 8), rep("Groom", t_max * 8), rep("Courthsip", t_max * 8),
+      rep("Fruit-hammer foraging", t_max * 8), rep("Stick-based foraging", t_max * 8), 
+      rep("Anvil smash", t_max * 4), rep("Rolling pin tecniques", t_max * 4),
+      rep("Insect swatting", t_max * 2), rep("Fish stunning", t_max * 2), rep("Tortoise-flip", t_max), rep("Potato-mash", t_max),
+      rep("Clubbing", t_max), rep("Egg cracking", t_max)
     ))
   )
   ggplot(data = data_to_plot) +

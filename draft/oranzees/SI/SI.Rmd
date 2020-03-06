@@ -40,7 +40,7 @@ Elaham    | 95
 
 ## Geographical gradient for genetic propensity and ecological availability
 
-As described in the main paper, two parameter of the models, $\alpha_g$ and $\alpha_e$, determine, independently for each behaviour, the probability that the genetic propensity and ecological availability are equal for all the six populations.
+As described in the main manuscript, two parameter of the models, $\alpha_g$ and $\alpha_e$, determine, independently for each behaviour, the probability that the genetic propensity and ecological availability are equal for all the six populations.
 
 If they are not equal, the value of $p_g$ (or $p_e$) are assigned using a geographical gradient, by choosing a random point in the oranzees' world, and calculating its distance to each population. Distances are then transformed to $p_g$ (or $p_e$) by rescaling them between 0 and 1, so that for the farther population $p_g=0$ i.e. the associated behaviour will be impossible to express (or $p_e=0$ i.e. the associated behaviour will be absent with an "ecological explanation")
 
@@ -133,11 +133,20 @@ Tortoise-flip         | tortoise-drop-on-stone | Y
 Potato-mash           | tube-mash | Z
 Clubbing              | mammal-clubbing | Y
 Egg cracking          | egg-crack | Z
-<!--
+
+<div style="page-break-after: always; visibility: hidden"> 
+\pagebreak 
+</div>
+
+## Example of single run
+
+\autoref{fig3} shows an example of the entire history of all behaviors in a single run, for a single population (geographical location and population size are based on "Uossob"), with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$, i.e. one of the combination of parameters that produces a number of cultural behaviour similar to @whiten_cultures_1999. 
+
+![Single run with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$. \label{fig3} ](figures/figure_3)
 
 ## Age classes to calcualte customary behaviours
 
-Age classes to calculate customary behaviours are defined as follows:
+To determine *customary* behaviours, we need to define age classes for individuals (the definition of customary behaviours, from @whiten_cultures_1999 is a behaviour observed in over 50% of individuals in at least one age class). We define three age classes as follows:
 
 * *adults*: individuals that are more that 16-year old.
 
@@ -145,29 +154,18 @@ Age classes to calculate customary behaviours are defined as follows:
 
 * *juveniles*: individuals that are less than 8-year old.
 
-Finally, we use the coding to calculate the "patterns" described in @whiten_cultures_1999:
-
-* *A*: patterns absent at no site.
-
-* *B*: patterns not achieving habitual frequencies at any site.
-
-* *C*: patterns for which any absence can be explained by local ecological factors.
-
-* *D*: patterns customary or habitual at some sites yet absent at others, with no ecological explanation, i.e. the "cultural" behaviours.
--->
-
 <div style="page-break-after: always; visibility: hidden"> 
 \pagebreak 
 </div>
 
 
-# Figure S5
+# Figure S4
 
 \begin{figure*}[h!]
 \begin{center}
-\includegraphics[width=11.4cm]{figures/figure_5.pdf}
+\includegraphics[width=11.4cm]{figures/figure_4.pdf}
 \caption{Number of cultural behaviours for each population for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The blue line is a linear fit of the data. $N=100$ runs.}
-\label{Figure5}
+\label{Figure4}
 \end{center}
 \end{figure*}
 
