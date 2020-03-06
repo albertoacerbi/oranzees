@@ -166,38 +166,41 @@ associated to the behaviour. At the beginning of the simulations, the
 populations are randomly initialised with individuals between 0 and 25
 years old.
 
-\subsection*{State}\label{format}
-\addcontentsline{toc}{subsection}{State}
+\subsection*{Oranzee's behaviours and state}\label{format}
+\addcontentsline{toc}{subsection}{Oranzee's behaviours and state}
 
 In the oranzees world, 64 behaviours are possible. Behaviours are
 divided into two categories: 32 social and 32 food-related behaviours.
 These figures where chosen to resemble the behavioural categories
-considered in (3).
+considered in (3). Behaviours serve oranzees to fulfill various goals.
+Oranzees have a `state' that is based on how many goals are fullfilled
+in the two main categories of social and food-realed beahaviours.
 
-In the case of social behaviours, we assume four sub-categories (e.g.,
-`play', `groom', etc.), each with eight possible different behaviours,
-that serve the same goal. Oranzees' state is based on how many of the
-four goals are fulfilled. A goal is considered fulfilled if an oranzee
-has at least one behaviour out of the eight in the sub-category. An
-oranzee has a state value of \(0.25\) if, for example, it has at least
-one behaviour among the first eight behaviours, and none of the others,
-and a state value of \(1\) if there is at least one behaviour in each
-sub-category. \(p_\text{social}\), the probability to innovate a social
-behaviour, is drawn from a normal distribution with mean equal to
+In the case of social behaviours, we assume four sub-categories (`play',
+`display', `groom', `etc.'courtship', the names are only suggestive),
+each with eight possible different behaviours that serve the same goal.
+A goal is considered fulfilled if an oranzee has at least one behaviour
+out of the eight in the sub-category. Oranzees have a `state' that is
+based on how many of the four goals are fulfilled. An oranzee has a
+state value of \(0.25\) if, for example, it has at least one behaviour
+in the category `play', and none of the others, and a state value of
+\(1\) if there is at least one behaviour in each sub-category.
+\(p_\text{social}\), the probability to innovate a social behaviour, is
+drawn from a normal distribution with mean equal to
 \(1-state_\text{social}\).
 
-Food-related behaviours are analogously divided into sub-categories,
-with the differences, with respect to social behaviours, that there is a
-variable number of behaviours in each sub-category. In addition,
-sub-categories are associated to two different `nutrients', \emph{Y} and
-\emph{Z}. Here individuals need to balance their nutritional intake, so
-that their optimal diet consist in a roughly equal number of food for
-one and the other nutrient. The state, for food-related behaviours,
-depends on the total amount of food ingested \emph{and} on the balance
-between nutrients. The state is calculated as the sum of each
-sub-category fulfilled (as above, for this to happen there needs to be
-at least one behaviour present) minus the difference between the number
-of sub-categories providing nutrient \emph{Y} and the number of
+Food-related behaviours are analogously divided into sub-categories.
+Differently from social behaviours, there is a variable number of
+behaviours in each sub-category. In addition, sub-categories are
+associated to two different `nutrients', \emph{Y} and \emph{Z}. Here
+individuals need to balance their nutritional intake, so that their
+optimal diet consist in a roughly equal number of food for one and the
+other nutrient. The state, for food-related behaviours, depends on the
+total amount of food ingested \emph{and} on the balance between
+nutrients. The state is calculated as the sum of each sub-category
+fulfilled (as above, for this to happen there needs to be at least one
+behaviour present) minus the difference between the number of
+sub-categories providing nutrient \emph{Y} and the number of
 sub-categories providing nutrient \emph{Z}. We normalize the state
 between \(0\) and \(1\), and, as above \(p_\text{food}\) is then
 calculated as \(1-state_\text{food}\).
@@ -309,15 +312,15 @@ development is available in a dedicated GitHub repostiory, at
 \addcontentsline{toc}{section}{Results}
 
 We are particularly interested in the realistic parameter conditions of
-moderate to high environmental variability (\(\alpha_e=(0.5,1)\)) and
-zero to moderate genetic differences (\(\alpha_g=(0,0.5)\)). We ran 20
-simulations for each combination (for a total of 600 runs). For all,
-reinnovation is socially-mediated (\(S=1\)). The results show that
-various combinations of parameters produces a number of cultural
-behaviours (pattern \emph{D}) consistent with the 38 found in (3), in
-absence of any explicit copying mechanism implemented (see Figure
-\ref{Figure1}). In Figure \ref{Figure2}, we reproduce the output of a
-run where 38 cultural behaviours were found, and how they were
+moderate to high environmental variability (i.e. \(\alpha_e\) from 0.5
+to 1) and zero to moderate genetic differences (i.e. \(\alpha_g\) from 0
+to 0.5). We ran 20 simulations for each combination (for a total of 600
+runs). For all, reinnovation is socially-mediated (\(S=1\)). The results
+show that various combinations of parameters produces a number of
+cultural behaviours (pattern \emph{D}) consistent with the 38 found in
+(3), in absence of any explicit copying mechanism implemented (see
+Figure \ref{Figure1}). In Figure \ref{Figure2}, we reproduce the output
+of a run where 38 cultural behaviours were found, and how they were
 classified in each of the six simulated populations, using a
 visualisation inspired by (3).
 
@@ -340,11 +343,11 @@ visualisation inspired by (3).
 We also analysed the effect of the parameter \(S\) (proportion of
 socially-mediated reinnovations), in three conditions (see Figure
 \ref{Figure3}): (a) no genetic differences and intermediate ecological
-differences (compare to the high-left angle of Figure \ref{Figure1},
+differences (compare to the high-left corner of Figure \ref{Figure1},
 where with \(S=1\) simulations produce less than 38 cultural
 behaviours), (b) good match with (3), namely \(\alpha_e=0.8\) and
 \(\alpha_g=0.2\), and (c) intermediate genetic differences and high
-ecological differences (compare to the low-right angle of Figure
+ecological differences (compare to the low-right corner of Figure
 \ref{Figure1}, where with \(S=1\) simulations produce more than 38
 cultural behaviours). As expected, decreasing \emph{S}, decreases the
 number of cultural behaviours. Conditions where, with \(S=1\), there
@@ -384,7 +387,7 @@ present) that are also classified as cultural (see Figure
 population size and number of cultural traits
 (\(p<0.00001,\rho=0.2,N=600\)). In other words, our model reproduces the
 effect of cultural accumulation relative to population size possibly
-found in real populations - compare (9, 13, 14).
+found in real populations - see (9, 13, 14).
 
 \begin{figure*}[h!]
 \begin{center}
@@ -412,18 +415,17 @@ Our main result is that we can reproduce the pattern observed in
 populations wild chimpanzees under realistic values of the parameters of
 genetic propensity and ecological availability, namely null to medium
 importance of genetic variation, and medium to high importance of
-ecological variation. Our model cannot precisely pinpoint the exact
-values that these parameters should have to reproduce real populations
-of chimpanzees (or other apes). However, we are confident that the range
-of values explored, and the relative ease by which patterns of cultural
-behaviours similar to (3) can be produced, strongly suggest that copying
-is not required for those patterns to emerge. Therefore, ape-like
-cultural patterns do not and cannot pinpoint copying abilities or
-necessities. In addition, and as further support to our results, our
-model not only reproduces the cultural behaviours pattern, but also the
-proportions among the other patterns, i.e.~absent behaviours, behaviours
-not achieving habitual frequencies at any site, and behaviours absent
-because of ecological factors.
+ecological variation. Our model cannot precisely determine which exact
+values of parameters reproduce real populations of chimpanzees (or other
+apes). However, we are confident that the range of values explored, and
+the relative ease by which patterns of cultural behaviours similar to
+(3) can be produced, strongly suggest that copying is not required for
+those patterns to emerge. Therefore, ape-like cultural patterns do not
+pinpoint copying abilities. In addition, and as further support to our
+results, our model not only reproduces the cultural behavioural
+patterns, but also the proportions among the other patterns, i.e.~absent
+behaviours, behaviours not achieving habitual frequencies at any site,
+and behaviours absent because of ecological factors.
 
 In our model, we focused on the mechanism of socially mediated
 reinnovation, that is, we assumed that members of our hypothetical
@@ -441,9 +443,9 @@ Finally, our model reproduces a correlation between population size and
 number of cultural traits in the six populations. The magnitude of the
 effect is small, which is to be expected, given that the presence of
 this correlation in real populations of (human and non-human) apes is
-currently debated ((16)). Again, and importantly, this correlation is
-brought about without copying, so that there is no need to invoke
-specific ``cultural'' reasons (e.g. (17)) to explain such pattern.
+currently debated ((16)). Again, this correlation is brought about
+without copying, so that there is no need to invoke specific
+``cultural'' reasons (e.g. (17)) to explain such pattern.
 
 More generally, the results of our models suggest caution when deriving
 individual-level mechanisms from population-level patterns (see also
@@ -456,7 +458,7 @@ In conclusion, our model strongly suggests that the data available on
 the behavioural distributions of chimpanzees populations cannot
 demonstrate that chimpanzees possess cultures influenced by copying, let
 alone \emph{requiring} copying. This, in turn, may provide an
-explanation to why their cultures are not cumulative.
+explanation to why ape cultures are not cumulative.
 
 \showmatmethods
 \showacknow
