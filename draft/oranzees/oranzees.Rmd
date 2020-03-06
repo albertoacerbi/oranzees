@@ -137,7 +137,7 @@ Finally, to test how well our model compares to the results in wild apes, we cal
 
 * *D*: behaviour customary or habitual at some sites yet absent at others, with no ecological explanation, i.e. behaviours defined as "cultural".
 
-Further details of the model implementation and of how outputs are processed are available in SI. The full code of the model allowing to reproduce all our results, plus a detailed description of the model development is available in a dedicated GitHub repostiory, at https://github.com/albertoacerbi/oranzees. 
+Further details of the model implementation and of how outputs are processed are available in SI. The full code of the model allowing to reproduce all our results, plus a detailed description of the model development is available in a dedicated GitHub repository, at <https://github.com/albertoacerbi/oranzees>. 
 
 
 Results {.unnumbered}
@@ -181,15 +181,7 @@ Our results show that our model not only accurately reproduces the number of cul
 \end{center}
 \end{figure*}
 
-Finally, we ran 100 simulations for the same condition where we have a good match for cultural behaviours with @whiten_cultures_1999 ($\alpha_e=0.8;\alpha_g=0.2, S=1$). In each simulation, we recorded, for each population, the number of behaviours (habitual + customary + present) that are also classified as cultural (see Figure \ref{Figure5}). We find a small, but significant, correlation between population size and number of cultural traits ($p<0.00001,\rho=0.2,N=600$). In other words, our model reproduces the effect of cultural accumulation relative to population size possibly found in real populations - see [@whiten_evolution_2007; @lind_number_2010; @kuhl_human_2019].
-
-\begin{figure*}[h!]
-\begin{center}
-\includegraphics[width=11.4cm]{figures/figure_5.pdf}
-\caption{Number of cultural behaviours for each population for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The blue line is a linear fit of the data. $N=100$ runs.}
-\label{Figure5}
-\end{center}
-\end{figure*}
+Finally, we ran 100 simulations for the same condition where we have a good match for cultural behaviours with @whiten_cultures_1999 ($\alpha_e=0.8;\alpha_g=0.2, S=1$). In each simulation, we recorded, for each population, the number of behaviours (habitual + customary + present) that are also classified as cultural (see Figure S5). We find a small, but significant, correlation between population size and number of cultural traits ($p<0.00001,\rho=0.2,N=600$). In other words, our model reproduces the effect of cultural accumulation relative to population size possibly found in real populations - see [@whiten_evolution_2007; @lind_number_2010; @kuhl_human_2019].
 
 
 Discussion {.unnumbered}
