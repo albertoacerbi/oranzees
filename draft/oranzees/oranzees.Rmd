@@ -150,7 +150,7 @@ We are particularly interested in the realistic parameter conditions of moderate
 
 \begin{figure*}[h!]
 \begin{center}
-\includegraphics[width=17.8cm]{figures/figure_1.pdf}
+\includegraphics[width=10.8cm]{figures/figure_1.pdf}
 \caption{Number of cultural traits in oranzees, when varying ecological and genetic diversity. Red colour indicates simulation runs that produced more than 38 cultural behaviors; blue colour indicates simulation runs that produced less than 38 cultural behaviors. For all simulations, $S=1$, $\alpha_e$ and $\alpha_g$ as indicated in the plot. $N=20$ runs for each parameters combination.}
 \label{Figure1}
 \end{center}
