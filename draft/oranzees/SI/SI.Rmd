@@ -17,7 +17,7 @@ This document provides additional information on the individual-based model desr
 
 ## The oranzees world
  
-The oranzees model is an individual-based model, fully written in R, that reproduces a world where six populations of "oranzees" (an hypothetical ape species) live. The model is spatially-explicit: the six populations are located at relative positions analogous to the six populations of chimpanzees in @whiten_cultures_1999, see \autoref{fig1}. For modelling convenience, we put these locations approximately in the centre of a 1000 x 1000 squared environment in order to be able to process their relative distances, that we use to calculate genetic propensity and ecological availability of the behaviours (see below).  
+The oranzees model is an individual-based model, fully written in R, that reproduces a world where six populations of "oranzees" (an hypothetical ape species) live. The model is spatially-explicit: the six populations are located at relative positions analogous to the six populations of chimpanzees in @whiten_cultures_1999, see \autoref{fig1}. For modelling convenience, we put these locations approximately in the centre of a 1000 x 1000 squared environment in order to be able to process their relative distances, that we use to calculate genetic propensity and ecological availability of the behaviors (see below).  
 
  ![Location of the six populations of oranzees. \label{fig1}](figures/figure_1) 
 
@@ -42,7 +42,7 @@ Elaham    | 95
 
 As described in the main manuscript, two parameter of the models, $\alpha_g$ and $\alpha_e$, determine the probability that the genetic propensity and ecological availability associated to the behaviors are equal for all the six populations, or if they differ among the populations. 
 
-Independently for each behaviour, if genetic propensity (or ecological availabilty) is equal, the probability associated ($p_g$ or $p_e$) is a randomly drawn number between 0 and 1, the same for all six populations. If they are not equal, the values of $p_g$ (or $p_e$) are assigned using a geographical gradient, by choosing a random point in the oranzees' world, and calculating its distance to each population. Distances are then transformed to $p_g$ (or $p_e$) by rescaling them between 0 and 1, so that for the farther population $p_g=0$ i.e. the associated behaviour will be impossible to express (or $p_e=0$ i.e. the associated behaviour will be absent with an "ecological explanation").
+Independently for each behavior, if genetic propensity (or ecological availabilty) is equal, the probability associated ($p_g$ or $p_e$) is a randomly drawn number between 0 and 1, the same for all six populations. If they are not equal, the values of $p_g$ (or $p_e$) are assigned using a geographical gradient, by choosing a random point in the oranzees' world, and calculating its distance to each population. Distances are then transformed to $p_g$ (or $p_e$) by rescaling them between 0 and 1, so that for the farther population $p_g=0$ i.e. the associated behavior will be impossible to express (or $p_e=0$ i.e. the associated behavior will be absent with an "ecological explanation").
 
 In the example in \autoref{fig2}, a particular behavior will have $p_g=1$ (or $p_e=1$) in the Ognodub site, $p_g=0$ (or $p_e=0$) in Iat Forest and Uossob, and intermediate values in the other sites.
 
@@ -52,9 +52,9 @@ In the example in \autoref{fig2}, a particular behavior will have $p_g=1$ (or $p
 \pagebreak 
 </div>
 
-## Sub-categories of behaviours
+## Sub-categories of behaviors
 
-There are 64 behaviours are possible in the model (inspired by the 65 coded in @whiten_cultures_1999), divided in two main categories: "social" and "food-related". Each category is further subdivided in sub-categories. Sub-categories, for food-related behaviour, are further assigned to specific "nutrients". These information are used to calculate oranzees' state according to its behaviour (see main manuscript). The names of behaviours and of the sub-categories are only suggestive. They are used to illustrate our results in Figure 2 (main manuscript).
+There are 64 behaviors are possible in the model (inspired by the 65 coded in @whiten_cultures_1999), divided in two main categories: "social" and "food-related". Each category is further subdivided in sub-categories. Sub-categories, for food-related behavior, are further assigned to specific "nutrients". These information are used to calculate oranzees' state according to its behavior (see main manuscript). The names of behaviors and of the sub-categories are only suggestive. They are used to illustrate our results in Figure 2 (main manuscript).
 
 ### Social
 
@@ -140,13 +140,13 @@ Egg cracking          | egg-crack | Z
 
 ## Example of single run
 
-\autoref{fig3} shows an example of the entire history of all behaviors in a single run, for a single population (geographical location and population size are based on "Uossob"), with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$, i.e. one of the combination of parameters that produces a number of cultural behaviour similar to @whiten_cultures_1999. 
+\autoref{fig3} shows an example of the entire history of all behaviors in a single run, for a single population (geographical location and population size are based on "Uossob"), with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$, i.e. one of the combination of parameters that produces a number of cultural behavior similar to @whiten_cultures_1999. 
 
 ![Example of a single run with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$. The plots show the frequencies of the 64 possivble behaviors, divided in panles by sub-category.\label{fig3} ](figures/figure_3)
 
-## Age classes to calcualte customary behaviours
+## Age classes to calcualte customary behaviors
 
-To determine *customary* behaviours, we need to define age classes for individuals (the definition of customary behaviours, from @whiten_cultures_1999 is a behaviour observed in over 50% of individuals in at least one age class). We define three age classes as follows:
+To determine *customary* behaviors, we need to define age classes for individuals (the definition of customary behaviors, from @whiten_cultures_1999 is a behavior observed in over 50% of individuals in at least one age class). We define three age classes as follows:
 
 * *adults*: individuals that are more than 16-year old.
 
@@ -165,7 +165,7 @@ To determine *customary* behaviours, we need to define age classes for individua
 \begin{figure*}[h!]
 \begin{center}
 \includegraphics[width=17.8cm]{figures/figure_4.pdf}
-\caption{Cultural traits in oranzees, varying the probability of socially-mediated innovations. Red colour indicates simulation runs that produced more than 38 cultural behaviours; blue colour indicates simulation runs that produces less than 38 cultural behaviours. $S$, $\alpha_e$ and $\alpha_g$ as indicated in the plot. $N=10$ runs for each parameters combination.}
+\caption{Cultural traits in oranzees, varying the probability of socially-mediated innovations. Red colour indicates simulation runs that produced more than 38 cultural behaviors; blue colour indicates simulation runs that produces less than 38 cultural behaviors. $S$, $\alpha_e$ and $\alpha_g$ as indicated in the plot. $N=10$ runs for each parameters combination.}
 \label{FigureS4}
 \end{center}
 \end{figure*}
@@ -179,7 +179,7 @@ To determine *customary* behaviours, we need to define age classes for individua
 \begin{figure*}[h!]
 \begin{center}
 \includegraphics[width=11.4cm]{figures/figure_5.pdf}
-\caption{Number of behaviours for each of the four patterns (*A*, *B*, *C*, *D*) for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The red values are the values described for real chimpanzees populations. $N=20$ runs.}
+\caption{Number of behaviors for each of the four patterns (*A*, *B*, *C*, *D*) for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The red values are the values described for real chimpanzees populations. $N=20$ runs.}
 \label{FigureS5}
 \end{center}
 \end{figure*}
@@ -194,7 +194,7 @@ To determine *customary* behaviours, we need to define age classes for individua
 \begin{figure*}[h!]
 \begin{center}
 \includegraphics[width=11.4cm]{figures/figure_6.pdf}
-\caption{Number of cultural behaviours for each population for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The blue line is a linear fit of the data. $N=100$ runs.}
+\caption{Number of cultural behaviors for each population for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The blue line is a linear fit of the data. $N=100$ runs.}
 \label{FigureS6}
 \end{center}
 \end{figure*}
