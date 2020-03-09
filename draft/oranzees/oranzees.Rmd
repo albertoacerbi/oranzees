@@ -1,5 +1,5 @@
 ---
-title: Copying is not required for ape cultures
+title: Ape cultures do not require behavior copying
 
 # Use letters for affiliations, numbers to show equal authorship (if applicable) and to indicate the corresponding author
 author:
@@ -13,7 +13,7 @@ address:
   - code: a
     address: Centre for Culture and Evolution, Division of Psychology, Brunel University London, Uxbridge, UB8 3PH, United Kingdom
   - code: b
-    address: Faculty of Science, Department for early prehistory and quaternary ecology, University of Tübingen, Schloß Hohentuebingen, Burgsteige 11, 72070, Tübingen, Germany
+    address: Faculty of Science, Department for Early Prehistory and Quaternary Ecology, University of Tübingen, Schloß Hohentuebingen, Burgsteige 11, 72070, Tübingen, Germany
 
 
 corresponding_author:
@@ -164,25 +164,9 @@ We are particularly interested in the realistic parameter conditions of moderate
 \end{center}
 \end{figure*}
 
-We also analysed the effect of the parameter $S$ (proportion of socially-mediated reinnovations), in three conditions (see Figure \ref{Figure3}): (a) no genetic differences and intermediate ecological differences (compare to the high-left corner of Figure \ref{Figure1}, where with $S=1$ simulations produce less than 38 cultural behaviours), (b) one of the conditions that produce good match with @whiten_cultures_1999, namely $\alpha_e=0.8$ and $\alpha_g=0.2$, and (c) intermediate genetic differences and high ecological differences (compare to the low-right corner of Figure \ref{Figure1}, where with $S=1$ simulations produce more than 38 cultural behaviours). As expected, decreasing *S*, decreases the number of cultural behaviours. Conditions where, with $S=1$, there were more than 38 cultural behaviours could still produce results analogous to @whiten_cultures_1999, given that not all reinnovations are socially mediated.
+We also analysed the effect of the parameter $S$ (proportion of socially-mediated reinnovations), in three conditions (see Figure S4): (a) no genetic differences and intermediate ecological differences (compare to the high-left corner of Figure \ref{Figure1}, where with $S=1$ simulations produce less than 38 cultural behaviours), (b) one of the conditions that produce good match with @whiten_cultures_1999, namely $\alpha_e=0.8$ and $\alpha_g=0.2$, and (c) intermediate genetic differences and high ecological differences (compare to the low-right corner of Figure \ref{Figure1}, where with $S=1$ simulations produce more than 38 cultural behaviours). As expected, decreasing *S*, decreases the number of cultural behaviours. Conditions where, with $S=1$, there were more than 38 cultural behaviours could still produce results analogous to @whiten_cultures_1999, given that not all reinnovations are socially mediated.
 
-\begin{figure*}[h!]
-\begin{center}
-\includegraphics[width=17.8cm]{figures/figure_3.pdf}
-\caption{Cultural traits in oranzees, varying the probability of socially-mediated innovations. Red colour indicates simulation runs that produced more than 38 cultural behaviours; blue colour indicates simulation runs that produces less than 38 cultural behaviours. $S$, $\alpha_e$ and $\alpha_g$ as indicated in the plot. $N=10$ runs for each parameters combination.}
-\label{Figure3}
-\end{center}
-\end{figure*}
-
-Our results show that our model not only accurately reproduces the number of cultural behaviours (pattern *D*), but also the number of behaviours classified in the other three patterns (*A*, *B*, *C*) in @whiten_cultures_1999. Figure \ref{Figure4} shows the four patterns produced in one of the conditions for which we have a good match for cultural behaviours ($\alpha_e=0.8;\alpha_g=0.2, S=1$).
-
-\begin{figure*}[h!]
-\begin{center}
-\includegraphics[width=11.4cm]{figures/figure_4.pdf}
-\caption{Number of behaviours for each of the four patterns (*A*, *B*, *C*, *D*) for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The red values are the values described for real chimpanzees populations. $N=20$ runs.}
-\label{Figure4}
-\end{center}
-\end{figure*}
+Our results show that our model not only accurately reproduces the number of cultural behaviours (pattern *D*), but also the number of behaviours classified in the other three patterns (*A*, *B*, *C*) in @whiten_cultures_1999 (see Figure S5).
 
 Finally, we ran 100 simulations for one of the conditions where we have a good match for cultural behaviours with @whiten_cultures_1999 ($\alpha_e=0.8;\alpha_g=0.2, S=1$). In each simulation, we recorded, for each population, the number of behaviours (habitual + customary + present) that are also classified as cultural (see Figure S4). We find a small, but significant, correlation between population size and number of cultural traits ($p<0.00001,\rho=0.2,N=600$). In other words, our model reproduces the effect of cultural accumulation relative to population size possibly found in real populations - see [@whiten_evolution_2007; @lind_number_2010; @kuhl_human_2019].
 

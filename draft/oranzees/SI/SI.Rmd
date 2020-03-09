@@ -1,5 +1,5 @@
 ---
-title: "Supplementary Information for *Copying is not required for ape cultures*"
+title: "Supplementary Information for *Ape cultures do not require behavior copying*"
 author: "Alberto Acerbi, William Snyder, Claudio Tennie"
 date: ""
 output: pdf_document
@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Additional model information
 
-This document provides additional information on the individual-based model desribed in the paper *Copying is not required for ape cultures*. The code to run the model and to reproduce the results can be found in <https://github.com/albertoacerbi/oranzees>, together with a detailed documentation of the model development. 
+This document provides additional information on the individual-based model desribed in the paper *Ape cultures do not require behavior copying*. The full code to run the model and to reproduce the results can be found in <https://github.com/albertoacerbi/oranzees>, together with a detailed documentation of the model development. 
 
 ## The oranzees world
  
@@ -40,13 +40,13 @@ Elaham    | 95
 
 ## Geographical gradient for genetic propensity and ecological availability
 
-As described in the main manuscript, two parameter of the models, $\alpha_g$ and $\alpha_e$, determine, independently for each behaviour, the probability that the genetic propensity and ecological availability are equal for all the six populations.
+As described in the main manuscript, two parameter of the models, $\alpha_g$ and $\alpha_e$, determine the probability that the genetic propensity and ecological availability associated to the behaviors are equal for all the six populations, or if they differ among the populations. 
 
-If they are not equal, the value of $p_g$ (or $p_e$) are assigned using a geographical gradient, by choosing a random point in the oranzees' world, and calculating its distance to each population. Distances are then transformed to $p_g$ (or $p_e$) by rescaling them between 0 and 1, so that for the farther population $p_g=0$ i.e. the associated behaviour will be impossible to express (or $p_e=0$ i.e. the associated behaviour will be absent with an "ecological explanation")
+Independently for each behaviour, if genetic propensity (or ecological availabilty) is equal, the probability associated ($p_g$ or $p_e$) is a randomly drawn number between 0 and 1, the same for all six populations. If they are not equal, the values of $p_g$ (or $p_e$) are assigned using a geographical gradient, by choosing a random point in the oranzees' world, and calculating its distance to each population. Distances are then transformed to $p_g$ (or $p_e$) by rescaling them between 0 and 1, so that for the farther population $p_g=0$ i.e. the associated behaviour will be impossible to express (or $p_e=0$ i.e. the associated behaviour will be absent with an "ecological explanation").
 
 In the example in \autoref{fig2}, a particular behavior will have $p_g=1$ (or $p_e=1$) in the Ognodub site, $p_g=0$ (or $p_e=0$) in Iat Forest and Uossob, and intermediate values in the other sites.
 
-![Example of calcualtion of $p_g$ (or $p_e$). The red points represent the oranzee populations. \label{fig2} ](figures/figure_2){width=60%}
+![Example of calcualtion of $p_g$ (or $p_e$). The red points represent the oranzee populations. The color gradient represents the value of $p_g$ (or $p_e$).\label{fig2} ](figures/figure_2){width=60%}
 
 <div style="page-break-after: always; visibility: hidden"> 
 \pagebreak 
@@ -54,11 +54,11 @@ In the example in \autoref{fig2}, a particular behavior will have $p_g=1$ (or $p
 
 ## Sub-categories of behaviours
 
-There are 64 behaviours, divided in two main categories: "social" and "food-related". Each category is further subdivided in sub-categories. Sub-categories, for food-related behaviour, are further assigned to specific "nutrients". These information are used to calcualte oranzees' state according to its behaviour (see main manuscript). The names of behaviours and of the sub-categories are only suugestive. They are used to illustrate our results in Figure 2 (main manuscript).
+There are 64 behaviours are possible in the model (inspired by the 65 coded in @whiten_cultures_1999), divided in two main categories: "social" and "food-related". Each category is further subdivided in sub-categories. Sub-categories, for food-related behaviour, are further assigned to specific "nutrients". These information are used to calculate oranzees' state according to its behaviour (see main manuscript). The names of behaviours and of the sub-categories are only suggestive. They are used to illustrate our results in Figure 2 (main manuscript).
 
 ### Social
 
-Sub-category | Behaviour  
+Sub-category | Behavior  
 -------------|----
 Play         | fruit-missile
 Play         | slap-fight
@@ -72,7 +72,7 @@ Display      | stone drop
 Display      | branch pull-release
 Display      | arm-cross
 Display      | two-hand-drum
-Display      | splah
+Display      | splash
 Display      | arm-swing
 Display      | explode-leaf
 Display      | contorsionist
@@ -99,7 +99,7 @@ Courthsip    | hop-dance
 
 ### Food-related
 
-Sub-category | Behaviour | Nutrient 
+Sub-category | Behavior | Nutrient 
 -------------|----|----
 Fruit-hammer foraging | wood-wood | Y
 Fruit-hammer foraging | wood-stone | Y
@@ -142,13 +142,13 @@ Egg cracking          | egg-crack | Z
 
 \autoref{fig3} shows an example of the entire history of all behaviors in a single run, for a single population (geographical location and population size are based on "Uossob"), with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$, i.e. one of the combination of parameters that produces a number of cultural behaviour similar to @whiten_cultures_1999. 
 
-![Single run with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$. \label{fig3} ](figures/figure_3)
+![Example of a single run with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$. The plots show the frequencies of the 64 possivble behaviors, divided in panles by sub-category.\label{fig3} ](figures/figure_3)
 
 ## Age classes to calcualte customary behaviours
 
 To determine *customary* behaviours, we need to define age classes for individuals (the definition of customary behaviours, from @whiten_cultures_1999 is a behaviour observed in over 50% of individuals in at least one age class). We define three age classes as follows:
 
-* *adults*: individuals that are more that 16-year old.
+* *adults*: individuals that are more than 16-year old.
 
 * *subadults*: individuals between 8 and 16-year old.
 
@@ -158,14 +158,44 @@ To determine *customary* behaviours, we need to define age classes for individua
 \pagebreak 
 </div>
 
+# Supplementary figures
 
-# Figure S4
+## Figure S4
 
 \begin{figure*}[h!]
 \begin{center}
-\includegraphics[width=11.4cm]{figures/figure_4.pdf}
+\includegraphics[width=17.8cm]{figures/figure_4.pdf}
+\caption{Cultural traits in oranzees, varying the probability of socially-mediated innovations. Red colour indicates simulation runs that produced more than 38 cultural behaviours; blue colour indicates simulation runs that produces less than 38 cultural behaviours. $S$, $\alpha_e$ and $\alpha_g$ as indicated in the plot. $N=10$ runs for each parameters combination.}
+\label{FigureS4}
+\end{center}
+\end{figure*}
+
+<div style="page-break-after: always; visibility: hidden"> 
+\pagebreak 
+</div>
+
+## Figure S5
+
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=11.4cm]{figures/figure_5.pdf}
+\caption{Number of behaviours for each of the four patterns (*A*, *B*, *C*, *D*) for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The red values are the values described for real chimpanzees populations. $N=20$ runs.}
+\label{FigureS5}
+\end{center}
+\end{figure*}
+
+<div style="page-break-after: always; visibility: hidden"> 
+\pagebreak 
+</div>
+
+
+## Figure S6
+
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=11.4cm]{figures/figure_6.pdf}
 \caption{Number of cultural behaviours for each population for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The blue line is a linear fit of the data. $N=100$ runs.}
-\label{Figure4}
+\label{FigureS6}
 \end{center}
 \end{figure*}
 
