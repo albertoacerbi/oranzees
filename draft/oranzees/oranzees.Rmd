@@ -186,6 +186,7 @@ More generally, the results of our models suggest caution when deriving individu
 
 In conclusion, our model strongly suggests that the data available on the behavioral distributions of ape populations cannot demonstrate that ape possess cultures influenced by behavior copying, let alone *requiring* behavior copying. This, in turn, may provide an explanation to why ape cultures are not cumulative: if cumulative culture requires behavior copying, we should not expect a species lacking this mechanism to develop it.  
 
+
 <!--
 Format {#format .unnumbered}
 ------
