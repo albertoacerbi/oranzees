@@ -13,12 +13,13 @@
 \usepackage[utf8]{inputenc}
 
 
+
 \templatetype{pnasresearcharticle}  % Choose template
 
 \title{Ape cultures do not require behavior copying}
 
 \author[a,1]{Alberto Acerbi}
-\author[b]{William Snyder}
+\author[b]{William Daniel Snyder}
 \author[b]{Claudio Tennie}
 
   \affil[a]{Centre for Culture and Evolution, Division of Psychology, Brunel
@@ -43,11 +44,11 @@ ape cultures not cumulative? We show, through computer simulations, that
 the patterns used to prove the existence of culture in wild ape
 populations can be reproduced, in realistic conditions, without any
 behavior copying. With this finding, the puzzle of why ape cultures are
-not cumulative resloves itself.}
+not cumulative resolves itself.}
 
 
-\authorcontributions{AA designed the research, developed the model and analyse the data, and
-wrote the paper. WS contributed the artworks for Figure 2 and gave
+\authorcontributions{AA designed the research, developed the model and analysed the data, and
+wrote the paper. WDS contributed the artwork for Figure 2 and gave
 feedback on the paper. CT designed the research and wrote the paper.}
 
 
@@ -72,12 +73,14 @@ namely null to medium importance of genetic variation, medium to high
 importance of ecological variation, and various values of social
 influence on innovations, we can reproduce distributions of behavioral
 traits used to prove the existence of ape cultures. Our model reproduces
-other details of the behavioral patterns found in wild population,
-including the proportion of different patterns of non-cultural
-behaviors, or a correlation between population size and the number of
-cultural traits in each site. Overall, our results suggest that ape
-cultures can emerge without behavior copying, provide an explanation to
-why they do not appear cumulative.
+other features of the behaviors found in wild populations, including the
+relative proportions of patterns of non-cultural behaviors (such as
+behaviours present or absent in all sites, or behaviours absent becasue
+of local ecological factors), as well as a correlation between
+population size and the number of cultural traits in each site. Overall,
+our results suggest that ape cultures can emerge without behavior
+copying, providing an explanation as to why they do not appear
+cumulative.
 \end{abstract}
 
 \dates{This manuscript was compiled on \today}
@@ -149,7 +152,7 @@ predisposition, to investigate whether an equivalent distribution of
 behavioral traits could emerge in absence of any behavior copying. While
 our simulated species, \emph{oranzees}, can be influenced by social cues
 (widespread in the animal kingdom, and certainly present in all apes),
-we explicitly excluded any behaviorcopying.
+we explicitly excluded any behavior copying.
 
 Our results show that, under realistic values of the main parameters, we
 can reproduce the distribution of behavioral traits found in (1),
@@ -158,7 +161,8 @@ and do show cultural patterns resembling wild ape patterns, this shows
 that such patterns do not constitute hard evidence that behavior copying
 must have taken place.
 
-\section*{Materials and methods}\label{materials-and-methods}
+\hypertarget{materials-and-methods}{%
+\section*{Materials and methods}\label{materials-and-methods}}
 \addcontentsline{toc}{section}{Materials and methods}
 
 We built an individual-based model that reproduces a world inhabited by
@@ -179,36 +183,37 @@ or they die when they are 60 years old (\(t=720\)). The number of
 individuals in the population is fixed, so each time an oranzee dies it
 is replaced by a newborn.
 
-A newborn oranzee does not yet show any behavior. behaviors can be
+A newborn oranzee does not yet show any behavior. Behaviors can be
 innovated at each time step. The process of innovation is influenced by:
 (i) the oranzees `state', which depends on the behaviors an individual
 already possesses, (ii) the frequency of the behaviors already present
 in the population (``socially-mediated reinnovation'' in (14)), and
 (iii) the genetic propensity and ecological availability locally
-associated to the behavior. At the beginning of the simulations, the
-populations are randomly initialised with individuals between 0 and 25
+associated with the behavior. At the beginning of the simulations, the
+populations are randomly inzialised with individuals between 0 and 25
 years old.
 
-\subsection*{Oranzee's behaviors and state}\label{format}
-\addcontentsline{toc}{subsection}{Oranzee's behaviors and state}
+\hypertarget{format}{%
+\subsection*{Oranzees' behaviors and state}\label{format}}
+\addcontentsline{toc}{subsection}{Oranzees' behaviors and state}
 
-In the oranzees world, 64 behaviors are possible (targeting the 65
-behaviors coded in (1)). behaviors are divided into two categories: 32
+In the oranzees' world, 64 behaviors are possible (targeting the 65
+behaviors coded in (1)). Behaviors are divided into two categories: 32
 social and 32 food-related behaviors. These figures where chosen to
-resemble the behavioral categories considered in (1). behaviors serve
+resemble the behavioral categories considered in (1). Behaviors serve
 oranzees to fulfill various goals. Oranzees have a `state' that is based
 on how many goals are fulfilled in the two main categories of social and
 food-related behaviors.
 
 In the case of social behaviors, we assume four sub-categories (`play',
-`display', `groom', `etc.'courtship', note the names are only
-suggestive), each with eight possible different behaviors that serve the
-same goal. A goal is considered fulfilled if an oranzee shows at least
-one behavior out of the eight in the sub-category. Oranzees have a
-`state' that is based on how many of the four goals are fulfilled. An
-oranzee has a state value of \(0.25\) if, for example, it shows at least
-one behavior in the category `play', and none of the others, and a state
-value of \(1\) if it shows at least one behavior in each sub-category.
+`display', `groom', `courtship'; note the names are only evocative),
+each with eight possible different behaviors that serve the same goal. A
+goal is considered fulfilled if an oranzee shows at least one behavior
+out of the eight in the sub-category. Oranzees have a `state' that is
+based on how many of the four goals are fulfilled. An oranzee has a
+state value of \(0.25\) if, for example, it shows at least one behavior
+in the category `play', and none of the others, and a state value of
+\(1\) if it shows at least one behavior in each sub-category.
 \(p_\text{social}\), the probability to innovate a social behavior, is
 drawn from a normal distribution with mean equal to
 \(1-state_\text{social}\).
@@ -229,7 +234,8 @@ sub-categories providing nutrient \emph{Z}. We normalize the state
 between \(0\) and \(1\), and, as above \(p_\text{food}\) is then
 calculated as \(1-state_\text{food}\).
 
-\subsection*{Socially-mediated reinnovation}\label{format}
+\hypertarget{format}{%
+\subsection*{Socially-mediated reinnovation}\label{format}}
 \addcontentsline{toc}{subsection}{Socially-mediated reinnovation}
 
 At each time step, all oranzees have a probability of innovation for
@@ -248,8 +254,9 @@ When the reinnovation is not socially-mediated, the probability of
 innovating each behavior is random. Only one behavior per category can
 be re-innovated at each time step.
 
+\hypertarget{format}{%
 \subsection*{Genetic propensity and ecological
-availability}\label{format}
+availability}\label{format}}
 \addcontentsline{toc}{subsection}{Genetic propensity and ecological
 availability}
 
@@ -264,9 +271,9 @@ is equal for all the six populations or whether is different. If the
 probability is equal, \(p_g\) is randomly drawn. If it is different, we
 assign the propensity using a geographical gradient. We choose a random
 point and calculate its distance to each population. Distances are then
-transformed to \(p_g\) by rescaling them between 0 and 1, so that for
-the farther site \(p_g=0\) i.e.~the associated behavior will be
-impossible to express (see SI). Notice that \(\alpha_g=0\) does not mean
+transformed to \(p_g\) by rescaling them between 0 and 1, sso that for
+the farthest site where \(p_g=0\), the associated behavior cannot
+possibly be expressed (see SI). Notice that \(\alpha_g=0\) does not mean
 that there are no genetic influences on the behavior, but that there are
 no \emph{differences} between the populations with regard to this
 aspect.
@@ -278,7 +285,8 @@ behaviors, and it is calculated in the same way of \(p_g\), using the
 parameter \(\alpha_e\) to determine the probability of ecological
 availability being different in the six populations.
 
-\subsection*{Model's output}\label{format}
+\hypertarget{format}{%
+\subsection*{Model's output}\label{format}}
 \addcontentsline{toc}{subsection}{Model's output}
 
 We run simulations for \(t_\text{max}=6000\) (corresponding to 500 years
@@ -299,8 +307,8 @@ behavior, in each population, as:
 \item
   \emph{absent}: a behavior not observed even once in the population.
 \item
-  \emph{ecological explanations}: a behavior that is absent because of
-  complete lacking of local ecological availability (i.e., in our model,
+  \emph{ecological explanations}: a behavior that is absent due to a
+  complete lack of local ecological availability (i.e., in our model,
   associated to \(p_e=0\)).
 \end{itemize}
 
@@ -332,7 +340,8 @@ reproduce all our results, plus a detailed description of the model
 development is available in a dedicated GitHub repository, at
 \url{https://github.com/albertoacerbi/oranzees}.
 
-\section*{Results}\label{results}
+\hypertarget{results}{%
+\section*{Results}\label{results}}
 \addcontentsline{toc}{section}{Results}
 
 We are particularly interested in the realistic parameter conditions of
@@ -340,17 +349,17 @@ moderate to high environmental variability (i.e. \(\alpha_e\) from 0.5
 to 1) and zero to moderate genetic differences (i.e. \(\alpha_g\) from 0
 to 0.5). We ran 20 simulations for each combination (for a total of 600
 runs). For all, reinnovation is socially-mediated (\(S=1\)). The results
-show that various combinations of parameters produces a number of
+show that various combinations of parameters produce a number of
 cultural behaviors (pattern \emph{D}) consistent with the 38 found in
-(1), in absence of any explicit copying mechanism implemented (see
+(1), in absence of any explicit copying mechanism being implemented (see
 Figure \ref{Figure1}). In Figure \ref{Figure2}, we reproduce the output
 of a run where 38 cultural behaviors were found, and how they were
 classified in each of the six simulated populations, using a
-visualisation inspired by (1).
+visualization inspired by (1).
 
 \begin{figure*}[h!]
 \begin{center}
-\includegraphics[width=10.8cm]{figures/figure_1.pdf}
+\includegraphics[width=10cm]{figures/figure_1.pdf}
 \caption{Number of cultural traits in oranzees, when varying ecological and genetic diversity. Red colour indicates simulation runs that produced more than 38 cultural behaviors; blue colour indicates simulation runs that produced less than 38 cultural behaviors. For all simulations, $S=1$, $\alpha_e$ and $\alpha_g$ as indicated in the plot. $N=20$ runs for each parameters combination.}
 \label{Figure1}
 \end{center}
@@ -359,7 +368,7 @@ visualisation inspired by (1).
 \begin{figure*}[h!]
 \begin{center}
 \includegraphics[width=13.8cm]{figures/figure_2.pdf}
-\caption{Example of a simulation run that produces 38 cultural behaviors ($S=1$, $\alpha_e=0.8$, and $\alpha_g=0.2$). Color icons indicate customary behaviors; circular icons, habitual; monochrome icons, present; clear, absent;  horizontal bar, absent with ecological explanation. The names of the behaviors are only suggestive, see SI for a complete list.}
+\caption{Example of a simulation run that produces 38 cultural behaviors ($S=1$, $\alpha_e=0.8$, and $\alpha_g=0.2$). Color icons indicate customary behaviors; circular icons, habitual; monochrome icons, present; clear, absent;  horizontal bar, absent with ecological explanation. The names of the behaviors are only evocative, see SI for a complete list.}
 \label{Figure2}
 \end{center}
 \end{figure*}
@@ -378,14 +387,14 @@ number of cultural behaviors. Conditions where, with \(S=1\), there were
 more than 38 cultural behaviors could still produce results analogous to
 (1), given that not all reinnovations are socially mediated.
 
-As a further proof of our model's fir with empiriclal data, our outputs
+As a further proof of our model's fit with empiriclal data, our outputs
 not only accurately reproduce the number of cultural behaviors (pattern
 \emph{D}), but also the number of behaviors classified in the other
 three patterns (\emph{A}, \emph{B}, \emph{C}, see above) in (1) (see
 Figure S5).
 
 Finally, we ran 100 simulations for one of the conditions where we have
-a good match for the number cultural behaviors with (1)
+a good match for the number cultural behaviors in (1)
 (\(\alpha_e=0.8;\alpha_g=0.2, S=1\)). In each simulation, we recorded,
 for each population, the number of behaviors (habitual + customary +
 present) that are also classified as cultural (see Figure S4). We find a
@@ -395,7 +404,8 @@ model reproduces an effect of cultural accumulation ((i.e.~increased
 number of expressed behaviors) relative to population size possibly
 found in real populations - see (11, 15, 16).
 
-\section*{Discussion}\label{discussion}
+\hypertarget{discussion}{%
+\section*{Discussion}\label{discussion}}
 \addcontentsline{toc}{section}{Discussion}
 
 We developed an individual-based model to examine under which conditions
@@ -407,7 +417,7 @@ demographic and spatial features, as well as effects of genetic
 propensity and ecological availability on the behaviors. Given the
 widespread availability of non-copying variants of social learning, we
 also included socially-mediated reinnovation, where social learning
-merely catalyses individual reinnovation, without any behavior copying.
+merely catalyses individual reinnovation, without any behavior copying
 (14).
 
 Our main result is that we can reproduce the pattern observed in
@@ -415,23 +425,24 @@ populations of wild apes under realistic values of the parameters of
 genetic propensity and ecological availability, namely zero to medium
 importance of genetic variation, and medium to high importance of
 ecological variation. Our model cannot precisely determine which exact
-values of parameters reproduce real populations of chimpanzees (or other
-apes). However, we are confident that the range of values explored, and
-the ease by which patterns of cultural behaviors similar to (1) can be
-produced, strongly suggest that behavior copying is not required for
-such patterns to emerge. Therefore, ape-like cultural patterns do not
-pinpoint behavior copying abilities. In addition, and as further support
-to our results, our model not only reproduces the cultural behavioral
-patterns, but also the proportions among the other patterns, i.e.~absent
-behaviors, behaviors not achieving habitual frequencies at any site, and
-behaviors absent because of ecological factors.
+values of these parameters produce the patterns in real populations of
+chimpanzees (or other apes). However, we are confident that the range of
+values explored, and the ease by which patterns of cultural behaviors
+similar to (1) can be produced, strongly suggest that behavior copying
+is not required for such patterns to emerge. Therefore, ape-like
+cultural patterns do not pinpoint behavior copying abilities. In
+addition, and as further support to our results, our model not only
+reproduces the cultural behavioral patterns, but also the proportions
+among the other patterns, i.e.~absent behaviors, behaviors not achieving
+habitual frequencies at any site, and behaviors absent because of
+ecological factors.
 
 In our model, we focused on the mechanism of socially mediated
 reinnovation, that is, we assumed that members of our hypothetical
 species, oranzees, had a probability to reinnovate a specific behavior
 stochastically linked to how many other oranzees in the population were
 already showing this behavior. While this is a realistic assumption (17)
-and while it reproduces in our model the chimpanzees cultural pattern
+and while it reproduces in our model the chimpanzees' cultural pattern
 observed in realistic conditions, our results demonstrate that it is not
 necessary. Given certain combinations of parameters, such as higher
 genetic and ecological diversities, the same population level pattern
@@ -456,7 +467,7 @@ Models and experiments are crucial to test the plausibility of
 inferences going from global to local properties.
 
 In conclusion, our model strongly suggests that the data available on
-the behavioral distributions of ape populations cannot demonstrate that
+the behavioral distributions of apes populations cannot demonstrate that
 ape possess cultures influenced by behavior copying, let alone
 \emph{requiring} behavior copying. This, in turn, may provide an
 explanation to why ape cultures are not cumulative: if cumulative
@@ -468,103 +479,103 @@ lacking this mechanism to develop it.
 \pnasbreak
 
 \hypertarget{refs}{}
-\hypertarget{ref-whiten_cultures_1999}{}
+\leavevmode\hypertarget{ref-whiten_cultures_1999}{}%
 1. Whiten A, et al. (1999) Cultures in chimpanzees. \emph{Nature}
 399(6737):682--685.
 
-\hypertarget{ref-henrich_secret_2015}{}
+\leavevmode\hypertarget{ref-henrich_secret_2015}{}%
 2. Henrich J (2015) \emph{The Secret of Our Success: How Culture Is
 Driving Human Evolution, Domesticating Our Species, and Making Us
 Smarter} (Princeton University Press, Princeton \& Oxford).
 
-\hypertarget{ref-boyd_different_2017}{}
+\leavevmode\hypertarget{ref-boyd_different_2017}{}%
 3. Boyd R (2017) \emph{A Different Kind of Animal: How Culture
 Transformed Our Species} (Princeton University Press, Princeton).
 
-\hypertarget{ref-whiten_primate_2000}{}
+\leavevmode\hypertarget{ref-whiten_primate_2000}{}%
 4. Whiten A (2000) Primate culture and social learning. \emph{Cognitive
 Science} 24(3):477--508.
 
-\hypertarget{ref-van_schaik_orangutan_2003}{}
+\leavevmode\hypertarget{ref-van_schaik_orangutan_2003}{}%
 5. Schaik CP van, et al. (2003) Orangutan Cultures and the Evolution of
 Material Culture. \emph{Science} 299(5603):102--105.
 
-\hypertarget{ref-mesoudi_what_2018}{}
+\leavevmode\hypertarget{ref-mesoudi_what_2018}{}%
 6. Mesoudi A, Thornton A (2018) What is cumulative cultural evolution?
 \emph{Proceedings of the Royal Society B: Biological Sciences}
 285(1880):20180712.
 
-\hypertarget{ref-acerbi_cultural_2019}{}
+\leavevmode\hypertarget{ref-acerbi_cultural_2019}{}%
 7. Acerbi A (2019) \emph{Cultural Evolution in the Digital Age} (Oxford
 University Press, Oxford, New York).
 
-\hypertarget{ref-morin_how_2015}{}
+\leavevmode\hypertarget{ref-morin_how_2015}{}%
 8. Morin O (2015) \emph{How Traditions Live and Die} (Oxford University
 Press, London \& New York).
 
-\hypertarget{ref-nielsen_overimitation_2010}{}
+\leavevmode\hypertarget{ref-nielsen_overimitation_2010}{}%
 9. Nielsen M, Tomaselli K (2010) Overimitation in Kalahari Bushman
 Children and the Origins of Human Cultural Cognition:
 \emph{Psychological Science}.
 doi:\href{https://doi.org/10.1177/0956797610368808}{10.1177/0956797610368808}.
 
-\hypertarget{ref-berl_cultural_2015}{}
+\leavevmode\hypertarget{ref-berl_cultural_2015}{}%
 10. Berl REW, Hewlett BS (2015) Cultural Variation in the Use of
 Overimitation by the Aka and Ngandu of the Congo Basin. \emph{PLOS ONE}
 10(3):e0120180.
 
-\hypertarget{ref-lind_number_2010}{}
+\leavevmode\hypertarget{ref-lind_number_2010}{}%
 11. Lind J, Lindenfors P (2010) The Number of Cultural Traits Is
 Correlated with Female Group Size but Not with Male Group Size in
 Chimpanzee Communities. \emph{PLoS ONE} 5(3).
 doi:\href{https://doi.org/10.1371/journal.pone.0009241}{10.1371/journal.pone.0009241}.
 
-\hypertarget{ref-wrangham_why_2000}{}
+\leavevmode\hypertarget{ref-wrangham_why_2000}{}%
 12. Wrangham RW (2000) Why are male chimpanzees more gregarious than
 mothers? A scramble competition hypothesis. \emph{Primate Males: Causes
 and Consequences of Variation in Group Composition} (Cambridge
 University Press, Cambridge), pp 248--258.
 
-\hypertarget{ref-hill_mortality_2001}{}
+\leavevmode\hypertarget{ref-hill_mortality_2001}{}%
 13. Hill K, et al. (2001) Mortality rates among wild chimpanzees.
 \emph{Journal of Human Evolution} 40(5):437--450.
 
-\hypertarget{ref-bandini_spontaneous_2017}{}
+\leavevmode\hypertarget{ref-bandini_spontaneous_2017}{}%
 14. Bandini E, Tennie C (2017) Spontaneous reoccurrence of ``scooping'',
 a wild tool-use behaviour, in naïve chimpanzees. \emph{PeerJ} 5:e3814.
 
-\hypertarget{ref-whiten_evolution_2007}{}
+\leavevmode\hypertarget{ref-whiten_evolution_2007}{}%
 15. Whiten A, Schaik CP van (2007) The evolution of animal ``cultures''
 and social intelligence. \emph{Philosophical Transactions of the Royal
 Society B: Biological Sciences} 362(1480):603--620.
 
-\hypertarget{ref-kuhl_human_2019}{}
+\leavevmode\hypertarget{ref-kuhl_human_2019}{}%
 16. Kühl HS, et al. (2019) Human impact erodes chimpanzee behavioral
 diversity. \emph{Science} 363(6434):1453--1455.
 
-\hypertarget{ref-tennie_evidence_2010}{}
+\leavevmode\hypertarget{ref-tennie_evidence_2010}{}%
 17. Tennie C, Call J, Tomasello M (2010) Evidence for Emulation in
 Chimpanzees in Social Settings Using the Floating Peanut Task.
 \emph{PLoS ONE} 5(5).
 doi:\href{https://doi.org/10.1371/journal.pone.0010544}{10.1371/journal.pone.0010544}.
 
-\hypertarget{ref-vaesen_population_2016}{}
+\leavevmode\hypertarget{ref-vaesen_population_2016}{}%
 18. Vaesen K, Collard M, Cosgrove R, Roebroeks W (2016) Population size
 does not explain past changes in cultural complexity. \emph{Proceedings
 of the National Academy of Sciences of the United States of America}
 113(16):E2241--2247.
 
-\hypertarget{ref-henrich_demography_2004}{}
+\leavevmode\hypertarget{ref-henrich_demography_2004}{}%
 19. Henrich J (2004) Demography and Cultural Evolution: How Adaptive
 Cultural Processes can Produce Maladaptive Losses: The Tasmanian Case.
 \emph{American Antiquity} 69(2):197--214.
 
-\hypertarget{ref-acerbi_conformity_2016}{}
+\leavevmode\hypertarget{ref-acerbi_conformity_2016}{}%
 20. Acerbi A, Van Leeuwen EJ, Haun DB, Tennie C (2016) Conformity cannot
 be identified based on population-level signatures. \emph{Scientific
 reports} 6:36068.
 
-\hypertarget{ref-barrett_equifinality_2019}{}
+\leavevmode\hypertarget{ref-barrett_equifinality_2019}{}%
 21. Barrett BJ (2019) Equifinality in empirical studies of cultural
 transmission. \emph{Behavioural Processes} 161:129--138.
 

@@ -1,6 +1,6 @@
 ---
 title: "Supplementary Information for *Ape cultures do not require behavior copying*"
-author: "Alberto Acerbi, William Snyder, Claudio Tennie"
+author: "Alberto Acerbi, William Daniel Snyder, Claudio Tennie"
 date: ""
 output: pdf_document
 bibliography: ../oranzees.bib
@@ -15,11 +15,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This document provides additional information on the individual-based model desribed in the paper *Ape cultures do not require behavior copying*. The full code to run the model and to reproduce the results can be found in <https://github.com/albertoacerbi/oranzees>, together with a detailed documentation of the model development. 
 
-## The oranzees world
+## The oranzees' world
  
-The oranzees model is an individual-based model, fully written in R, that reproduces a world where six populations of "oranzees" (an hypothetical ape species) live. The model is spatially-explicit: the six populations are located at relative positions analogous to the six populations of chimpanzees in @whiten_cultures_1999, see \autoref{fig1}. For modelling convenience, we put these locations approximately in the centre of a 1000 x 1000 squared environment in order to be able to process their relative distances, that we use to calculate genetic propensity and ecological availability of the behaviors (see below).  
+The oranzees model is an individual-based model, fully written in R, that reproduces a world where six populations of "oranzees" (a hypothetical ape species) live. The model is spatially-explicit: the six populations are located at relative positions analogous to the six populations of chimpanzees in @whiten_cultures_1999, see \autoref{fig1}. For modelling convenience, we put these locations approximately in the centre of a 1000 x 1000 squared environment in order to be able to process their relative distances, that we use to calculate genetic propensity and ecological availability of the behaviors (see below).  
 
  ![Location of the six populations of oranzees. \label{fig1}](figures/figure_1) 
+
+
+<div style="page-break-after: always; visibility: hidden"> 
+\pagebreak 
+</div>
 
 The population sizes are also taken from the real chimpanzees populations considered in the study above. Following @lind_number_2010, we use data from @wrangham_why_2000:
 
@@ -33,14 +38,10 @@ Ebmog     | 50
 Elaham    | 95
 
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
-
 
 ## Geographical gradient for genetic propensity and ecological availability
 
-As described in the main manuscript, two parameter of the models, $\alpha_g$ and $\alpha_e$, determine the probability that the genetic propensity and ecological availability associated to the behaviors are equal for all the six populations, or if they differ among the populations. 
+As described in the main manuscript, two parameters of the models, $\alpha_g$ and $\alpha_e$, determine the probability that the genetic propensity and ecological availability associated to the behaviors are equal for all the six populations, or if they differ among the populations. 
 
 Independently for each behavior, if genetic propensity (or ecological availabilty) is equal, the probability associated ($p_g$ or $p_e$) is a randomly drawn number between 0 and 1, the same for all six populations. If they are not equal, the values of $p_g$ (or $p_e$) are assigned using a geographical gradient, by choosing a random point in the oranzees' world, and calculating its distance to each population. Distances are then transformed to $p_g$ (or $p_e$) by rescaling them between 0 and 1, so that for the farther population $p_g=0$ i.e. the associated behavior will be impossible to express (or $p_e=0$ i.e. the associated behavior will be absent with an "ecological explanation").
 
@@ -54,7 +55,7 @@ In the example in \autoref{fig2}, a particular behavior will have $p_g=1$ (or $p
 
 ## Sub-categories of behaviors
 
-There are 64 behaviors are possible in the model (inspired by the 65 coded in @whiten_cultures_1999), divided in two main categories: "social" and "food-related". Each category is further subdivided in sub-categories. Sub-categories, for food-related behavior, are further assigned to specific "nutrients". These information are used to calculate oranzees' state according to its behavior (see main manuscript). The names of behaviors and of the sub-categories are only suggestive. They are used to illustrate our results in Figure 2 (main manuscript).
+There are 64 behaviors possible in the model (inspired by the 65 coded in @whiten_cultures_1999), divided in two main categories: "social" and "food-related". Each category is further subdivided in sub-categories. Sub-categories, for food-related behavior, are further assigned to specific "nutrients". This information is used to calculate the oranzee's state according to its behavior (see main manuscript). The names of behaviors and of the sub-categories are only evocative. They are used to illustrate our results in Figure 2 (main manuscript).
 
 ### Social
 
@@ -84,14 +85,14 @@ Groom        | dirt-shower
 Groom        | ant-shower
 Groom        | q-tip
 Groom        | exfoliate-fruit
-Courthsip    | flower-offer
-Courthsip    | hand-stand
-Courthsip    | rope-swing
-Courthsip    | leaf-fan
-Courthsip    | wreath-clutch
-Courthsip    | ear-pull
-Courthsip    | kissy-hand
-Courthsip    | hop-dance
+Courtship    | flower-offer
+Courtship    | hand-stand
+Courtship    | rope-swing
+Courtship    | leaf-fan
+Courtship    | wreath-clutch
+Courtship    | ear-pull
+Courtship    | kissy-hand
+Courtship    | hop-dance
 
 <div style="page-break-after: always; visibility: hidden"> 
 \pagebreak 
@@ -130,7 +131,7 @@ Insect swatting       | stick-insect | Y
 Fish stunning         | fish-stun-stone | Z
 Fish stunning         | fish-stun-wood | Z
 Tortoise-flip         | tortoise-drop-on-stone | Y
-Potato-mash           | tube-mash | Z
+Potato-mash           | tuber-mash | Z
 Clubbing              | mammal-clubbing | Y
 Egg cracking          | egg-crack | Z
 
@@ -148,11 +149,11 @@ Egg cracking          | egg-crack | Z
 
 To determine *customary* behaviors, we need to define age classes for individuals (the definition of customary behaviors, from @whiten_cultures_1999 is a behavior observed in over 50% of individuals in at least one age class). We define three age classes as follows:
 
-* *adults*: individuals that are more than 16-year old.
+* *adults*: individuals that are more than 16 years old.
 
-* *subadults*: individuals between 8 and 16-year old.
+* *subadults*: individuals between 8 and 16 years old.
 
-* *juveniles*: individuals that are less than 8-year old.
+* *juveniles*: individuals that are less than 8 years old.
 
 <div style="page-break-after: always; visibility: hidden"> 
 \pagebreak 
@@ -165,7 +166,7 @@ To determine *customary* behaviors, we need to define age classes for individual
 \begin{figure*}[h!]
 \begin{center}
 \includegraphics[width=17.8cm]{figures/figure_4.pdf}
-\caption{Cultural traits in oranzees, varying the probability of socially-mediated innovations. Red colour indicates simulation runs that produced more than 38 cultural behaviors; blue colour indicates simulation runs that produces less than 38 cultural behaviors. $S$, $\alpha_e$ and $\alpha_g$ as indicated in the plot. $N=10$ runs for each parameters combination.}
+\caption{Cultural traits in oranzees, varying the probability of socially-mediated innovations. Red color indicates simulation runs that produced more than 38 cultural behaviors; blue color indicates simulation runs that produces less than 38 cultural behaviors. $S$, $\alpha_e$ and $\alpha_g$ as indicated in the plot. $N=10$ runs for each parameters combination.}
 \label{FigureS4}
 \end{center}
 \end{figure*}
