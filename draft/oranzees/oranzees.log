@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.15)  11 MAR 2020 09:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.15)  11 MAR 2020 10:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1575,7 +1575,7 @@ Package hyperref Warning: The anchor of a bookmark and its parent's must not
 (hyperref)                be the same. Added a new anchor on input line 199.
 
 
-Underfull \hbox (badness 3942) in paragraph at lines 243--254
+Underfull \hbox (badness 3942) in paragraph at lines 243--255
 [] []\T1/phv/b/n/9 So-cial-ly--me-di-ated rein-no-va-tion.[] \T1/lmr/m/n/9 (+20
 ) At each time step, all
  []
@@ -1583,45 +1583,45 @@ Underfull \hbox (badness 3942) in paragraph at lines 243--254
 <figures/figure_1.pdf, id=52, 722.7pt x 505.89pt>
 File: figures/figure_1.pdf Graphic file (type pdf)
 <use figures/figure_1.pdf>
-Package pdftex.def Info: figures/figure_1.pdf  used on input line 292.
+Package pdftex.def Info: figures/figure_1.pdf  used on input line 293.
 (pdftex.def)             Requested size: 307.28984pt x 215.1046pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 308.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 309.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 320.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 321.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 6.64998pt on input line 320.
+(Font)              scaled to size 6.64998pt on input line 321.
 [2pdfTeX warning (ext4): destination with the same identifier (name{format}) ha
 s been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.320   \emph
+l.321   \emph
              {ecological explanations}: a behavior that is absent due to apdfTe
 X warning (ext4): destination with the same identifier (name{format}) has been 
 already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.320   \emph
+l.321   \emph
              {ecological explanations}: a behavior that is absent due to apdfTe
 X warning (ext4): destination with the same identifier (name{format}) has been 
 already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.320   \emph
+l.321   \emph
              {ecological explanations}: a behavior that is absent due to a]
 <figures/figure_2.pdf, id=69, 1032.83154pt x 1413.42949pt>
 File: figures/figure_2.pdf Graphic file (type pdf)
 <use figures/figure_2.pdf>
-Package pdftex.def Info: figures/figure_2.pdf  used on input line 372.
+Package pdftex.def Info: figures/figure_2.pdf  used on input line 373.
 (pdftex.def)             Requested size: 392.64812pt x 537.34602pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1630,14 +1630,46 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [4 <./figures/figure_2.pdf>]
-Underfull \vbox (badness 7273) has occurred while \output is active []
+Underfull \vbox (badness 2359) has occurred while \output is active []
 
-Extra height:0.0pt when 359.66742pt
-(2)Left:359.66742pt Right:358.98494pt Output:359.66742pt
+Extra height:10.0pt when 365.14241pt
+
+Underfull \vbox (badness 3826) has occurred while \output is active []
+
+Extra height:10.0pt when 366.14241pt
+
+Underfull \vbox (badness 5787) has occurred while \output is active []
+
+Extra height:10.0pt when 367.14241pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 1383) has occurred while \output is active []
+
+Extra height:10.0pt when 368.14241pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 2042) has occurred while \output is active []
+
+Extra height:10.0pt when 369.14241pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:0.0pt when 370.14241pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+(2)Left:370.14241pt Right:369.93494pt Output:370.14241pt
 - LAST -
-Left:359.66742pt
-Right:358.98494pt
-Output:359.66742pt
+Left:370.14241pt
+Right:369.93494pt
+Output:370.14241pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 Package caption Warning: Unused \captionsetup[table] on input line 166.
 See the caption package documentation for explanation.
@@ -1645,7 +1677,7 @@ See the caption package documentation for explanation.
 
 AED: lastpage setting LastPage
 
-Overfull \vbox (251.73117pt too high) has occurred while \output is active []
+Overfull \vbox (257.20616pt too high) has occurred while \output is active []
 
 - LAST -
 Extra skip:1.55556pt
@@ -1653,7 +1685,7 @@ Left:270.0pt/1.55556pt
 Right:270.0pt/0.0pt
 Output:270.0pt
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 596.
+(Font)              <8> on input line 597.
 [5]
 
 Package catoptions Warning: Undefined options 
@@ -1661,26 +1693,26 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 596.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 596.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 597.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 597.
 (./oranzees.xwm) (./oranzees.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 596.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 596.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 597.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 597.
 Package rerunfilecheck Info: File `oranzees.out' has not changed.
 (rerunfilecheck)             Checksum: 0302E56B464A3BDEC260BFB3A75284E6;519.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 596.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 597.
  ) 
 Here is how much of TeX's memory you used:
  38473 strings out of 492616
  716067 string characters out of 6129481
- 864375 words of memory out of 5000000
+ 864376 words of memory out of 5000000
  41511 multiletter control sequences out of 15000+600000
- 628407 words of font info for 209 fonts, out of 8000000 for 9000
+ 628446 words of font info for 209 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,14n,77p,584b,1111s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,14n,77p,585b,1111s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
 texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2019/
 texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2019/texmf-dist
@@ -1701,7 +1733,7 @@ e1/public/lm/lmssbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publi
 c/lm/lmsy9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhv
 b8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 ></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on oranzees.pdf (5 pages, 2786037 bytes).
+Output written on oranzees.pdf (5 pages, 2785894 bytes).
 PDF statistics:
  226 PDF objects out of 1000 (max. 8388607)
  185 compressed objects within 2 object streams
