@@ -35,11 +35,11 @@ Ecology, University of Tübingen, Schloß Hohentuebingen, Burgsteige 11,
 % Please add here a significance statement to explain the relevance of your work
 \significancestatement{Human culture is cumulative: it grows in complexity and efficiency,
 drawing on the innovations of previous generations. In contrast, ape
-cultures are not cumulative, or rarely so. It has been proposed that
-human cumulative culture depends on our ability to accurately transmit
-and preserve information, and one basic mechanism for that is behavior
-copying. At the same time, researchers have claimed that also non-human
-apes can copy others' behavior. This raises a puzzling question: why are
+cultures are not clearly cumulative. It has been proposed that human
+cumulative culture depends on our ability to accurately transmit and
+preserve information, and one basic mechanism for that is behavior
+copying. At the same time, researchers have claimed that non-human apes
+can also copy others' behavior. This raises a puzzling question: why are
 ape cultures not cumulative? We show, through computer simulations, that
 the patterns used to prove the existence of culture in wild ape
 populations can be reproduced, in realistic conditions, without any
@@ -59,27 +59,27 @@ feedback on the paper. CT designed the research and wrote the paper.}
  \keywords{  cultural transmission |  cultural evolution |  cumulative culture |  non-human great ape culture |  individual-based models |  behavior copying  } 
 
 \begin{abstract}
-We developed an individual-based model inspired by data on wild apes (1)
-to test whether population-level distributions of traits suggestive of
-cultures could emerge without the existence of behavior copying. We
-reproduce several details of wild apes, including realistic demographic
-and spatial features, and parametrised the range of genetic and
-ecological variations between our populations. We also parametrised the
-degree to which individual innovations are socially-mediated, i.e.~the
-degree to which the probability for an individual to innovate a behavior
-is dependent on the frequency of the same behavior in the population.
-Our results show that, under realistic values of the main parameters,
-namely null to medium importance of genetic variation, medium to high
+We developed an individual-based model inspired by data on wild apes (1,
+2) to test whether population-level distributions of traits suggestive
+of cultures could emerge without behavior copying. We reproduce several
+details of wild apes, including realistic demographic and spatial
+features, and parametrised the range of genetic and ecological
+variations between our populations. We also parametrised the degree to
+which individual innovations are socially-mediated, i.e.~the degree to
+which the probability for an individual to innovate a behavior is
+dependent on the frequency of the same behavior in the population. Our
+results show that, under realistic values of the main parameters, namely
+null to medium importance of genetic variation, medium to high
 importance of ecological variation, and various values of social
 influence on innovations, we can reproduce distributions of behavioral
 traits used to prove the existence of ape cultures. Our model reproduces
 other features of the behaviors found in wild populations, including the
 relative proportions of patterns of non-cultural behaviors (such as
-behaviours present or absent in all sites, or behaviours absent becasue
+behaviours present or absent in all sites, or behaviours absent because
 of local ecological factors), as well as a correlation between
 population size and the number of cultural traits in each site. Overall,
 our results suggest that ape cultures can emerge without behavior
-copying, providing an explanation as to why they do not appear
+copying, providing an explanation as to why they do not appear to be
 cumulative.
 \end{abstract}
 
@@ -101,36 +101,36 @@ cumulative.
 \acknow{This project has received funding from the European Research Council
 (ERC) under the European Union's Horizon 2020 research and innovation
 programme (grant agreement n° 714658; STONECULT project). We would like
-to than Mima Batalovic for the support prvoided, and Elisa Bandini, Alba
+to than Mima Batalovic for the support provided, and Elisa Bandini, Alba
 Motes Rodrigo, and Jonathan Reeves for comments on earlier versions of
 the manuscript.}
 
 Cumulative culture, the transmission and improvement of knowledge,
 technologies, and beliefs from individual to individual, and from
 generation to generation, is key to explain the extraordinary ecological
-success of our species (2, 3). Which cognitive abilities underpin
+success of our species (3, 4). Which cognitive abilities underpin
 human's cumulative cultural capacities, and how these abilities affect
 the evolution of culture itself are among the most pressing questions of
 evolutionary human science.
 
 Many species are able to at least use social cues to adjust their
 behavior. Various primates have been shown to posses traditions that are
-socially influenced (1, 4, 5). Humans, in contrast, have cumulative
-culture. While there are various definitions of cumulative culture (6),
-some of its characteristics are broadly accepted. Cumulative culture
-requires the accumulation of cultural traits (more cultural traits are
-present at generation \emph{g} than at time \emph{g-1}), their
-improvement (cultural traits at generation \emph{g} are more effective
-than at generation \emph{g-1}), and ratcheting (the innovation of
-cultural traits at generation \emph{g} depends on the presence of other
-traits at generation \emph{g-1}) (7).
+socially influenced in this way (1, 2, 5). Humans, in contrast, have
+cumulative culture. While there are various definitions of cumulative
+culture (6), some of its characteristics are broadly accepted.
+Cumulative culture requires the accumulation of cultural traits (more
+cultural traits are present at generation \emph{g} than at time
+\emph{g-1}), their improvement (cultural traits at generation \emph{g}
+are more effective than at generation \emph{g-1}), and ratcheting (the
+innovation of cultural traits at generation \emph{g} depends on the
+presence of other traits at generation \emph{g-1}) (7).
 
 While not all human culture needs to be supported by faithful copying
 (8), our \emph{cumulative} culture depends on an ability to accurately
 transmit and preserve new behaviors. Experiments have indeed shown that
-humans are capable of copying behaviors, and that they routinely do it
-in all known societies (9, 10). More controversial is the claim that
-other species copy behaviors. Arguments regarding the existence of
+humans are capable of copying behaviors, and that they routinely do so
+cross-culturally (9, 10). More controversial is the claim that other
+primate species copy behaviors. Arguments regarding the existence of
 non-human great ape cultures based on behavior copying raise a puzzling
 question: if other ape species can and do copy behaviors, why do they
 not develop cumulative cultures? There are only two possible answers to
@@ -144,15 +144,16 @@ distribution of behaviors in populations of chimpanzees across seven
 sites, and argued that the inter-site differences in the frequency of
 behaviors proved the existence of behavior copying-based cultures in
 these populations (1). We developed an individual-based model to assess
-whether these patterns actually justify the conclusion that behavior
-copying is the underlying learning mechanism. We reproduced several
-details of the original study, including realistic demographic and
-spatial features, and effects of ecological availability and genetic
-predisposition, to investigate whether an equivalent distribution of
-behavioral traits could emerge in absence of any behavior copying. While
-our simulated species, \emph{oranzees}, can be influenced by social cues
-(widespread in the animal kingdom, and certainly present in all apes),
-we explicitly excluded any behavior copying.
+whether these patterns, and similar patterns in orangutans (2) actually
+justify the conclusion that behavior copying is the underlying learning
+mechanism. We reproduced several details of the original study (1),
+including realistic demographic and spatial features, and effects of
+ecological availability and genetic predisposition, to investigate
+whether an equivalent distribution of behavioral traits could emerge in
+the absence of any behavior copying. While our simulated sape pecies,
+\emph{oranzees}, can be influenced by social cues (widespread in the
+animal kingdom, and certainly present in all apes), we explicitly
+excluded any behavior copying.
 
 Our results show that, under realistic values of the main parameters, we
 can reproduce the distribution of behavioral traits found in (1),
@@ -198,11 +199,12 @@ years old.
 \addcontentsline{toc}{subsection}{Oranzees' behaviors and state}
 
 In the oranzees' world, 64 behaviors are possible (targeting the 65
-behaviors coded in (1)). Behaviors are divided into two categories: 32
-social and 32 food-related behaviors. These figures where chosen to
-resemble the behavioral categories considered in (1). Behaviors serve
-oranzees to fulfill various goals. Oranzees have a `state' that is based
-on how many goals are fulfilled in the two main categories of social and
+behaviors coded in (1), but making it an even number from modelling
+convenience). Behaviors are divided into two categories: 32 social and
+32 food-related behaviors. These figures where chosen to resemble the
+behavioral categories considered in (1). Behaviors serve oranzees to
+fulfill various goals. Oranzees have a `state' that is based on how many
+goals are fulfilled in the two main categories of social and
 food-related behaviors.
 
 In the case of social behaviors, we assume four sub-categories (`play',
@@ -250,9 +252,9 @@ behavior \(B_i\) is weighted by its proportional instances in the
 population, among the behaviors of the same category, so that common
 behaviors are more likely to be reinnovated.
 
-When the reinnovation is not socially-mediated, the probability of
+When the innovation is not socially-mediated, the probability of
 innovating each behavior is random. Only one behavior per category can
-be re-innovated at each time step.
+be innovated at each time step.
 
 \hypertarget{format}{%
 \subsection*{Genetic propensity and ecological
@@ -262,7 +264,7 @@ availability}
 
 The behavior selected in the previous step is then innovated or not
 according to its genetic propensity and, in case of food-related
-beahviours, ecological availability.
+behaviors, ecological availability.
 
 Genetic propensity is a probability \(p_g(0,1)\), assigned independently
 for each of the 64 behaviors. A parameter of the model, \(\alpha_g\),
@@ -284,6 +286,14 @@ site. Ecological availability is assigned only to food-related
 behaviors, and it is calculated in the same way of \(p_g\), using the
 parameter \(\alpha_e\) to determine the probability of ecological
 availability being different in the six populations.
+
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=10.8cm]{figures/figure_1.pdf}
+\caption{Number of cultural traits in oranzees, when varying ecological and genetic diversity. Red colour indicates simulation runs that produced more than 38 cultural traits (the number of cultural traits identified in 1); blue colour indicates simulation runs that produced less than 38 cultural traits For all simulations, $S=1$, $\alpha_e$ and $\alpha_g$ as indicated in the plot. $N=20$ runs for each parameters combination.}
+\label{Figure1}
+\end{center}
+\end{figure*}
 
 \hypertarget{format}{%
 \subsection*{Model's output}\label{format}}
@@ -312,10 +322,10 @@ behavior, in each population, as:
   associated to \(p_e=0\)).
 \end{itemize}
 
-Notice the last category in (1) (\emph{unknown}, i.e. ``the behavior has
-not been recorded, but this may be due to inadequacy of relevant
-observational opportunities'') does not apply in our case, because we
-have complete knowledge of the output of the simulations.
+Notice that one additional category in (1) (\emph{unknown}, i.e. ``the
+behavior has not been recorded, but this may be due to inadequacy of
+relevant observational opportunities'') does not apply in our case,
+because we have complete knowledge of the output of the simulations.
 
 Finally, to test how well our model compares to wild apes, we calculate
 the same ``patterns'' described in (1):
@@ -359,16 +369,8 @@ visualization inspired by (1).
 
 \begin{figure*}[h!]
 \begin{center}
-\includegraphics[width=10cm]{figures/figure_1.pdf}
-\caption{Number of cultural traits in oranzees, when varying ecological and genetic diversity. Red colour indicates simulation runs that produced more than 38 cultural behaviors; blue colour indicates simulation runs that produced less than 38 cultural behaviors. For all simulations, $S=1$, $\alpha_e$ and $\alpha_g$ as indicated in the plot. $N=20$ runs for each parameters combination.}
-\label{Figure1}
-\end{center}
-\end{figure*}
-
-\begin{figure*}[h!]
-\begin{center}
 \includegraphics[width=13.8cm]{figures/figure_2.pdf}
-\caption{Example of a simulation run that produces 38 cultural behaviors ($S=1$, $\alpha_e=0.8$, and $\alpha_g=0.2$). Color icons indicate customary behaviors; circular icons, habitual; monochrome icons, present; clear, absent;  horizontal bar, absent with ecological explanation. The names of the behaviors are only evocative, see SI for a complete list.}
+\caption{Example of a simulation run that produces 38 cultural traits ($S=1$, $\alpha_e=0.8$, and $\alpha_g=0.2$). Color icons indicate customary behaviors; circular icons, habitual; monochrome icons, present; clear, absent;  horizontal bar, absent with ecological explanation. The names of the behaviors are only evocative, see SI for a complete list.}
 \label{Figure2}
 \end{center}
 \end{figure*}
@@ -394,7 +396,7 @@ three patterns (\emph{A}, \emph{B}, \emph{C}, see above) in (1) (see
 Figure S5).
 
 Finally, we ran 100 simulations for one of the conditions where we have
-a good match for the number cultural behaviors in (1)
+a good match for the number of cultural behaviors in (1)
 (\(\alpha_e=0.8;\alpha_g=0.2, S=1\)). In each simulation, we recorded,
 for each population, the number of behaviors (habitual + customary +
 present) that are also classified as cultural (see Figure S4). We find a
@@ -402,7 +404,8 @@ small, but significant, correlation between population size and number
 of cultural traits (\(p<0.00001,\rho=0.2,N=600\)). In other words, our
 model reproduces an effect of cultural accumulation ((i.e.~increased
 number of expressed behaviors) relative to population size possibly
-found in real populations - see (11, 15, 16).
+found in real populations - see (11, 15, 16) - again, in absence of
+behavior copying.
 
 \hypertarget{discussion}{%
 \section*{Discussion}\label{discussion}}
@@ -415,12 +418,12 @@ for the existence of any behavior copying mechanism. We implemented
 several details of the original wild ape study, including realistic
 demographic and spatial features, as well as effects of genetic
 propensity and ecological availability on the behaviors. Given the
-widespread availability of non-copying variants of social learning, we
-also included socially-mediated reinnovation, where social learning
-merely catalyses individual reinnovation, without any behavior copying
-(14).
+widespread availability of non-copying variants of social learning
+across the animal kingdom, we also included socially-mediated
+reinnovation, where social learning merely catalyses individual
+reinnovation, without any behavior copying (14).
 
-Our main result is that we can reproduce the pattern observed in
+Our main result is that we can reproduce the general pattern observed in
 populations of wild apes under realistic values of the parameters of
 genetic propensity and ecological availability, namely zero to medium
 importance of genetic variation, and medium to high importance of
@@ -430,12 +433,12 @@ chimpanzees (or other apes). However, we are confident that the range of
 values explored, and the ease by which patterns of cultural behaviors
 similar to (1) can be produced, strongly suggest that behavior copying
 is not required for such patterns to emerge. Therefore, ape-like
-cultural patterns do not pinpoint behavior copying abilities. In
-addition, and as further support to our results, our model not only
-reproduces the cultural behavioral patterns, but also the proportions
-among the other patterns, i.e.~absent behaviors, behaviors not achieving
-habitual frequencies at any site, and behaviors absent because of
-ecological factors.
+cultural patterns (1, 2) do not and cannot pinpoint behavior copying
+abilities. In addition, and as further support to our results, our model
+not only reproduces the cultural behavioral patterns, but also the
+proportions among the other patterns, i.e.~absent behaviors, behaviors
+not achieving habitual frequencies at any site, and behaviors absent
+because of ecological factors.
 
 In our model, we focused on the mechanism of socially mediated
 reinnovation, that is, we assumed that members of our hypothetical
@@ -448,20 +451,21 @@ necessary. Given certain combinations of parameters, such as higher
 genetic and ecological diversities, the same population level pattern
 can even be obtained when reinnovation is not socially mediated, i.e if
 oranzees are not influenced by the behaviors of the other individuals in
-their populations.
+their populations. That is, similar patterns can exist that are not
+cultural even in a minimal way (18).
 
 Finally, our model reproduces a reported correlation between population
 size and number of cultural traits in the six populations (11, 15, 16).
 The magnitude of the effect is small, which is to be expected, given
 that the presence of this correlation in real populations of (human and
-non-human) apes is currently debated (18). Again, this correlation is
+non-human) apes is currently debated (19). Again, this correlation is
 brought about without any behavior copying, so that there is no need to
-invoke specific ``cultural'' reasons (e.g. (19)) to explain such
+invoke specific ``cultural'' reasons (e.g. (20)) to explain such
 pattern.
 
 More generally, the results of our models suggest caution when deriving
 individual-level mechanisms from population-level patterns (see also
-(20, 21)). Cultural systems, as many others, often exhibit equifinality:
+(21, 22)). Cultural systems, as many others, often exhibit equifinality:
 the same global state can be produced by different local processes.
 Models and experiments are crucial to test the plausibility of
 inferences going from global to local properties.
@@ -470,9 +474,9 @@ In conclusion, our model strongly suggests that the data available on
 the behavioral distributions of apes populations cannot demonstrate that
 ape possess cultures influenced by behavior copying, let alone
 \emph{requiring} behavior copying. This, in turn, may provide an
-explanation to why ape cultures are not cumulative: if cumulative
-culture requires behavior copying, we should not expect a species
-lacking this mechanism to develop it.
+explanation to why ape cultures are not cumulative: as cumulative
+culture requires at minimum behavior copying, we should not expect any
+species lacking this mechanism to develop it.
 
 \showmatmethods
 \showacknow
@@ -483,22 +487,22 @@ lacking this mechanism to develop it.
 1. Whiten A, et al. (1999) Cultures in chimpanzees. \emph{Nature}
 399(6737):682--685.
 
+\leavevmode\hypertarget{ref-van_schaik_orangutan_2003}{}%
+2. van Schaik CP, et al. (2003) Orangutan Cultures and the Evolution of
+Material Culture. \emph{Science} 299(5603):102--105.
+
 \leavevmode\hypertarget{ref-henrich_secret_2015}{}%
-2. Henrich J (2015) \emph{The Secret of Our Success: How Culture Is
+3. Henrich J (2015) \emph{The Secret of Our Success: How Culture Is
 Driving Human Evolution, Domesticating Our Species, and Making Us
 Smarter} (Princeton University Press, Princeton \& Oxford).
 
 \leavevmode\hypertarget{ref-boyd_different_2017}{}%
-3. Boyd R (2017) \emph{A Different Kind of Animal: How Culture
+4. Boyd R (2017) \emph{A Different Kind of Animal: How Culture
 Transformed Our Species} (Princeton University Press, Princeton).
 
 \leavevmode\hypertarget{ref-whiten_primate_2000}{}%
-4. Whiten A (2000) Primate culture and social learning. \emph{Cognitive
+5. Whiten A (2000) Primate culture and social learning. \emph{Cognitive
 Science} 24(3):477--508.
-
-\leavevmode\hypertarget{ref-van_schaik_orangutan_2003}{}%
-5. Schaik CP van, et al. (2003) Orangutan Cultures and the Evolution of
-Material Culture. \emph{Science} 299(5603):102--105.
 
 \leavevmode\hypertarget{ref-mesoudi_what_2018}{}%
 6. Mesoudi A, Thornton A (2018) What is cumulative cultural evolution?
@@ -559,24 +563,29 @@ Chimpanzees in Social Settings Using the Floating Peanut Task.
 \emph{PLoS ONE} 5(5).
 doi:\href{https://doi.org/10.1371/journal.pone.0010544}{10.1371/journal.pone.0010544}.
 
+\leavevmode\hypertarget{ref-neadle_food_2017}{}%
+18. Neadle D, Allritz M, Tennie C (2017) Food cleaning in gorillas:
+Social learning is a possibility but not a necessity. \emph{PLOS ONE}
+12(12):e0188866.
+
 \leavevmode\hypertarget{ref-vaesen_population_2016}{}%
-18. Vaesen K, Collard M, Cosgrove R, Roebroeks W (2016) Population size
+19. Vaesen K, Collard M, Cosgrove R, Roebroeks W (2016) Population size
 does not explain past changes in cultural complexity. \emph{Proceedings
 of the National Academy of Sciences of the United States of America}
 113(16):E2241--2247.
 
 \leavevmode\hypertarget{ref-henrich_demography_2004}{}%
-19. Henrich J (2004) Demography and Cultural Evolution: How Adaptive
+20. Henrich J (2004) Demography and Cultural Evolution: How Adaptive
 Cultural Processes can Produce Maladaptive Losses: The Tasmanian Case.
 \emph{American Antiquity} 69(2):197--214.
 
 \leavevmode\hypertarget{ref-acerbi_conformity_2016}{}%
-20. Acerbi A, Van Leeuwen EJ, Haun DB, Tennie C (2016) Conformity cannot
+21. Acerbi A, Van Leeuwen EJ, Haun DB, Tennie C (2016) Conformity cannot
 be identified based on population-level signatures. \emph{Scientific
 reports} 6:36068.
 
 \leavevmode\hypertarget{ref-barrett_equifinality_2019}{}%
-21. Barrett BJ (2019) Equifinality in empirical studies of cultural
+22. Barrett BJ (2019) Equifinality in empirical studies of cultural
 transmission. \emph{Behavioural Processes} 161:129--138.
 
 

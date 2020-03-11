@@ -55,7 +55,7 @@ In the example in \autoref{fig2}, a particular behavior will have $p_g=1$ (or $p
 
 ## Sub-categories of behaviors
 
-There are 64 behaviors possible in the model (inspired by the 65 coded in @whiten_cultures_1999), divided in two main categories: "social" and "food-related". Each category is further subdivided in sub-categories. Sub-categories, for food-related behavior, are further assigned to specific "nutrients". This information is used to calculate the oranzee's state according to its behavior (see main manuscript). The names of behaviors and of the sub-categories are only evocative. They are used to illustrate our results in Figure 2 (main manuscript).
+There are 64 behaviors possible in the model (inspired by the 65 coded in @whiten_cultures_1999, but made into an even number from modelling convenience), divided in two main categories: "social" and "food-related". Each category is further subdivided in sub-categories. Sub-categories, for food-related behavior, are further assigned to specific "nutrients". This information is used to calculate the oranzee's state according to its behavior (see main manuscript). The names of behaviors and of the sub-categories are only evocative. They are used to illustrate our results in Figure 2 (main manuscript).
 
 ### Social
 
@@ -141,9 +141,9 @@ Egg cracking          | egg-crack | Z
 
 ## Example of single run
 
-\autoref{fig3} shows an example of the entire history of all behaviors in a single run, for a single population (geographical location and population size are based on "Uossob"), with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$, i.e. one of the combination of parameters that produces a number of cultural behavior similar to @whiten_cultures_1999. 
+\autoref{fig3} shows an example of the entire history of all behaviors in a single run, for a single population (geographical location and population size are based on "Uossob"), with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$, i.e. one of the combination of parameters that produces a number of cultural behaviors similar to @whiten_cultures_1999. 
 
-![Example of a single run with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$. The plots show the frequencies of the 64 possivble behaviors, divided in panles by sub-category.\label{fig3} ](figures/figure_3)
+![Example of a single run with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$. The plots show the frequencies of the 64 possible behaviors, divided in panels by sub-category.\label{fig3} ](figures/figure_3)
 
 ## Age classes to calcualte customary behaviors
 
@@ -166,7 +166,7 @@ To determine *customary* behaviors, we need to define age classes for individual
 \begin{figure*}[h!]
 \begin{center}
 \includegraphics[width=17.8cm]{figures/figure_4.pdf}
-\caption{Cultural traits in oranzees, varying the probability of socially-mediated innovations. Red color indicates simulation runs that produced more than 38 cultural behaviors; blue color indicates simulation runs that produces less than 38 cultural behaviors. $S$, $\alpha_e$ and $\alpha_g$ as indicated in the plot. $N=10$ runs for each parameters combination.}
+\caption{Cultural traits in oranzees, after varying the probability of socially-mediated innovations. Red color indicates simulation runs that produced more than 38 cultural behaviors (the number of cultural traits identified in 2); blue color indicates simulation runs that produces less than 38 cultural behaviors. $S$, $\alpha_e$ and $\alpha_g$ as indicated in the plot. $N=10$ runs for each combination of parameters.}
 \label{FigureS4}
 \end{center}
 \end{figure*}
@@ -180,7 +180,7 @@ To determine *customary* behaviors, we need to define age classes for individual
 \begin{figure*}[h!]
 \begin{center}
 \includegraphics[width=11.4cm]{figures/figure_5.pdf}
-\caption{Number of behaviors for each of the four patterns (*A*, *B*, *C*, *D*) for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The red values are the values described for real chimpanzees populations. $N=20$ runs.}
+\caption{Number of traits for each of the four patterns (*A*, *B*, *C*, *D*, see description in the main manuscript) for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The red values are the values described for real chimpanzees populations. $N=20$ runs.}
 \label{FigureS5}
 \end{center}
 \end{figure*}
@@ -195,7 +195,7 @@ To determine *customary* behaviors, we need to define age classes for individual
 \begin{figure*}[h!]
 \begin{center}
 \includegraphics[width=11.4cm]{figures/figure_6.pdf}
-\caption{Number of cultural behaviors for each population for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The blue line is a linear fit of the data. $N=100$ runs.}
+\caption{Number of cultural traits for each population for the parameters $\alpha_e=0.8;\alpha_g=0.2,S=1$. The blue line is a linear fit of the data. $N=100$ runs.}
 \label{FigureS6}
 \end{center}
 \end{figure*}

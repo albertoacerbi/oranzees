@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.15)  10 MAR 2020 17:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.15)  11 MAR 2020 09:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1557,10 +1557,10 @@ Package mdframed Info: mdframed inside a box
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 5.69998pt on input line 139.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 177.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 166.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 6.64998pt on input line 177.
-LaTeX Font Info:    Try loading font information for T1+bch on input line 177.
+(Font)              scaled to size 6.64998pt on input line 166.
+LaTeX Font Info:    Try loading font information for T1+bch on input line 166.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/t1bch.fd
 File: t1bch.fd 2004/10/18 font definitions for T1/bch.
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-bch.cfg
@@ -1572,66 +1572,72 @@ File: mt-bch.cfg 2007/03/03 v1.5 microtype config. file: Bitstream Charter (RS)
 ]
 
 Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 198.
+(hyperref)                be the same. Added a new anchor on input line 199.
 
 
-Underfull \hbox (badness 3942) in paragraph at lines 241--252
+Underfull \hbox (badness 3942) in paragraph at lines 243--254
 [] []\T1/phv/b/n/9 So-cial-ly--me-di-ated rein-no-va-tion.[] \T1/lmr/m/n/9 (+20
 ) At each time step, all
  []
 
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 298.
+<figures/figure_1.pdf, id=52, 722.7pt x 505.89pt>
+File: figures/figure_1.pdf Graphic file (type pdf)
+<use figures/figure_1.pdf>
+Package pdftex.def Info: figures/figure_1.pdf  used on input line 292.
+(pdftex.def)             Requested size: 307.28984pt x 215.1046pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 308.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 313.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 320.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 6.64998pt on input line 313.
+(Font)              scaled to size 6.64998pt on input line 320.
 [2pdfTeX warning (ext4): destination with the same identifier (name{format}) ha
 s been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.313 \end{itemize}
-                   pdfTeX warning (ext4): destination with the same identifier 
-(name{format}) has been already used, duplicate ignored
+l.320   \emph
+             {ecological explanations}: a behavior that is absent due to apdfTe
+X warning (ext4): destination with the same identifier (name{format}) has been 
+already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.313 \end{itemize}
-                   pdfTeX warning (ext4): destination with the same identifier 
-(name{format}) has been already used, duplicate ignored
+l.320   \emph
+             {ecological explanations}: a behavior that is absent due to apdfTe
+X warning (ext4): destination with the same identifier (name{format}) has been 
+already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.313 \end{itemize}
-                   ]
-<figures/figure_1.pdf, id=67, 722.7pt x 505.89pt>
-File: figures/figure_1.pdf Graphic file (type pdf)
-<use figures/figure_1.pdf>
-Package pdftex.def Info: figures/figure_1.pdf  used on input line 362.
-(pdftex.def)             Requested size: 284.52756pt x 199.17207pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<figures/figure_2.pdf, id=68, 1032.83154pt x 1413.42949pt>
+l.320   \emph
+             {ecological explanations}: a behavior that is absent due to a]
+<figures/figure_2.pdf, id=69, 1032.83154pt x 1413.42949pt>
 File: figures/figure_2.pdf Graphic file (type pdf)
 <use figures/figure_2.pdf>
-Package pdftex.def Info: figures/figure_2.pdf  used on input line 370.
+Package pdftex.def Info: figures/figure_2.pdf  used on input line 372.
 (pdftex.def)             Requested size: 392.64812pt x 537.34602pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[3]
-Extra height:0.0pt when 142.97455pt
-(2)Left:142.97455pt Right:143.04366pt Output:142.97455pt
-(2)Left:143.04366pt Right:143.04366pt Output:143.04366pt
+[3 <./figures/figure_1.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[4 <./figures/figure_2.pdf>]
+Underfull \vbox (badness 7273) has occurred while \output is active []
+
+Extra height:0.0pt when 359.66742pt
+(2)Left:359.66742pt Right:358.98494pt Output:359.66742pt
 - LAST -
-Left:143.04366pt
-Right:143.04366pt
-Output:143.04366pt
+Left:359.66742pt
+Right:358.98494pt
+Output:359.66742pt
 
 Package caption Warning: Unused \captionsetup[table] on input line 166.
 See the caption package documentation for explanation.
@@ -1639,42 +1645,42 @@ See the caption package documentation for explanation.
 
 AED: lastpage setting LastPage
 
-Overfull \vbox (270.21037pt too high) has occurred while \output is active []
+Overfull \vbox (251.73117pt too high) has occurred while \output is active []
 
 - LAST -
-Extra skip:11.0pt
-Left:261.0pt/2.0pt
-Right:252.0pt/0.0pt
-Output:266.5pt
+Extra skip:1.55556pt
+Left:270.0pt/1.55556pt
+Right:270.0pt/0.0pt
+Output:270.0pt
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 587.
-[4 <./figures/figure_1.pdf>] [5 <./figures/figure_2.pdf>]
+(Font)              <8> on input line 596.
+[5]
 
 Package catoptions Warning: Undefined options 
 (catoptions)                [Family, Option, Value]: 
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 587.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 587.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 596.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 596.
 (./oranzees.xwm) (./oranzees.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 587.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 587.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 596.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 596.
 Package rerunfilecheck Info: File `oranzees.out' has not changed.
-(rerunfilecheck)             Checksum: 1609097F81FE2712DC1FA575A78BD0AE;507.
+(rerunfilecheck)             Checksum: 0302E56B464A3BDEC260BFB3A75284E6;519.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 587.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 596.
  ) 
 Here is how much of TeX's memory you used:
- 38462 strings out of 492616
- 715942 string characters out of 6129481
- 866339 words of memory out of 5000000
- 41510 multiletter control sequences out of 15000+600000
- 627868 words of font info for 205 fonts, out of 8000000 for 9000
+ 38473 strings out of 492616
+ 716067 string characters out of 6129481
+ 864375 words of memory out of 5000000
+ 41511 multiletter control sequences out of 15000+600000
+ 628407 words of font info for 209 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,14n,73p,543b,1111s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,14n,77p,584b,1111s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
 texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2019/
 texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2019/texmf-dist
@@ -1695,10 +1701,10 @@ e1/public/lm/lmssbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publi
 c/lm/lmsy9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhv
 b8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 ></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on oranzees.pdf (5 pages, 2785252 bytes).
+Output written on oranzees.pdf (5 pages, 2786037 bytes).
 PDF statistics:
- 222 PDF objects out of 1000 (max. 8388607)
- 181 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
+ 226 PDF objects out of 1000 (max. 8388607)
+ 185 compressed objects within 2 object streams
+ 37 named destinations out of 1000 (max. 500000)
  41047 words of extra memory for PDF output out of 42996 (max. 10000000)
 
