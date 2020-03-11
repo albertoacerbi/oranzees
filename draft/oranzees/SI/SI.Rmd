@@ -13,11 +13,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Additional model information
 
-This document provides additional information on the individual-based model desribed in the paper *Ape cultures do not require behavior copying*. The full code to run the model and to reproduce the results can be found in <https://github.com/albertoacerbi/oranzees>, together with a detailed documentation of the model development. 
+This document provides additional information on the individual-based model described in the paper *Ape cultures do not require behavior copying*. The full code to run the model and to reproduce the results can be found in <https://github.com/albertoacerbi/oranzees>, together with a detailed documentation of the model development. 
 
 ## The oranzees' world
  
-The oranzees model is an individual-based model, fully written in R, that reproduces a world where six populations of "oranzees" (a hypothetical ape species) live. The model is spatially-explicit: the six populations are located at relative positions analogous to the six populations of chimpanzees in @whiten_cultures_1999, see \autoref{fig1}. For modelling convenience, we put these locations approximately in the centre of a 1000 x 1000 squared environment in order to be able to process their relative distances, that we use to calculate genetic propensity and ecological availability of the behaviors (see below).  
+The oranzees model is an individual-based model, fully written in R, that reproduces a world where six populations of "oranzees" (a hypothetical ape species) live. The model is spatially-explicit: the six populations are located at relative positions analogous to the six populations of chimpanzees in @whiten_cultures_1999 - see \autoref{fig1}. For modelling convenience, we put these locations approximately in the center of a 1000 x 1000 squared environment in order to be able to process their relative distances, that we use to calculate genetic propensity and ecological availability of the behaviors (see below).  
 
  ![Location of the six populations of oranzees. \label{fig1}](figures/figure_1) 
 
@@ -43,7 +43,7 @@ Elaham    | 95
 
 As described in the main manuscript, two parameters of the models, $\alpha_g$ and $\alpha_e$, determine the probability that the genetic propensity and ecological availability associated to the behaviors are equal for all the six populations, or if they differ among the populations. 
 
-Independently for each behavior, if genetic propensity (or ecological availabilty) is equal, the probability associated ($p_g$ or $p_e$) is a randomly drawn number between 0 and 1, the same for all six populations. If they are not equal, the values of $p_g$ (or $p_e$) are assigned using a geographical gradient, by choosing a random point in the oranzees' world, and calculating its distance to each population. Distances are then transformed to $p_g$ (or $p_e$) by rescaling them between 0 and 1, so that for the farther population $p_g=0$ i.e. the associated behavior will be impossible to express (or $p_e=0$ i.e. the associated behavior will be absent with an "ecological explanation").
+Independently for each behavior, if genetic propensity (or ecological availability) is equal, the probability associated ($p_g$ or $p_e$) is a randomly drawn number between 0 and 1, the same for all six populations. If they are not equal, the values of $p_g$ (or $p_e$) are assigned using a geographical gradient, by choosing a random point in the oranzees' world, and calculating its distance to each population. Distances are then transformed to $p_g$ (or $p_e$) by rescaling them between 0 and 1, so that for the farther population $p_g=0$ i.e. the associated behavior will be impossible to express (or $p_e=0$ i.e. the associated behavior will be absent with an "ecological explanation").
 
 In the example in \autoref{fig2}, a particular behavior will have $p_g=1$ (or $p_e=1$) in the Ognodub site, $p_g=0$ (or $p_e=0$) in Iat Forest and Uossob, and intermediate values in the other sites.
 
@@ -122,10 +122,10 @@ Anvil smash           | anvil-smash S | Y
 Anvil smash           | anvil-smash W | Y
 Anvil smash           | smash-ground | Y
 Anvil smash           | drop-ground | Y
-Rolling pin tecniques | rolling-wood | Z
-Rolling pin tecniques | rolling-stone | Z
-Rolling pin tecniques | rolling-bone | Z
-Rolling pin tecniques | rolling-other | Z
+Rolling pin techniques | rolling-wood | Z
+Rolling pin techniques | rolling-stone | Z
+Rolling pin techniques | rolling-bone | Z
+Rolling pin techniques | rolling-other | Z
 Insect swatting       | bug-clap | Y
 Insect swatting       | stick-insect | Y
 Fish stunning         | fish-stun-stone | Z
@@ -145,7 +145,7 @@ Egg cracking          | egg-crack | Z
 
 ![Example of a single run with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$. The plots show the frequencies of the 64 possible behaviors, divided in panels by sub-category.\label{fig3} ](figures/figure_3)
 
-## Age classes to calcualte customary behaviors
+## Age classes to calculate customary behaviors
 
 To determine *customary* behaviors, we need to define age classes for individuals (the definition of customary behaviors, from @whiten_cultures_1999 is a behavior observed in over 50% of individuals in at least one age class). We define three age classes as follows:
 
