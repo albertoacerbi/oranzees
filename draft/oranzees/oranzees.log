@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  18 MAR 2020 13:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  18 MAR 2020 13:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1750,7 +1750,7 @@ Underfull \hbox (badness 3942) in paragraph at lines 241--253
 File: figures/figure_1.pdf Graphic file (type pdf)
 <use figures/figure_1.pdf>
 Package pdftex.def Info: figures/figure_1.pdf used on input line 290.
-(pdftex.def)             Requested size: 307.28984pt x 215.1046pt.
+(pdftex.def)             Requested size: 335.7426pt x 235.02026pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1767,42 +1767,25 @@ LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 File: figures/figure_2.pdf Graphic file (type pdf)
 <use figures/figure_2.pdf>
 Package pdftex.def Info: figures/figure_2.pdf used on input line 368.
-(pdftex.def)             Requested size: 392.64812pt x 537.34602pt.
+(pdftex.def)             Requested size: 335.7426pt x 459.46698pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [3 <./figures/figure_1.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+
+Underfull \vbox (badness 2856) has occurred while \output is active []
+
 [4 <./figures/figure_2.pdf>]
-Underfull \vbox (badness 1527) has occurred while \output is active []
-
-
-Underfull \vbox (badness 3118) has occurred while \output is active []
-
-Extra height:10.0pt when 420.44673pt
-
-Underfull \vbox (badness 4846) has occurred while \output is active []
-
-Extra height:10.0pt when 421.44673pt
-
-Underfull \vbox (badness 7133) has occurred while \output is active []
-
-Extra height:10.0pt when 422.44673pt
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:10.0pt when 423.44673pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:10.0pt when 424.44673pt
-Extra height:0.0pt when 425.44673pt
-(2)Left:425.44673pt Right:414.84358pt Output:425.44673pt
+Extra height:0.0pt when 359.66742pt
+(2)Left:359.66742pt Right:358.98494pt Output:359.66742pt
 - LAST -
-Left:425.44673pt
-Right:414.84358pt
-Output:425.44673pt
+Left:359.66742pt
+Right:358.98494pt
+Output:359.66742pt
 
 Package caption Warning: Unused \captionsetup[table] on input line 166.
 See the caption package documentation for explanation.
@@ -1810,7 +1793,7 @@ See the caption package documentation for explanation.
 
 AED: lastpage setting LastPage
 
-Overfull \vbox (339.51048pt too high) has occurred while \output is active []
+Overfull \vbox (278.73117pt too high) has occurred while \output is active []
 
 - LAST -
 Extra skip:29.0pt
@@ -1841,7 +1824,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 600.
 Here is how much of TeX's memory you used:
  33953 strings out of 493089
  634001 string characters out of 6134841
- 788591 words of memory out of 5000000
+ 787591 words of memory out of 5000000
  36560 multiletter control sequences out of 15000+600000
  99825 words of font info for 200 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1866,7 +1849,7 @@ e1/public/lm/lmssbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
 c/lm/lmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhv
 b8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on oranzees.pdf (5 pages, 2786615 bytes).
+Output written on oranzees.pdf (5 pages, 2786770 bytes).
 PDF statistics:
  220 PDF objects out of 1000 (max. 8388607)
  179 compressed objects within 2 object streams
