@@ -114,7 +114,7 @@ Ecological availability is a probability $p_e(0,1)$ that represents the likeliho
 
 \begin{figure*}[h!]
 \begin{center}
-\includegraphics[width=11.8cm]{figures/figure_1.pdf}
+\includegraphics[width=10.8cm]{figures/figure_1.pdf}
 \caption{Number of cultural traits in oranzees, when varying ecological and genetic diversity. Red color indicates simulation runs that produced more than 38 cultural traits (the number of cultural traits identified in 1); blue color indicates simulation runs that produced less than 38 cultural traits. For all simulations, $S=1$, $\alpha_e$ and $\alpha_g$ as indicated in the plot. $N=20$ runs for each parameters combination.}
 \label{Figure1}
 \end{center}
@@ -183,7 +183,8 @@ Finally, our model reproduces a reported correlation between population size and
 
 More generally, the results of our models suggest caution when deriving individual-level mechanisms from population-level patterns (see also [@acerbi_conformity_2016; @barrett_equifinality_2019]). Cultural systems, as many others, exhibit equifinality: the same global state can be produced by different local processes. Models and experiments are crucial to test the plausibility of inferences going from global to local properties.   
 
-In conclusion, our model strongly suggests that the data available on the behavioral distributions of apes populations cannot demonstrate that ape possess cultures influenced by behavior copying, let alone *requiring* behavior copying. This, in turn, may provide an explanation to why ape cultures are not cumulative: as cumulative culture requires at minimum behavior copying, we should not expect any species lacking this mechanism to develop it.  
+In conclusion, our model strongly suggests that the data available on the behavioral distributions of apes populations cannot demonstrate that ape possess cultures influenced by behavior copying, let alone *requiring* behavior copying. This, in turn, may provide an explanation to why ape cultures are not cumulative: as cumulative culture requires at minimum behavior copying, we should not expect any species lacking this mechanism to develop it. Given the phylogenetic closeness of apes to the human lineage, our results speak also of the likely social learning capabilities of the last common ancestor of apes and humans. 
+  
 
 <!--
 Format {#format .unnumbered}
