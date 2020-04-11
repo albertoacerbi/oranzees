@@ -205,5 +205,20 @@ To determine *customary* behaviors, we need to define age classes for individual
 \pagebreak 
 </div>
 
+## Figure S7
+
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=11.4cm]{figures/figure_7.pdf}
+\caption{Number of cultural traits in absence of ecological and genetic variation ($\alpha_e=0;\alpha_g=0$), after varying the probability of socially-mediated innovations ($S$). $N=10$ runs for each value of $S$.}
+\label{FigureS7}
+\end{center}
+\end{figure*}
+
+
+<div style="page-break-after: always; visibility: hidden"> 
+\pagebreak 
+</div>
+
 # References
 

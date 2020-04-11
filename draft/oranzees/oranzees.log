@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  8 APR 2020 16:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  11 APR 2020 14:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1772,27 +1772,49 @@ Package pdftex.def Info: figures/figure_2.pdf used on input line 369.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [3 <./figures/figure_1.pdf>] [4 <./figures/figure_2.pdf>]
-Underfull \vbox (badness 4792) has occurred while \output is active []
+Underfull \vbox (badness 1527) has occurred while \output is active []
 
-Extra height:10.0pt when 355.72174pt
-
-Underfull \vbox (badness 7064) has occurred while \output is active []
-
-Extra height:10.0pt when 356.72174pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:10.0pt when 357.72174pt
+Extra height:10.0pt when 365.14241pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:10.0pt when 358.72174pt
-Extra height:0.0pt when 359.72174pt
-(2)Left:359.72174pt Right:351.0936pt Output:359.72174pt
+Extra height:10.0pt when 366.14241pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:10.0pt when 367.14241pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 1383) has occurred while \output is active []
+
+Extra height:10.0pt when 368.14241pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 2042) has occurred while \output is active []
+
+Extra height:10.0pt when 369.14241pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:0.0pt when 370.14241pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+(2)Left:370.14241pt Right:369.93494pt Output:370.14241pt
 - LAST -
-Left:359.72174pt
-Right:351.0936pt
-Output:359.72174pt
+Left:370.14241pt
+Right:369.93494pt
+Output:370.14241pt
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 Package caption Warning: Unused \captionsetup[table] on input line 166.
 See the caption package documentation for explanation.
@@ -1800,7 +1822,7 @@ See the caption package documentation for explanation.
 
 AED: lastpage setting LastPage
 
-Overfull \vbox (292.78549pt too high) has occurred while \output is active []
+Overfull \vbox (302.20616pt too high) has occurred while \output is active []
 
 - LAST -
 Extra skip:10.55556pt
@@ -1808,7 +1830,7 @@ Left:297.0pt/1.55556pt
 Right:288.0pt/0.0pt
 Output:305.5pt
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 608.
+(Font)              <8> on input line 610.
 [5]
 
 Package catoptions Warning: Undefined options 
@@ -1816,17 +1838,17 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 608.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 608.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 610.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 610.
 (./oranzees.xwm) (./oranzees.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 608.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 608.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 610.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 610.
 Package rerunfilecheck Info: File `oranzees.out' has not changed.
 (rerunfilecheck)             Checksum: 0302E56B464A3BDEC260BFB3A75284E6;519.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 608.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 610.
  ) 
 Here is how much of TeX's memory you used:
  33956 strings out of 493089
@@ -1856,7 +1878,7 @@ e1/public/lm/lmssbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
 c/lm/lmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhv
 b8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on oranzees.pdf (5 pages, 2787028 bytes).
+Output written on oranzees.pdf (5 pages, 2786907 bytes).
 PDF statistics:
  221 PDF objects out of 1000 (max. 8388607)
  180 compressed objects within 2 object streams
