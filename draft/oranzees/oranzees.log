@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  2 MAY 2020 14:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  2 MAY 2020 14:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1719,9 +1719,6 @@ Package mdframed Info: mdframed inside a box
  mdframed uses option nobreak mdframed on input line 140.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 5.69998pt on input line 140.
-
-Underfull \vbox (badness 1057) has occurred while \output is active []
-
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 165.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
@@ -1852,8 +1849,8 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 610.
  ) 
 Here is how much of TeX's memory you used:
  33952 strings out of 493089
- 634010 string characters out of 6134841
- 787591 words of memory out of 5000000
+ 634013 string characters out of 6134841
+ 787563 words of memory out of 5000000
  36560 multiletter control sequences out of 15000+600000
  99696 words of font info for 199 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1878,7 +1875,7 @@ e1/public/lm/lmssbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
 c/lm/lmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhv
 b8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on oranzees.pdf (5 pages, 2787000 bytes).
+Output written on oranzees.pdf (5 pages, 2786963 bytes).
 PDF statistics:
  221 PDF objects out of 1000 (max. 8388607)
  180 compressed objects within 2 object streams
