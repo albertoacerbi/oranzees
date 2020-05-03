@@ -26,7 +26,7 @@ The oranzees model is an individual-based model, fully written in R, that reprod
 \pagebreak 
 </div>
 
-The population sizes are also taken from the real chimpanzees populations considered in the study above. Following @lind_number_2010, we use data from @wrangham_why_2000:
+The population sizes are also modelled on the real chimpanzees populations considered in the study above. Following @lind_number_2010, we use data from @wrangham_why_2000:
 
 Group     |  Population size  
 --------- |----
@@ -55,7 +55,7 @@ In the example in \autoref{fig2}, a particular behavior will have $p_g=1$ (or $p
 
 ## Sub-categories of behaviors
 
-There are 64 behaviors possible in the model (inspired by the 65 coded in @whiten_cultures_1999, but made into an even number from modelling convenience), divided in two main categories: "social" and "food-related". Each category is further subdivided in sub-categories. Sub-categories, for food-related behavior, are further assigned to specific "nutrients". This information is used to calculate the oranzee's state according to its behavior (see main manuscript). The names of behaviors and of the sub-categories are only evocative. They are used to illustrate our results in Figure 2 (main manuscript).
+There are 64 behaviors possible in the model (inspired by the 65 coded in @whiten_cultures_1999, but made into an even number for modelling convenience), divided in two main categories: "social" and "food-related". Each category is further subdivided in sub-categories. Sub-categories, for food-related behavior, are further assigned to specific "nutrients". This information is used to calculate the oranzee's state according to its behavior (see main manuscript). The names of behaviors and of the sub-categories are only evocative. They are used to illustrate our results in Figure 2 (main manuscript).
 
 ### Social
 
@@ -141,7 +141,7 @@ Egg cracking          | egg-crack | Z
 
 ## Example of single run
 
-\autoref{fig3} shows an example of the entire history of all behaviors in a single run, for a single population (geographical location and population size are based on "Uossob"), with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$, i.e. one of the combination of parameters that produces a number of cultural behaviors similar to @whiten_cultures_1999. 
+\autoref{fig3} shows an example of the entire history of all behaviors in a single run, for a single population (geographical location and population size are based on "Uossob"), with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$, i.e. one of the combinations of parameters that produces a number of cultural behaviors similar to @whiten_cultures_1999. 
 
 ![Example of a single run with $\alpha_g=0.2$, $\alpha_e=0.8$, and $S=1$. The plots show the frequencies of the 64 possible behaviors, divided in panels by sub-category.\label{fig3} ](figures/figure_3)
 
@@ -210,7 +210,7 @@ To determine *customary* behaviors, we need to define age classes for individual
 \begin{figure*}[h!]
 \begin{center}
 \includegraphics[width=11.4cm]{figures/figure_7.pdf}
-\caption{Number of cultural traits in absence of ecological and genetic variation ($\alpha_e=0;\alpha_g=0$), after varying the probability of socially-mediated innovations ($S$). $N=10$ runs for each value of $S$.}
+\caption{Number of cultural traits in complete absence of ecological and genetic variation ($\alpha_e=0;\alpha_g=0$), woth varying  probability of socially-mediated innovations ($S$). $N=10$ runs for each value of $S$. Note that culture-like patterns often remain even in the total absence of genetic differences, environmental differences and social learning (result on far left). To the best of our knowledge this is a result not previously described in the literature - though we suspect these cultures would not be stable over time.}
 \label{FigureS7}
 \end{center}
 \end{figure*}

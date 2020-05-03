@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  2 MAY 2020 14:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.22)  3 MAY 2020 07:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1738,7 +1738,7 @@ Package hyperref Warning: The anchor of a bookmark and its parent's must not
 (hyperref)                be the same. Added a new anchor on input line 198.
 
 
-Underfull \hbox (badness 3942) in paragraph at lines 241--253
+Underfull \hbox (badness 3942) in paragraph at lines 241--254
 [] []\T1/phv/b/n/9 So-cial-ly--me-di-ated rein-no-va-tion.[] \T1/lmr/m/n/9 (+20
 ) At each time step, all
  []
@@ -1746,24 +1746,24 @@ Underfull \hbox (badness 3942) in paragraph at lines 241--253
 <figures/figure_1.pdf, id=52, 722.7pt x 505.89pt>
 File: figures/figure_1.pdf Graphic file (type pdf)
 <use figures/figure_1.pdf>
-Package pdftex.def Info: figures/figure_1.pdf used on input line 290.
+Package pdftex.def Info: figures/figure_1.pdf used on input line 291.
 (pdftex.def)             Requested size: 307.28984pt x 215.1046pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 305.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 306.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 312.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 313.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 6.64998pt on input line 312.
+(Font)              scaled to size 6.64998pt on input line 313.
 [2] <figures/figure_2.pdf, id=67, 1032.83154pt x 1413.42949pt>
 File: figures/figure_2.pdf Graphic file (type pdf)
 <use figures/figure_2.pdf>
-Package pdftex.def Info: figures/figure_2.pdf used on input line 368.
+Package pdftex.def Info: figures/figure_2.pdf used on input line 369.
 (pdftex.def)             Requested size: 335.7426pt x 459.46698pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1774,44 +1774,29 @@ Underfull \vbox (badness 1527) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:10.0pt when 365.14241pt
+Extra height:10.0pt when 376.89674pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:10.0pt when 366.14241pt
+Extra height:10.0pt when 377.89674pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:10.0pt when 367.14241pt
+Extra height:10.0pt when 378.89674pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 1383) has occurred while \output is active []
-
-Extra height:10.0pt when 368.14241pt
+Extra height:10.0pt when 379.89674pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 2042) has occurred while \output is active []
-
-Extra height:10.0pt when 369.14241pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:0.0pt when 370.14241pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-(2)Left:370.14241pt Right:369.93494pt Output:370.14241pt
+Extra height:10.0pt when 380.89674pt
+Extra height:0.0pt when 381.89674pt
+(2)Left:381.89674pt Right:371.5436pt Output:381.89674pt
 - LAST -
-Left:370.14241pt
-Right:369.93494pt
-Output:370.14241pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+Left:381.89674pt
+Right:371.5436pt
+Output:381.89674pt
 
 Package caption Warning: Unused \captionsetup[table] on input line 166.
 See the caption package documentation for explanation.
@@ -1819,15 +1804,15 @@ See the caption package documentation for explanation.
 
 AED: lastpage setting LastPage
 
-Overfull \vbox (302.20616pt too high) has occurred while \output is active []
+Overfull \vbox (342.9605pt too high) has occurred while \output is active []
 
 - LAST -
-Extra skip:10.55556pt
-Left:297.0pt/1.55556pt
-Right:288.0pt/0.0pt
-Output:305.5pt
+Extra skip:18.0pt
+Left:315.0pt/2.0pt
+Right:297.0pt/2.0pt
+Output:315.0pt
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 610.
+(Font)              <8> on input line 617.
 [5]
 
 Package catoptions Warning: Undefined options 
@@ -1835,24 +1820,24 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 610.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 610.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 617.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 617.
 (./oranzees.xwm) (./oranzees.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 610.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 610.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 617.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 617.
 Package rerunfilecheck Info: File `oranzees.out' has not changed.
 (rerunfilecheck)             Checksum: 0302E56B464A3BDEC260BFB3A75284E6;519.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 610.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 617.
  ) 
 Here is how much of TeX's memory you used:
- 33952 strings out of 493089
- 634013 string characters out of 6134841
- 787563 words of memory out of 5000000
+ 33955 strings out of 493089
+ 634054 string characters out of 6134841
+ 788644 words of memory out of 5000000
  36560 multiletter control sequences out of 15000+600000
- 99696 words of font info for 199 fonts, out of 8000000 for 9000
+ 99782 words of font info for 200 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,14n,73p,10398b,1033s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
@@ -1875,10 +1860,10 @@ e1/public/lm/lmssbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
 c/lm/lmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhv
 b8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on oranzees.pdf (5 pages, 2786963 bytes).
+Output written on oranzees.pdf (5 pages, 2787514 bytes).
 PDF statistics:
- 221 PDF objects out of 1000 (max. 8388607)
- 180 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
+ 222 PDF objects out of 1000 (max. 8388607)
+ 181 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
  41047 words of extra memory for PDF output out of 42996 (max. 10000000)
 
