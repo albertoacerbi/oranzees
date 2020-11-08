@@ -1,6 +1,6 @@
 # Oranzees model
 
-This repository contains the code and documents the development of what we have called here "oranzees model". A manuscript describing the model and the main results is avialable [here](draft/preprint/preprint.pdf), with Supplementary Information [here](draft/oranzees/SI/SI.pdf). It has been made available on the preprint server [bioRxiv](https://www.biorxiv.org/content/10.1101/2020.03.25.008177v1) the 27 of March 2020.  
+This repository contains the code and documents the development of what we have called here "oranzees model". A description of the model is available [here](model-description.pdf). A manuscript is avialable on the preprint server [bioRxiv](https://www.biorxiv.org/content/10.1101/2020.03.25.008177v1).
 
 The rest of the material is organised as follows. Notice this may not be always updated, because we are keep working on the model and on the outputs, but it should be sufficient to understand and reproduce the results described in the manuscript:
 
